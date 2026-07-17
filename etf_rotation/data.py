@@ -64,8 +64,15 @@ def clear_cache():
 def normalize_bars(klines: list[dict], min_bars: int = 22) -> dict[str, list] | None:
     if not klines or len(klines) < min_bars:
         return None
+    opens = []
+    for k in klines:
+        o = k.get("open")
+        if o is None:
+            o = k["close"]
+        opens.append(float(o))
     return {
         "dates": [k["date"] for k in klines],
+        "open": opens,
         "close": [float(k["close"]) for k in klines],
         "volume": [float(k.get("volume", 0)) for k in klines],
     }

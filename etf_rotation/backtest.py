@@ -1,4 +1,9 @@
-"""回测引擎 (从 V8-V10 提炼)."""
+"""回测引擎.
+
+成交模式 fill:
+  - close:     T日收盘算信号, T日收盘成交 (偏乐观, 旧默认)
+  - next_open: T日收盘算信号, T+1开盘成交 (更接近可执行)
+"""
 from __future__ import annotations
 
 import statistics
@@ -16,8 +21,9 @@ def bt(
     commission: float = 0.00005,
 ) -> dict[str, Any] | None:
     """
-    all_data: {code: {dates, close, volume, name?}}
+    all_data: {code: {dates, close, volume, open?, name?}}
     p: strategy_for_backtest() 风格参数
+       p['fill'] = 'close' | 'next_open'
     """
     rb = p.get("rb", 5)
     tn = p.get("top_n", 1)
@@ -38,6 +44,7 @@ def bt(
     overheat = p.get("overheat", 0.30)
     slip = p.get("slip", 0.0)
     cost = commission + slip
+    fill = p.get("fill", "close")  # close | next_open
 
     if not all_data:
         return None
@@ -53,6 +60,18 @@ def bt(
         for i, d in enumerate(all_data[c]["dates"]):
             di.setdefault(d, {})[c] = i
 
+    def px(code: str, date: str, which: str) -> float | None:
+        if date not in di or code not in di[date]:
+            return None
+        i = di[date][code]
+        series = all_data[code]
+        if which == "open":
+            op = series.get("open")
+            if op and i < len(op):
+                return op[i]
+            return series["close"][i]
+        return series["close"][i]
+
     cash = INITIAL_CAPITAL
     pos: dict = {}
     trds: list = []
@@ -62,9 +81,64 @@ def bt(
     dc = 0
     start = max(65, lb + 5)
 
+    # next_open: 上一交易日收盘产生的待成交指令
+    # {"side":"S"|"B", "c":code, "r":reason, "ed":entry_dc_for_buy}
+    pending: list[dict] = []
+
+    gap_pnls: list[float] = []  # 开盘相对昨收的冲击 (仅 next_open 有意义)
+
     for idx in range(start, len(sd)):
         date = sd[idx]
         dc += 1
+
+        # ---- 1) 先执行隔夜挂单 (T+1 开盘) ----
+        if fill == "next_open" and pending:
+            still_pending = []
+            # 先卖后买
+            sells = [o for o in pending if o["side"] == "S"]
+            buys = [o for o in pending if o["side"] == "B"]
+            for o in sells:
+                c = o["c"]
+                if c not in pos:
+                    continue
+                p_ = px(c, date, "open")
+                if p_ is None or p_ <= 0:
+                    still_pending.append(o)
+                    continue
+                # 相对信号日收盘的跳空
+                sig_close = o.get("sig_px")
+                if sig_close and sig_close > 0:
+                    gap_pnls.append(p_ / sig_close - 1)
+                s = pos[c]["s"]
+                cash += s * p_ - max(s * p_ * cost, 0)
+                pnl = (p_ - pos[c]["ep"]) / pos[c]["ep"]
+                trds.append({"date": date, "a": "S", "c": c, "p": pnl, "r": o.get("r", "卖")})
+                del pos[c]
+            for o in buys:
+                c = o["c"]
+                if c in pos:
+                    continue
+                if c in cd and dc < cd[c]:
+                    continue
+                p_ = px(c, date, "open")
+                if p_ is None or p_ <= 0:
+                    continue
+                sig_close = o.get("sig_px")
+                if sig_close and sig_close > 0:
+                    gap_pnls.append(p_ / sig_close - 1)
+                # 仓位: 用挂单时记下的目标金额
+                budget = o.get("budget", 0)
+                if budget < 100:
+                    continue
+                s = int(budget / p_ / 100) * 100
+                if s <= 0:
+                    continue
+                cash -= s * p_ + max(s * p_ * cost, 0)
+                pos[c] = {"s": s, "ep": p_, "ed": dc, "pk": p_}
+                trds.append({"date": date, "a": "B", "c": c})
+            pending = still_pending
+
+        # 当日收盘价 (信号 + 市值)
         pr = {
             c: all_data[c]["close"][di[date][c]]
             for c in all_data if date in di and c in di[date]
@@ -72,6 +146,7 @@ def bt(
         if not pr:
             continue
 
+        # ---- 2) 趋势 ----
         mu = True
         if bench in all_data and date in di and bench in di[date]:
             hi = di[date][bench]
@@ -83,10 +158,12 @@ def bt(
                 else:
                     mu = hc[hi] > ma20
 
-        ts: list = []
+        # ---- 3) 当日信号 (用收盘) ----
+        ts: list = []  # (code, reason) 卖
         for c, p0 in list(pos.items()):
             if c not in pr:
                 continue
+            # 止损用收盘相对成本 (可执行时 next_open 会拖一天)
             pnl = (pr[c] - p0["ep"]) / p0["ep"]
             if pnl <= st:
                 ts.append((c, "止损"))
@@ -161,35 +238,101 @@ def bt(
         elif not mu:
             trg = 0
 
+        # 去重卖出列表
+        seen_s = set()
+        ts_u = []
         for c, rea in ts:
-            if c in pos and c in pr:
-                p_ = pr[c]
-                s = pos[c]["s"]
-                cash += s * p_ - max(s * p_ * cost, 0)
-                pnl = (p_ - pos[c]["ep"]) / pos[c]["ep"]
-                trds.append({"date": date, "a": "S", "c": c, "p": pnl, "r": rea})
-                del pos[c]
+            if c not in seen_s:
+                seen_s.add(c)
+                ts_u.append((c, rea))
+        ts = ts_u
 
-        if drb and mu and trg > 0 and tb:
-            inv = sum(pos[_c]["s"] * pr.get(_c, 0) for _c in pos if _c in pr)
-            av = cash * trg - inv
-            if av > 100:
-                per = av / len(tb)
-                for c in tb:
-                    if c in pr and pr[c] > 0:
-                        p_ = pr[c]
-                        s = int(per / p_ / 100) * 100
-                        if s > 0:
-                            cash -= s * p_ + max(s * p_ * cost, 0)
-                            pos[c] = {"s": s, "ep": p_, "ed": dc, "pk": p_}
-                            trds.append({"date": date, "a": "B", "c": c})
+        # ---- 4) 成交 ----
+        if fill == "close":
+            for c, rea in ts:
+                if c in pos and c in pr:
+                    p_ = pr[c]
+                    s = pos[c]["s"]
+                    cash += s * p_ - max(s * p_ * cost, 0)
+                    pnl = (p_ - pos[c]["ep"]) / pos[c]["ep"]
+                    trds.append({"date": date, "a": "S", "c": c, "p": pnl, "r": rea})
+                    del pos[c]
+            if drb and mu and trg > 0 and tb:
+                inv = sum(pos[_c]["s"] * pr.get(_c, 0) for _c in pos if _c in pr)
+                av = cash * trg - inv
+                if av > 100:
+                    per = av / len(tb)
+                    for c in tb:
+                        if c in pr and pr[c] > 0:
+                            p_ = pr[c]
+                            s = int(per / p_ / 100) * 100
+                            if s > 0:
+                                cash -= s * p_ + max(s * p_ * cost, 0)
+                                pos[c] = {"s": s, "ep": p_, "ed": dc, "pk": p_}
+                                trds.append({"date": date, "a": "B", "c": c})
+        else:
+            # next_open: 挂到下一交易日开盘
+            for c, rea in ts:
+                if c in pos and c in pr:
+                    pending.append({
+                        "side": "S", "c": c, "r": rea, "sig_px": pr[c],
+                    })
+            if drb and mu and trg > 0 and tb:
+                # 预估可买金额 (用收盘市值近似; 实际开盘会按挂单 budget)
+                inv = sum(pos[_c]["s"] * pr.get(_c, 0) for _c in pos if _c in pr)
+                # 若当日已挂卖, 卖出后现金会增加 — 近似加上将卖市值
+                sell_codes = {o["c"] for o in pending if o["side"] == "S"}
+                approx_cash = cash
+                for c in sell_codes:
+                    if c in pos and c in pr:
+                        approx_cash += pos[c]["s"] * pr[c]
+                inv_keep = sum(
+                    pos[_c]["s"] * pr.get(_c, 0)
+                    for _c in pos if _c in pr and _c not in sell_codes
+                )
+                av = approx_cash * trg - inv_keep
+                if av > 100:
+                    per = av / len(tb)
+                    for c in tb:
+                        if c in pr and pr[c] > 0:
+                            pending.append({
+                                "side": "B", "c": c, "budget": per, "sig_px": pr[c],
+                            })
 
         inv = sum(pos[_c]["s"] * pr.get(_c, 0) for _c in pos if _c in pr)
         daily.append({"d": date, "v": cash + inv, "mu": mu})
 
+    # 若最后还有 pending 卖, 用末日收盘清掉 (避免悬空)
+    if pending and sd:
+        date = sd[-1]
+        pr = {
+            c: all_data[c]["close"][di[date][c]]
+            for c in all_data if date in di and c in di[date]
+        }
+        for o in pending:
+            if o["side"] == "S" and o["c"] in pos and o["c"] in pr:
+                c = o["c"]
+                p_ = pr[c]
+                s = pos[c]["s"]
+                cash += s * p_ - max(s * p_ * cost, 0)
+                pnl = (p_ - pos[c]["ep"]) / pos[c]["ep"]
+                trds.append({"date": date, "a": "S", "c": c, "p": pnl, "r": o.get("r", "末日清仓")})
+                del pos[c]
+
     if not daily:
         return None
     fv = daily[-1]["v"]
+    # 末日市值
+    if pos and sd:
+        date = sd[-1]
+        pr = {
+            c: all_data[c]["close"][di[date][c]]
+            for c in all_data if date in di and c in di[date]
+        }
+        inv = sum(pos[_c]["s"] * pr.get(_c, 0) for _c in pos if _c in pr)
+        fv = cash + inv
+        daily[-1]["v"] = fv
+
     pk = INITIAL_CAPITAL
     mdd = 0.0
     for dv in daily:
@@ -203,6 +346,7 @@ def bt(
     sl = [t for t in trds if t["a"] == "S"]
     wn = [t for t in sl if t["p"] > 0]
     sp = ann / abs(mdd * 100) if mdd != 0 else 0
+    avg_gap = statistics.mean(gap_pnls) * 100 if gap_pnls else 0.0
     return {
         "fv": fv,
         "ret": (fv - INITIAL_CAPITAL) / INITIAL_CAPITAL,
@@ -214,13 +358,19 @@ def bt(
         "days": len(daily),
         "d0": daily[0]["d"],
         "d1": daily[-1]["d"],
+        "fill": fill,
+        "avg_gap_pct": avg_gap,
+        "n_gaps": len(gap_pnls),
     }
 
 
 def format_result(r: dict | None, label: str = "") -> str:
     if not r:
         return f"  {label}: NO DATA"
+    extra = ""
+    if r.get("n_gaps"):
+        extra = f" 跳空均:{r['avg_gap_pct']:+.2f}%"
     return (
         f"  {label:48s} 收益:{r['ret']*100:>+7.1f}% 年化:{r['ann']:>+6.1f}% "
-        f"回撤:{r['dd']*100:>-5.1f}% 夏普:{r['sp']:>4.1f} 交易:{r['n']:>3d}"
+        f"回撤:{r['dd']*100:>-5.1f}% 夏普:{r['sp']:>4.1f} 交易:{r['n']:>3d}{extra}"
     )
