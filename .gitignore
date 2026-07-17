@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+.DS_Store
+*.log
+
+# 本机桌面路径不入库; CI 用 output/
+# 但 output 内的 latest/仓位 由 Actions 提交, 本地可忽略日志
+output/logs/
+
+# 本地归档不入库
+archive/

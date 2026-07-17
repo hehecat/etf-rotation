@@ -1,0 +1,12 @@
+{
+  "name": "C13_动量15d持2(影子)",
+  "weights": {"m20": 0.5, "m5": 0.3, "eff": 0.2},
+  "rb_days": 15,
+  "top_n": 2,
+  "hyst": 0.4,
+  "min_hold": 10,
+  "stop": -0.08,
+  "overheat": 0.3,
+  "dual_ma": true,
+  "bench": "SH510300"
+}

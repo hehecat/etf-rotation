@@ -1,0 +1,139 @@
+# 每个交易日北京时间约 15:35 跑信号并邮件
+# UTC 07:35 ≈ 北京 15:35 (CST, UTC+8)
+name: Daily ETF Signal
+
+on:
+  schedule:
+    # 周一到周五 07:35 UTC = 15:35 北京
+    - cron: "35 7 * * 1-5"
+  workflow_dispatch:  # 允许网页手动触发
+
+concurrency:
+  group: daily-signal
+  cancel-in-progress: false
+
+permissions:
+  contents: write   # 回写 output/ 仓位状态
+  pages: write      # 可选: 发布 Pages
+  id-token: write
+
+jobs:
+  signal:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node (for stock-api / npx)
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Restore output state
+        run: |
+          mkdir -p output
+          # 若仓库已有 output/模拟仓位.json 则沿用; 否则空账户
+          ls -la output || true
+
+      - name: Run C01 signal
+        env:
+          CI: "true"
+          ETF_DATA_DIR: ${{ github.workspace }}/output
+        run: |
+          python3 scripts/run_signal.py
+          echo "---- latest.txt (head) ----"
+          head -40 output/latest.txt || true
+
+      - name: Send email
+        if: success()
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          MAIL_FROM: ${{ secrets.MAIL_FROM }}
+          MAIL_TO: ${{ secrets.MAIL_TO }}
+          MAIL_SUBJECT: ${{ secrets.MAIL_SUBJECT }}
+          ETF_DATA_DIR: ${{ github.workspace }}/output
+          CI: "true"
+        run: |
+          if [ -z "$SMTP_HOST" ] || [ -z "$SMTP_USER" ] || [ -z "$SMTP_PASSWORD" ] || [ -z "$MAIL_TO" ]; then
+            echo "⚠️ 未配置邮件 Secrets, 跳过发信 (信号已生成)"
+            exit 0
+          fi
+          # 默认端口
+          export SMTP_PORT="${SMTP_PORT:-465}"
+          python3 scripts/send_email.py
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: etf-signal-${{ github.run_id }}
+          path: |
+            output/latest.txt
+            output/latest.json
+            output/模拟仓位.json
+            output/etf信号_*.txt
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Commit output state (仓位持久化)
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # 只提交运行时产物
+          git add -f output/latest.txt output/latest.json output/模拟仓位.json || true
+          # 可选: 保留带时间戳的日报
+          git add -f output/etf信号_*.txt 2>/dev/null || true
+          if git diff --staged --quiet; then
+            echo "无变更, 跳过 commit"
+          else
+            git commit -m "chore(signal): daily C01 $(date -u +%Y-%m-%d)"
+            git push
+          fi
+
+  # 可选: 发布到 GitHub Pages (需仓库 Settings → Pages → Source = GitHub Actions)
+  pages:
+    needs: signal
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build static site
+        run: |
+          mkdir -p _site
+          if [ -f output/latest.txt ]; then
+            cp output/latest.txt _site/index.txt
+            # 简单 HTML 包装, 手机也能看
+            {
+              echo '<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">'
+              echo '<meta name="viewport" content="width=device-width,initial-scale=1">'
+              echo '<title>ETF轮动信号</title>'
+              echo '<style>body{font-family:ui-monospace,Menlo,Consolas,monospace;background:#0d1117;color:#e6edf3;padding:1.2rem;line-height:1.45} pre{white-space:pre-wrap;word-break:break-word;max-width:52rem;margin:0 auto}</style>'
+              echo '</head><body><pre>'
+              python3 -c "import html,pathlib; print(html.escape(pathlib.Path('output/latest.txt').read_text(encoding='utf-8')))"
+              echo '</pre></body></html>'
+            } > _site/index.html
+          else
+            echo '<p>暂无信号</p>' > _site/index.html
+          fi
+          if [ -f output/latest.json ]; then
+            cp output/latest.json _site/latest.json
+          fi
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4
+        continue-on-error: true  # 未开 Pages 时不让整流水线失败
