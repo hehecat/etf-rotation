@@ -1,15 +1,39 @@
 {
-  "cash": 100000,
+  "cash": 100000.0,
   "holding": null,
   "trades": [],
   "total_trades": 0,
   "wins": 0,
   "losses": 0,
   "total_pnl": 0.0,
-  "total_value": 100000,
+  "total_value": 100000.0,
   "return_pct": 0.0,
   "last_rebalance": null,
   "config": "C01_效15d",
-  "last_update": null,
-  "note": "重置: 云端首跑无基准误买稀土, 已回滚空仓"
+  "last_update": "2026-07-17 03:52",
+  "note": "重置: 云端首跑无基准误买稀土, 已回滚空仓",
+  "days_to_rebalance": 0,
+  "market_ok": false,
+  "breadth": 0.324,
+  "shadow": {
+    "config": "C13_动量15d持2(影子)",
+    "market_ok": false,
+    "picks": [
+      {
+        "code": "SZ159647",
+        "name": "中药ETF鹏华",
+        "score": 1.411
+      },
+      {
+        "code": "SH562390",
+        "name": "中药ETF银华",
+        "score": 1.395
+      }
+    ],
+    "action": "空仓(双均线过滤)"
+  },
+  "action_summary": "⚪ 空仓观望",
+  "decision_reasons": [
+    "大盘趋势向下 → 保持空仓"
+  ]
 }

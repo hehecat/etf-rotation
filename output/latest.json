@@ -1,61 +1,55 @@
 {
-  "time": "2026-07-17 03:43",
+  "time": "2026-07-17 03:52",
   "config": "C01_效15d",
   "frozen": true,
-  "action": "🟢 买入 稀土ETF",
+  "action": "⚪ 空仓观望",
   "reasons": [
-    "空仓+窗口到 → 买入 稀土ETF"
+    "大盘趋势向下 → 保持空仓"
   ],
-  "market_ok": true,
-  "breadth": 0.3333333333333333,
-  "holding": {
-    "code": "SH516780",
-    "name": "稀土ETF",
-    "buy_price": 0.792,
-    "shares": 119900,
-    "buy_date": "2026-07-17"
-  },
-  "total_value": 99995.25,
-  "return_pct": -0.0,
+  "market_ok": false,
+  "breadth": 0.3235294117647059,
+  "holding": null,
+  "total_value": 100000.0,
+  "return_pct": 0.0,
   "days_to_rebalance": 0,
   "top3": [
     {
       "code": "SH516780",
       "name": "稀土ETF",
-      "score": 1.021
+      "score": 1.05
     },
     {
       "code": "SH515790",
       "name": "光伏ETF",
-      "score": 0.911
+      "score": 0.939
     },
     {
       "code": "SZ159647",
       "name": "中药ETF鹏华",
-      "score": 0.887
+      "score": 0.908
     }
   ],
   "shadow": {
     "config": "C13_动量15d持2(影子)",
-    "market_ok": true,
+    "market_ok": false,
     "picks": [
       {
         "code": "SZ159647",
         "name": "中药ETF鹏华",
-        "score": 1.385
+        "score": 1.411
       },
       {
         "code": "SH562390",
         "name": "中药ETF银华",
-        "score": 1.37
+        "score": 1.395
       }
     ],
-    "action": "中药ETF鹏华 + 中药ETF银华"
+    "action": "空仓(双均线过滤)"
   },
   "checks": [
     {
       "name": "大盘>MA20",
-      "ok": true,
+      "ok": false,
       "detail": "趋势过滤"
     },
     {
@@ -71,7 +65,7 @@
     {
       "name": "有合格标的",
       "ok": true,
-      "detail": "稀土ETF 得分+1.02"
+      "detail": "稀土ETF 得分+1.05"
     }
   ]
 }
