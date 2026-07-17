@@ -1,54 +1,15 @@
 {
-  "cash": 5034.45,
-  "holding": {
-    "code": "SH516780",
-    "name": "稀土ETF",
-    "buy_price": 0.792,
-    "shares": 119900,
-    "buy_date": "2026-07-17"
-  },
-  "trades": [
-    {
-      "date": "2026-07-17",
-      "action": "BUY",
-      "code": "SH516780",
-      "name": "稀土ETF",
-      "price": 0.792,
-      "shares": 119900,
-      "reason": "信号买入"
-    }
-  ],
+  "cash": 100000,
+  "holding": null,
+  "trades": [],
   "total_trades": 0,
   "wins": 0,
   "losses": 0,
   "total_pnl": 0.0,
-  "total_value": 99995.25,
-  "return_pct": -0.0,
-  "last_update": "2026-07-17 03:43",
+  "total_value": 100000,
+  "return_pct": 0.0,
+  "last_rebalance": null,
   "config": "C01_效15d",
-  "last_rebalance": "2026-07-17",
-  "days_to_rebalance": 15,
-  "market_ok": true,
-  "breadth": 0.333,
-  "shadow": {
-    "config": "C13_动量15d持2(影子)",
-    "market_ok": true,
-    "picks": [
-      {
-        "code": "SZ159647",
-        "name": "中药ETF鹏华",
-        "score": 1.385
-      },
-      {
-        "code": "SH562390",
-        "name": "中药ETF银华",
-        "score": 1.37
-      }
-    ],
-    "action": "中药ETF鹏华 + 中药ETF银华"
-  },
-  "action_summary": "🟢 买入 稀土ETF",
-  "decision_reasons": [
-    "空仓+窗口到 → 买入 稀土ETF"
-  ]
+  "last_update": null,
+  "note": "重置: 云端首跑无基准误买稀土, 已回滚空仓"
 }

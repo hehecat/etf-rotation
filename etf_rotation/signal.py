@@ -50,26 +50,30 @@ def run_signal(
     commission = float(strat.get("commission", 0.00005))
 
     print("📡 取数中...", end="", flush=True)
-    codes = [bench] + [c for c, _ in etf_list]
-    # 去重
+    codes = [c for c, _ in etf_list]
+    # 去重 (bench 单独强取)
     seen, uniq = set(), []
     for c in codes:
         if c not in seen:
             seen.add(c)
             uniq.append(c)
     market = data_mod.fetch_many(uniq, count=bar_count, min_bars=22)
-    print(f" 完成 ({len(market)}只)")
+    # 基准多源强取, 避免并行时漏掉导致错误开仓
+    bench_bars = data_mod.fetch_bench(bench, count=bar_count, min_bars=22)
+    if bench_bars:
+        market[bench] = bench_bars
+    print(f" 完成 (池{len(market)}只, 基准{'OK' if bench_bars else 'FAIL'})")
 
-    market_ok = True
+    # 无基准 → 一律空仓 (fail-closed), 禁止默认 market_ok=True
+    market_ok = False
     bench_px = ma20 = bench_chg = None
     if bench in market:
         market_ok, bench_px, ma20, bench_chg = market_trend(
             market[bench], dual_ma=bool(strat.get("dual_ma", False))
         )
     else:
-        print("⚠️ 无基准数据")
+        print("⚠️ 无基准数据 → 强制空仓(不新开仓)")
 
-    # 主策略池不含重复取 bench 时的 name
     pool_market = {c: market[c] for c, _ in etf_list if c in market}
     weights = strat.get("weights") or {"eff": 0.6, "mtf": 0.4}
     etf_data, rejected = factors.build_etf_table(
