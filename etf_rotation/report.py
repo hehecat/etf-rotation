@@ -126,8 +126,8 @@ def render_signal_report(
     days_to = decision.get("days_to_rb", 0)
     can_rb = decision.get("can_rebalance", False)
     t(
-        f"\n  调仓时钟: 上次 {last_rb or '无'} | 已过 {days_rb if last_rb else 0} 日 | "
-        f"还需 {days_to} 日 | {'可调仓' if can_rb else '锁定中'}"
+        f"\n  调仓时钟: 上次 {last_rb or '无'} | 已过 {days_rb if last_rb else 0} 交易日 | "
+        f"还需 {days_to} 交易日 | {'可调仓' if can_rb else '锁定中'}"
     )
 
     t(f"\n{'='*64}")
@@ -168,7 +168,7 @@ def render_signal_report(
     if executed and executed[0] == "买入":
         t(f"    1. 买入 {executed[1]}  参考价附近")
         t(f"    2. 止损设在成本×{1+stop:.2f}")
-        t(f"    3. 下次评估不早于 {rb} 个自然日后")
+        t(f"    3. 下次评估不早于 {rb} 个交易日后")
     elif executed and executed[0] == "卖出":
         t(f"    1. 卖出 {executed[1]}  原因:{executed[3]}")
         if holding:
@@ -178,7 +178,7 @@ def render_signal_report(
     elif holding:
         t(f"    1. 继续持有 {holding['name']}, 无需操作")
         t(f"    2. 盯止损 {holding['buy_price']*(1+stop):.3f}")
-        t(f"    3. 调仓窗口还需 {days_to} 日")
+        t(f"    3. 调仓窗口还需 {days_to} 交易日")
     else:
         t("    1. 空仓, 不抄底")
         t("    2. 等沪深300回到MA20上方后再看信号")

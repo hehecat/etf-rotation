@@ -7,6 +7,8 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
+from .calendar_util import trading_days_since
+
 
 def default_state(initial_capital: float = 100000, config_name: str = "C01") -> dict:
     return {
@@ -44,6 +46,7 @@ def save_state(path: Path | str, state: dict) -> None:
 
 
 def days_since(date_str: str | None, now: datetime) -> int:
+    """自然日 (兼容旧调用); 调仓/持仓请用 trading_days_since."""
     if not date_str:
         return 999
     try:
@@ -61,15 +64,22 @@ def decide(
     now: datetime,
     last_rebalance: str | None,
     cfg: dict,
+    calendar: list[str] | None = None,
 ) -> dict[str, Any]:
-    """决策: 返回 action/target/reasons/checks/can_rebalance 等."""
+    """决策: 返回 action/target/reasons/checks/can_rebalance 等.
+
+    rb_days / min_hold 按**交易日**计数 (与回测引擎一致).
+    calendar: 可选交易日列表 (YYYY-MM-DD); 缺省用工作日近似.
+    """
     rb_days = cfg.get("rb_days", 15)
     min_hold = cfg.get("min_hold", 5)
     stop = cfg.get("stop", -0.08)
     hyst = cfg.get("hyst", 0.2)
 
-    days_entry = days_since(holding.get("buy_date") if holding else None, now)
-    days_rb = days_since(last_rebalance, now)
+    days_entry = trading_days_since(
+        holding.get("buy_date") if holding else None, now, calendar
+    )
+    days_rb = trading_days_since(last_rebalance, now, calendar)
     can_rb = days_rb >= rb_days or last_rebalance is None
     days_to_rb = 0 if can_rb else max(0, rb_days - days_rb)
 
@@ -112,17 +122,54 @@ def decide(
         else:
             reasons.append("大盘趋势向下 → 保持空仓")
 
+    # 空仓再入不强制等调仓窗 (窗只约束「持仓轮动」); 否则止损/趋势清仓后纯现金踏空
+    empty_free_entry = bool(cfg.get("empty_free_entry", True))
+    park_bench = bool(cfg.get("park_bench", False))
+    prefer_bench = bool(cfg.get("prefer_bench_if_stronger", False))
+    bench_code = cfg.get("bench") or "SH510300"
+    is_park_hold = bool(holding and holding.get("park"))
+
+    def _bench_quote():
+        b = etf_data.get(bench_code)
+        if b and b.get("close", 0) > 0:
+            return b
+        return None
+
+    def _sector_weaker_than_bench(sec: dict) -> bool:
+        b = _bench_quote()
+        if not b or not prefer_bench:
+            return False
+        return float(sec.get("mom20", 0)) < float(b.get("mom20", 0))
+
     if action == "HOLD" and market_ok:
         if pick:
             target, pd = pick[0], pick[1]
             price = pd["close"]
             name = pd["name"]
+            # 行业弱于300 → 改停靠300
+            use_bench = _sector_weaker_than_bench(pd)
+            if use_bench:
+                b = _bench_quote()
+                if b:
+                    target, price = bench_code, b["close"]
+                    name = b.get("name") or "沪深300ETF"
             if holding is None:
-                if can_rb:
+                if empty_free_entry or can_rb:
                     action = "BUY"
-                    reasons.append(f"空仓+窗口到 → 买入 {name}")
+                    if use_bench:
+                        reasons.append(f"行业弱于300 → 停靠 {name}")
+                    else:
+                        reasons.append(f"空仓+趋势开 → 买入 {name}")
                 else:
                     reasons.append(f"调仓窗口未到(还需{days_to_rb}日) → 空仓等待")
+            elif is_park_hold:
+                if use_bench or target == bench_code:
+                    reasons.append(f"继续底仓 {holding['name']} (行业未强过300)")
+                elif days_entry < min_hold and not cfg.get("park_ignore_min_hold", True):
+                    reasons.append(f"底仓未满最小持仓({days_entry}/{min_hold}) → 暂留")
+                else:
+                    action = "SELL"
+                    reasons.append(f"底仓切换行业: {holding['name']} → {name}")
             elif holding["code"] != target:
                 if not can_rb:
                     reasons.append(f"有更优标{name}, 但调仓窗口未到(还需{days_to_rb}日)")
@@ -144,7 +191,27 @@ def decide(
             else:
                 reasons.append(f"持仓即最优 {holding['name']} → 继续持有")
         else:
-            reasons.append("无合格标的 → 观望")
+            # 无行业合格标
+            if park_bench:
+                b = etf_data.get(bench_code)
+                if holding is None and b and b.get("close", 0) > 0:
+                    if empty_free_entry or can_rb:
+                        action = "BUY"
+                        target = bench_code
+                        price = b["close"]
+                        name = b.get("name") or "沪深300ETF"
+                        reasons.append(f"无行业标+趋势开 → 停靠底仓 {name}")
+                    else:
+                        reasons.append("无行业标且调仓窗未到 → 等待")
+                elif is_park_hold and holding:
+                    reasons.append(f"无行业标 → 继续底仓 {holding['name']}")
+                elif holding and holding["code"] != bench_code and b and b.get("close", 0) > 0:
+                    # 行业持仓失效(过热/得分塌) 且开启停靠: 不强制立即换300, 避免过交易
+                    reasons.append("无合格行业标 → 继续持有当前(待窗/止损)")
+                else:
+                    reasons.append("无合格标的 → 观望")
+            else:
+                reasons.append("无合格标的 → 观望")
 
     if not reasons:
         reasons.append("无操作")
@@ -161,6 +228,7 @@ def decide(
         "days_since_entry": days_entry,
         "days_since_rb": days_rb,
         "pick": pick,
+        "park": bool(target and target == bench_code and park_bench),
     }
 
 
@@ -228,7 +296,9 @@ def execute(
         state["total_trades"] = state.get("total_trades", 0) + 1
         executed = ("卖出", holding["name"], pnl, reason)
         holding = None
-        if reason in ("止损", "趋势空仓"):
+        # 止损/趋势清仓: 不再锁死 empty 再入 (empty_free_entry 默认开)
+        # 仅当显式关闭 empty_free_entry 时保留冷却锁
+        if reason in ("止损", "趋势空仓") and not bool(cfg.get("empty_free_entry", True)):
             last_rb = now.strftime("%Y-%m-%d")
             can_rb = False
             days_to_rb = rb_days
@@ -243,13 +313,22 @@ def execute(
                 cost = buy_shares * price
                 comm = max(cost * commission, 0)
                 cash -= cost + comm
+                is_park = bool(decision.get("park")) or (
+                    target == (cfg.get("bench") or "SH510300")
+                    and (
+                        bool(cfg.get("park_bench"))
+                        or bool(cfg.get("prefer_bench_if_stronger"))
+                    )
+                )
                 holding = {
                     "code": target,
                     "name": name,
                     "buy_price": price,
                     "shares": buy_shares,
                     "buy_date": now.strftime("%Y-%m-%d"),
+                    "park": is_park,
                 }
+                buy_reason = "底仓停靠" if is_park else "信号买入"
                 trades.append({
                     "date": now.strftime("%Y-%m-%d"),
                     "action": "BUY",
@@ -257,12 +336,14 @@ def execute(
                     "name": name,
                     "price": round(price, 4),
                     "shares": buy_shares,
-                    "reason": "信号买入",
+                    "reason": buy_reason,
                 })
-                executed = ("买入", name, None, "信号买入")
-                last_rb = now.strftime("%Y-%m-%d")
-                days_to_rb = rb_days
-                can_rb = False
+                executed = ("买入", name, None, buy_reason)
+                # 行业信号买入才锁定调仓窗; 底仓停靠不占用轮动时钟
+                if not is_park:
+                    last_rb = now.strftime("%Y-%m-%d")
+                    days_to_rb = rb_days
+                    can_rb = False
 
     hv = 0.0
     if holding:

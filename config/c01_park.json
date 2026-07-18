@@ -1,7 +1,7 @@
 {
-  "name": "C01_效15d",
-  "frozen": true,
-  "note": "V9稳健第1 / V10抗过拟合通过. 冻结后至少跑3个月再调参.",
+  "name": "C01_底仓300",
+  "frozen": false,
+  "note": "C01 + 趋势开时无行业标则停靠沪深300, 减少现金拖累. 权重仍同C01, 对照用.",
   "weights": {"eff": 0.6, "mtf": 0.4},
   "rb_days": 15,
   "top_n": 1,
@@ -17,6 +17,7 @@
   "commission": 0.00005,
   "initial_capital": 100000,
   "empty_free_entry": true,
-  "park_bench": false,
-  "note_fix": "empty_free_entry=空仓可立即再入(不锁15日窗). park_bench=趋势开无行业标时停靠300, 默认关; 见 c01_park.json"
+  "park_bench": true,
+  "prefer_bench_if_stronger": true,
+  "fill": "next_open"
 }

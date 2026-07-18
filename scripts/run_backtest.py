@@ -4,6 +4,8 @@
 用法:
   python3 scripts/run_backtest.py
   python3 scripts/run_backtest.py --strategy c01 --count 500
+  python3 scripts/run_backtest.py --strategy c01 --fill close
+  python3 scripts/run_backtest.py --strategy c01_improved --pool pool_dedup --count 500
   python3 scripts/run_backtest.py --strategy c01 --count 2500 --adjust qfq
 """
 from __future__ import annotations
@@ -24,8 +26,19 @@ from etf_rotation.backtest import bt, format_result  # noqa: E402
 def main():
     ap = argparse.ArgumentParser(description="ETF轮动回测 (只读验证)")
     ap.add_argument("--strategy", default="c01")
+    ap.add_argument(
+        "--pool",
+        default="pool",
+        help="ETF池: pool(去重生产) / pool_full(原多票) / pool_quality",
+    )
     ap.add_argument("--count", type=int, default=500, help="K线根数, 长样本可 2500")
     ap.add_argument("--adjust", default="none", choices=["none", "qfq", "hfq"])
+    ap.add_argument(
+        "--fill",
+        default=None,
+        choices=["close", "next_open"],
+        help="成交假设; 默认用策略 fill 或 next_open",
+    )
     ap.add_argument("--commission", type=float, default=None)
     args = ap.parse_args()
 
@@ -33,11 +46,12 @@ def main():
     if strat.get("frozen"):
         print(f"📌 策略 {strat['name']} 已冻结 — 本脚本仅验证, 不改生产参数\n")
 
-    pool = cfgmod.pool_as_dict()
+    pool_cfg = cfgmod.load_pool(args.pool)
+    pool = cfgmod.pool_as_dict(pool_cfg)
     bench = strat.get("bench", "SH510300")
     codes = list(dict.fromkeys([bench] + list(pool.keys())))
 
-    print(f"📥 取数 count={args.count} adjust={args.adjust} ...")
+    print(f"📥 取数 count={args.count} adjust={args.adjust} pool={args.pool} ...")
     raw = data_mod.fetch_many(codes, count=args.count, adjust=args.adjust, min_bars=100)
     all_data = {}
     for c, bars in raw.items():
@@ -51,12 +65,18 @@ def main():
         print(f"  交集日期: {sd[0]} ~ {sd[-1]} ({len(sd)} 天)\n")
 
     p = cfgmod.strategy_for_backtest(strat)
+    if args.fill:
+        p["fill"] = args.fill
+    fill = p.get("fill", "next_open")
     comm = args.commission if args.commission is not None else float(strat.get("commission", 0.00005))
+    print(f"  成交: {fill}  signed_eff={p.get('signed_eff')} abs_m={p.get('abs_m')}")
     r = bt(all_data, p, commission=comm)
     print(format_result(r, strat.get("name", args.strategy)))
     if r:
         print(f"\n  区间: {r['d0']} ~ {r['d1']}  天数:{r['days']}")
         print(f"  终值: {r['fv']:,.0f}  胜率:{r['wr']:.0f}%")
+        if r.get("n_gaps"):
+            print(f"  跳空均: {r['avg_gap_pct']:+.2f}% (n={r['n_gaps']})")
 
 
 if __name__ == "__main__":

@@ -44,7 +44,14 @@ def bt(
     overheat = p.get("overheat", 0.30)
     slip = p.get("slip", 0.0)
     cost = commission + slip
-    fill = p.get("fill", "close")  # close | next_open
+    # 默认 next_open: 更接近 15:35 信号 → 次日开盘可执行
+    fill = p.get("fill", "next_open")  # close | next_open
+    signed_eff = bool(p.get("signed_eff", False))
+    # 空仓再入不锁调仓窗; 趋势开且无行业标时可停靠基准
+    empty_free = bool(p.get("empty_free_entry", True))
+    park_bench = bool(p.get("park_bench", False))
+    # 行业20日弱于基准时改持基准 (减轻宽基牛市跑输)
+    prefer_bench = bool(p.get("prefer_bench_if_stronger", False))
 
     if not all_data:
         return None
@@ -134,8 +141,13 @@ def bt(
                 if s <= 0:
                     continue
                 cash -= s * p_ + max(s * p_ * cost, 0)
-                pos[c] = {"s": s, "ep": p_, "ed": dc, "pk": p_}
+                pos[c] = {
+                    "s": s, "ep": p_, "ed": dc, "pk": p_,
+                    "park": bool(o.get("park")),
+                }
                 trds.append({"date": date, "a": "B", "c": c})
+                if not o.get("park") and c != bench:
+                    lrb = dc
             pending = still_pending
 
         # 当日收盘价 (信号 + 市值)
@@ -179,19 +191,32 @@ def bt(
 
         trg = ps
         drb = dc - lrb >= rb
+        # 空仓时允许立即评估买入 (不占用轮动窗)
+        can_score = mu and (drb or (empty_free and not pos))
         tb: list = []
-        if drb and mu:
+        park_buy = False
+        if can_score:
             raw = {}
             for c in all_data:
                 if date in di and c in di[date]:
                     fi = factors_at_index(
-                        all_data[c]["close"], all_data[c]["volume"], di[date][c], lb
+                        all_data[c]["close"],
+                        all_data[c]["volume"],
+                        di[date][c],
+                        lb,
+                        signed_eff=signed_eff,
                     )
                     if fi:
                         raw[c] = fi
-            sc, br = score_cross_section(raw, w, abs_mom=am, breadth_min=bm)
+            # 打分宇宙不含基准 (基准只作趋势/底仓)
+            raw_sec = {c: f for c, f in raw.items() if c != bench}
+            sc, br = score_cross_section(raw_sec, w, abs_mom=am, breadth_min=bm)
             if not sc:
                 trg = 0
+                if park_bench and not pos and bench in pr:
+                    park_buy = True
+                    tb = [bench]
+                    trg = ps
             else:
                 rk = sorted(sc.items(), key=lambda x: x[1], reverse=True)
                 mv = 0.015
@@ -213,6 +238,8 @@ def bt(
 
                 fl = []
                 for c, s_ in rk:
+                    if c == bench:
+                        continue
                     if c in di[date]:
                         xi = di[date][c]
                         if xi >= 20:
@@ -221,20 +248,45 @@ def bt(
                                 continue
                     fl.append((c, s_))
                 tcs = [c for c, s_ in fl[:tn] if s_ > 0]
+                # 行业弱于基准 → 改持基准 (宽基慢牛时减少跑输)
+                if prefer_bench and tcs and bench in pr and date in di and bench in di[date]:
+                    bi = di[date][bench]
+                    if bi >= 20:
+                        bm20 = all_data[bench]["close"][bi] / all_data[bench]["close"][bi - 20] - 1
+                        top = tcs[0]
+                        ti = di[date].get(top)
+                        if ti is not None and ti >= 20:
+                            sm20 = all_data[top]["close"][ti] / all_data[top]["close"][ti - 20] - 1
+                            if sm20 < bm20:
+                                tcs = [bench]
+                                park_buy = True
+                # 持仓是底仓时: 有更强行业则换出
                 for c in list(pos.keys()):
                     if c not in tcs:
                         hd = dc - pos[c]["ed"]
+                        is_park = bool(pos[c].get("park")) or c == bench
+                        if is_park and tcs and tcs[0] != bench:
+                            ts.append((c, "底仓换行业"))
+                            continue
+                        if is_park and tcs == [bench]:
+                            continue  # 已是底仓目标
                         if hd < mh:
                             continue
+                        if not drb and not is_park:
+                            continue
                         cs = sc.get(c, -999)
-                        if rk and rk[0][1] > cs * (1 + hyst):
+                        if rk and rk[0][1] > cs * (1 + hyst) and tcs and tcs[0] != bench:
                             ts.append((c, "换仓"))
                 for c in tcs:
                     if c not in pos and c in pr:
                         if c in cd and dc < cd[c]:
                             continue
                         tb.append(c)
-                lrb = dc
+                if not tcs and park_bench and not pos and bench in pr:
+                    park_buy = True
+                    tb = [bench]
+                if drb and tcs and tcs[0] != bench:
+                    lrb = dc
         elif not mu:
             trg = 0
 
@@ -257,7 +309,8 @@ def bt(
                     pnl = (p_ - pos[c]["ep"]) / pos[c]["ep"]
                     trds.append({"date": date, "a": "S", "c": c, "p": pnl, "r": rea})
                     del pos[c]
-            if drb and mu and trg > 0 and tb:
+            allow_buy = mu and trg > 0 and tb and (drb or (empty_free and not pos) or park_buy)
+            if allow_buy:
                 inv = sum(pos[_c]["s"] * pr.get(_c, 0) for _c in pos if _c in pr)
                 av = cash * trg - inv
                 if av > 100:
@@ -268,8 +321,13 @@ def bt(
                             s = int(per / p_ / 100) * 100
                             if s > 0:
                                 cash -= s * p_ + max(s * p_ * cost, 0)
-                                pos[c] = {"s": s, "ep": p_, "ed": dc, "pk": p_}
+                                pos[c] = {
+                                    "s": s, "ep": p_, "ed": dc, "pk": p_,
+                                    "park": bool(c == bench and park_bench),
+                                }
                                 trds.append({"date": date, "a": "B", "c": c})
+                                if c != bench and not park_buy:
+                                    lrb = dc
         else:
             # next_open: 挂到下一交易日开盘
             for c, rea in ts:
@@ -277,11 +335,16 @@ def bt(
                     pending.append({
                         "side": "S", "c": c, "r": rea, "sig_px": pr[c],
                     })
-            if drb and mu and trg > 0 and tb:
-                # 预估可买金额 (用收盘市值近似; 实际开盘会按挂单 budget)
+            allow_buy = mu and trg > 0 and tb and (
+                drb or (empty_free and not pos) or park_buy
+                or any(pos.get(c, {}).get("park") for c in list(pos))
+            )
+            # 卖出底仓换行业: 当日挂卖后允许挂买
+            sell_codes = {o["c"] for o in pending if o["side"] == "S"}
+            if sell_codes and tb and mu and trg > 0:
+                allow_buy = True
+            if allow_buy:
                 inv = sum(pos[_c]["s"] * pr.get(_c, 0) for _c in pos if _c in pr)
-                # 若当日已挂卖, 卖出后现金会增加 — 近似加上将卖市值
-                sell_codes = {o["c"] for o in pending if o["side"] == "S"}
                 approx_cash = cash
                 for c in sell_codes:
                     if c in pos and c in pr:
@@ -297,6 +360,7 @@ def bt(
                         if c in pr and pr[c] > 0:
                             pending.append({
                                 "side": "B", "c": c, "budget": per, "sig_px": pr[c],
+                                "park": bool(c == bench and park_bench),
                             })
 
         inv = sum(pos[_c]["s"] * pr.get(_c, 0) for _c in pos if _c in pr)

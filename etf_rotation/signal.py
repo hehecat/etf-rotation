@@ -9,6 +9,7 @@ from . import data as data_mod
 from . import factors
 from . import portfolio
 from . import report
+from .calendar_util import merge_calendar
 from .paths import (
     DATA_DIR,
     LATEST_JSON,
@@ -37,12 +38,13 @@ def run_signal(
     shadow_name: str = "c13_shadow",
     bar_count: int = 60,
     dry_run: bool = False,
+    pool_name: str = "pool",
 ) -> dict[str, Any]:
     ensure_dirs()
     now = datetime.now()
     strat = cfgmod.load_strategy(strategy_name)
     shadow = cfgmod.load_strategy(shadow_name)
-    pool = cfgmod.load_pool()
+    pool = cfgmod.load_pool(pool_name)
     etf_list = cfgmod.pool_as_list(pool)
     name_map = cfgmod.pool_as_dict(pool)
     bench = strat.get("bench") or pool.get("bench") or "SH510300"
@@ -75,7 +77,13 @@ def run_signal(
         print("⚠️ 无基准数据 → 强制空仓(不新开仓)")
 
     pool_market = {c: market[c] for c, _ in etf_list if c in market}
+    # 底仓停靠需要基准在 etf_data 里有报价
+    if bench in market and bench not in pool_market:
+        pool_market[bench] = market[bench]
+        name_map = {**name_map, bench: name_map.get(bench, "沪深300ETF")}
     weights = strat.get("weights") or {"eff": 0.6, "mtf": 0.4}
+    signed_eff = bool(strat.get("signed_eff", False))
+    require_abs_mom = bool(strat.get("require_abs_mom", False) or strat.get("abs_m", False))
     etf_data, rejected = factors.build_etf_table(
         pool_market,
         name_map,
@@ -83,6 +91,8 @@ def run_signal(
         overheat=float(strat.get("overheat", 0.3)),
         max_1d_abs=float(strat.get("max_1d_abs", 0.12)),
         max_20d_abs=float(strat.get("max_20d_abs", 0.45)),
+        signed_eff=signed_eff,
+        require_abs_mom=require_abs_mom,
     )
     if len(etf_data) < 5:
         print(f"❌ 有效ETF仅{len(etf_data)}只")
@@ -91,6 +101,15 @@ def run_signal(
     ranked = sorted(etf_data.items(), key=lambda x: x[1]["score"], reverse=True)
     up_n = sum(1 for d in etf_data.values() if d["mom20"] > 0)
     breadth = up_n / len(etf_data)
+
+    # 交易日日历: 基准优先, 否则池内并集 (与回测交易日对齐)
+    cal_sources = []
+    if bench in market and market[bench].get("dates"):
+        cal_sources.append(market[bench]["dates"])
+    for bars in pool_market.values():
+        if bars.get("dates"):
+            cal_sources.append(bars["dates"])
+    calendar = merge_calendar(*cal_sources) if cal_sources else None
 
     # 影子分
     sw = shadow.get("weights") or {"m20": 0.5, "m5": 0.3, "eff": 0.2}
@@ -128,6 +147,7 @@ def run_signal(
         now=now,
         last_rebalance=state.get("last_rebalance"),
         cfg=strat,
+        calendar=calendar,
     )
 
     executed: tuple | None = None

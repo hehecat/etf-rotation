@@ -1,0 +1,22 @@
+{
+  "name": "C01_改进对照",
+  "frozen": false,
+  "note": "本地改进对照: 方向效率+绝对动量+交易日rb+next_open. 不替换生产 C01.",
+  "weights": {"eff": 0.6, "mtf": 0.4},
+  "rb_days": 15,
+  "top_n": 1,
+  "hyst": 0.2,
+  "min_hold": 5,
+  "stop": -0.08,
+  "overheat": 0.3,
+  "position_pct": 0.95,
+  "dual_ma": false,
+  "bench": "SH510300",
+  "max_1d_abs": 0.12,
+  "max_20d_abs": 0.45,
+  "commission": 0.00005,
+  "initial_capital": 100000,
+  "signed_eff": true,
+  "require_abs_mom": true,
+  "fill": "next_open"
+}
