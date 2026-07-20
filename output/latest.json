@@ -1,5 +1,5 @@
 {
-  "time": "2026-07-17 09:29",
+  "time": "2026-07-20 08:12",
   "config": "C01_效15d",
   "frozen": true,
   "action": "⚪ 空仓观望",
@@ -7,7 +7,7 @@
     "大盘趋势向下 → 保持空仓"
   ],
   "market_ok": false,
-  "breadth": 0.3088235294117647,
+  "breadth": 0.3,
   "holding": null,
   "total_value": 100000.0,
   "return_pct": 0.0,
@@ -16,17 +16,17 @@
     {
       "code": "SH516780",
       "name": "稀土ETF",
-      "score": 1.031
+      "score": 0.953
     },
     {
-      "code": "SH562390",
-      "name": "中药ETF银华",
-      "score": 0.958
+      "code": "SH516160",
+      "name": "新能源ETF",
+      "score": 0.865
     },
     {
       "code": "SH515790",
       "name": "光伏ETF",
-      "score": 0.938
+      "score": 0.763
     }
   ],
   "shadow": {
@@ -34,14 +34,14 @@
     "market_ok": false,
     "picks": [
       {
-        "code": "SH562390",
-        "name": "中药ETF银华",
-        "score": 1.499
+        "code": "SZ159992",
+        "name": "创新药ETF银华",
+        "score": 1.091
       },
       {
-        "code": "SZ159647",
-        "name": "中药ETF鹏华",
-        "score": 1.389
+        "code": "SH513120",
+        "name": "港股创新药ETF",
+        "score": 1.041
       }
     ],
     "action": "空仓(双均线过滤)"
@@ -65,7 +65,7 @@
     {
       "name": "有合格标的",
       "ok": true,
-      "detail": "稀土ETF 得分+1.03"
+      "detail": "稀土ETF 得分+0.95"
     }
   ]
 }
