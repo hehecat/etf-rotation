@@ -10,7 +10,7 @@
   "return_pct": 0.0,
   "last_rebalance": null,
   "config": "C01_效15d",
-  "last_update": "2026-07-20 08:12",
+  "last_update": "2026-07-20 10:27",
   "note": "重置: 云端首跑无基准误买稀土, 已回滚空仓",
   "days_to_rebalance": 0,
   "market_ok": false,
