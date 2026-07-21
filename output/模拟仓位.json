@@ -10,24 +10,24 @@
   "return_pct": 0.0,
   "last_rebalance": null,
   "config": "C01_效15d",
-  "last_update": "2026-07-20 10:27",
+  "last_update": "2026-07-21 10:05",
   "note": "重置: 云端首跑无基准误买稀土, 已回滚空仓",
   "days_to_rebalance": 0,
   "market_ok": false,
-  "breadth": 0.3,
+  "breadth": 0.34,
   "shadow": {
     "config": "C13_动量15d持2(影子)",
     "market_ok": false,
     "picks": [
       {
-        "code": "SZ159992",
-        "name": "创新药ETF银华",
-        "score": 1.091
+        "code": "SH513050",
+        "name": "中概互联ETF",
+        "score": 1.416
       },
       {
         "code": "SH513120",
         "name": "港股创新药ETF",
-        "score": 1.041
+        "score": 1.301
       }
     ],
     "action": "空仓(双均线过滤)"
