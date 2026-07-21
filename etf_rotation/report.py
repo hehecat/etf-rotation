@@ -45,6 +45,8 @@ def render_signal_report(
     state: dict,
     executed: tuple | None,
     initial_capital: float,
+    shadow_decision: dict | None = None,
+    research_shadow: bool = False,
 ) -> Report:
     r = Report()
     t = r.tee
@@ -136,15 +138,25 @@ def render_signal_report(
     cash = state.get("cash", 0)
     tv = state.get("total_value", 0)
     hv = tv - cash
-    if holding:
-        # 持仓明细由调用方保证 close 已更新; 这里用 state 数值
+    holds = state.get("holdings") or ([holding] if holding else [])
+    if holds and len(holds) > 1:
+        t(f"  持仓(多): {len(holds)}只")
+        for h in holds:
+            t(
+                f"    · {h.get('name')}({h.get('code')}) {h.get('shares')}股 "
+                f"成本{h.get('buy_price')}"
+            )
+    elif holding:
         t(f"  持仓: {holding['name']}({holding['code']})  {holding['shares']}股")
         t(f"  成本:{holding['buy_price']:.3f}  止损:{holding['buy_price']*(1+stop):.3f}")
         t(f"  持仓天数: {decision.get('days_since_entry', '?')}")
     else:
         t("  持仓: 空仓")
     t(f"  现金: {cash:>10,.2f}   持仓市值: {hv:>10,.2f}")
-    t(f"  总资产: {tv:>10,.2f}   总收益: {state.get('return_pct', 0):+.2f}%   累计盈亏: {state.get('total_pnl', 0):+,.2f}")
+    t(
+        f"  总资产: {tv:>10,.2f}   总收益: {state.get('return_pct', 0):+.2f}%   "
+        f"累计盈亏: {state.get('total_pnl', 0):+,.2f}"
+    )
     wins = state.get("wins", 0)
     losses = state.get("losses", 0)
     ntr = state.get("total_trades", 0)
@@ -160,8 +172,41 @@ def render_signal_report(
 
     t(f"\n  对照 · {shadow_name}")
     t(f"    影子趋势: {'✅' if shadow_market_ok else '❌'}  建议: {shadow_action}")
+    if research_shadow and shadow_decision:
+        exp = shadow_decision.get("exposure") or {}
+        parts = exp.get("parts") or {}
+        t(
+            f"    研究暴露: {shadow_decision.get('target_exposure', 0)*100:.1f}%  "
+            f"regime={parts.get('regime')}×{parts.get('regime_mult', 1)}  "
+            f"vol_scale={parts.get('vol_scale', 1)} src={parts.get('vol_src', '?')}  "
+            f"inv={parts.get('inv_vol_scale', 1)}"
+        )
+        if shadow_decision.get("multi") and shadow_decision.get("targets"):
+            t(f"    多持仓目标 top_n={shadow_decision.get('top_n')}:")
+            for trow in shadow_decision["targets"]:
+                t(
+                    f"      · {trow.get('name')} w={float(trow.get('weight') or 0)*100:.1f}% "
+                    f"score={trow.get('score')}"
+                )
+        snap = shadow_decision.get("_state_snapshot") or {}
+        if snap:
+            t(
+                f"    影子账户: 总资产={snap.get('total_value')}  "
+                f"收益={snap.get('return_pct')}%  "
+                f"port_rets={snap.get('n_port_rets')}  "
+                f"path={shadow_decision.get('_state_path', '')}"
+            )
+            if snap.get("holding"):
+                h = snap["holding"]
+                t(f"    影子持仓: {h.get('name')} {h.get('shares')}股 @ {h.get('buy_price')}")
+        for note in (exp.get("notes") or [])[:2]:
+            t(f"    注: {note}")
+        for reason in (shadow_decision.get("reasons") or [])[:3]:
+            t(f"    · {reason}")
     c01_name = holding["name"] if holding else "空仓"
     t(f"    主策略现态: {c01_name}")
+    if decision.get("target_exposure") is not None:
+        t(f"    主策略目标暴露: {decision.get('target_exposure')*100:.1f}%")
 
     t(f"\n{'='*64}")
     t("  实盘备忘 (非投资建议)")
@@ -194,3 +239,69 @@ def write_latest_json(path: Path | str, payload: dict):
     p.parent.mkdir(parents=True, exist_ok=True)
     with open(p, "w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, indent=2)
+    # 日更动作时间线 (同日覆盖最后一条)
+    try:
+        append_action_history(payload)
+    except Exception:
+        pass
+
+
+def append_action_history(payload: dict, path: Path | str | None = None, max_lines: int = 400) -> Path:
+    """追加/覆盖当日动作到 action_history.jsonl, 供 Pages 时间线."""
+    from .paths import OUTPUT_DIR
+
+    out = Path(path) if path else (OUTPUT_DIR / "action_history.jsonl")
+    out.parent.mkdir(parents=True, exist_ok=True)
+    day = str(payload.get("time") or "")[:10]
+    if len(day) < 10:
+        day = datetime.now().strftime("%Y-%m-%d")
+    rec = {
+        "date": day,
+        "time": payload.get("time"),
+        "action": payload.get("action"),
+        "market_ok": payload.get("market_ok"),
+        "reasons": list(payload.get("reasons") or [])[:5],
+        "config": payload.get("config"),
+        "holding": None,
+        "total_value": payload.get("total_value"),
+        "return_pct": payload.get("return_pct"),
+    }
+    h = payload.get("holding")
+    if isinstance(h, dict):
+        rec["holding"] = h.get("name") or h.get("code")
+    elif h:
+        rec["holding"] = str(h)
+    # 有效收益快照 (若 live 步已回写 / signal 保留)
+    sl = payload.get("signal_live")
+    if isinstance(sl, dict):
+        rec["signal_live"] = {
+            "name": sl.get("name"),
+            "live_return_pct": sl.get("live_return_pct"),
+            "live_excess_pct": sl.get("live_excess_pct"),
+            "days_live": sl.get("days_live"),
+            "thin_live": sl.get("thin_live"),
+            "holdings": sl.get("holdings"),
+        }
+
+    rows: list[dict] = []
+    if out.exists():
+        for line in out.read_text(encoding="utf-8").splitlines():
+            if not line.strip():
+                continue
+            try:
+                r = json.loads(line)
+            except Exception:
+                continue
+            if not isinstance(r, dict):
+                continue
+            if str(r.get("date") or "")[:10] == day:
+                continue  # drop same-day old
+            rows.append(r)
+    rows.append(rec)
+    rows.sort(key=lambda r: str(r.get("date") or ""))
+    rows = rows[-max_lines:]
+    out.write_text(
+        "".join(json.dumps(r, ensure_ascii=False) + "\n" for r in rows),
+        encoding="utf-8",
+    )
+    return out

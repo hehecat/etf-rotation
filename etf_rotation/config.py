@@ -57,6 +57,8 @@ def strategy_for_backtest(strat: dict) -> dict:
         "ps": strat.get("position_pct", 0.9),
         "trail": strat.get("trail", 0),
         "inv_vol": strat.get("inv_vol", False),
+        "vol_h": strat.get("vol_h", 0.020),
+        "vol_m": strat.get("vol_m", 0.015),
         "bench": strat.get("bench", "SH510300"),
         "slip": strat.get("slip", 0.0),
         "signed_eff": bool(strat.get("signed_eff", False)),
@@ -64,4 +66,32 @@ def strategy_for_backtest(strat: dict) -> dict:
         "empty_free_entry": bool(strat.get("empty_free_entry", True)),
         "park_bench": bool(strat.get("park_bench", False)),
         "prefer_bench_if_stronger": bool(strat.get("prefer_bench_if_stronger", False)),
+        # 结构牛软趋势: 跌破MA20不直接空仓, 而是停靠基准 (需配合 park_bench 或 soft_trend)
+        "soft_trend": bool(strat.get("soft_trend", False)),
+        # 额外可交易宇宙 (如黄金/纳指/债券), 参与打分与持仓; 不替代 bench 趋势
+        "extra_universe": list(strat.get("extra_universe") or []),
+        # 结构扩展: 非线性状态仓 / 多资产停靠 / regime 现金分配
+        "state_pos": bool(strat.get("state_pos", False)),
+        "park_scale": float(strat.get("park_scale", 0.70)),
+        "park_assets": list(strat.get("park_assets") or []),
+        "regime_map": (
+            {str(k): float(v) for k, v in dict(strat.get("regime_map")).items()}
+            if strat.get("regime_map") else None
+        ),
+        "vol_target": (
+            float(strat["vol_target"])
+            if strat.get("vol_target") not in (None, 0, 0.0, False)
+            else 0.0
+        ),
+        "vol_lookback": int(strat.get("vol_lookback", 20)),
+        "vol_wmin": float(strat.get("vol_wmin", 0.15)),
+        "vol_wmax": float(strat.get("vol_wmax", 1.0)),
+        "vol_mode": str(strat.get("vol_mode", "std") or "std").lower(),
+        "vol_ewma_span": int(strat.get("vol_ewma_span", 20)),
+        "dd_throttle": (
+            float(strat["dd_throttle"])
+            if strat.get("dd_throttle") not in (None, 0, 0.0, False)
+            else 0.0
+        ),
+        "dd_throttle_floor": float(strat.get("dd_throttle_floor", 0.25)),
     }

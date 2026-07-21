@@ -12,6 +12,9 @@ venv/
 # 本机桌面路径不入库; CI 用 output/
 # 但 output 内的 latest/仓位 由 Actions 提交, 本地可忽略日志
 output/logs/
+# 本地 K 线磁盘缓存 (默认在 ~/.cache; 兜底目录)
+output/klines_cache/
+
 
 # 本地归档不入库
 archive/

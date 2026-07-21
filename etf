@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# 零配置入口: 自动 PYTHONPATH, 无子命令时默认 pulse
+set -euo pipefail
+# 兼容软链: 解析到真实脚本目录
+SOURCE="${BASH_SOURCE[0]}"
+while [[ -L "$SOURCE" ]]; do
+  DIR="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ "$SOURCE" != /* ]] && SOURCE="$DIR/$SOURCE"
+done
+ROOT="$(cd -P "$(dirname "$SOURCE")" && pwd)"
+export PYTHONPATH="${ROOT}${PYTHONPATH:+:$PYTHONPATH}"
+cd "$ROOT"
+if [[ $# -eq 0 ]]; then
+  exec python3 "$ROOT/scripts/etf.py" pulse
+fi
+exec python3 "$ROOT/scripts/etf.py" "$@"

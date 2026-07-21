@@ -1,0 +1,89 @@
+# 每周日北京时间约 18:00 跑研究主线健康回归 + 影子告警
+# UTC 10:00 ≈ 北京 18:00 (CST, UTC+8)
+name: Weekly Research Health
+
+on:
+  schedule:
+    - cron: "0 10 * * 0"
+  workflow_dispatch:
+
+concurrency:
+  group: weekly-health
+  cancel-in-progress,pulse: false
+
+permissions:
+  contents: read
+
+jobs:
+  weekly:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node (for stock-api / npx)
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Restore output state
+        run: |
+          mkdir -p output/risk_audit output/shadow_states output/logs
+          ls -la output || true
+
+      - name: Weekly healthcheck + monitor alerts
+        env:
+          CI: "true"
+          ETF_DATA_DIR: ${{ github.workspace }}/output
+        run: |
+          # 完整周检 (含 long_anchor); 需要行情/缓存
+          python3 scripts/run_weekly.py
+          echo "---- weekly_last ----"
+          cat output/risk_audit/weekly_last.json || true
+          echo "---- healthcheck (tail) ----"
+          python3 -c "import json; p=json.load(open('output/risk_audit/research_healthcheck.json')); print('ok',p['ok']); print([(r['check'],r['ok']) for r in p['results']])"
+          echo "---- 有效收益 signal_live ----"
+          if [ -f output/latest.json ]; then
+            python3 -c "import json; d=json.load(open('output/latest.json')); print('signal_live', d.get('signal_live')); print('market_asof', d.get('market_asof'))" || true
+          fi
+          python3 -c "from etf_rotation.calendar_util import resolve_trading_day; td=resolve_trading_day(); print('trading_day', {k:td.get(k) for k in ['date','data_asof','data_lag','source']})" || true
+          python3 scripts/etf.py data || true
+          python3 scripts/etf.py brief || true
+          if [ -f output/risk_audit/pipeline_last.json ]; then
+            python3 -c "import json;p=json.load(open('output/risk_audit/pipeline_last.json')); print('pipeline.yield', p.get('yield')); print('pipeline.brief', p.get('brief'))" || true
+          fi
+          if [ -f output/latest.txt ]; then
+            awk '/有效收益 \(SIGNAL live\)/,/----------------------------------------/' output/latest.txt || true
+          fi
+          echo "---- monitor alerts ----"
+          tail -20 output/shadow_monitor.txt || true
+
+      - name: Upload weekly artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: weekly-health-${{ github.run_id }}
+          path: |
+            output/risk_audit/weekly_last.json
+            output/risk_audit/research_healthcheck.json
+            output/risk_audit/shadow_monitor.json
+            output/risk_audit/research_status.json
+            output/risk_audit/shadow_live.json
+            output/risk_audit/shadow_compare.json
+            output/risk_audit/shadow_summary.json
+            output/risk_audit/today.json
+            output/shadow_monitor.txt
+            output/shadow_live.txt
+            output/shadow_compare.txt
+            output/shadow_summary.txt
+            output/today.txt
+            output/research_status.txt
+            output/logs/weekly_*.log
+          if-no-files-found: warn
+          retention-days: 60

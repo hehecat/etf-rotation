@@ -37,9 +37,17 @@ LATEST_TXT = DATA_DIR / "latest.txt"
 LATEST_JSON = DATA_DIR / "latest.json"
 LOG_DIR = DATA_DIR / "logs"
 ITER_LOG = DATA_DIR / "迭代记录.md"
+SHADOW_DIR = DATA_DIR / "shadow_states"
+
+
+def shadow_state_file(shadow_name: str) -> Path:
+    """研究影子独立仓位文件, 永不与生产 STATE_FILE 混写."""
+    safe = "".join(ch if ch.isalnum() or ch in "-_" else "_" for ch in (shadow_name or "shadow"))
+    return SHADOW_DIR / f"{safe}.json"
 
 
 def ensure_dirs():
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     LOG_DIR.mkdir(parents=True, exist_ok=True)
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    SHADOW_DIR.mkdir(parents=True, exist_ok=True)

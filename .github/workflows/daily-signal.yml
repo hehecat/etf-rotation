@@ -41,18 +41,10 @@ jobs:
           # 若仓库已有 output/模拟仓位.json 则沿用; 否则空账户
           ls -la output || true
 
-      - name: Run C01 signal
+      - name: Run daily pipeline (signal + monitor + email)
         env:
           CI: "true"
           ETF_DATA_DIR: ${{ github.workspace }}/output
-        run: |
-          python3 scripts/run_signal.py
-          echo "---- latest.txt (head) ----"
-          head -40 output/latest.txt || true
-
-      - name: Send email
-        if: success()
-        env:
           SMTP_HOST: ${{ secrets.SMTP_HOST }}
           SMTP_PORT: ${{ secrets.SMTP_PORT }}
           SMTP_USER: ${{ secrets.SMTP_USER }}
@@ -60,16 +52,71 @@ jobs:
           MAIL_FROM: ${{ secrets.MAIL_FROM }}
           MAIL_TO: ${{ secrets.MAIL_TO }}
           MAIL_SUBJECT: ${{ secrets.MAIL_SUBJECT }}
-          ETF_DATA_DIR: ${{ github.workspace }}/output
-          CI: "true"
         run: |
-          if [ -z "$SMTP_HOST" ] || [ -z "$SMTP_USER" ] || [ -z "$SMTP_PASSWORD" ] || [ -z "$MAIL_TO" ]; then
-            echo "⚠️ 未配置邮件 Secrets, 跳过发信 (信号已生成)"
-            exit 0
+          # 生产 c01 + 研究影子; 非交易日跳过 signal/email; monitor 告警可使 job 失败
+          python3 scripts/run_pipeline.py \
+            --steps pull,signal,monitor,compare,live,summary,status,today,asof,yield,brief,data,next,go,ready,digest,progress,pulse,email,pages \
+            --strategy c01 \
+            --shadow c01_q10_vt08_soft_oh38_xgn \
+            --append-shadow-email \
+            --require-trading-day \
+            --monitor-fail-on-alert \
+            --pages-out output/site
+          echo "---- latest.txt (head) ----"
+          head -40 output/latest.txt || true
+          echo "---- 有效收益 (SIGNAL live) ----"
+          if [ -f output/latest.txt ]; then
+            awk '/有效收益 \(SIGNAL live\)/,/----------------------------------------/' output/latest.txt || true
           fi
-          # 默认端口
-          export SMTP_PORT="${SMTP_PORT:-465}"
-          python3 scripts/send_email.py
+          if [ -f output/latest.json ]; then
+            python3 -c "import json; d=json.load(open('output/latest.json')); print('signal_live', d.get('signal_live')); print('market_asof', d.get('market_asof')); print('time', d.get('time'))" || true
+          fi
+          python3 -c "from etf_rotation.calendar_util import resolve_trading_day; td=resolve_trading_day(); print('trading_day', {k:td.get(k) for k in ['date','is_trading_day','data_asof','data_lag','source']})" || true
+          if [ -f output/risk_audit/pipeline_last.json ]; then
+            python3 -c "import json; p=json.load(open('output/risk_audit/pipeline_last.json')); print('pipeline_last', {k:p.get(k) for k in ['stamp','ok','data_asof','data_lag','trading_day']})" || true
+          fi
+          echo "---- shadow_monitor (head) ----"
+          head -40 output/shadow_monitor.txt || true
+          echo "---- asof 取证 ----"
+          if [ -f output/asof.txt ]; then head -30 output/asof.txt; else python3 scripts/etf.py asof || true; fi
+          echo "---- yield 有效收益 ----"
+          if [ -f output/yield.txt ]; then head -30 output/yield.txt; else python3 scripts/etf.py yield || true; fi
+          echo "---- brief ----"
+          python3 scripts/etf.py brief || true
+          echo "---- data 行情状态 ----"
+          python3 scripts/etf.py data || true
+          echo "---- next 决策 ----"
+          python3 scripts/etf.py next --no-refresh || true
+          echo "---- pull 强刷(仅日志, 不强制推进) ----"
+          python3 scripts/etf.py pull --bench-only || true
+          echo "---- wait-asof 提示 ----"
+          echo "本地可: ./etf wait-asof --timeout 600  或  ./etf go --timeout 600"
+          echo "结论入口: ./etf   (默认 pulse)"
+          echo "收盘后: ./etf eod --timeout 1800"
+          echo "---- go 一键闭环 ----"
+          if [ -f output/go.txt ]; then head -20 output/go.txt; else python3 scripts/etf.py go --no-wait --no-pull || true; fi
+          echo "---- ready 可判性 ----"
+          if [ -f output/ready.txt ]; then head -30 output/ready.txt; else python3 scripts/etf.py ready || true; fi
+          echo "---- digest 摘要 ----"
+          if [ -f output/digest.txt ]; then cat output/digest.txt; else python3 scripts/etf.py digest --no-refresh || true; fi
+          echo "---- progress 轨迹 ----"
+          if [ -f output/progress.txt ]; then tail -20 output/progress.txt; else python3 scripts/etf.py progress --no-refresh || true; fi
+          echo "---- ETA / pulse ----"
+          if [ -f output/pulse.txt ]; then cat output/pulse.txt; else python3 scripts/etf.py pulse --no-refresh --quiet || true; fi
+          python3 -c "import json;from pathlib import Path
+for n in ['pipeline_last','ready','pulse']:
+ p=Path('output/risk_audit')/(n+'.json')
+ if p.exists():
+  o=json.load(open(p))
+  print(n, {k:o.get(k) for k in ['days_to_ready','eta_note','ready_level','level'] if k in o or True})" || true
+          if [ -f output/risk_audit/pipeline_last.json ]; then
+            python3 -c "import json;p=json.load(open('output/risk_audit/pipeline_last.json')); print('pipeline.go', p.get('go')); print('pipeline.ready', p.get('ready')); print('pipeline.digest', p.get('digest'))" || true
+          fi
+          if [ -f output/risk_audit/pipeline_last.json ]; then
+            python3 -c "import json;p=json.load(open('output/risk_audit/pipeline_last.json')); print('pipeline.yield', p.get('yield')); print('pipeline.brief', p.get('brief')); print('pipeline.data_status', p.get('data_status')); print('pipeline.next', p.get('next')); print('pipeline.pull', p.get('pull'))" || true
+          fi
+          echo "---- site ----"
+          ls -la output/site || true
 
       - name: Upload artifacts
         if: always()
@@ -81,6 +128,33 @@ jobs:
             output/latest.json
             output/模拟仓位.json
             output/etf信号_*.txt
+            output/shadow_monitor.txt
+            output/shadow_summary.txt
+            output/shadow_compare.txt
+            output/shadow_live.txt
+            output/today.txt
+            output/asof.txt
+            output/yield.txt
+            output/brief.txt
+            output/data_status.txt
+            output/next.txt
+            output/pull.txt
+            output/research_status.txt
+            output/shadow_states/**
+            output/site/**
+            output/risk_audit/pipeline_last.json
+            output/risk_audit/asof.json
+            output/risk_audit/yield.json
+            output/risk_audit/brief.json
+            output/risk_audit/data_status.json
+            output/risk_audit/next.json
+            output/risk_audit/pull.json
+            output/risk_audit/research_status.json
+            output/risk_audit/shadow_compare.json
+            output/risk_audit/shadow_live.json
+            output/risk_audit/shadow_summary.json
+            output/risk_audit/today.json
+            output/logs/pipeline_*.log
           if-no-files-found: warn
           retention-days: 30
 
@@ -89,14 +163,22 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          # 只提交运行时产物
+          # 只提交运行时产物 (含研究影子 state / 监控 / 站点)
           git add -f output/latest.txt output/latest.json output/模拟仓位.json || true
-          # 可选: 保留带时间戳的日报
           git add -f output/etf信号_*.txt 2>/dev/null || true
+          git add -f output/shadow_monitor.txt output/shadow_summary.txt 2>/dev/null || true
+          git add -f output/shadow_compare.txt output/shadow_live.txt 2>/dev/null || true
+          git add -f output/today.txt 2>/dev/null || true
+          git add -f output/research_status.txt 2>/dev/null || true
+          git add -f output/shadow_states/*.json 2>/dev/null || true
+          git add -f output/risk_audit/pipeline_last.json output/risk_audit/research_status.json 2>/dev/null || true
+          git add -f output/risk_audit/shadow_compare.json output/risk_audit/shadow_live.json 2>/dev/null || true
+          git add -f output/risk_audit/shadow_summary.json output/risk_audit/today.json 2>/dev/null || true
+          git add -f output/site 2>/dev/null || true
           if git diff --staged --quiet; then
             echo "无变更, 跳过 commit"
           else
-            git commit -m "chore(signal): daily C01 $(date -u +%Y-%m-%d)"
+            git commit -m "chore(signal): daily C01+shadow $(date -u +%Y-%m-%d)"
             git push
           fi
 
@@ -110,27 +192,29 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - name: Build static site
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Download signal artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: etf-signal-${{ github.run_id }}
+          path: output
+        continue-on-error: true
+      - name: Build static site (signal + monitor)
+        env:
+          CI: "true"
+          ETF_DATA_DIR: ${{ github.workspace }}/output
         run: |
-          mkdir -p _site
-          if [ -f output/latest.txt ]; then
-            cp output/latest.txt _site/index.txt
-            # 简单 HTML 包装, 手机也能看
-            {
-              echo '<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">'
-              echo '<meta name="viewport" content="width=device-width,initial-scale=1">'
-              echo '<title>ETF轮动信号</title>'
-              echo '<style>body{font-family:ui-monospace,Menlo,Consolas,monospace;background:#0d1117;color:#e6edf3;padding:1.2rem;line-height:1.45} pre{white-space:pre-wrap;word-break:break-word;max-width:52rem;margin:0 auto}</style>'
-              echo '</head><body><pre>'
-              python3 -c "import html,pathlib; print(html.escape(pathlib.Path('output/latest.txt').read_text(encoding='utf-8')))"
-              echo '</pre></body></html>'
-            } > _site/index.html
+          mkdir -p output
+          # 优先用 pipeline 已生成的 output/site; 否则现构建
+          if [ -f output/site/index.html ]; then
+            rm -rf _site && cp -a output/site _site
           else
-            echo '<p>暂无信号</p>' > _site/index.html
+            python3 scripts/build_pages.py --out _site
           fi
-          if [ -f output/latest.json ]; then
-            cp output/latest.json _site/latest.json
-          fi
+          ls -la _site || true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
