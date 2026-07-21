@@ -1,0 +1,22 @@
+{
+  "stamp": "2026-07-21T23:09:17",
+  "level": "THIN",
+  "note": "asof 已齐但样本薄; 可观察方向, 勿下强结论 (约再 5 个交易日可 READY)",
+  "market_asof": "2026-07-21",
+  "data_lag": false,
+  "days_live": 0,
+  "thin_live": true,
+  "live_return_pct": 0.0,
+  "live_excess_pct": 0.0,
+  "action": "⚪ 空仓观望",
+  "market_ok": false,
+  "holdings": "空仓",
+  "decision": "ok",
+  "blockers": [
+    "THIN: live 样本<5日, 统计不稳定",
+    "Lrets=0: 仅锚日, 尚无 live 收益样本"
+  ],
+  "days_to_ready": 5,
+  "eta_note": "约再 5 个交易日可 READY (Lrets≥5)",
+  "ready": false
+}

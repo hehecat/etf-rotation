@@ -1,0 +1,40 @@
+{
+  "cash": 100000.0,
+  "holding": null,
+  "trades": [],
+  "total_trades": 0,
+  "wins": 0,
+  "losses": 0,
+  "total_pnl": 0.0,
+  "total_value": 100000.0,
+  "return_pct": 0.0,
+  "last_rebalance": null,
+  "config": "C01_Q10_VT09_OH35_双端研究候选",
+  "last_update": "2026-07-21 23:08",
+  "holdings": [],
+  "days_to_rebalance": 0,
+  "market_ok": false,
+  "nav_history": [
+    {
+      "date": "2026-07-21",
+      "nav": 100000.0
+    }
+  ],
+  "port_rets": [],
+  "live_start_date": "2026-07-21",
+  "live_anchor_nav": 100000.0,
+  "live": {
+    "anchor_nav": 100000.0,
+    "start_date": "2026-07-21",
+    "nav": 100000.0,
+    "return_pct": 0.0,
+    "n_nav": 1,
+    "n_rets": 0,
+    "sharpe": null,
+    "n_trades": 0,
+    "n_holdings": 0,
+    "holdings": "空仓",
+    "asof": "2026-07-21 23:08",
+    "from_warmup": false
+  }
+}

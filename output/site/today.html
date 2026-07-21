@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>今日速览</title>
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#0d1117; --panel:#161b22; --line:#30363d; --text:#e6edf3; --muted:#8b949e;
+  --blue:#58a6ff; --green:#3fb950; --red:#f85149; --amber:#d29922; --purple:#a371f7;
+}
+*{box-sizing:border-box}
+body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:var(--bg);color:var(--text);margin:0;line-height:1.5}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+header{max-width:72rem;margin:0 auto;padding:1rem 1.1rem .75rem;border-bottom:1px solid var(--line)}
+header h1{font-size:1.25rem;margin:0 0 .25rem;font-weight:650}
+.muted{color:var(--muted);font-size:.85rem}
+nav{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.7rem}
+nav a{padding:.28rem .7rem;border:1px solid var(--line);border-radius:999px;color:var(--text);
+  background:#0d1117;font-size:.85rem}
+nav a.active,nav a:hover{border-color:var(--blue);color:var(--blue);text-decoration:none}
+main{max-width:72rem;margin:0 auto;padding:1rem 1.1rem 2.5rem}
+.grid{display:grid;gap:.75rem}
+.grid.kpis{grid-template-columns:repeat(auto-fit,minmax(9.5rem,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(18rem,1fr))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem}
+.card h2,.card h3{margin:.1rem 0 .55rem;font-size:1rem;font-weight:650}
+.kpi .label{color:var(--muted);font-size:.75rem}
+.kpi .value{font-size:1.2rem;font-weight:700;margin-top:.15rem;word-break:break-word}
+.kpi .sub{color:var(--muted);font-size:.75rem;margin-top:.15rem}
+.badge{display:inline-block;padding:.12rem .5rem;border-radius:999px;font-size:.75rem;
+  font-weight:600;margin-right:.3rem;border:1px solid transparent}
+.badge.ok{background:rgba(63,185,80,.15);color:var(--green);border-color:rgba(63,185,80,.35)}
+.badge.off{background:rgba(110,118,129,.15);color:#c9d1d9;border-color:#484f58}
+.badge.warn{background:rgba(210,153,34,.15);color:var(--amber);border-color:rgba(210,153,34,.35)}
+.badge.err{background:rgba(248,81,73,.15);color:var(--red);border-color:rgba(248,81,73,.35)}
+.badge.info{background:rgba(88,166,255,.12);color:var(--blue);border-color:rgba(88,166,255,.35)}
+.bar{height:.55rem;background:#21262d;border-radius:999px;overflow:hidden;margin-top:.4rem}
+.bar>i{display:block;height:100%;background:linear-gradient(90deg,#1f6feb,var(--blue));border-radius:999px}
+.bar.green>i{background:linear-gradient(90deg,#238636,var(--green))}
+.bar.red>i{background:linear-gradient(90deg,#da3633,var(--red))}
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+th,td{padding:.42rem .35rem;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:.75rem}
+tr:last-child td{border-bottom:0}
+.num{font-variant-numeric:tabular-nums;font-family:ui-monospace,Menlo,Consolas,monospace}
+.pos{color:var(--green)}.neg{color:var(--red)}
+.check-ok{color:var(--green)}.check-bad{color:var(--red)}
+pre.raw{white-space:pre-wrap;word-break:break-word;background:#0d1117;padding:.85rem;
+  border-radius:8px;border:1px solid var(--line);font-size:.8rem;overflow:auto}
+details{margin-top:.8rem}
+details summary{cursor:pointer;color:var(--muted);font-size:.85rem}
+ul.alerts{padding-left:1.1rem;margin:.4rem 0}
+ul.alerts li{margin:.28rem 0}
+.hero{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;justify-content:space-between}
+.hero .action{font-size:1.35rem;font-weight:750}
+@media (max-width:640px){
+  .kpi .value{font-size:1.05rem}
+  th,td{font-size:.8rem}
+}
+.chart-wrap{width:100%;overflow:hidden}
+.chart-wrap svg{width:100%;height:auto;display:block}
+.tl{list-style:none;padding:0;margin:0}
+.tl li{display:grid;grid-template-columns:6.2rem 1fr;gap:.55rem;padding:.42rem 0;border-bottom:1px solid var(--line)}
+.tl li:last-child{border-bottom:0}
+.tl .when{color:var(--muted);font-size:.78rem;font-variant-numeric:tabular-nums}
+.tl .what{font-size:.88rem}
+.tl .why{color:var(--muted);font-size:.78rem;margin-top:.15rem}
+.legend{display:flex;flex-wrap:wrap;gap:.55rem;margin:.35rem 0 .2rem;font-size:.75rem;color:var(--muted)}
+.legend i{display:inline-block;width:.7rem;height:.25rem;border-radius:2px;margin-right:.25rem;vertical-align:middle}
+.legend .l1{background:#58a6ff}.legend .l2{background:#3fb950}.legend .l3{background:#a371f7}
+</style>
+</head>
+<body>
+<header>
+  <h1>ETF 轮动 · 日更面板</h1>
+  <div class="muted">生成于 2026-07-21 23:09:21 · 生产 c01 冻结 · 研究影子 xgn</div>
+  <nav><a href="index.html">面板</a> <a href="today.html" class="active">今日</a> <a href="brief.html">速览</a> <a href="data.html">行情</a> <a href="next.html">下一步</a> <a href="go.html">GO</a> <a href="ready.html">可判</a> <a href="digest.html">摘要</a> <a href="eod.html">EOD</a> <a href="progress.html">轨迹</a> <a href="pulse.html">脉搏</a> <a href="pull.html">拉取</a> <a href="asof.html">取证</a> <a href="yield.html">收益</a> <a href="compare.html">对照</a> <a href="live.html">LIVE</a> <a href="signal.html">信号原文</a> <a href="status.html">状态</a> <a href="monitor.html">监控</a> <a href="alerts.html">告警</a> <a href="summary.html">摘要</a> <a href="latest.json">JSON</a></nav>
+</header>
+<main>
+<p><span class="badge warn">warn 4</span></p><div class='card'><h2>今日速览</h2><pre class='raw'>======== ETF 今日速览 ========
+时间: 2026-07-21T23:09:16
+信号默认影子: c01_q10_vt08_soft_oh38_xgn
+----------------------------
+生产动作: ⚪ 空仓观望
+市场: 关  宽度=0.34  配置=C01_效15d  信号时间: 2026-07-21 23:08  行情截至: 2026-07-21
+原因:
+  · 大盘趋势向下 → 保持空仓
+研究影子动作: 空仓(趋势关) 暴露0%
+研究目标暴露: 0.0%
+-------- 有效收益 (SIGNAL) --------
+  策略: c01_q10_vt08_soft_oh38_xgn
+  live=+0.000% THIN  xs=+0.000%  bench=+0.000%
+  from=2026-07-21  Lrets=0  持仓=空仓
+  行情截至: 2026-07-21
+  注: Lrets=0 表示仅有锚日、尚无 live 样本日 (常见于 DATA_LAG 或刚暖机)
+  注: THIN=样本&lt;5日; DATA_LAG 时等行情更新后再判 xs
+-------- 监控告警 --------
+  error=0 warn=4 ok=True
+-------- 下一步 --------
+  ./etf asof     # 优先: DATA_LAG 取证, 等行情
+  # 勿反复 refresh 空转; 行情更新后再判 xs
+  ./etf yield    # 有效收益 live%/xs%
+  ./etf brief    # 三合一速览
+  ./etf data     # 行情状态/决策
+  ./etf next     # 唯一推荐下一步
+  ./etf preview
+  ./etf live
+  ./etf check --checks data_asof,asof
+距可判: 5 交易日
+ETA: 约再 5 个交易日可 READY (Lrets≥5)
+轨迹: ./etf progress
+口径: 有效收益=live%+xs%; DATA_LAG 等行情; 生产 c01 冻结
+========
+</pre></div><p class='muted'>有效收益=live%+xs% · THIN=样本&lt;5日 · DATA_LAG=行情未到 · 生产 c01 冻结</p>
+</main>
+<footer>只读面板 · 非投资建议 · 数据来自本地 output/ 日更产物</footer>
+</body>
+</html>

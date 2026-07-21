@@ -1,0 +1,21 @@
+{
+  "stamp": "2026-07-21T23:08:36",
+  "pool": "pool",
+  "bars": 120,
+  "bench": "SH510300",
+  "bench_only": true,
+  "before": {
+    "data_asof": "2026-07-21",
+    "data_lag": false
+  },
+  "after": {
+    "data_asof": "2026-07-21",
+    "data_lag": false
+  },
+  "advanced": false,
+  "cleared_lag": false,
+  "ok_n": 1,
+  "fail_n": 0,
+  "fail": [],
+  "bench_last": "2026-07-21"
+}

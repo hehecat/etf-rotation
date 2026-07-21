@@ -1,0 +1,14 @@
+--------
+影子仓位 · /home/runner/work/etf-rotation/etf-rotation/output/shadow_states
+--------
+  c01_q10_vt08_soft_oh38               资产=  100000.0  live=  +0.00% THIN  xs=  +0.00%  全样本=    0.0  持仓0: 空仓  rets=0
+    更新: 2026-07-21 23:08  上次调仓: 无  live_from=2026-07-21  Lrets=0
+  c01_q10_vt08_soft_oh38_xgn           资产=  100000.0  live=  +0.00% THIN  xs=  +0.00%  全样本=    0.0  持仓0: 空仓  rets=0
+    更新: 2026-07-21 23:08  上次调仓: 无  live_from=2026-07-21  Lrets=0
+  c01_q10_vt09_oh35                    资产=  100000.0  live=  +0.00% THIN  xs=  +0.00%  全样本=    0.0  持仓0: 空仓  rets=0
+    更新: 2026-07-21 23:08  上次调仓: 无  live_from=2026-07-21  Lrets=0
+  c01_q10_vt11                         资产=  100000.0  live=  +0.00% THIN  xs=  +0.00%  全样本=    0.0  持仓0: 空仓  rets=0
+    更新: 2026-07-21 23:08  上次调仓: 无  live_from=2026-07-21  Lrets=0
+  注: THIN=live 样本<5日; Lrets=0=仅锚日
+  注: DATA_LAG 时等行情更新后再判 xs
+  行情截至: 2026-07-21

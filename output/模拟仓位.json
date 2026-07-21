@@ -10,30 +10,205 @@
   "return_pct": 0.0,
   "last_rebalance": null,
   "config": "C01_效15d",
-  "last_update": "2026-07-21 10:05",
+  "last_update": "2026-07-21 23:08",
   "note": "重置: 云端首跑无基准误买稀土, 已回滚空仓",
   "days_to_rebalance": 0,
   "market_ok": false,
   "breadth": 0.34,
   "shadow": {
-    "config": "C13_动量15d持2(影子)",
+    "config": "C01_Q10_VT08_SOFT_OH38_EXTRA_GOLD_NQ",
+    "research": true,
     "market_ok": false,
     "picks": [
       {
         "code": "SH513050",
         "name": "中概互联ETF",
-        "score": 1.416
-      },
-      {
-        "code": "SH513120",
-        "name": "港股创新药ETF",
-        "score": 1.301
+        "score": 1.136
       }
     ],
-    "action": "空仓(双均线过滤)"
+    "action": "空仓(趋势关) 暴露0%",
+    "mainline": [
+      {
+        "name": "c01_q10_vt08_soft_oh38_xgn",
+        "action": "空仓(趋势关) 暴露0%",
+        "market_ok": false,
+        "signal": true,
+        "error": null,
+        "holdings": "空仓",
+        "n_holdings": 0,
+        "total_value": 100000.0,
+        "return_pct": 0.0,
+        "live": {
+          "anchor_nav": 100000.0,
+          "start_date": "2026-07-21",
+          "nav": 100000.0,
+          "return_pct": 0.0,
+          "n_nav": 1,
+          "n_rets": 0,
+          "sharpe": null,
+          "n_trades": 0,
+          "n_holdings": 0,
+          "holdings": "空仓",
+          "asof": "2026-07-21",
+          "from_warmup": false
+        },
+        "live_return_pct": 0.0,
+        "executed": null
+      },
+      {
+        "name": "c01_q10_vt08_soft_oh38",
+        "action": "空仓(趋势关) 暴露0%",
+        "market_ok": false,
+        "signal": false,
+        "error": null,
+        "holdings": "空仓",
+        "n_holdings": 0,
+        "total_value": 100000.0,
+        "return_pct": 0.0,
+        "live": {
+          "anchor_nav": 100000.0,
+          "start_date": "2026-07-21",
+          "nav": 100000.0,
+          "return_pct": 0.0,
+          "n_nav": 1,
+          "n_rets": 0,
+          "sharpe": null,
+          "n_trades": 0,
+          "n_holdings": 0,
+          "holdings": "空仓",
+          "asof": "2026-07-21",
+          "from_warmup": false
+        },
+        "live_return_pct": 0.0,
+        "executed": null
+      },
+      {
+        "name": "c01_q10_vt09_oh35",
+        "action": "空仓(趋势关) 暴露0%",
+        "market_ok": false,
+        "signal": false,
+        "error": null,
+        "holdings": "空仓",
+        "n_holdings": 0,
+        "total_value": 100000.0,
+        "return_pct": 0.0,
+        "live": {
+          "anchor_nav": 100000.0,
+          "start_date": "2026-07-21",
+          "nav": 100000.0,
+          "return_pct": 0.0,
+          "n_nav": 1,
+          "n_rets": 0,
+          "sharpe": null,
+          "n_trades": 0,
+          "n_holdings": 0,
+          "holdings": "空仓",
+          "asof": "2026-07-21",
+          "from_warmup": false
+        },
+        "live_return_pct": 0.0,
+        "executed": null
+      },
+      {
+        "name": "c01_q10_vt11",
+        "action": "空仓(趋势关) 暴露0%",
+        "market_ok": false,
+        "signal": false,
+        "error": null,
+        "holdings": "空仓",
+        "n_holdings": 0,
+        "total_value": 100000.0,
+        "return_pct": 0.0,
+        "live": {
+          "anchor_nav": 100000.0,
+          "start_date": "2026-07-21",
+          "nav": 100000.0,
+          "return_pct": 0.0,
+          "n_nav": 1,
+          "n_rets": 0,
+          "sharpe": null,
+          "n_trades": 0,
+          "n_holdings": 0,
+          "holdings": "空仓",
+          "asof": "2026-07-21",
+          "from_warmup": false
+        },
+        "live_return_pct": 0.0,
+        "executed": null
+      }
+    ],
+    "decision": {
+      "action": "HOLD",
+      "target": null,
+      "name": "",
+      "target_exposure": 0.0,
+      "reasons": [
+        "大盘趋势向下 → 保持空仓"
+      ],
+      "exposure": {
+        "target_exposure": 0.0,
+        "parts": {
+          "position_pct": 0.95,
+          "inv_vol_scale": 0.8102,
+          "inv_vol_src": "bench",
+          "vol20": 0.018513,
+          "regime": "bear",
+          "regime_mult": 0.0,
+          "regime_info": {
+            "market_ok": false,
+            "ma20": 4.8534,
+            "ma60": 4.875283,
+            "ma_up": false,
+            "vol20": 0.018513
+          },
+          "vol_target": 0.08,
+          "vol_ann": 0.2939,
+          "vol_scale": 0.2722,
+          "vol_src": "bench"
+        },
+        "notes": [
+          "vol_target 用基准波动代理 (组合收益样本不足)",
+          "趋势关 → 目标暴露 0"
+        ]
+      }
+    },
+    "state_path": "/home/runner/work/etf-rotation/etf-rotation/output/shadow_states/c01_q10_vt08_soft_oh38_xgn.json",
+    "state": {
+      "holding": null,
+      "holdings": [],
+      "holdings_str": "空仓",
+      "n_holdings": 0,
+      "cash": 100000.0,
+      "total_value": 100000.0,
+      "return_pct": 0.0,
+      "n_port_rets": 0,
+      "live": {
+        "anchor_nav": 100000.0,
+        "start_date": "2026-07-21",
+        "nav": 100000.0,
+        "return_pct": 0.0,
+        "n_nav": 1,
+        "n_rets": 0,
+        "sharpe": null,
+        "n_trades": 0,
+        "n_holdings": 0,
+        "holdings": "空仓",
+        "asof": "2026-07-21",
+        "from_warmup": false
+      },
+      "executed": null
+    }
   },
   "action_summary": "⚪ 空仓观望",
   "decision_reasons": [
     "大盘趋势向下 → 保持空仓"
-  ]
+  ],
+  "holdings": [],
+  "nav_history": [
+    {
+      "date": "2026-07-21",
+      "nav": 100000.0
+    }
+  ],
+  "port_rets": []
 }

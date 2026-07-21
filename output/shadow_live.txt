@@ -1,0 +1,17 @@
+======== 主线影子 LIVE 收益 ========
+信号默认: c01_q10_vt08_soft_oh38_xgn
+目录: /home/runner/work/etf-rotation/etf-rotation/output/shadow_states
+口径: live% = (当前净值 / 暖机末锚点) - 1; 不含暖机段回测收益
+超额: excess% = live% - 基准SH510300同期%
+----------------------------
+name                              live%   bench%      xs%        nav Lrets note
+  c01_q10_vt08_soft_oh38        +0.000%  +0.000%  +0.000%     100000     0 from 2026-07-21 THIN
+  c01_q10_vt08_soft_oh38_xgn    +0.000%  +0.000%  +0.000%     100000     0 SIGNAL from 2026-07-21 THIN
+  c01_q10_vt09_oh35             +0.000%  +0.000%  +0.000%     100000     0 from 2026-07-21 THIN
+  c01_q10_vt11                  +0.000%  +0.000%  +0.000%     100000     0 from 2026-07-21 THIN
+----------------------------
+提示: 趋势关空仓 live≈0; 若基准下跌则 excess>0 表示避险有效
+提示: THIN=live 样本<5日 (暖机末≈最新日 / DATA_LAG 时 xs 常为0)
+提示: Lrets=0 表示仅有锚日、尚无 live 样本日; 等行情更新后再判 xs
+  python3 scripts/etf.py daily --dry-run
+========

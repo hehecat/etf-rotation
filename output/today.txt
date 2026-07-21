@@ -1,0 +1,34 @@
+======== ETF 今日速览 ========
+时间: 2026-07-21T23:09:16
+信号默认影子: c01_q10_vt08_soft_oh38_xgn
+----------------------------
+生产动作: ⚪ 空仓观望
+市场: 关  宽度=0.34  配置=C01_效15d  信号时间: 2026-07-21 23:08  行情截至: 2026-07-21
+原因:
+  · 大盘趋势向下 → 保持空仓
+研究影子动作: 空仓(趋势关) 暴露0%
+研究目标暴露: 0.0%
+-------- 有效收益 (SIGNAL) --------
+  策略: c01_q10_vt08_soft_oh38_xgn
+  live=+0.000% THIN  xs=+0.000%  bench=+0.000%
+  from=2026-07-21  Lrets=0  持仓=空仓
+  行情截至: 2026-07-21
+  注: Lrets=0 表示仅有锚日、尚无 live 样本日 (常见于 DATA_LAG 或刚暖机)
+  注: THIN=样本<5日; DATA_LAG 时等行情更新后再判 xs
+-------- 监控告警 --------
+  error=0 warn=4 ok=True
+-------- 下一步 --------
+  ./etf asof     # 优先: DATA_LAG 取证, 等行情
+  # 勿反复 refresh 空转; 行情更新后再判 xs
+  ./etf yield    # 有效收益 live%/xs%
+  ./etf brief    # 三合一速览
+  ./etf data     # 行情状态/决策
+  ./etf next     # 唯一推荐下一步
+  ./etf preview
+  ./etf live
+  ./etf check --checks data_asof,asof
+距可判: 5 交易日
+ETA: 约再 5 个交易日可 READY (Lrets≥5)
+轨迹: ./etf progress
+口径: 有效收益=live%+xs%; DATA_LAG 等行情; 生产 c01 冻结
+========

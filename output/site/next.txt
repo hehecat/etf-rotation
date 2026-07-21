@@ -1,0 +1,6 @@
+======== NEXT 决策 ========
+decision: ok
+asof: 2026-07-21 lag=False stale=False
+推荐: ./etf
+dtr=5 eta=约再 5 个交易日可 READY (Lrets≥5)
+========

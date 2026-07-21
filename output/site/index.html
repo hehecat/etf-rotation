@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>ETF日更面板</title>
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#0d1117; --panel:#161b22; --line:#30363d; --text:#e6edf3; --muted:#8b949e;
+  --blue:#58a6ff; --green:#3fb950; --red:#f85149; --amber:#d29922; --purple:#a371f7;
+}
+*{box-sizing:border-box}
+body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:var(--bg);color:var(--text);margin:0;line-height:1.5}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+header{max-width:72rem;margin:0 auto;padding:1rem 1.1rem .75rem;border-bottom:1px solid var(--line)}
+header h1{font-size:1.25rem;margin:0 0 .25rem;font-weight:650}
+.muted{color:var(--muted);font-size:.85rem}
+nav{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.7rem}
+nav a{padding:.28rem .7rem;border:1px solid var(--line);border-radius:999px;color:var(--text);
+  background:#0d1117;font-size:.85rem}
+nav a.active,nav a:hover{border-color:var(--blue);color:var(--blue);text-decoration:none}
+main{max-width:72rem;margin:0 auto;padding:1rem 1.1rem 2.5rem}
+.grid{display:grid;gap:.75rem}
+.grid.kpis{grid-template-columns:repeat(auto-fit,minmax(9.5rem,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(18rem,1fr))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem}
+.card h2,.card h3{margin:.1rem 0 .55rem;font-size:1rem;font-weight:650}
+.kpi .label{color:var(--muted);font-size:.75rem}
+.kpi .value{font-size:1.2rem;font-weight:700;margin-top:.15rem;word-break:break-word}
+.kpi .sub{color:var(--muted);font-size:.75rem;margin-top:.15rem}
+.badge{display:inline-block;padding:.12rem .5rem;border-radius:999px;font-size:.75rem;
+  font-weight:600;margin-right:.3rem;border:1px solid transparent}
+.badge.ok{background:rgba(63,185,80,.15);color:var(--green);border-color:rgba(63,185,80,.35)}
+.badge.off{background:rgba(110,118,129,.15);color:#c9d1d9;border-color:#484f58}
+.badge.warn{background:rgba(210,153,34,.15);color:var(--amber);border-color:rgba(210,153,34,.35)}
+.badge.err{background:rgba(248,81,73,.15);color:var(--red);border-color:rgba(248,81,73,.35)}
+.badge.info{background:rgba(88,166,255,.12);color:var(--blue);border-color:rgba(88,166,255,.35)}
+.bar{height:.55rem;background:#21262d;border-radius:999px;overflow:hidden;margin-top:.4rem}
+.bar>i{display:block;height:100%;background:linear-gradient(90deg,#1f6feb,var(--blue));border-radius:999px}
+.bar.green>i{background:linear-gradient(90deg,#238636,var(--green))}
+.bar.red>i{background:linear-gradient(90deg,#da3633,var(--red))}
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+th,td{padding:.42rem .35rem;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:.75rem}
+tr:last-child td{border-bottom:0}
+.num{font-variant-numeric:tabular-nums;font-family:ui-monospace,Menlo,Consolas,monospace}
+.pos{color:var(--green)}.neg{color:var(--red)}
+.check-ok{color:var(--green)}.check-bad{color:var(--red)}
+pre.raw{white-space:pre-wrap;word-break:break-word;background:#0d1117;padding:.85rem;
+  border-radius:8px;border:1px solid var(--line);font-size:.8rem;overflow:auto}
+details{margin-top:.8rem}
+details summary{cursor:pointer;color:var(--muted);font-size:.85rem}
+ul.alerts{padding-left:1.1rem;margin:.4rem 0}
+ul.alerts li{margin:.28rem 0}
+.hero{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;justify-content:space-between}
+.hero .action{font-size:1.35rem;font-weight:750}
+@media (max-width:640px){
+  .kpi .value{font-size:1.05rem}
+  th,td{font-size:.8rem}
+}
+.chart-wrap{width:100%;overflow:hidden}
+.chart-wrap svg{width:100%;height:auto;display:block}
+.tl{list-style:none;padding:0;margin:0}
+.tl li{display:grid;grid-template-columns:6.2rem 1fr;gap:.55rem;padding:.42rem 0;border-bottom:1px solid var(--line)}
+.tl li:last-child{border-bottom:0}
+.tl .when{color:var(--muted);font-size:.78rem;font-variant-numeric:tabular-nums}
+.tl .what{font-size:.88rem}
+.tl .why{color:var(--muted);font-size:.78rem;margin-top:.15rem}
+.legend{display:flex;flex-wrap:wrap;gap:.55rem;margin:.35rem 0 .2rem;font-size:.75rem;color:var(--muted)}
+.legend i{display:inline-block;width:.7rem;height:.25rem;border-radius:2px;margin-right:.25rem;vertical-align:middle}
+.legend .l1{background:#58a6ff}.legend .l2{background:#3fb950}.legend .l3{background:#a371f7}
+</style>
+</head>
+<body>
+<header>
+  <h1>ETF 轮动 · 日更面板</h1>
+  <div class="muted">生成于 2026-07-21 23:09:21 · 生产 c01 冻结 · 研究影子 xgn</div>
+  <nav><a href="index.html" class="active">面板</a> <a href="today.html">今日</a> <a href="brief.html">速览</a> <a href="data.html">行情</a> <a href="next.html">下一步</a> <a href="go.html">GO</a> <a href="ready.html">可判</a> <a href="digest.html">摘要</a> <a href="eod.html">EOD</a> <a href="progress.html">轨迹</a> <a href="pulse.html">脉搏</a> <a href="pull.html">拉取</a> <a href="asof.html">取证</a> <a href="yield.html">收益</a> <a href="compare.html">对照</a> <a href="live.html">LIVE</a> <a href="signal.html">信号原文</a> <a href="status.html">状态</a> <a href="monitor.html">监控</a> <a href="alerts.html">告警</a> <a href="summary.html">摘要</a> <a href="latest.json">JSON</a></nav>
+</header>
+<main>
+
+<div class="card hero">
+  <div>
+    <div class="pillrow"><span class="badge off">趋势关</span> <span class="badge info">生产冻结</span> <span class="badge ok">交易日</span> <span class="badge off">pipeline —</span> <span class="badge ok">monitor OK</span> <span class="badge ok">DATA_OK</span> <span class="badge warn">THIN</span> <span class="badge warn">warn 4</span></div>
+    <div class="action" style="margin-top:.45rem">⚪ 空仓观望</div>
+    <div class="muted">C01_效15d · 2026-07-21 23:08</div>
+  </div>
+    <div class="muted">生产只读 · 研究影子不交易 · live%才是日更有效收益 · THIN=样本&lt;5日 · DATA_LAG=行情未到 · <a href="digest.html">摘要</a> · <a href="ready.html">可判性</a> · <a href="yield.html">有效收益</a> · <code>./etf digest</code> · <code>./etf go --timeout 600</code> · <code>./etf eod</code> · <code>./etf ready</code> · <code>./etf open --launch site</code></div>
+</div>
+<div class='card' style='margin:.55rem 0 .2rem;padding:.55rem .7rem'><b>DIGEST</b> · 可判性 <code>THIN</code> · live +0.00% · xs +0.00% · Lrets=0 · 距可判=5日 · ETA 约再 5 个交易日可 READY (Lrets≥5) · 推荐 <code>./etf eod --timeout 1800</code> · <a href='digest.html'>摘要</a> · <a href='ready.html'>可判性</a> · <a href='progress.html'>轨迹</a> · <a href='eod.html'>EOD</a></div><div class='card' style='margin:.35rem 0 .2rem;padding:.45rem .7rem'><b>PROGRESS</b> · <code>THIN</code> · Lrets=0 · dtr=5 · ETA 约再5日READY · asof=2026-07-21 · <a href='progress.html'>轨迹</a> · <a href='ready.html'>可判性</a></div><div class='card' style='margin:.35rem 0 .2rem;padding:.45rem .7rem'><b>PULSE</b> · <code>THIN</code> · dtr=5 · action=accumulate · readable=False · ETA 约再 5 个交易日可 READY (Lrets≥5) · <a href='pulse.html'>脉搏</a> · <code>./etf do</code></div>
+<div class="grid kpis" style="margin-top:.75rem">
+  <div class="card kpi"><div class="label">持仓</div><div class="value">空仓</div><div class="sub">生产模拟账户</div></div>
+  <div class="card kpi"><div class="label">总资产</div><div class="value">100,000.00</div><div class="sub">收益 0.0%</div></div>
+  <div class="card kpi"><div class="label">影子 live%</div><div class="value">+0.00% THIN</div><div class="sub">C01_Q10_VT08_SOFT_OH38_EXTRA_GOLD_NQ · Lrets=0 · 仅锚日</div></div>
+  <div class="card kpi"><div class="label">超额 xs%</div><div class="value">+0.00%</div><div class="sub">vs 基准 +0.00%</div></div>
+</div>
+<div style="margin:.35rem 0 .9rem"><div class="bar"><i style="width:34.0%"></i></div></div>
+
+<div class="grid two">
+  <div class="card stack">
+    <h2>今日动作</h2>
+    <ul class='alerts'><li>大盘趋势向下 → 保持空仓</li></ul>
+    <div class="muted">调仓时钟 days_to_rebalance=0</div>
+  </div>
+  <div class="card stack">
+    <h2>研究影子</h2>
+    <div><b>空仓(趋势关) 暴露0%</b></div>
+    <div class="muted">账户 100,000.00 · live +0.00% THIN · xs +0.00% · 全样本 0.0% · rets=0</div>
+    <div class="bar"><i style="width:0.0%"></i></div>
+    <div class="muted">path: c01_q10_vt08_soft_oh38_xgn.json</div>
+  </div>
+</div>
+
+<div class="grid two" style="margin-top:.75rem">
+  <div class="card">
+    <h2>影子净值 (归一化)</h2>
+    <p class="muted">暂无净值历史 (影子 warmup 后可见)</p>
+  </div>
+  <div class="card">
+    <h2>近 N 日动作</h2>
+    <ul class='tl'><li><div class='when'>2026-07-21</div><div class='what'><span class="badge off">趋势关</span>⚪ 空仓观望<div class=why>大盘趋势向下 → 保持空仓</div><div class='why'>live +0.00% THIN · xs +0.00%</div></div></li></ul>
+  </div>
+</div>
+
+<div class="grid two" style="margin-top:.75rem">
+  <div class="card">
+    <h2>决策检查清单</h2>
+    <table><thead><tr><th></th><th>检查项</th><th>说明</th></tr></thead><tbody><tr><td class='check-bad num'>✗</td><td>大盘&gt;MA20</td><td class='muted'>趋势过滤</td></tr><tr><td class='check-ok num'>✓</td><td>调仓窗口</td><td class='muted'>从未调仓→可调</td></tr><tr><td class='check-ok num'>✓</td><td>空仓可买</td><td class='muted'>当前无持仓</td></tr><tr><td class='check-ok num'>✓</td><td>有合格标的</td><td class='muted'>中概互联ETF 得分+1.14</td></tr><tr><td class='check-ok num'>✓</td><td>目标暴露</td><td class='muted'>0.0%</td></tr></tbody></table>
+  </div>
+  <div class="card">
+    <h2>主策略 TOP</h2>
+    <table><thead><tr><th>#</th><th>名称</th><th>代码</th><th>得分</th></tr></thead><tbody><tr><td class='num'>1</td><td>中概互联ETF</td><td class='muted num'>SH513050</td><td class='num pos'>+1.14</td></tr><tr><td class='num'>2</td><td>稀土ETF</td><td class='muted num'>SH516780</td><td class='num pos'>+0.90</td></tr><tr><td class='num'>3</td><td>港股创新药ETF</td><td class='muted num'>SH513120</td><td class='num pos'>+0.87</td></tr></tbody></table>
+  </div>
+</div>
+
+<div style="margin-top:.9rem">
+  <h2 style="font-size:1rem;margin:0 0 .5rem">影子监控</h2>
+  <div class="stack">
+<div class="card">
+  <div class="pillrow"><b>c01_q10_vt08_soft_oh38</b> <span class="badge warn">W1</span>
+    <span class="badge info">vol:bench</span>
+    <span class="badge off">regime:bear</span>
+  </div>
+  <div class="grid kpis" style="margin-top:.55rem">
+    <div class="card kpi"><div class="label">目标暴露</div><div class="value">0.0%</div><div class="sub">vol_scale=0.2722</div></div>
+    <div class="card kpi"><div class="label">账户</div><div class="value">100,000.00</div><div class="sub">全样本 0.0%</div></div>
+    <div class="card kpi"><div class="label">live%</div><div class="value">+0.00%</div><div class="sub">from 2026-07-21</div></div>
+    <div class="card kpi"><div class="label">持仓</div><div class="value">空仓</div><div class="sub">rets=0</div></div>
+  </div>
+  <div class="bar"><i style="width:0.0%"></i></div>
+</div>
+<div class="card">
+  <div class="pillrow"><b>c01_q10_vt08_soft_oh38_xgn</b> <span class="badge warn">W1</span>
+    <span class="badge info">vol:bench</span>
+    <span class="badge off">regime:bear</span>
+  </div>
+  <div class="grid kpis" style="margin-top:.55rem">
+    <div class="card kpi"><div class="label">目标暴露</div><div class="value">0.0%</div><div class="sub">vol_scale=0.2722</div></div>
+    <div class="card kpi"><div class="label">账户</div><div class="value">100,000.00</div><div class="sub">全样本 0.0%</div></div>
+    <div class="card kpi"><div class="label">live%</div><div class="value">+0.00%</div><div class="sub">from 2026-07-21</div></div>
+    <div class="card kpi"><div class="label">持仓</div><div class="value">空仓</div><div class="sub">rets=0</div></div>
+  </div>
+  <div class="bar"><i style="width:0.0%"></i></div>
+</div>
+<div class="card">
+  <div class="pillrow"><b>c01_q10_vt09_oh35</b> <span class="badge warn">W1</span>
+    <span class="badge info">vol:bench</span>
+    <span class="badge off">regime:—</span>
+  </div>
+  <div class="grid kpis" style="margin-top:.55rem">
+    <div class="card kpi"><div class="label">目标暴露</div><div class="value">0.0%</div><div class="sub">vol_scale=0.3062</div></div>
+    <div class="card kpi"><div class="label">账户</div><div class="value">100,000.00</div><div class="sub">全样本 0.0%</div></div>
+    <div class="card kpi"><div class="label">live%</div><div class="value">+0.00%</div><div class="sub">from 2026-07-21</div></div>
+    <div class="card kpi"><div class="label">持仓</div><div class="value">空仓</div><div class="sub">rets=0</div></div>
+  </div>
+  <div class="bar"><i style="width:0.0%"></i></div>
+</div>
+<div class="card">
+  <div class="pillrow"><b>c01_q10_vt11</b> <span class="badge warn">W1</span>
+    <span class="badge info">vol:bench</span>
+    <span class="badge off">regime:—</span>
+  </div>
+  <div class="grid kpis" style="margin-top:.55rem">
+    <div class="card kpi"><div class="label">目标暴露</div><div class="value">0.0%</div><div class="sub">vol_scale=0.3743</div></div>
+    <div class="card kpi"><div class="label">账户</div><div class="value">100,000.00</div><div class="sub">全样本 0.0%</div></div>
+    <div class="card kpi"><div class="label">live%</div><div class="value">+0.00%</div><div class="sub">from 2026-07-21</div></div>
+    <div class="card kpi"><div class="label">持仓</div><div class="value">空仓</div><div class="sub">rets=0</div></div>
+  </div>
+  <div class="bar"><i style="width:0.0%"></i></div>
+</div></div>
+  <p class="muted">基准 SH510300: 4.787 MA20=4.853(-1.4%) 20日=-3.1% 趋势=关</p>
+</div>
+
+<details>
+  <summary>展开信号原文 (latest.txt)</summary>
+  <pre class="raw">================================================================
+  ETF跨行业轮动 · C01_效15d  2026-07-21 23:08
+  因子: {&#x27;eff&#x27;: 0.6, &#x27;mtf&#x27;: 0.4} | 调仓15日 | 止损-8%
+  迟滞20% | 最小持仓5日 | 冻结:True
+================================================================
+
+📊 沪深300: 4.787  MA20:4.853(-1.4%)  20日:-3.1%  ❌ 向下(空仓)
+📈 市场宽度: 34%  有效池:50  剔除异常:2
+   异常样本: 通信ETF(20日-60.9%), 半导体ETF(20日-54.5%)
+
+  【主策略】效率排名 TOP10
+    # 名称                  现价     20日     效率  MTF     得分 状态
+  --------------------------------------------------------------
+   1  中概互联ETF          1.132  +14.3%  0.362 1.00  +1.14 空仓期
+   2  稀土ETF            0.790  -22.0%  0.525 0.00  +0.90 空仓期
+   3  港股创新药ETF         1.177  +19.3%  0.299 1.00  +0.87 空仓期
+   4  新能源ETF           2.403  -19.1%  0.507 0.00  +0.83 空仓期
+   5  创新药ETF银华         0.879  +16.9%  0.268 1.00  +0.75 空仓期
+   6  光伏ETF            0.815  -18.3%  0.483 0.00  +0.73 空仓期
+   7  恒生科技ETF          0.610   +9.1%  0.259 1.00  +0.71 空仓期
+   8  中药ETF银华          0.910   +9.8%  0.256 1.00  +0.69 空仓期
+   9  医疗ETF            0.328  +10.1%  0.242 1.00  +0.64 空仓期
+  10  高端制造ETF          0.809  -13.3%  0.453 0.00  +0.60 空仓期
+
+  【影子】C01_Q10_VT08_SOFT_OH38_EXTRA_GOLD_NQ TOP5 (不交易)
+    # 名称                 20日     5日    影子分
+  ------------------------------------------
+    1 中概互联ETF         +14.3%  +4.3%  +0.00
+    2 稀土ETF           -22.0%  -7.4%  +0.00
+    3 港股创新药ETF        +19.3%  +0.3%  +0.00
+    4 新能源ETF          -19.1%  -4.0%  +0.00
+    5 创新药ETF银华        +16.9%  +0.1%  +0.00
+
+================================================================
+  ▸ 今日动作: ⚪ 空仓观望
+================================================================
+    · 大盘趋势向下 → 保持空仓
+
+  决策检查清单
+    [✗] 大盘&gt;MA20     趋势过滤
+    [✓] 调仓窗口        从未调仓→可调
+    [✓] 空仓可买        当前无持仓
+    [✓] 有合格标的       中概互联ETF 得分+1.14
+    [✓] 目标暴露        0.0%
+
+  调仓时钟: 上次 无 | 已过 0 交易日 | 还需 0 交易日 | 可调仓
+
+================================================================
+  模拟账户 · C01_效15d · 起步10万
+================================================================
+  持仓: 空仓
+  现金: 100,000.00   持仓市值:       0.00
+  总资产: 100,000.00   总收益: +0.00%   累计盈亏: +0.00
+  交易: 0笔 (胜0/负0)  胜率:0%
+
+  对照 · C01_Q10_VT08_SOFT_OH38_EXTRA_GOLD_NQ
+    影子趋势: ❌  建议: 空仓(趋势关) 暴露0%
+    研究暴露: 0.0%  regime=bear×0.0  vol_scale=0.2722 src=bench  inv=0.8102
+    影子账户: 总资产=100000.0  收益=0.0%  port_rets=0  path=/home/runner/work/etf-rotation/etf-rotation/output/shadow_states/c01_q10_vt08_soft_oh38_xgn.json
+    注: vol_target 用基准波动代理 (组合收益样本不足)
+    注: 趋势关 → 目标暴露 0
+    · 大盘趋势向下 → 保持空仓
+    主策略现态: 空仓
+    主策略目标暴露: 0.0%
+
+================================================================
+  实盘备忘 (非投资建议)
+    1. 空仓, 不抄底
+    2. 等沪深300回到MA20上方后再看信号
+    · 固定配置至少跑满3个月再调参
+================================================================
+
+-------- 有效收益 (SIGNAL live) --------
+  策略: c01_q10_vt08_soft_oh38_xgn
+  live=+0.000% THIN  xs=+0.000%  bench=+0.000%
+  from=2026-07-21  Lrets=0  持仓=空仓
+  注: Lrets=0=仅锚日, 尚无 live 样本日 (DATA_LAG/刚暖机常见)
+  注: THIN=样本&lt;5日; DATA_LAG 时等行情更新后再判 xs
+  行情截至: 2026-07-21
+  口径: live%=暖机末→今 · xs%=live−基准 · 非全样本
+----------------------------------------
+</pre>
+</details>
+
+</main>
+<footer>只读面板 · 非投资建议 · 数据来自本地 output/ 日更产物</footer>
+</body>
+</html>

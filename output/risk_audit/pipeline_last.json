@@ -1,0 +1,511 @@
+{
+  "stamp": "20260721_230832",
+  "steps_requested": [
+    "pull",
+    "signal",
+    "monitor",
+    "compare",
+    "live",
+    "summary",
+    "status",
+    "today",
+    "asof",
+    "yield",
+    "brief",
+    "data",
+    "next",
+    "go",
+    "ready",
+    "digest",
+    "progress",
+    "pulse",
+    "email",
+    "pages"
+  ],
+  "steps_run": [
+    "pull",
+    "signal",
+    "monitor",
+    "compare",
+    "live",
+    "summary",
+    "status",
+    "today",
+    "asof",
+    "yield",
+    "brief",
+    "data",
+    "next",
+    "go",
+    "ready",
+    "digest",
+    "progress",
+    "pulse",
+    "email",
+    "pages"
+  ],
+  "strategy": "c01",
+  "shadow": "c01_q10_vt08_soft_oh38_xgn",
+  "dry_run": false,
+  "trading_day": true,
+  "trading_day_note": "source=bench_calendar date=2026-07-21 bench_n=120 closed=False makeup=False asof=2026-07-21 lag=False",
+  "data_asof": "2026-07-21",
+  "data_lag": false,
+  "ok": true,
+  "alert_error_n": 0,
+  "alert_warn_n": 4,
+  "alerts": [
+    {
+      "shadow": "c01_q10_vt08_soft_oh38",
+      "level": "warn",
+      "code": "thin_rets",
+      "msg": "port_rets=0 < 20 (建议 shadow_warmup)"
+    },
+    {
+      "shadow": "c01_q10_vt08_soft_oh38_xgn",
+      "level": "warn",
+      "code": "thin_rets",
+      "msg": "port_rets=0 < 20 (建议 shadow_warmup)"
+    },
+    {
+      "shadow": "c01_q10_vt09_oh35",
+      "level": "warn",
+      "code": "thin_rets",
+      "msg": "port_rets=0 < 20 (建议 shadow_warmup)"
+    },
+    {
+      "shadow": "c01_q10_vt11",
+      "level": "warn",
+      "code": "thin_rets",
+      "msg": "port_rets=0 < 20 (建议 shadow_warmup)"
+    }
+  ],
+  "monitor_fail_on_alert": true,
+  "results": [
+    {
+      "step": "pull",
+      "cmd": [
+        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
+        "pull",
+        "--no-follow",
+        "--bench-only"
+      ],
+      "exit": 0,
+      "ok": true,
+      "seconds": 1.6
+    },
+    {
+      "step": "signal",
+      "cmd": [
+        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/home/runner/work/etf-rotation/etf-rotation/scripts/run_signal.py",
+        "--strategy",
+        "c01",
+        "--shadow",
+        "c01_q10_vt08_soft_oh38_xgn",
+        "--pool",
+        "pool",
+        "--bars",
+        "120",
+        "--extra-shadows",
+        "c01_q10_vt08_soft_oh38,c01_q10_vt08_soft_oh38_xgn,c01_q10_vt09_oh35,c01_q10_vt11"
+      ],
+      "exit": 0,
+      "ok": true,
+      "seconds": 38.18
+    },
+    {
+      "step": "monitor",
+      "cmd": [
+        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/home/runner/work/etf-rotation/etf-rotation/scripts/shadow_monitor.py",
+        "--shadows",
+        "c01_q10_vt08_soft_oh38,c01_q10_vt08_soft_oh38_xgn,c01_q10_vt09_oh35,c01_q10_vt11",
+        "--bars",
+        "120",
+        "--text-out",
+        "/home/runner/work/etf-rotation/etf-rotation/output/shadow_monitor.txt",
+        "--json-out",
+        "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/shadow_monitor.json",
+        "--fail-on-alert"
+      ],
+      "exit": 0,
+      "ok": true,
+      "seconds": 0.06
+    },
+    {
+      "step": "summary",
+      "cmd": [
+        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/home/runner/work/etf-rotation/etf-rotation/scripts/shadow_summary.py",
+        "--names",
+        "c01_q10_vt08_soft_oh38,c01_q10_vt08_soft_oh38_xgn,c01_q10_vt09_oh35,c01_q10_vt11",
+        "--text-out",
+        "/home/runner/work/etf-rotation/etf-rotation/output/shadow_summary.txt",
+        "--json-out",
+        "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/shadow_summary.json"
+      ],
+      "exit": 0,
+      "ok": true,
+      "seconds": 0.05
+    },
+    {
+      "step": "compare",
+      "cmd": [
+        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/home/runner/work/etf-rotation/etf-rotation/scripts/shadow_compare.py",
+        "--json-out",
+        "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/shadow_compare.json",
+        "--text-out",
+        "/home/runner/work/etf-rotation/etf-rotation/output/shadow_compare.txt"
+      ],
+      "exit": 0,
+      "ok": true,
+      "seconds": 0.04
+    },
+    {
+      "step": "live",
+      "cmd": [
+        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/home/runner/work/etf-rotation/etf-rotation/scripts/shadow_live.py",
+        "--json-out",
+        "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/shadow_live.json",
+        "--text-out",
+        "/home/runner/work/etf-rotation/etf-rotation/output/shadow_live.txt",
+        "--write-states",
+        "--names",
+        "c01_q10_vt08_soft_oh38,c01_q10_vt08_soft_oh38_xgn,c01_q10_vt09_oh35,c01_q10_vt11"
+      ],
+      "exit": 0,
+      "ok": true,
+      "seconds": 1.53
+    },
+    {
+      "step": "status",
+      "cmd": [
+        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/home/runner/work/etf-rotation/etf-rotation/scripts/research_status.py",
+        "--json-out",
+        "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/research_status.json",
+        "--text-out",
+        "/home/runner/work/etf-rotation/etf-rotation/output/research_status.txt"
+      ],
+      "exit": 0,
+      "ok": true,
+      "seconds": 0.17
+    },
+    {
+      "step": "today",
+      "cmd": [
+        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
+        "today"
+      ],
+      "exit": 0,
+      "ok": true,
+      "seconds": 0.09
+    },
+    {
+      "step": "asof",
+      "cmd": [
+        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
+        "asof"
+      ],
+      "exit": 0,
+      "ok": true,
+      "seconds": 0.1
+    },
+    {
+      "step": "yield",
+      "cmd": [
+        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
+        "yield"
+      ],
+      "exit": 0,
+      "ok": true,
+      "seconds": 0.09
+    },
+    {
+      "step": "brief",
+      "cmd": [
+        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
+        "brief"
+      ],
+      "exit": 0,
+      "ok": true,
+      "seconds": 0.09
+    },
+    {
+      "step": "data",
+      "cmd": [
+        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
+        "data"
+      ],
+      "exit": 0,
+      "ok": true,
+      "seconds": 0.09
+    },
+    {
+      "step": "next",
+      "cmd": [
+        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
+        "next",
+        "--no-refresh"
+      ],
+      "exit": 0,
+      "ok": true,
+      "seconds": 0.08
+    },
+    {
+      "step": "go",
+      "cmd": [
+        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
+        "go",
+        "--no-wait",
+        "--no-pull"
+      ],
+      "exit": 0,
+      "ok": true,
+      "seconds": 0.8
+    },
+    {
+      "step": "ready",
+      "cmd": [
+        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
+        "ready"
+      ],
+      "exit": 4,
+      "ok": true,
+      "seconds": 0.09,
+      "decision_exit": 4,
+      "note": "ready level code ignored for pipeline ok"
+    },
+    {
+      "step": "digest",
+      "cmd": [
+        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
+        "digest",
+        "--no-refresh"
+      ],
+      "exit": 4,
+      "ok": true,
+      "seconds": 0.09,
+      "decision_exit": 4,
+      "note": "digest level code ignored for pipeline ok"
+    },
+    {
+      "step": "progress",
+      "cmd": [
+        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
+        "progress",
+        "--no-refresh"
+      ],
+      "exit": 0,
+      "ok": true,
+      "seconds": 0.08
+    },
+    {
+      "step": "pulse",
+      "cmd": [
+        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
+        "pulse",
+        "--no-refresh",
+        "--quiet"
+      ],
+      "exit": 4,
+      "ok": true,
+      "seconds": 0.08,
+      "decision_exit": 4,
+      "note": "pulse level code ignored for pipeline ok"
+    },
+    {
+      "step": "email",
+      "cmd": [
+        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/home/runner/work/etf-rotation/etf-rotation/scripts/send_email.py",
+        "--append-shadow",
+        "--append-alerts",
+        "--append-status",
+        "--append-compare",
+        "--append-live",
+        "--append-today",
+        "--append-asof",
+        "--append-yield",
+        "--append-brief",
+        "--append-data",
+        "--append-next",
+        "--append-go",
+        "--append-ready",
+        "--append-digest",
+        "--append-progress",
+        "--append-pulse",
+        "--shadow-names",
+        "c01_q10_vt08_soft_oh38,c01_q10_vt08_soft_oh38_xgn,c01_q10_vt09_oh35,c01_q10_vt11"
+      ],
+      "exit": 0,
+      "ok": true,
+      "seconds": 3.66
+    },
+    {
+      "step": "pages",
+      "cmd": [
+        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/home/runner/work/etf-rotation/etf-rotation/scripts/build_pages.py",
+        "--out",
+        "output/site"
+      ],
+      "exit": 0,
+      "ok": true,
+      "seconds": 0.08
+    }
+  ],
+  "latest_txt": "/home/runner/work/etf-rotation/etf-rotation/output/latest.txt",
+  "latest_json": "/home/runner/work/etf-rotation/etf-rotation/output/latest.json",
+  "log": "/home/runner/work/etf-rotation/etf-rotation/output/logs/pipeline_20260721_230832.log",
+  "pages_out": "output/site",
+  "yield": {
+    "name": "c01_q10_vt08_soft_oh38_xgn",
+    "live_return_pct": 0.0,
+    "live_excess_pct": 0.0,
+    "bench_return_pct": 0.0,
+    "days_live": 0,
+    "thin_live": true,
+    "live_start": "2026-07-21",
+    "holdings": "空仓",
+    "market_asof": "2026-07-21",
+    "data_lag": false
+  },
+  "brief": {
+    "stamp": "2026-07-21T23:09:17",
+    "market_asof": "2026-07-21",
+    "data_lag": false,
+    "action": "⚪ 空仓观望",
+    "market_ok": false,
+    "live_return_pct": 0.0,
+    "live_excess_pct": 0.0,
+    "days_live": 0,
+    "thin_live": true,
+    "path_txt": "/home/runner/work/etf-rotation/etf-rotation/output/brief.txt",
+    "path_json": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/brief.json"
+  },
+  "data_status": {
+    "market_asof": "2026-07-21",
+    "data_lag": false,
+    "latest_stale": false,
+    "decision": "ok",
+    "action": "⚪ 空仓观望",
+    "path_txt": "/home/runner/work/etf-rotation/etf-rotation/output/data_status.txt",
+    "path_json": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/data_status.json"
+  },
+  "next": {
+    "decision": "ok",
+    "market_asof": "2026-07-21",
+    "data_lag": false,
+    "latest_stale": false,
+    "recommend": "./etf",
+    "why": "数据齐: 裸 ./etf=pulse 看可判后读 yield",
+    "path_txt": "/home/runner/work/etf-rotation/etf-rotation/output/next.txt",
+    "path_json": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/next.json"
+  },
+  "pull": {
+    "stamp": "2026-07-21T23:08:36",
+    "before": {
+      "data_asof": "2026-07-21",
+      "data_lag": false
+    },
+    "after": {
+      "data_asof": "2026-07-21",
+      "data_lag": false
+    },
+    "advanced": false,
+    "cleared_lag": false,
+    "ok_n": 1,
+    "fail_n": 0,
+    "bench_last": "2026-07-21",
+    "path_txt": "/home/runner/work/etf-rotation/etf-rotation/output/pull.txt",
+    "path_json": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/pull.json"
+  },
+  "go": {
+    "stamp": "2026-07-21T23:09:17",
+    "decision": "ok",
+    "market_asof": "2026-07-21",
+    "data_lag": false,
+    "did_wait": false,
+    "wait_code": 0,
+    "recommend": "./etf",
+    "path_txt": "/home/runner/work/etf-rotation/etf-rotation/output/go.txt",
+    "path_json": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/go.json"
+  },
+  "ready": {
+    "level": "THIN",
+    "ready": false,
+    "market_asof": "2026-07-21",
+    "data_lag": false,
+    "days_live": 0,
+    "thin_live": true,
+    "live_return_pct": 0.0,
+    "live_excess_pct": 0.0,
+    "note": "asof 已齐但样本薄; 可观察方向, 勿下强结论 (约再 5 个交易日可 READY)",
+    "path_txt": "/home/runner/work/etf-rotation/etf-rotation/output/ready.txt",
+    "path_json": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/ready.json"
+  },
+  "digest": {
+    "level": "THIN",
+    "market_asof": "2026-07-21",
+    "data_lag": false,
+    "decision": "ok",
+    "live_return_pct": 0.0,
+    "live_excess_pct": 0.0,
+    "days_live": 0,
+    "recommend": "./etf eod --timeout 1800",
+    "path_txt": "/home/runner/work/etf-rotation/etf-rotation/output/digest.txt",
+    "path_json": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/digest.json"
+  },
+  "progress": {
+    "date": "2026-07-21",
+    "level": "THIN",
+    "market_asof": "2026-07-21",
+    "days_live": 0,
+    "days_to_ready": 5,
+    "live_return_pct": 0.0,
+    "live_excess_pct": 0.0,
+    "data_lag": false,
+    "source": "pulse",
+    "path_txt": "/home/runner/work/etf-rotation/etf-rotation/output/progress.txt",
+    "path_jsonl": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/progress.jsonl"
+  },
+  "pulse": {
+    "level": "THIN",
+    "market_asof": "2026-07-21",
+    "days_live": 0,
+    "days_to_ready": 5,
+    "eta_note": "约再 5 个交易日可 READY (Lrets≥5)",
+    "decision": "ok",
+    "next_action": "accumulate",
+    "why": "样本<5日: 每个交易日 eod/daily 积累 Lrets",
+    "recommend": "./etf eod --timeout 1800",
+    "exit_code": 4,
+    "readable_yield": false,
+    "live_return_pct": 0.0,
+    "live_excess_pct": 0.0,
+    "path_txt": "/home/runner/work/etf-rotation/etf-rotation/output/pulse.txt",
+    "path_json": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/pulse.json"
+  },
+  "ready_level": "THIN",
+  "days_to_ready": 5,
+  "eta_note": "约再 5 个交易日可 READY (Lrets≥5)",
+  "next_action": "accumulate",
+  "readable_yield": false,
+  "pulse_exit": 4
+}

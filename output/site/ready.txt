@@ -1,0 +1,9 @@
+======== READY 有效收益可判性 ========
+level: THIN
+asof: 2026-07-21 lag=False
+live=0.0 xs=0.0 Lrets=0 thin=True
+decision: ok
+days_to_ready: 5
+eta: 约再 5 个交易日可 READY (Lrets≥5)
+blockers: THIN: live 样本<5日, 统计不稳定; Lrets=0: 仅锚日, 尚无 live 收益样本
+========

@@ -1,0 +1,6 @@
+======== PULL 强刷行情 ========
+刷前 asof=2026-07-21 lag=False
+刷后 asof=2026-07-21 lag=False
+advanced=False cleared_lag=False
+ok=1 fail=0
+========
