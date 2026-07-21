@@ -112,6 +112,79 @@ def _load_json(path: Path) -> dict[str, Any] | list | None:
         return None
 
 
+
+def _zh_level(level) -> str:
+    m = {
+        "READY": "可当真收益看",
+        "THIN": "样本还少",
+        "NOT_READY": "暂不可判",
+        "WAIT_DATA": "等行情更新",
+        "PARTIAL": "部分可观察",
+    }
+    s = str(level or "").strip()
+    return m.get(s, s or "—")
+
+
+def _zh_pct(v, none="暂无"):
+    try:
+        if v is None:
+            return none
+        return f"{float(v):+.2f}%"
+    except Exception:
+        return none
+
+
+def _zh_sample_days(dl, thin=None) -> str:
+    try:
+        if dl is None:
+            return "样本天数未知"
+        n = int(dl)
+        if n <= 0:
+            return "还没开始统计实盘天数"
+        if thin or n < 5:
+            return f"已统计{n}天(满5天更稳)"
+        return f"已统计{n}天"
+    except Exception:
+        return "样本天数未知"
+
+
+def _zh_dtr(dtr, lag=False) -> str:
+    try:
+        if dtr is None:
+            return ""
+        n = int(dtr)
+        if n <= 0:
+            return "样本已够" + ("；但行情还没到齐" if lag else "")
+        s = f"大约还要{n}个交易日可判"
+        if lag:
+            s += "；先等今日行情写入"
+        return s
+    except Exception:
+        return ""
+
+
+def _zh_action(action) -> str:
+    m = {
+        "wait_asof": "先等行情更新",
+        "refresh": "先刷新信号",
+        "accumulate": "继续日更攒样本",
+        "read_yield": "可以看真实收益了",
+        "doctor": "先体检排查",
+        "wait_data": "先等行情更新",
+        "ok": "数据齐",
+    }
+    s = str(action or "").strip()
+    return m.get(s, s or "—")
+
+
+def _zh_readable(flag) -> str:
+    if flag is True:
+        return "现在可以把数字当真收益看"
+    if flag is False:
+        return "现在不要当真收益看"
+    return "是否可当真收益: 未知"
+
+
 def _esc(x: Any) -> str:
     return html.escape("" if x is None else str(x))
 
@@ -474,8 +547,8 @@ def _timeline_html(actions: list[dict], limit: int = 14) -> str:
                     thin = int(sl.get("days_live")) < 5
                 except Exception:
                     thin = False
-            tag = " THIN" if thin else ""
-            live_bits = f"<div class='why'>live {lr_s}{tag} · xs {xs_s}</div>"
+            tag = " 样本还少" if thin else ""
+            live_bits = f"<div class='why'>实盘段 {lr_s}{tag} · 相对大盘 {xs_s}</div>"
         items.append(
             f"<li><div class='when'>{day}</div><div class='what'>{badge}{act}"
             f"{f'<div class=why>{why}</div>' if why else ''}{live_bits}</div></li>"
@@ -611,7 +684,7 @@ def _dashboard(
   <div class="grid kpis" style="margin-top:.55rem">
     {_kpi('目标暴露', f'{te_pct:.1f}%', f"vol_scale={r.get('vol_scale')}")}
     {_kpi('账户', _money(r.get('total_value')), f"全样本 {r.get('return_pct')}%")}
-    {_kpi('live%', (f"{float(r.get('live_return_pct')):+.2f}%" if r.get('live_return_pct') is not None else '—'), f"from {r.get('live_start') or '—'}")}
+    {_kpi('实盘段收益', (f"{float(r.get('live_return_pct')):+.2f}%" if r.get('live_return_pct') is not None else '—'), f"自 {r.get('live_start') or '—'}")}
     {_kpi('持仓', _esc(r.get('holdings') or '空仓'), f"rets={r.get('n_port_rets')}")}
   </div>
   {_bar(te_pct, 'green' if te_pct > 0 else '')}
@@ -645,7 +718,7 @@ def _dashboard(
     else:
         mon_badge = '<span class="badge off">monitor —</span>'
 
-    # shadow from latest (structured)
+    # shadow 自 latest (structured)
     sh = (latest or {}).get("shadow") or {}
     sh_action = sh.get("action") or "—"
     sh_cfg = sh.get("config") or "研究影子"
@@ -705,7 +778,7 @@ def _dashboard(
     except Exception:
         sh_live_s = "—"
     if sh_thin:
-        sh_live_s = f"{sh_live_s} THIN"
+        sh_live_s = f"{sh_live_s} 样本还少"
     try:
         sh_xs_s = f"{float(sh_xs):+.2f}%" if sh_xs is not None else "—"
     except Exception:
@@ -771,7 +844,7 @@ def _dashboard(
         notes = []
         if data_lag:
             notes.append(
-                f"<b>⚠ 行情滞后 DATA_LAG</b> · 行情截至 {_esc(data_asof)} · wall/交易日 {_esc(td_date)} "
+                f"<b>⚠ 行情滞后 行情未更新</b> · 行情截至 {_esc(data_asof)} · wall/交易日 {_esc(td_date)} "
                 f"(nav/live 以 asof 为准) · <code>./etf asof</code>"
             )
         if stale:
@@ -796,11 +869,11 @@ def _dashboard(
         if isinstance(dobj, dict) and dobj.get("decision"):
             dec = str(dobj.get("decision"))
             if dec == "wait_data":
-                decision_badge = '<span class="badge warn">WAIT_DATA</span>'
+                decision_badge = '<span class="badge warn">等行情</span>'
             elif dec == "refresh":
-                decision_badge = '<span class="badge warn">STALE→refresh</span>'
+                decision_badge = '<span class="badge warn">信号过旧→刷新</span>'
             elif dec == "ok":
-                decision_badge = '<span class="badge ok">DATA_OK</span>'
+                decision_badge = '<span class="badge ok">行情正常</span>'
             else:
                 decision_badge = f'<span class="badge off">{_esc(dec)}</span>'
     except Exception:
@@ -810,13 +883,13 @@ def _dashboard(
         if isinstance(robj, dict) and robj.get("level"):
             lv = str(robj.get("level"))
             if lv == "READY":
-                ready_badge = '<span class="badge ok">READY</span>'
+                ready_badge = '<span class="badge ok">可当真收益看</span>'
             elif lv in ("NOT_READY", "WAIT_DATA"):
-                ready_badge = f'<span class="badge warn">{_esc(lv)}</span>'
+                ready_badge = f'<span class="badge warn">{_esc(_zh_level(lv))}</span>'
             elif lv == "THIN":
-                ready_badge = '<span class="badge warn">THIN</span>'
+                ready_badge = '<span class="badge warn">样本还少</span>'
             else:
-                ready_badge = f'<span class="badge off">{_esc(lv)}</span>'
+                ready_badge = f'<span class="badge off">{_esc(_zh_level(lv))}</span>'
     except Exception:
         ready_badge = ""
 
@@ -846,26 +919,45 @@ def _dashboard(
                 xs_s = f"{float(xs):+.2f}%" if xs is not None else "—"
             except Exception:
                 xs_s = "—"
-            dtr_s = f" · 距可判={dtr}日" if dtr is not None else ""
-            eta = dg.get("eta_note") or ""
-            if not eta and dtr is not None:
-                try:
-                    di = int(dtr)
-                    if di <= 0:
-                        eta = "样本已够"
-                    else:
-                        eta = f"约再{di}个交易日READY"
-                except Exception:
-                    eta = ""
-            eta_s = f" · ETA {_esc(eta)}" if eta else ""
+            lag_dg = bool(dg.get("data_lag"))
+            thin_dg = bool(dg.get("thin_live")) if dg.get("thin_live") is not None else (
+                int(dl) < 5 if dl is not None else False
+            )
+            sample_s = _zh_sample_days(dl, thin_dg)
+            dtr_s = _zh_dtr(dtr, lag_dg)
+            eta = dg.get("eta_note") or dtr_s
+            eta_disp = str(eta or "")
+            eta_disp = (
+                str(eta_disp)
+                .replace("READY (Lrets≥5)", "可当真看收益")
+                .replace("Lrets≥5", "满5天更稳")
+                .replace("READY", "可当真看收益")
+                .replace("DATA_LAG", "行情未更新")
+                .replace("另需 asof 先推进", "先等今日行情写入")
+                .replace("另需 行情 先推进", "先等今日行情写入")
+                .replace("asof", "行情")
+                .replace("约再 ", "大约还要")
+                .replace("可当真", "可当真")
+                .replace("可当真看收益", "可当真看收益")
+            )
+            eta_disp = eta_disp.replace("可 可", "可").replace("当真看收益看收益", "当真看收益")
+            eta_s = f" · {_esc(eta_disp)}" if eta_disp else ""
+            live_label = f"实盘段 {_esc(lr_s)}"
+            xs_label = f"相对大盘 {_esc(xs_s)}"
+            if thin_dg or (dl is not None and int(dl) < 5):
+                sample_note = f" · {_esc(sample_s)}"
+            else:
+                sample_note = f" · {_esc(sample_s)}"
+            if lag_dg:
+                sample_note += " · 行情还没更新完"
             digest_line = (
                 "<div class='card' style='margin:.55rem 0 .2rem;padding:.55rem .7rem'>"
-                f"<b>DIGEST</b> · 可判性 <code>{_esc(lv)}</code> · "
-                f"live {_esc(lr_s)} · xs {_esc(xs_s)} · Lrets={_esc(dl if dl is not None else '—')}"
-                f"{_esc(dtr_s)}{eta_s} · "
-                f"推荐 <code>{_esc(rec)}</code> · "
-                "<a href='digest.html'>摘要</a> · <a href='ready.html'>可判性</a> · "
-                "<a href='progress.html'>轨迹</a> · <a href='eod.html'>EOD</a>"
+                f"<b>一句话结论</b> · <code>{_esc(_zh_level(lv))}</code> · "
+                f"{live_label} · {xs_label}{sample_note}"
+                f"{eta_s} · "
+                f"建议 <code>{_esc(rec)}</code> · "
+                "<a href='digest.html'>摘要</a> · <a href='ready.html'>能不能当真</a> · "
+                "<a href='progress.html'>进度</a> · <a href='eod.html'>收盘</a>"
                 "</div>"
             )
             # progress spark from progress_latest
@@ -884,20 +976,20 @@ def _dashboard(
                                 if _di <= 0:
                                     _peta = "样本已够"
                                 else:
-                                    _peta = f"约再{_di}日READY"
+                                    _peta = f"大约还要{_di}个交易日"
                                     if _pj.get("data_lag"):
-                                        _peta += "(需asof)"
+                                        _peta += "(先等行情)"
                             except Exception:
                                 _peta = ""
-                        _peta_s = f" · ETA {_esc(_peta)}" if _peta else ""
+                        _peta_s = f" · {_esc(_peta)}" if _peta else ""
                         progress_line = (
                             "<div class='card' style='margin:.35rem 0 .2rem;padding:.45rem .7rem'>"
-                            f"<b>PROGRESS</b> · <code>{_esc(_plv)}</code> · "
-                            f"Lrets={_esc(_pdl if _pdl is not None else '—')} · "
-                            f"dtr={_esc(_pdtr if _pdtr is not None else '—')}"
+                            f"<b>统计进度</b> · <code>{_esc(_zh_level(_plv))}</code> · "
+                            f"{_esc(_zh_sample_days(_pdl))} · "
+                            f"{_esc(_zh_dtr(_pdtr, bool(_pj.get('data_lag'))))}"
                             f"{_peta_s} · "
-                            f"asof={_esc(_pj.get('market_asof') or '—')} · "
-                            "<a href='progress.html'>轨迹</a> · <a href='ready.html'>可判性</a>"
+                            f"行情截至 {_esc(_pj.get('market_asof') or '—')} · "
+                            "<a href='progress.html'>进度</a> · <a href='ready.html'>能不能当真</a>"
                             "</div>"
                         )
             except Exception:
@@ -911,16 +1003,29 @@ def _dashboard(
                     if isinstance(_pu, dict):
                         _plv = _pu.get("level") or "—"
                         _pdtr = _pu.get("days_to_ready")
-                        _peta = _pu.get("eta_note") or ""
+                        _peta = str(_pu.get("eta_note") or "")
+                        _peta = (
+                            _peta.replace("READY (Lrets≥5)", "可当真看收益")
+                            .replace("Lrets≥5", "满5天更稳")
+                            .replace("READY", "可当真看收益")
+                            .replace("DATA_LAG", "行情未更新")
+                            .replace("另需 asof 先推进", "先等今日行情写入")
+                            .replace("另需 行情 先推进", "先等今日行情写入")
+                            .replace("asof", "行情")
+                            .replace("约再 ", "大约还要")
+                            .replace("可 可", "可")
+                            .replace("当真看收益看收益", "当真看收益")
+                        )
                         _pact = _pu.get("next_action") or "—"
                         _pread = _pu.get("readable_yield")
                         pulse_line = (
                             "<div class='card' style='margin:.35rem 0 .2rem;padding:.45rem .7rem'>"
-                            f"<b>PULSE</b> · <code>{_esc(_plv)}</code> · "
-                            f"dtr={_esc(_pdtr if _pdtr is not None else '—')} · "
-                            f"action={_esc(_pact)} · readable={_esc(_pread)} · "
-                            f"ETA {_esc(_peta or '—')} · "
-                            f"<a href='pulse.html'>脉搏</a> · <code>./etf do</code>"
+                            f"<b>现在怎么办</b> · <code>{_esc(_zh_level(_plv))}</code> · "
+                            f"{_esc(_zh_dtr(_pdtr, bool(_pu.get('data_lag'))))} · "
+                            f"下一步: {_esc(_zh_action(_pact))} · "
+                            f"{_esc(_zh_readable(_pread))} · "
+                            f"{_esc(_peta or '')} · "
+                            f"<a href='pulse.html'>详情</a> · <code>./etf do</code>"
                             "</div>"
                         )
             except Exception:
@@ -935,14 +1040,14 @@ def _dashboard(
     <div class="action" style="margin-top:.45rem">{_esc(action)}</div>
     <div class="muted">{_esc(cfg)} · {_esc(when)}</div>
   </div>
-    <div class="muted">生产只读 · 研究影子不交易 · live%才是日更有效收益 · THIN=样本&lt;5日 · DATA_LAG=行情未到 · <a href="digest.html">摘要</a> · <a href="ready.html">可判性</a> · <a href="yield.html">有效收益</a> · <code>./etf digest</code> · <code>./etf go --timeout 600</code> · <code>./etf eod</code> · <code>./etf ready</code> · <code>./etf open --launch site</code></div>
+    <div class="muted">生产只读 · 研究影子不交易 · “实盘段收益/相对大盘”才是日更有效收益 · 样本未满5天别当真 · 行情未更新时别解读 · <a href="digest.html">摘要</a> · <a href="ready.html">可判性</a> · <a href="yield.html">有效收益</a> · <code>./etf digest</code> · <code>./etf go --timeout 600</code> · <code>./etf eod</code> · <code>./etf ready</code> · <code>./etf open --launch site</code></div>
 </div>
 {digest_line}{progress_line}{pulse_line}
 <div class="grid kpis" style="margin-top:.75rem">
   {_kpi('持仓', _esc(hold_name), '生产模拟账户')}
   {_kpi('总资产', _money(tv), f"收益 {ret if ret is not None else '—'}%")}
-  {_kpi('影子 live%', sh_live_s, _esc(sh_cfg) + ('' if sh_days is None else f' · Lrets={sh_days}') + (' · 仅锚日' if sh_days == 0 else '') + (' · DATA_LAG' if (latest or {}).get('market_asof') and str((td or {}).get('date') or '')[:10] > str((latest or {}).get('market_asof') or '')[:10] else ''), 'green' if (sh_live_pct or 0) > 0 else '')}
-  {_kpi('超额 xs%', sh_xs_s, f"vs 基准 {'' if sh_bench_ret is None else f'{float(sh_bench_ret):+.2f}%'}", 'green' if (sh_xs or 0) > 0 else '')}
+  {_kpi('研究影子·实盘段', sh_live_s, _esc(sh_cfg) + ('' if sh_days is None else f' · 已统计{sh_days}天') + (' · 还没开始统计' if sh_days == 0 else '') + (' · 行情未更新' if (latest or {}).get('market_asof') and str((td or {}).get('date') or '')[:10] > str((latest or {}).get('market_asof') or '')[:10] else ''), 'green' if (sh_live_pct or 0) > 0 else '')}
+  {_kpi('相对大盘', sh_xs_s, f"vs 基准 {'' if sh_bench_ret is None else f'{float(sh_bench_ret):+.2f}%'}", 'green' if (sh_xs or 0) > 0 else '')}
 </div>
 <div style="margin:.35rem 0 .9rem">{_bar(br_pct)}</div>
 
@@ -955,7 +1060,7 @@ def _dashboard(
   <div class="card stack">
     <h2>研究影子</h2>
     <div><b>{_esc(sh_action)}</b></div>
-    <div class="muted">账户 {_money(sh_state.get('total_value'))} · live {sh_live_s} · xs {sh_xs_s} · 全样本 {_esc(sh_state.get('return_pct'))}% · rets={_esc(sh_rets)}</div>
+    <div class="muted">账户 {_money(sh_state.get('total_value'))} · 实盘段 {sh_live_s} · 相对大盘 {sh_xs_s} · 全样本 {_esc(sh_state.get('return_pct'))}% · rets={_esc(sh_rets)}</div>
     {_bar(sh_exp_pct, 'green' if sh_exp_pct > 0 else '')}
     <div class="muted">path: {_esc(Path(str(sh.get('state_path') or '')).name or '—')}</div>
   </div>
@@ -998,7 +1103,7 @@ def _dashboard(
 
 
 def _lag_banner_html(latest_obj: dict | None = None) -> str:
-    """DATA_LAG 黄条 (次级页复用)."""
+    """行情未更新 黄条 (次级页复用)."""
     try:
         from etf_rotation.calendar_util import resolve_trading_day
         td = resolve_trading_day()
@@ -1013,7 +1118,7 @@ def _lag_banner_html(latest_obj: dict | None = None) -> str:
                 asof = sl.get("market_asof")
         if lag or (asof and str(td.get("date") or "")[:10] > str(asof)[:10]):
             return (
-                f"<p class='muted' style='color:var(--amber)'>⚠ DATA_LAG: 行情截至 {_esc(asof)} · "
+                f"<p class='muted' style='color:var(--amber)'>⚠ 行情未更新: 行情截至 {_esc(asof)} · "
                 f"wall/交易日 {_esc(td.get('date'))} · <code>./etf asof</code></p>"
             )
     except Exception:
@@ -1065,7 +1170,7 @@ def build(out_dir: Path) -> dict:
                 f"<p>{ab}</p>"
                 f"<div class='card'><h2>有效收益 (SIGNAL live)</h2>"
                 f"<pre class='raw'>{_esc(block)}</pre>"
-                f"<p class='muted'>live%=暖机末→今 · xs%=live−基准 · THIN=样本&lt;5日</p></div>"
+                f"<p class='muted'>实盘段=暖机后到今天 · 相对大盘=实盘段−大盘 · 样本未满5天别当真</p></div>"
                 f"<details open><summary>信号原文全文</summary>"
                 f"<pre class='raw'>{_esc(pre + post)}</pre></details>"
             )
@@ -1103,7 +1208,7 @@ def build(out_dir: Path) -> dict:
                 r.get("days_live") is not None and int(r.get("days_live") or 0) < 5
             ):
                 if lr_s:
-                    lr_s = f"{lr_s} THIN"
+                    lr_s = f"{lr_s} 样本还少"
             try:
                 xs_s = f"{float(xs):+.2f}%" if xs is not None else ""
             except Exception:
@@ -1128,9 +1233,9 @@ def build(out_dir: Path) -> dict:
         cbody = (
             f"<p>{ab}</p>{_lag_banner_html(latest_obj)}<div class='card'><h2>主线影子对照</h2>"
             "<table><thead><tr><th>策略</th><th>sh</th><th>dd</th><th>净值</th>"
-            "<th>live%</th><th>xs%</th><th>持仓</th><th>Lrets</th><th>gate</th><th>3bp</th><th>最近成交</th></tr></thead>"
+            "<th>实盘段</th><th>相对大盘</th><th>持仓</th><th>已统计天数</th><th>gate</th><th>3bp</th><th>最近成交</th></tr></thead>"
             f"<tbody>{''.join(rows_html)}</tbody></table>"
-            f"<p class='muted'>sh/dd=暖机 · live%/xs%=暖机末→今 (xs=live−基准) · Lrets=live样本天数 · THIN=&lt;5日 · Lrets=0=仅锚日/DATA_LAG</p></div>"
+            f"<p class='muted'>回撤等=暖机期 · 实盘段/相对大盘=暖机后到今天 · 已统计天数=实盘样本 · 未满5天别当真 · 0天=还没开始算</p></div>"
         )
         if cmp_txt:
             cbody += f"<details><summary>对照原文</summary><pre class='raw'>{_esc(cmp_txt)}</pre></details>"
@@ -1161,7 +1266,7 @@ def build(out_dir: Path) -> dict:
             xs = r.get("live_excess_pct")
             mark = "SIGNAL" if r.get("signal") else ""
             thin = (
-                " THIN"
+                " 样本还少"
                 if (
                     r.get("thin_live")
                     or int(r.get("days_live") or r.get("live_n_rets") or 0) < 5
@@ -1180,7 +1285,7 @@ def build(out_dir: Path) -> dict:
                 f"<td class='muted'>{_esc(r.get('live_start') or '')} {_esc(r.get('last_trade') or '')}</td>"
                 f"</tr>"
             )
-        # DATA_LAG / Lrets 说明
+        # 行情未更新 / 样本天数 说明
         lag_note = ""
         try:
             asof = (latest_obj or {}).get("market_asof") if isinstance(latest_obj, dict) else None
@@ -1190,17 +1295,17 @@ def build(out_dir: Path) -> dict:
             asof = asof or _td.get("data_asof")
             if _td.get("data_lag") or (asof and str(_td.get("date") or "")[:10] > str(asof)[:10]):
                 lag_note = (
-                    f"<p class='muted' style='color:var(--amber)'>⚠ DATA_LAG: 行情截至 {_esc(asof)} · "
-                    f"wall/交易日 {_esc(_td.get('date'))} · Lrets=0 常为仅锚日, 等数据更新后再判 xs</p>"
+                    f"<p class='muted' style='color:var(--amber)'>⚠ 行情未更新: 行情截至 {_esc(asof)} · "
+                    f"wall/交易日 {_esc(_td.get('date'))} · 已统计0天通常还没开始算, 等行情更新后再看相对大盘</p>"
                 )
         except Exception:
             lag_note = ""
         lbody = (
             f"<p>{ab}</p>{lag_note}<div class='card'><h2>主线 LIVE 收益</h2>"
-            "<p class='muted'>live% = 暖机末→今 · xs% = live−基准 · THIN=样本&lt;5日 · "
-            "Lrets=0=仅锚日 (DATA_LAG/刚暖机常见)</p>"
-            "<table><thead><tr><th>策略</th><th>live%</th><th>bench%</th><th>xs%</th><th>净值</th>"
-            "<th>持仓</th><th>Lrets</th><th>备注</th></tr></thead>"
+            "<p class='muted'>实盘段=暖机后到今天 · 相对大盘=实盘段−大盘 · 样本未满5天别当真 · "
+            "已统计0天=还没开始算实盘 (行情未更新/刚暖机常见)</p>"
+            "<table><thead><tr><th>策略</th><th>实盘段</th><th>bench%</th><th>相对大盘</th><th>净值</th>"
+            "<th>持仓</th><th>已统计天数</th><th>备注</th></tr></thead>"
             f"<tbody>{''.join(lrows)}</tbody></table>"
             f"<p class='muted'><code>./etf live</code></p></div>"
         )
@@ -1227,7 +1332,7 @@ def build(out_dir: Path) -> dict:
                 r.get("days_live") is not None and int(r.get("days_live") or 0) < 5
             ):
                 if lr_s:
-                    lr_s = f"{lr_s} THIN"
+                    lr_s = f"{lr_s} 样本还少"
             xs = r.get("live_excess_pct")
             xs_s = "" if xs is None else f"{float(xs):+.2f}%"
             rows_html.append(
@@ -1244,9 +1349,9 @@ def build(out_dir: Path) -> dict:
             )
         mbody = (
             f"<p>{ab}</p>{_lag_banner_html(latest_obj)}<div class='card'><h2>影子监控表</h2>"
-            f"<p class='muted'>{_esc(mon_obj.get('bench'))} · THIN=live 样本&lt;5日 · Lrets=0=仅锚日/DATA_LAG</p>"
+            f"<p class='muted'>{_esc(mon_obj.get('bench'))} · 样本未满5天别当真 · 0天=还没开始算 · 行情未更新时别解读</p>"
             "<table><thead><tr><th>影子</th><th>暴露</th><th>vol</th><th>资产</th>"
-            "<th>live%</th><th>xs%</th><th>全样本</th><th>持仓</th><th>rets</th><th>告警</th></tr></thead>"
+            "<th>实盘段</th><th>相对大盘</th><th>全样本</th><th>持仓</th><th>rets</th><th>告警</th></tr></thead>"
             f"<tbody>{''.join(rows_html)}</tbody></table></div>"
         )
         if monitor_txt:
@@ -1270,7 +1375,7 @@ def build(out_dir: Path) -> dict:
         abody = (
             f"<p>{ab}</p>{_lag_banner_html(latest_obj)}<div class='card'><h2>告警列表</h2>"
             f"<ul class='alerts'>{''.join(lis)}</ul>"
-            f"<p class='muted'>来源: shadow_monitor.json / pipeline_last.json · DATA_LAG 不是告警</p></div>"
+            f"<p class='muted'>来源: shadow_monitor.json / pipeline_last.json · 行情未更新 不是告警</p></div>"
         )
     else:
         abody = (
@@ -1287,7 +1392,7 @@ def build(out_dir: Path) -> dict:
         sbody = (
             f"{_lag_banner_html(latest_obj)}"
             f"<div class='card'><h2>影子仓位摘要</h2>"
-            f"<p class='muted'>THIN=样本&lt;5日 · Lrets=0=仅锚日 · DATA_LAG=行情未到</p>"
+            f"<p class='muted'>样本未满5天别当真 · 已统计0天=还没开始算实盘 · 行情未更新完</p>"
             f"<pre class='raw'>{_esc(summary)}</pre></div>"
         )
     else:
@@ -1321,7 +1426,7 @@ def build(out_dir: Path) -> dict:
                 except Exception:
                     thin = False
             if thin and lr_s != "—":
-                lr_s = f"{lr_s} THIN"
+                lr_s = f"{lr_s} 样本还少"
             return lr_s
 
         def _sh_xs_cell(s: dict) -> str:
@@ -1367,12 +1472,12 @@ def build(out_dir: Path) -> dict:
                 except Exception:
                     thin = False
             if thin and sl_live_s != "—":
-                sl_live_s = f"{sl_live_s} THIN"
+                sl_live_s = f"{sl_live_s} 样本还少"
             asof0 = sl.get("market_asof")
             # data_asof may not be defined yet here; fill after td0
-            sl_sub = f"{sl.get('name') or ''} · Lrets={dl if dl is not None else '—'}"
+            sl_sub = f"{sl.get('name') or ''} · 已统计={dl if dl is not None else '—'}天"
             if dl == 0:
-                sl_sub += " · 仅锚日"
+                sl_sub += " · 还没开始统计"
         stale = bool(status_obj.get("latest_stale"))
         td0 = status_obj.get("trading_day") or {}
         data_asof = td0.get("data_asof") or (latest_obj or {}).get("market_asof")
@@ -1384,13 +1489,13 @@ def build(out_dir: Path) -> dict:
             if sl.get("market_asof") or data_asof:
                 extra.append(f"asof={sl.get('market_asof') or data_asof}")
             if data_lag:
-                extra.append("DATA_LAG")
+                extra.append("行情未更新")
             if extra:
                 sl_sub = (sl_sub + " · " if sl_sub else "") + " · ".join(extra)
         warn_bits = []
         if data_lag:
             warn_bits.append(
-                "<p class='muted' style='color:var(--amber)'>⚠ 行情滞后 DATA_LAG: 行情截至 "
+                "<p class='muted' style='color:var(--amber)'>⚠ 行情滞后 行情未更新: 行情截至 "
                 f"{_esc(data_asof)} · wall/交易日 {_esc(td0.get('date'))} "
                 f"(nav/live 以 asof 为准)</p>"
             )
@@ -1407,9 +1512,9 @@ def build(out_dir: Path) -> dict:
 {stale_html}
 <div class="grid kpis">
   {_kpi('状态时间', _esc(status_obj.get('stamp')), _esc(status_obj.get('latest_time') or ''))}
-  {_kpi('交易日', _esc(td0.get('is_trading_day')), f"date={td0.get('date') or '—'} asof={data_asof or '—'}" + (" DATA_LAG" if data_lag else ""))}
-  {_kpi('SIGNAL live%', sl_live_s, sl_sub, 'green' if (sl and (sl.get('live_return_pct') or 0) > 0) else '')}
-  {_kpi('SIGNAL xs%', sl_xs_s, 'vs 基准同期', 'green' if (sl and (sl.get('live_excess_pct') or 0) > 0) else '')}
+  {_kpi('交易日', _esc(td0.get('is_trading_day')), f"date={td0.get('date') or '—'} asof={data_asof or '—'}" + (" 行情未更新" if data_lag else ""))}
+  {_kpi('信号·实盘段', sl_live_s, sl_sub, 'green' if (sl and (sl.get('live_return_pct') or 0) > 0) else '')}
+  {_kpi('信号·相对大盘', sl_xs_s, 'vs 基准同期', 'green' if (sl and (sl.get('live_excess_pct') or 0) > 0) else '')}
 </div>
 <div class="grid kpis" style="margin-top:.55rem">
   {_kpi('监控', f"E{(status_obj.get('monitor') or {}).get('alert_error_n',0)}/W{(status_obj.get('monitor') or {}).get('alert_warn_n',0)}", '')}
@@ -1421,8 +1526,8 @@ def build(out_dir: Path) -> dict:
     <tbody>{cfg_rows or '<tr><td colspan=5 class=muted>无</td></tr>'}</tbody></table>
   </div>
   <div class="card"><h2>影子</h2>
-    <p class="muted">live%/xs% 为暖机后有效收益 · THIN=样本&lt;5日</p>
-    <table><thead><tr><th>名</th><th>资产</th><th>live%</th><th>xs%</th><th>全样本</th><th>Lrets</th><th>持仓</th></tr></thead>
+    <p class="muted">实盘段/相对大盘 为暖机后有效收益 · 样本未满5天别当真</p>
+    <table><thead><tr><th>名</th><th>资产</th><th>实盘段</th><th>相对大盘</th><th>全样本</th><th>已统计天数</th><th>持仓</th></tr></thead>
     <tbody>{sh_rows or '<tr><td colspan=7 class=muted>无</td></tr>'}</tbody></table>
   </div>
 </div>
@@ -1442,7 +1547,7 @@ def build(out_dir: Path) -> dict:
         tbody = (
             f"<p>{ab}</p>{_lag_banner_html(latest_obj)}"
             f"<div class='card'><h2>今日速览</h2><pre class='raw'>{_esc(today_txt)}</pre></div>"
-            f"<p class='muted'>有效收益=live%+xs% · THIN=样本&lt;5日 · DATA_LAG=行情未到 · 生产 c01 冻结</p>"
+            f"<p class='muted'>有效收益=实盘段收益+相对大盘 · 样本未满5天别当真 · 行情未更新完 · 生产 c01 冻结</p>"
         )
     elif isinstance(today_obj, dict) and today_obj.get("text"):
         tbody = (
@@ -1470,7 +1575,7 @@ def build(out_dir: Path) -> dict:
         abody = (
             f"<p>{ab}</p>{_lag_banner_html(latest_obj)}"
             f"<div class='card'><h2>行情/收益取证</h2><pre class='raw'>{_esc(asof_txt)}</pre></div>"
-            f"<p class='muted'>DATA_LAG 等行情 · 过旧用 refresh · <code>./etf asof</code></p>"
+            f"<p class='muted'>行情未更新 等行情 · 过旧用 refresh · <code>./etf asof</code></p>"
         )
     elif isinstance(asof_obj, dict) and asof_obj.get("text"):
         abody = (
@@ -1497,7 +1602,7 @@ def build(out_dir: Path) -> dict:
         ybody = (
             f"<p>{ab}</p>{_lag_banner_html(latest_obj)}"
             f"<div class='card'><h2>有效收益 (live段)</h2><pre class='raw'>{_esc(yield_txt)}</pre></div>"
-            f"<p class='muted'>有效收益=live%+xs% · 非全样本 · dtr={_esc((yield_obj or {}).get('days_to_ready') if isinstance(yield_obj, dict) else None)} · ETA {_esc(((yield_obj or {}).get('eta_note') if isinstance(yield_obj, dict) else None) or '—')} · <code>./etf yield</code> · <code>./etf progress</code></p>"
+            f"<p class='muted'>有效收益=实盘段收益+相对大盘 · 不是全历史回测 · 距可判={_esc((yield_obj or {}).get('days_to_ready') if isinstance(yield_obj, dict) else None)} · {_esc(((yield_obj or {}).get('eta_note') if isinstance(yield_obj, dict) else None) or '—')} · <code>./etf yield</code> · <code>./etf progress</code></p>"
         )
     elif isinstance(yield_obj, dict) and yield_obj.get("text"):
         ybody = (
@@ -1524,7 +1629,7 @@ def build(out_dir: Path) -> dict:
         bbody = (
             f"<p>{ab}</p>{_lag_banner_html(latest_obj)}"
             f"<div class='card'><h2>三合一速览</h2><pre class='raw'>{_esc(brief_txt)}</pre></div>"
-            f"<p class='muted'>有效收益=live%+xs% · <code>./etf brief</code></p>"
+            f"<p class='muted'>有效收益=实盘段收益+相对大盘 · <code>./etf brief</code></p>"
         )
     elif isinstance(brief_obj, dict) and brief_obj.get("text"):
         bbody = (
@@ -1551,7 +1656,7 @@ def build(out_dir: Path) -> dict:
         dbody = (
             f"<p>{ab}</p>{_lag_banner_html(latest_obj)}"
             f"<div class='card'><h2>行情状态</h2><pre class='raw'>{_esc(data_txt)}</pre></div>"
-            f"<p class='muted'>DATA_LAG→等行情 · STALE→refresh · <code>./etf data</code></p>"
+            f"<p class='muted'>行情未更新→等行情 · 信号过旧→刷新 · <code>./etf data</code></p>"
         )
     elif isinstance(data_obj, dict):
         # structured fallback
@@ -1584,7 +1689,7 @@ def build(out_dir: Path) -> dict:
         nbody = (
             f"<p>{ab}</p>{_lag_banner_html(latest_obj)}"
             f"<div class='card'><h2>一键下一步</h2><pre class='raw'>{_esc(next_txt)}</pre></div>"
-            f"<p class='muted'>WAIT_DATA=等行情 · STALE=refresh · <code>./etf next</code></p>"
+            f"<p class='muted'>等行情=等行情 · STALE=refresh · <code>./etf next</code></p>"
         )
     elif isinstance(next_obj, dict):
         nlines = [
@@ -1685,13 +1790,13 @@ def build(out_dir: Path) -> dict:
         rbody = (
             f"<p>{ab}</p>{_lag_banner_html(latest_obj)}"
             f"<div class='card'><h2>有效收益可判性</h2><pre class='raw'>{_esc(ready_txt)}</pre></div>"
-            f"<p class='muted'><code>./etf ready</code> · dtr={_esc((ready_obj or {}).get('days_to_ready') if isinstance(ready_obj, dict) else None)} · ETA {_esc(((ready_obj or {}).get('eta_note') if isinstance(ready_obj, dict) else None) or '—')} · READY才可强解读 live%/xs% · <code>./etf progress</code></p>"
+            f"<p class='muted'><code>./etf ready</code> · 距可判={_esc((ready_obj or {}).get('days_to_ready') if isinstance(ready_obj, dict) else None)} · {_esc(((ready_obj or {}).get('eta_note') if isinstance(ready_obj, dict) else None) or '—')} · 只有“可当真收益看”时才解读实盘段/相对大盘 · <code>./etf progress</code></p>"
         )
     elif isinstance(ready_obj, dict):
         rlines = [
             f"level={ready_obj.get('level')}",
             f"asof={ready_obj.get('market_asof')} lag={ready_obj.get('data_lag')}",
-            f"live={ready_obj.get('live_return_pct')} xs={ready_obj.get('live_excess_pct')} Lrets={ready_obj.get('days_live')}",
+            f"live={ready_obj.get('live_return_pct')} xs={ready_obj.get('live_excess_pct')} 已统计={ready_obj.get('days_live')}天",
             f"说明: {ready_obj.get('note')}",
         ]
         rbody = (
@@ -1752,7 +1857,7 @@ def build(out_dir: Path) -> dict:
             f"level={eod_obj.get('level')}",
             f"asof={eod_obj.get('market_asof')} lag={eod_obj.get('data_lag')}",
             f"live={eod_obj.get('live_return_pct')} xs={eod_obj.get('live_excess_pct')} "
-            f"Lrets={eod_obj.get('days_live')} days_to_ready={eod_obj.get('days_to_ready')}",
+            f"已统计={eod_obj.get('days_live')}天 days_to_ready={eod_obj.get('days_to_ready')}",
             f"推荐: {eod_obj.get('recommend')}",
         ]
         ebody = (
@@ -1773,7 +1878,7 @@ def build(out_dir: Path) -> dict:
         pbody = (
             f"<p>{ab}</p>{_lag_banner_html(latest_obj)}"
             f"<div class='card'><h2>可判性轨迹</h2><pre class='raw'>{_esc(prog_txt)}</pre></div>"
-            f"<p class='muted'><code>./etf progress</code> · 观察 Lrets→READY</p>"
+            f"<p class='muted'><code>./etf progress</code> · 观察统计天数是否攒够</p>"
         )
     else:
         pbody = (

@@ -128,6 +128,47 @@ def _load_json(path: Path) -> dict[str, Any] | None:
         return None
 
 
+
+def _zh_level(level) -> str:
+    m = {
+        "READY": "可当真收益看",
+        "THIN": "样本还少",
+        "NOT_READY": "暂不可判",
+        "WAIT_DATA": "等行情更新",
+        "PARTIAL": "部分可观察",
+    }
+    s = str(level or "").strip()
+    return m.get(s, s or "—")
+
+
+def _zh_action(action) -> str:
+    m = {
+        "wait_asof": "先等行情更新",
+        "refresh": "先刷新信号",
+        "accumulate": "继续日更攒样本",
+        "read_yield": "可以看真实收益了",
+        "doctor": "先体检排查",
+        "wait_data": "先等行情更新",
+        "ok": "数据齐",
+    }
+    s = str(action or "").strip()
+    return m.get(s, s or "—")
+
+
+def _zh_sample_days(dl, thin=None) -> str:
+    try:
+        if dl is None:
+            return "样本未知"
+        n = int(dl)
+        if n <= 0:
+            return "还没开始统计"
+        if thin or n < 5:
+            return f"已统计{n}天(满5天更稳)"
+        return f"已统计{n}天"
+    except Exception:
+        return "样本未知"
+
+
 def _esc(x: Any) -> str:
     return html.escape("" if x is None else str(x))
 
@@ -429,7 +470,7 @@ def _progress_block() -> str:
     path = ROOT / "output" / "progress.txt"
     if path.exists():
         return path.read_text(encoding="utf-8")
-    return "======== PROGRESS ========\n(无 progress 产物; ./etf progress)\n"
+    return "======== 统计进度 ========\n(暂无统计进度; ./etf progress)\n"
 
 
 
@@ -437,7 +478,7 @@ def _pulse_block() -> str:
     path = ROOT / "output" / "pulse.txt"
     if path.exists():
         return path.read_text(encoding="utf-8")
-    return "======== PULSE ========\n(无 pulse 产物; ./etf pulse)\n"
+    return "======== 现在怎么办 ========\n(暂无脉搏; ./etf pulse)\n"
 
 def _eta_summary_line() -> str:
     """邮件首屏: 距可判/ETA (真实有效收益可读性)."""
@@ -473,21 +514,33 @@ def _eta_summary_line() -> str:
             lag = bool(o.get("data_lag"))
         if dtr is not None and eta:
             break
-    parts = ["======== 可判/ETA ========"]
+    parts = ["======== 能不能当真看收益 ========"]
     if level:
-        parts.append(f"level: {level}")
+        parts.append(f"结论: {_zh_level(level)}")
     if dtr is not None:
-        parts.append(f"距可判: {dtr} 交易日 (Lrets≥5)")
+        parts.append(f"距可判: 大约还要{dtr}个交易日 (满5天更稳)")
     if eta:
-        parts.append(f"ETA: {eta}")
+        parts.append(
+            "说明: "
+            + str(eta)
+            .replace("READY (Lrets≥5)", "可当真看收益")
+            .replace("Lrets≥5", "满5天更稳")
+            .replace("READY", "可当真看收益")
+            .replace("DATA_LAG", "行情未更新")
+            .replace("另需 asof 先推进", "先等今日行情写入")
+            .replace("另需 行情 先推进", "先等今日行情写入")
+            .replace("asof", "行情")
+            .replace("约再 ", "大约还要")
+            .replace("可 可当真", "可当真")
+        )
     elif dtr is not None:
         try:
             di = int(dtr)
             if di <= 0:
-                parts.append("ETA: 样本已够 (若无 DATA_LAG → READY)")
+                parts.append("样本已够 (若行情也齐 → 可当真收益看)")
             else:
-                lag_s = "; 另需 asof 先推进" if lag else ""
-                parts.append(f"ETA: 约再 {di} 个交易日可 READY (Lrets≥5){lag_s}")
+                lag_s = "；先等今日行情写入" if lag else ""
+                parts.append(f"还要约{di}个交易日才能当真看收益{lag_s}")
         except Exception:
             pass
     try:
@@ -496,8 +549,11 @@ def _eta_summary_line() -> str:
             pj = json.loads(pp.read_text(encoding="utf-8"))
             if isinstance(pj, dict) and pj.get("next_action"):
                 parts.append(
-                    "next_action: %s readable=%s → ./etf do"
-                    % (pj.get("next_action"), pj.get("readable_yield"))
+                    "下一步: %s · %s → ./etf do"
+                    % (
+                        _zh_action(pj.get("next_action")),
+                        "现在可当真收益看" if pj.get("readable_yield") else "现在不要当真收益看",
+                    )
                 )
     except Exception:
         pass
@@ -545,7 +601,7 @@ def _plain_body(
         if eta_blk:
             body = body.rstrip() + "\n\n" + eta_blk + "\n"
     except Exception as e:
-        body = body.rstrip() + f"\n\n--------\nETA 摘要失败: {e}\n"
+        body = body.rstrip() + f"\n\n--------\n可判说明生成失败: {e}\n"
 
     if append_shadow:
         try:
@@ -571,7 +627,7 @@ def _plain_body(
         notes = []
         if (td or {}).get("data_lag") or (asof and td_date and asof < td_date):
             notes.append(
-                f"⚠ 行情滞后 DATA_LAG: 行情截至 {asof} · wall/交易日 {td_date} → ./etf next|data"
+                f"⚠ 行情还没更新完: 行情截至 {asof} · 今天交易日 {td_date} → ./etf next|data"
             )
         if (td or {}).get("is_trading_day") and td_date and ld and ld < td_date:
             notes.append(
@@ -831,7 +887,7 @@ def _html_report(
         if _eta_txt:
             extra_sections += (
                 f"<div style='margin-top:12px;padding:12px 14px;border:1px solid #d0d7de;border-radius:10px;background:#fff8c5'>"
-                f"<div style='font-size:12px;font-weight:600;color:#24292f;margin-bottom:6px'>可判 / ETA</div>"
+                f"<div style='font-size:12px;font-weight:600;color:#24292f;margin-bottom:6px'>能不能当真看收益</div>"
                 f"<pre style='margin:0;white-space:pre-wrap;font-size:12px;line-height:1.45'>{_esc(_eta_txt)}</pre></div>"
             )
     except Exception:
@@ -906,7 +962,7 @@ def _html_report(
             yield_txt = f"yield 失败: {e}"
         extra_sections += (
             f"<div style='margin-top:16px;padding:12px 14px;border:1px solid #d0d7de;border-radius:10px'>"
-            f"<div style='font-size:12px;font-weight:600;color:#24292f;margin-bottom:6px'>有效收益 (yield)</div>"
+            f"<div style='font-size:12px;font-weight:600;color:#24292f;margin-bottom:6px'>真实有效收益</div>"
             f"<pre style='margin:0;white-space:pre-wrap;font-size:12px;line-height:1.45'>{_esc(yield_txt)}</pre></div>"
         )
 
@@ -1005,7 +1061,7 @@ def _html_report(
             progress_txt = f"progress 失败: {e}"
         extra_sections += (
             f"<div style='margin-top:16px;padding:12px 14px;border:1px solid #d0d7de;border-radius:10px'>"
-            f"<div style='font-size:12px;font-weight:600;color:#24292f;margin-bottom:6px'>PROGRESS 可判轨迹</div>"
+            f"<div style='font-size:12px;font-weight:600;color:#24292f;margin-bottom:6px'>统计进度</div>"
             f"<pre style='margin:0;white-space:pre-wrap;font-size:12px;line-height:1.45'>{_esc(progress_txt)}</pre></div>"
         )
 
@@ -1016,7 +1072,7 @@ def _html_report(
             pulse_txt = f"pulse 失败: {e}"
         extra_sections += (
             f"<div style='margin-top:16px;padding:12px 14px;border:1px solid #d0d7de;border-radius:10px'>"
-            f"<div style='font-size:12px;font-weight:600;color:#24292f;margin-bottom:6px'>PULSE 脉搏</div>"
+            f"<div style='font-size:12px;font-weight:600;color:#24292f;margin-bottom:6px'>现在怎么办</div>"
             f"<pre style='margin:0;white-space:pre-wrap;font-size:12px;line-height:1.45'>{_esc(pulse_txt)}</pre></div>"
         )
 
@@ -1033,7 +1089,7 @@ def _html_report(
     sh_action = _esc(shadow.get("action") or "—")
     ret = (latest or {}).get("return_pct")
     tv = (latest or {}).get("total_value")
-    # 研究影子 live% / xs% (真实日更段)
+    # 研究影子 实盘段/相对大盘 (日更有效收益)
     sh_state = shadow.get("state") if isinstance(shadow.get("state"), dict) else {}
     sh_live = sh_state.get("live") if isinstance(sh_state.get("live"), dict) else {}
     if not sh_live and isinstance(shadow.get("live"), dict):
@@ -1095,7 +1151,7 @@ def _html_report(
     except Exception:
         sh_live_s = "—"
     if sh_thin:
-        sh_live_s = f"{sh_live_s} THIN"
+        sh_live_s = f"{sh_live_s} 样本还少"
     try:
         sh_xs_s = f"{float(sh_xs):+.2f}%" if sh_xs is not None else "—"
     except Exception:
@@ -1107,7 +1163,7 @@ def _html_report(
     except Exception:
         sh_bench_s = "—"
     if sh_days is not None:
-        sh_bench_s = f"{sh_bench_s} · Lrets={sh_days}"
+        sh_bench_s = f"{sh_bench_s} · {_zh_sample_days(sh_days)}"
 
     # latest 过旧 / 行情滞后提示
     stale_note = ""
@@ -1123,8 +1179,8 @@ def _html_report(
         bits = []
         if (td or {}).get("data_lag") or (asof and td_date and asof < td_date):
             bits.append(
-                f"<b>⚠ 行情滞后 DATA_LAG</b> · 行情截至 {_esc(asof)} · wall/交易日 {_esc(td_date)} "
-                f"(nav/live 以 asof 为准) · <code>./etf asof</code>"
+                f"<b>⚠ 行情还没更新完</b> · 行情截至 {_esc(asof)} · 今天交易日 {_esc(td_date)} "
+                f"(净值/收益以行情截止日为准) · <code>./etf asof</code>"
             )
         if (td or {}).get("is_trading_day") and td_date and ld and ld < td_date:
             bits.append(
@@ -1170,12 +1226,12 @@ def _html_report(
           <div style="font-weight:700">{_esc(hold_name)}</div>
         </div>
         <div style="flex:1 1 140px;background:#f6f8fa;border-radius:10px;padding:10px 12px">
-          <div style="font-size:12px;color:#656d76">影子 live%</div>
+          <div style="font-size:12px;color:#656d76">研究影子·实盘段</div>
           <div style="font-weight:700">{_esc(sh_live_s)}</div>
-          <div style="font-size:11px;color:#656d76;margin-top:2px">Lrets={_esc(sh_days if sh_days is not None else '—')} · asof {_esc((latest or {}).get('market_asof') or '—')}{(' · DATA_LAG' if (latest or {}).get('signal_live', {}).get('data_lag') or (sh_days == 0) else '')}</div>
+          <div style="font-size:11px;color:#656d76;margin-top:2px">已统计{_esc(sh_days if sh_days is not None else '—')} · 截至 {_esc((latest or {}).get('market_asof') or '—')}{(' · 行情未更新' if (latest or {}).get('signal_live', {}).get('data_lag') or (sh_days == 0) else '')}</div>
         </div>
         <div style="flex:1 1 140px;background:#f6f8fa;border-radius:10px;padding:10px 12px">
-          <div style="font-size:12px;color:#656d76">超额 xs%</div>
+          <div style="font-size:12px;color:#656d76">相对大盘</div>
           <div style="font-weight:700">{_esc(sh_xs_s)}</div>
           <div style="font-size:11px;color:#656d76;margin-top:2px">基准 {_esc(sh_bench_s)}</div>
         </div>
@@ -1288,7 +1344,7 @@ def main() -> None:
     ap.add_argument(
         "--append-yield",
         action="store_true",
-        help="附加有效收益 (yield)",
+        help="附加真实有效收益",
     )
     ap.add_argument(
         "--append-brief",
@@ -1420,11 +1476,16 @@ def main() -> None:
                     thin = False
             parts = []
             if lr is not None:
-                parts.append(f"live{float(lr):+.1f}%")
+                parts.append(f"实盘段{float(lr):+.1f}%")
             if xs is not None:
-                parts.append(f"xs{float(xs):+.1f}%")
+                parts.append(f"相对大盘{float(xs):+.1f}%")
             if thin:
-                parts.append("THIN")
+                parts.append("样本还少")
+            if dl is not None:
+                try:
+                    parts.append(_zh_sample_days(dl, thin))
+                except Exception:
+                    pass
             # DATA_LAG 标进主题, 避免扫一眼误判 xs=0
             lag = src.get("data_lag")
             asof = src.get("market_asof") or (latest or {}).get("market_asof")
@@ -1437,17 +1498,17 @@ def main() -> None:
                 except Exception:
                     lag = False
             if lag:
-                parts.append("DATA_LAG")
-                parts.append("WAIT_DATA")
+                parts.append("行情未更新")
+                parts.append("等行情")
             elif asof:
-                parts.append(f"asof{asof}")
+                parts.append(f"截至{asof}")
             # data_status.decision 补充
             try:
                 dsp = ROOT / "output" / "risk_audit" / "data_status.json"
                 if dsp.exists():
                     dd = json.loads(dsp.read_text(encoding="utf-8"))
                     if isinstance(dd, dict) and dd.get("decision") in ("wait_data", "refresh"):
-                        tag = "WAIT_DATA" if dd.get("decision") == "wait_data" else "STALE"
+                        tag = "等行情" if dd.get("decision") == "wait_data" else "信号过旧"
                         if tag not in parts:
                             parts.append(tag)
             except Exception:
@@ -1460,7 +1521,7 @@ def main() -> None:
                         (pj.get("after") or {}).get("data_lag")
                     ):
                         if "NO_ADVANCE" not in parts:
-                            parts.append("NO_ADVANCE")
+                            parts.append("行情没推进")
             except Exception:
                 pass
             try:
@@ -1470,8 +1531,9 @@ def main() -> None:
                     if isinstance(rj, dict) and rj.get("level"):
                         lv = str(rj.get("level"))
                         if lv in ("NOT_READY", "WAIT_DATA", "THIN", "READY", "PARTIAL"):
-                            if lv not in parts:
-                                parts.append(lv)
+                            zh = _zh_level(lv)
+                            if zh not in parts:
+                                parts.append(zh)
             except Exception:
                 pass
             try:
@@ -1481,7 +1543,7 @@ def main() -> None:
                     if isinstance(rj, dict) and rj.get("days_to_ready") is not None:
                         try:
                             dtr = int(rj.get("days_to_ready"))
-                            tag = f"DTR{dtr}"
+                            tag = f"还要约{dtr}天"
                             if tag not in parts and dtr > 0:
                                 parts.append(tag)
                         except Exception:
@@ -1495,12 +1557,31 @@ def main() -> None:
                     if isinstance(pj, dict):
                         lv = str(pj.get("level") or "")
                         if lv and lv != "READY" and "PULSE" not in parts:
-                            # 提醒先看脉搏, 勿把 THIN/LAG 当有效收益
-                            parts.append("PULSE")
+                            # 提醒先看脉搏, 勿把 样本还少/LAG 当有效收益
+                            parts.append("先看脉搏")
             except Exception:
                 pass
             if parts:
-                live_tag = " | " + " ".join(parts)
+                _map = {
+                    "WAIT_DATA": "等行情",
+                    "DATA_LAG": "行情未更新",
+                    "NO_ADVANCE": "行情没推进",
+                    "NOT_READY": "暂不可判",
+                    "THIN": "样本还少",
+                    "READY": "可当真收益看",
+                    "STALE": "信号过旧",
+                    "PULSE": "先看脉搏",
+                }
+                parts = [_map.get(str(p), str(p)) for p in parts]
+                # 去重保序
+                seen = set()
+                parts2 = []
+                for p in parts:
+                    if p in seen:
+                        continue
+                    seen.add(p)
+                    parts2.append(p)
+                live_tag = " | " + " ".join(parts2)
     except Exception:
         live_tag = ""
     subject_prefix = os.environ.get("MAIL_SUBJECT", "ETF轮动信号")
