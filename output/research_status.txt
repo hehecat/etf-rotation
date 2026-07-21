@@ -1,7 +1,7 @@
 ======== 研究状态面板 ========
-时间: 2026-07-21T23:09:16
+时间: 2026-07-21T23:27:32
 交易日: True source=bench_calendar date=2026-07-21  行情截至=2026-07-21
-生产 state: True  latest: True  信号时间: 2026-07-21 23:08
+生产 state: True  latest: True  信号时间: 2026-07-21 23:27
 -------- 有效收益 (SIGNAL) --------
   策略: c01_q10_vt08_soft_oh38_xgn
   live=+0.000% THIN  xs=+0.000%  bench=+0.000%
@@ -48,20 +48,20 @@
 -------- 监控告警 --------
   error=0 warn=4 ok=True
 -------- pipeline 上次 --------
-  stamp=None ok=None alerts=None/None td=None asof=— lag=None
+  stamp=20260721_230832 ok=True alerts=0/4 td=True asof=2026-07-21 lag=False
 -------- healthcheck 上次 --------
   stamp=None ok=None secs=None
 -------- weekly 上次 --------
   stamp=None ok=None alert_fail=None
 -------- site --------
-  built=None alerts=None/None today=None live=None compare=None
+  built=2026-07-21T23:09:21 alerts=0/4 today=True live=True compare=True
 -------- 主线对照 --------
   ======== 主线影子对照 ========
   信号默认: c01_q10_vt08_soft_oh38_xgn
-  c01_q10_vt08_soft_oh38           —      —   +0.00       —     100000    ? L@2026-07-21 THIN
-  c01_q10_vt08_soft_oh38_xgn       —      —   +0.00       —     100000    ? SIGNAL L@2026-07-21 THIN
-  c01_q10_vt09_oh35                —      —   +0.00       —     100000    ? L@2026-07-21 THIN
-  c01_q10_vt11                     —      —   +0.00       —     100000    ? L@2026-07-21 THIN
+  c01_q10_vt08_soft_oh38           —      —   +0.00   +0.00     100000    ? L@2026-07-21 THIN
+  c01_q10_vt08_soft_oh38_xgn       —      —   +0.00   +0.00     100000    ? SIGNAL L@2026-07-21 THIN
+  c01_q10_vt09_oh35                —      —   +0.00   +0.00     100000    ? L@2026-07-21 THIN
+  c01_q10_vt11                     —      —   +0.00   +0.00     100000    ? L@2026-07-21 THIN
   ========
 -------- 主线 LIVE --------
   策略: c01_q10_vt08_soft_oh38_xgn
@@ -70,10 +70,10 @@
   注: THIN=样本<5日, 等下一交易日再判 xs
 -------- 影子摘要 --------
   影子仓位 · /home/runner/work/etf-rotation/etf-rotation/output/shadow_states
-  c01_q10_vt08_soft_oh38               资产=  100000.0  live=  +0.00% THIN  xs=       —  全样本=    0.0  持仓0: 空仓  rets=0
-  c01_q10_vt08_soft_oh38_xgn           资产=  100000.0  live=  +0.00% THIN  xs=       —  全样本=    0.0  持仓0: 空仓  rets=0
-  c01_q10_vt09_oh35                    资产=  100000.0  live=  +0.00% THIN  xs=       —  全样本=    0.0  持仓0: 空仓  rets=0
-  c01_q10_vt11                         资产=  100000.0  live=  +0.00% THIN  xs=       —  全样本=    0.0  持仓0: 空仓  rets=0
+  c01_q10_vt08_soft_oh38               资产=  100000.0  live=  +0.00% THIN  xs=  +0.00%  全样本=    0.0  持仓0: 空仓  rets=0
+  c01_q10_vt08_soft_oh38_xgn           资产=  100000.0  live=  +0.00% THIN  xs=  +0.00%  全样本=    0.0  持仓0: 空仓  rets=0
+  c01_q10_vt09_oh35                    资产=  100000.0  live=  +0.00% THIN  xs=  +0.00%  全样本=    0.0  持仓0: 空仓  rets=0
+  c01_q10_vt11                         资产=  100000.0  live=  +0.00% THIN  xs=  +0.00%  全样本=    0.0  持仓0: 空仓  rets=0
 -------- 今日速览 --------
   时间: 2026-07-21T23:09:16
   信号默认影子: c01_q10_vt08_soft_oh38_xgn
@@ -93,7 +93,6 @@
   注: THIN=样本<5日; DATA_LAG 时等行情更新后再判 xs
 -------- 下一步 --------
   · 看信号: output/latest.txt · 面板: output/site/index.html
-  · 无站点 → ./etf pages
   · 今日速览 → ./etf today
   · 刷新面板 → ./etf preview
   · 体检 → ./etf doctor

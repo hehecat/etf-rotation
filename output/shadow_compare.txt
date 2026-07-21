@@ -3,10 +3,10 @@
 目录: /home/runner/work/etf-rotation/etf-rotation/output/shadow_states
 ----------------------------
 name                              sh     dd   live%     xs%         tv gate note
-  c01_q10_vt08_soft_oh38           —      —   +0.00       —     100000    ? L@2026-07-21 THIN
-  c01_q10_vt08_soft_oh38_xgn       —      —   +0.00       —     100000    ? SIGNAL L@2026-07-21 THIN
-  c01_q10_vt09_oh35                —      —   +0.00       —     100000    ? L@2026-07-21 THIN
-  c01_q10_vt11                     —      —   +0.00       —     100000    ? L@2026-07-21 THIN
+  c01_q10_vt08_soft_oh38           —      —   +0.00   +0.00     100000    ? L@2026-07-21 THIN
+  c01_q10_vt08_soft_oh38_xgn       —      —   +0.00   +0.00     100000    ? SIGNAL L@2026-07-21 THIN
+  c01_q10_vt09_oh35                —      —   +0.00   +0.00     100000    ? L@2026-07-21 THIN
+  c01_q10_vt11                     —      —   +0.00   +0.00     100000    ? L@2026-07-21 THIN
 ----------------------------
 说明: sh/dd=暖机; live%/xs%=暖机末→今 (xs=live-基准); THIN=样本<5日
   python3 scripts/etf.py live

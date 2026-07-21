@@ -10,7 +10,7 @@
   "return_pct": 0.0,
   "last_rebalance": null,
   "config": "C01_Q10_VT08_SOFT_OH38_双端研究候选",
-  "last_update": "2026-07-21 23:08",
+  "last_update": "2026-07-21 23:27",
   "holdings": [],
   "days_to_rebalance": 0,
   "market_ok": false,
@@ -34,7 +34,7 @@
     "n_trades": 0,
     "n_holdings": 0,
     "holdings": "空仓",
-    "asof": "2026-07-21 23:08",
+    "asof": "2026-07-21 23:27",
     "from_warmup": false
   }
 }

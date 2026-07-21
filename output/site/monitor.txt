@@ -4,28 +4,28 @@
 --------
 c01_q10_vt08_soft_oh38  暴露=  0.0%  regime=bear×0.0  vol_src=bench scale=0.2722  rets=0
   账户=100000.0 收益=0.0 持仓0: 空仓
-  live=+0.000% THIN xs=— bench=— anchor=100000.0 from=2026-07-21 Lrets=0
+  live=+0.000% THIN xs=+0.000% bench=+0.000% anchor=100000.0 from=2026-07-21 Lrets=0
   注: vol_target 用基准波动代理 (组合收益样本不足)
   注: 趋势关 → 目标暴露 0
   !! WARN [thin_rets] port_rets=0 < 20 (建议 shadow_warmup)
 --------
 c01_q10_vt08_soft_oh38_xgn  暴露=  0.0%  regime=bear×0.0  vol_src=bench scale=0.2722  rets=0
   账户=100000.0 收益=0.0 持仓0: 空仓
-  live=+0.000% THIN xs=— bench=— anchor=100000.0 from=2026-07-21 Lrets=0
+  live=+0.000% THIN xs=+0.000% bench=+0.000% anchor=100000.0 from=2026-07-21 Lrets=0
   注: vol_target 用基准波动代理 (组合收益样本不足)
   注: 趋势关 → 目标暴露 0
   !! WARN [thin_rets] port_rets=0 < 20 (建议 shadow_warmup)
 --------
 c01_q10_vt09_oh35  暴露=  0.0%  regime=None×1.0  vol_src=bench scale=0.3062  rets=0
   账户=100000.0 收益=0.0 持仓0: 空仓
-  live=+0.000% THIN xs=— bench=— anchor=100000.0 from=2026-07-21 Lrets=0
+  live=+0.000% THIN xs=+0.000% bench=+0.000% anchor=100000.0 from=2026-07-21 Lrets=0
   注: vol_target 用基准波动代理 (组合收益样本不足)
   注: 趋势关 → 目标暴露 0
   !! WARN [thin_rets] port_rets=0 < 20 (建议 shadow_warmup)
 --------
 c01_q10_vt11  暴露=  0.0%  regime=None×1.0  vol_src=bench scale=0.3743  rets=0
   账户=100000.0 收益=0.0 持仓0: 空仓
-  live=+0.000% THIN xs=— bench=— anchor=100000.0 from=2026-07-21 Lrets=0
+  live=+0.000% THIN xs=+0.000% bench=+0.000% anchor=100000.0 from=2026-07-21 Lrets=0
   注: vol_target 用基准波动代理 (组合收益样本不足)
   注: 趋势关 → 目标暴露 0
   !! WARN [thin_rets] port_rets=0 < 20 (建议 shadow_warmup)
