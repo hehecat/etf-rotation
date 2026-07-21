@@ -103,12 +103,16 @@ jobs:
           if [ -f output/progress.txt ]; then tail -20 output/progress.txt; else python3 scripts/etf.py progress --no-refresh || true; fi
           echo "---- ETA / pulse ----"
           if [ -f output/pulse.txt ]; then cat output/pulse.txt; else python3 scripts/etf.py pulse --no-refresh --quiet || true; fi
-          python3 -c "import json;from pathlib import Path
-for n in ['pipeline_last','ready','pulse']:
- p=Path('output/risk_audit')/(n+'.json')
- if p.exists():
-  o=json.load(open(p))
-  print(n, {k:o.get(k) for k in ['days_to_ready','eta_note','ready_level','level'] if k in o or True})" || true
+          python3 - <<'PY' || true
+          import json
+          from pathlib import Path
+          for n in ["pipeline_last", "ready", "pulse"]:
+              p = Path("output/risk_audit") / f"{n}.json"
+              if p.exists():
+                  o = json.load(open(p))
+                  keys = ["days_to_ready", "eta_note", "ready_level", "level", "next_action", "readable_yield"]
+                  print(n, {k: o.get(k) for k in keys})
+          PY
           if [ -f output/risk_audit/pipeline_last.json ]; then
             python3 -c "import json;p=json.load(open('output/risk_audit/pipeline_last.json')); print('pipeline.go', p.get('go')); print('pipeline.ready', p.get('ready')); print('pipeline.digest', p.get('digest'))" || true
           fi
