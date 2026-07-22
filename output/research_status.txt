@@ -1,10 +1,10 @@
 ======== 研究状态面板 ========
-时间: 2026-07-22T03:31:39
+时间: 2026-07-22T10:01:29
 交易日: True source=bench_calendar date=2026-07-22  行情截至=2026-07-22
-生产 state: True  latest: True  信号时间: 2026-07-22 03:31
+生产 state: True  latest: True  信号时间: 2026-07-22 10:01
 -------- 有效收益 (SIGNAL) --------
   策略: c01_q10_vt08_soft_oh38_xgn
-  live=+0.000% THIN  xs=-0.731%  bench=+0.731%
+  live=+0.000% THIN  xs=+0.460%  bench=-0.460%
   from=2026-07-21  Lrets=1  持仓=空仓
   行情截至: 2026-07-22
   注: THIN=样本<5日; DATA_LAG 时等行情更新后再判 xs
@@ -40,52 +40,52 @@
   c01_q10_vt09_oh35: frozen=False research=True vt=0.09 top_n=1
   c01_q10_vt11: frozen=False research=True vt=0.11 top_n=1
 -------- 影子 --------
-  c01_q10_vt08_soft_oh38: rets=1 资产=100000.0 live=+0.00% THIN xs=-0.73% 持仓=空仓 warmup=False Lrets=1
-  c01_q10_vt08_soft_oh38_xgn: rets=1 资产=100000.0 live=+0.00% THIN xs=-0.73% 持仓=空仓 warmup=False Lrets=1
-  c01_q10_vt09_oh35: rets=1 资产=100000.0 live=+0.00% THIN xs=-0.73% 持仓=空仓 warmup=False Lrets=1
-  c01_q10_vt11: rets=1 资产=100000.0 live=+0.00% THIN xs=-0.73% 持仓=空仓 warmup=False Lrets=1
+  c01_q10_vt08_soft_oh38: rets=1 资产=100000.0 live=+0.00% THIN xs=+0.46% 持仓=空仓 warmup=False Lrets=1
+  c01_q10_vt08_soft_oh38_xgn: rets=1 资产=100000.0 live=+0.00% THIN xs=+0.46% 持仓=空仓 warmup=False Lrets=1
+  c01_q10_vt09_oh35: rets=1 资产=100000.0 live=+0.00% THIN xs=+0.46% 持仓=空仓 warmup=False Lrets=1
+  c01_q10_vt11: rets=1 资产=100000.0 live=+0.00% THIN xs=+0.46% 持仓=空仓 warmup=False Lrets=1
 -------- 监控告警 --------
   error=0 warn=4 ok=True
 -------- pipeline 上次 --------
-  stamp=20260722_031206 ok=True alerts=0/4 td=True asof=2026-07-22 lag=False
+  stamp=20260722_033113 ok=True alerts=0/4 td=True asof=2026-07-22 lag=False
 -------- healthcheck 上次 --------
   stamp=None ok=None secs=None
 -------- weekly 上次 --------
   stamp=None ok=None alert_fail=None
 -------- site --------
-  built=2026-07-22T11:29:31 alerts=0/4 today=True live=True compare=True
+  built=2026-07-22T03:31:44 alerts=0/4 today=True live=True compare=True
 -------- 主线对照 --------
   ======== 主线影子对照 ========
   信号默认: c01_q10_vt08_soft_oh38_xgn
-  c01_q10_vt08_soft_oh38           —      —   +0.00   -0.23     100000    ? L@2026-07-21 THIN
-  c01_q10_vt08_soft_oh38_xgn       —      —   +0.00   -0.23     100000    ? SIGNAL L@2026-07-21 THIN
-  c01_q10_vt09_oh35                —      —   +0.00   -0.23     100000    ? L@2026-07-21 THIN
-  c01_q10_vt11                     —      —   +0.00   -0.23     100000    ? L@2026-07-21 THIN
+  c01_q10_vt08_soft_oh38           —      —   +0.00   -0.73     100000    ? L@2026-07-21 THIN
+  c01_q10_vt08_soft_oh38_xgn       —      —   +0.00   -0.73     100000    ? SIGNAL L@2026-07-21 THIN
+  c01_q10_vt09_oh35                —      —   +0.00   -0.73     100000    ? L@2026-07-21 THIN
+  c01_q10_vt11                     —      —   +0.00   -0.73     100000    ? L@2026-07-21 THIN
   ========
 -------- 主线 LIVE --------
   策略: c01_q10_vt08_soft_oh38_xgn
-  live=+0.000% THIN  xs=-0.731%  bench=+0.731%
+  live=+0.000% THIN  xs=+0.460%  bench=-0.460%
   from=2026-07-21  Lrets=1  持仓=空仓
   注: THIN=样本<5日, 等下一交易日再判 xs
 -------- 影子摘要 --------
   影子仓位 · /home/runner/work/etf-rotation/etf-rotation/output/shadow_states
-  c01_q10_vt08_soft_oh38               资产=  100000.0  live=  +0.00% THIN  xs=  -0.23%  全样本=    0.0  持仓0: 空仓  rets=1
-  c01_q10_vt08_soft_oh38_xgn           资产=  100000.0  live=  +0.00% THIN  xs=  -0.23%  全样本=    0.0  持仓0: 空仓  rets=1
-  c01_q10_vt09_oh35                    资产=  100000.0  live=  +0.00% THIN  xs=  -0.23%  全样本=    0.0  持仓0: 空仓  rets=1
-  c01_q10_vt11                         资产=  100000.0  live=  +0.00% THIN  xs=  -0.23%  全样本=    0.0  持仓0: 空仓  rets=1
+  c01_q10_vt08_soft_oh38               资产=  100000.0  live=  +0.00% THIN  xs=  -0.73%  全样本=    0.0  持仓0: 空仓  rets=1
+  c01_q10_vt08_soft_oh38_xgn           资产=  100000.0  live=  +0.00% THIN  xs=  -0.73%  全样本=    0.0  持仓0: 空仓  rets=1
+  c01_q10_vt09_oh35                    资产=  100000.0  live=  +0.00% THIN  xs=  -0.73%  全样本=    0.0  持仓0: 空仓  rets=1
+  c01_q10_vt11                         资产=  100000.0  live=  +0.00% THIN  xs=  -0.73%  全样本=    0.0  持仓0: 空仓  rets=1
 -------- 今日速览 --------
-  时间: 2026-07-22T03:12:26
+  时间: 2026-07-22T03:31:39
   信号默认影子: c01_q10_vt08_soft_oh38_xgn
   ----------------------------
   生产动作: ⚪ 空仓观望
-  市场: 关  宽度=0.36  配置=C01_效15d  信号时间: 2026-07-22 03:12  行情截至: 2026-07-22
+  市场: 关  宽度=0.4  配置=C01_效15d  信号时间: 2026-07-22 03:31  行情截至: 2026-07-22
   原因:
   · 大盘趋势向下 → 保持空仓
   研究影子动作: 空仓(趋势关) 暴露0%
   研究目标暴露: 0.0%
   -------- 有效收益 (SIGNAL) --------
   策略: c01_q10_vt08_soft_oh38_xgn
-  live=+0.000% THIN  xs=-0.230%  bench=+0.230%
+  live=+0.000% THIN  xs=-0.731%  bench=+0.731%
   from=2026-07-21  Lrets=1  持仓=空仓
   行情截至: 2026-07-22
   注: THIN=样本<5日; DATA_LAG 时等行情更新后再判 xs

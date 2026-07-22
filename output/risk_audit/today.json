@@ -1,13 +1,13 @@
 {
-  "stamp": "2026-07-22T03:31:39",
+  "stamp": "2026-07-22T10:01:29",
   "signal_shadow": "c01_q10_vt08_soft_oh38_xgn",
   "latest_action": "⚪ 空仓观望",
   "market_ok": false,
   "signal_live": {
     "name": "c01_q10_vt08_soft_oh38_xgn",
     "live_return_pct": 0.0,
-    "bench_return_pct": 0.7311,
-    "live_excess_pct": -0.7311,
+    "bench_return_pct": -0.4596,
+    "live_excess_pct": 0.4596,
     "days_live": 1,
     "thin_live": true,
     "live_start": "2026-07-21",
@@ -19,5 +19,5 @@
   "days_to_ready": 4,
   "eta_note": "约再 4 个交易日可 READY (Lrets≥5)",
   "ready_level": null,
-  "text": "======== ETF 今日速览 ========\n时间: 2026-07-22T03:31:39\n信号默认影子: c01_q10_vt08_soft_oh38_xgn\n----------------------------\n生产动作: ⚪ 空仓观望\n市场: 关  宽度=0.4  配置=C01_效15d  信号时间: 2026-07-22 03:31  行情截至: 2026-07-22\n原因:\n  · 大盘趋势向下 → 保持空仓\n研究影子动作: 空仓(趋势关) 暴露0%\n研究目标暴露: 0.0%\n-------- 有效收益 (SIGNAL) --------\n  策略: c01_q10_vt08_soft_oh38_xgn\n  live=+0.000% THIN  xs=-0.731%  bench=+0.731%\n  from=2026-07-21  Lrets=1  持仓=空仓\n  行情截至: 2026-07-22\n  注: THIN=样本<5日; DATA_LAG 时等行情更新后再判 xs\n-------- 监控告警 --------\n  error=0 warn=4 ok=True\n-------- 下一步 --------\n  ./etf asof     # 优先: DATA_LAG 取证, 等行情\n  # 勿反复 refresh 空转; 行情更新后再判 xs\n  ./etf yield    # 有效收益 live%/xs%\n  ./etf brief    # 三合一速览\n  ./etf data     # 行情状态/决策\n  ./etf next     # 唯一推荐下一步\n  ./etf preview\n  ./etf live\n  ./etf check --checks data_asof,asof\n距可判: 4 交易日\nETA: 约再 4 个交易日可 READY (Lrets≥5)\n轨迹: ./etf progress\n口径: 有效收益=live%+xs%; DATA_LAG 等行情; 生产 c01 冻结\n========"
+  "text": "======== ETF 今日速览 ========\n时间: 2026-07-22T10:01:29\n信号默认影子: c01_q10_vt08_soft_oh38_xgn\n----------------------------\n生产动作: ⚪ 空仓观望\n市场: 关  宽度=0.38  配置=C01_效15d  信号时间: 2026-07-22 10:01  行情截至: 2026-07-22\n原因:\n  · 大盘趋势向下 → 保持空仓\n研究影子动作: 空仓(趋势关) 暴露0%\n研究目标暴露: 0.0%\n-------- 有效收益 (SIGNAL) --------\n  策略: c01_q10_vt08_soft_oh38_xgn\n  live=+0.000% THIN  xs=+0.460%  bench=-0.460%\n  from=2026-07-21  Lrets=1  持仓=空仓\n  行情截至: 2026-07-22\n  注: THIN=样本<5日; DATA_LAG 时等行情更新后再判 xs\n-------- 监控告警 --------\n  error=0 warn=4 ok=True\n-------- 下一步 --------\n  ./etf asof     # 优先: DATA_LAG 取证, 等行情\n  # 勿反复 refresh 空转; 行情更新后再判 xs\n  ./etf yield    # 有效收益 live%/xs%\n  ./etf brief    # 三合一速览\n  ./etf data     # 行情状态/决策\n  ./etf next     # 唯一推荐下一步\n  ./etf preview\n  ./etf live\n  ./etf check --checks data_asof,asof\n距可判: 4 交易日\nETA: 约再 4 个交易日可 READY (Lrets≥5)\n轨迹: ./etf progress\n口径: 有效收益=live%+xs%; DATA_LAG 等行情; 生产 c01 冻结\n========"
 }

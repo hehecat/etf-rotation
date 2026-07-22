@@ -1,5 +1,5 @@
 {
-  "stamp": "2026-07-22T03:31:40",
+  "stamp": "2026-07-22T10:01:30",
   "level": "THIN",
   "market_asof": "2026-07-22",
   "data_lag": false,
@@ -7,11 +7,11 @@
   "action": "⚪ 空仓观望",
   "market_ok": false,
   "live_return_pct": 0.0,
-  "live_excess_pct": -0.7311,
+  "live_excess_pct": 0.4596,
   "days_live": 1,
   "thin_live": true,
   "days_to_ready": 4,
   "eta_note": "约再 4 个交易日可 READY (Lrets≥5)",
   "recommend": "./etf eod --timeout 1800",
-  "text": "======== DIGEST ========\n可判性: THIN\nasof: 2026-07-22 lag=False\nlive=0.0 xs=-0.7311 Lrets=1 thin=True\ndecision: ok\neta: 约再 4 个交易日可 READY (Lrets≥5)\n推荐: ./etf eod --timeout 1800\n========\n"
+  "text": "======== DIGEST ========\n可判性: THIN\nasof: 2026-07-22 lag=False\nlive=0.0 xs=0.4596 Lrets=1 thin=True\ndecision: ok\neta: 约再 4 个交易日可 READY (Lrets≥5)\n推荐: ./etf eod --timeout 1800\n========\n"
 }

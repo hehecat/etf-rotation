@@ -7,7 +7,7 @@
     "return_pct_total": 0.0,
     "holdings": "空仓",
     "n_holdings": 0,
-    "last_update": "2026-07-22 03:31",
+    "last_update": "2026-07-22 10:01",
     "last_trade": null,
     "warmup": false,
     "bt_sharpe": null,
@@ -23,7 +23,7 @@
       "n_trades": 0,
       "n_holdings": 0,
       "holdings": "空仓",
-      "asof": "2026-07-22 03:31",
+      "asof": "2026-07-22 10:01",
       "from_warmup": false
     },
     "live_return_pct": 0.0,
@@ -35,9 +35,9 @@
     "days_live": 1,
     "thin_live": true,
     "bench": "SH510300",
-    "bench_return_pct": 0.7311,
+    "bench_return_pct": -0.4596,
     "bench_end": "2026-07-22",
-    "live_excess_pct": -0.7311
+    "live_excess_pct": 0.4596
   },
   {
     "name": "c01_q10_vt08_soft_oh38_xgn",
@@ -47,7 +47,7 @@
     "return_pct_total": 0.0,
     "holdings": "空仓",
     "n_holdings": 0,
-    "last_update": "2026-07-22 03:31",
+    "last_update": "2026-07-22 10:01",
     "last_trade": null,
     "warmup": false,
     "bt_sharpe": null,
@@ -63,7 +63,7 @@
       "n_trades": 0,
       "n_holdings": 0,
       "holdings": "空仓",
-      "asof": "2026-07-22 03:31",
+      "asof": "2026-07-22 10:01",
       "from_warmup": false
     },
     "live_return_pct": 0.0,
@@ -75,9 +75,9 @@
     "days_live": 1,
     "thin_live": true,
     "bench": "SH510300",
-    "bench_return_pct": 0.7311,
+    "bench_return_pct": -0.4596,
     "bench_end": "2026-07-22",
-    "live_excess_pct": -0.7311
+    "live_excess_pct": 0.4596
   },
   {
     "name": "c01_q10_vt09_oh35",
@@ -87,7 +87,7 @@
     "return_pct_total": 0.0,
     "holdings": "空仓",
     "n_holdings": 0,
-    "last_update": "2026-07-22 03:31",
+    "last_update": "2026-07-22 10:01",
     "last_trade": null,
     "warmup": false,
     "bt_sharpe": null,
@@ -103,7 +103,7 @@
       "n_trades": 0,
       "n_holdings": 0,
       "holdings": "空仓",
-      "asof": "2026-07-22 03:31",
+      "asof": "2026-07-22 10:01",
       "from_warmup": false
     },
     "live_return_pct": 0.0,
@@ -115,9 +115,9 @@
     "days_live": 1,
     "thin_live": true,
     "bench": "SH510300",
-    "bench_return_pct": 0.7311,
+    "bench_return_pct": -0.4596,
     "bench_end": "2026-07-22",
-    "live_excess_pct": -0.7311
+    "live_excess_pct": 0.4596
   },
   {
     "name": "c01_q10_vt11",
@@ -127,7 +127,7 @@
     "return_pct_total": 0.0,
     "holdings": "空仓",
     "n_holdings": 0,
-    "last_update": "2026-07-22 03:31",
+    "last_update": "2026-07-22 10:01",
     "last_trade": null,
     "warmup": false,
     "bt_sharpe": null,
@@ -143,7 +143,7 @@
       "n_trades": 0,
       "n_holdings": 0,
       "holdings": "空仓",
-      "asof": "2026-07-22 03:31",
+      "asof": "2026-07-22 10:01",
       "from_warmup": false
     },
     "live_return_pct": 0.0,
@@ -155,8 +155,8 @@
     "days_live": 1,
     "thin_live": true,
     "bench": "SH510300",
-    "bench_return_pct": 0.7311,
+    "bench_return_pct": -0.4596,
     "bench_end": "2026-07-22",
-    "live_excess_pct": -0.7311
+    "live_excess_pct": 0.4596
   }
 ]

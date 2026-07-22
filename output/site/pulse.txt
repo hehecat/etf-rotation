@@ -1,7 +1,7 @@
 ======== PULSE 脉搏 ========
 level: THIN
 asof: 2026-07-22 lag=False
-live=0.0 xs=-0.7311 Lrets=1 thin=True
+live=0.0 xs=0.4596 Lrets=1 thin=True
 dtr=4 eta=约再 4 个交易日可 READY (Lrets≥5)
 decision: ok
 next_action: accumulate

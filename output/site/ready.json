@@ -1,5 +1,5 @@
 {
-  "stamp": "2026-07-22T03:31:40",
+  "stamp": "2026-07-22T10:01:30",
   "level": "THIN",
   "note": "asof 已齐但样本薄; 可观察方向, 勿下强结论 (约再 4 个交易日可 READY)",
   "market_asof": "2026-07-22",
@@ -7,7 +7,7 @@
   "days_live": 1,
   "thin_live": true,
   "live_return_pct": 0.0,
-  "live_excess_pct": -0.7311,
+  "live_excess_pct": 0.4596,
   "action": "⚪ 空仓观望",
   "market_ok": false,
   "holdings": "空仓",

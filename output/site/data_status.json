@@ -1,5 +1,5 @@
 {
-  "stamp": "2026-07-22T03:31:40",
+  "stamp": "2026-07-22T10:01:30",
   "trading_day": {
     "date": "2026-07-22",
     "is_trading_day": true,
@@ -9,15 +9,15 @@
   },
   "market_asof": "2026-07-22",
   "data_lag": false,
-  "latest_time": "2026-07-22 03:31",
+  "latest_time": "2026-07-22 10:01",
   "latest_stale": false,
   "action": "⚪ 空仓观望",
   "market_ok": false,
   "signal_live": {
     "name": "c01_q10_vt08_soft_oh38_xgn",
     "live_return_pct": 0.0,
-    "bench_return_pct": 0.7311,
-    "live_excess_pct": -0.7311,
+    "bench_return_pct": -0.4596,
+    "live_excess_pct": 0.4596,
     "days_live": 1,
     "thin_live": true,
     "live_start": "2026-07-21",
@@ -29,8 +29,8 @@
   "pipeline_yield": {
     "name": "c01_q10_vt08_soft_oh38_xgn",
     "live_return_pct": 0.0,
-    "live_excess_pct": -0.2298,
-    "bench_return_pct": 0.2298,
+    "live_excess_pct": -0.7311,
+    "bench_return_pct": 0.7311,
     "days_live": 1,
     "thin_live": true,
     "live_start": "2026-07-21",
@@ -39,13 +39,13 @@
     "data_lag": false
   },
   "pipeline_brief": {
-    "stamp": "2026-07-22T03:12:27",
+    "stamp": "2026-07-22T03:31:40",
     "market_asof": "2026-07-22",
     "data_lag": false,
     "action": "⚪ 空仓观望",
     "market_ok": false,
     "live_return_pct": 0.0,
-    "live_excess_pct": -0.2298,
+    "live_excess_pct": -0.7311,
     "days_live": 1,
     "thin_live": true,
     "path_txt": "/home/runner/work/etf-rotation/etf-rotation/output/brief.txt",
