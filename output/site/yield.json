@@ -1,10 +1,10 @@
 {
-  "stamp": "2026-07-21T23:27:33",
+  "stamp": "2026-07-22T06:43:42",
   "market_asof": "2026-07-21",
-  "data_lag": false,
+  "data_lag": true,
   "action": "⚪ 空仓观望",
   "market_ok": false,
-  "latest_time": "2026-07-21 23:27",
+  "latest_time": "2026-07-22 06:36",
   "signal_live": {
     "name": "c01_q10_vt08_soft_oh38_xgn",
     "live_return_pct": 0.0,
@@ -14,9 +14,9 @@
     "thin_live": true,
     "live_start": "2026-07-21",
     "holdings": "空仓",
-    "total_value": 100000.0,
+    "total_value": 913889.39,
     "market_asof": "2026-07-21",
-    "data_lag": false
+    "data_lag": true
   },
   "live_return_pct": 0.0,
   "live_excess_pct": 0.0,
@@ -24,7 +24,7 @@
   "days_live": 0,
   "thin_live": true,
   "days_to_ready": 5,
-  "eta_note": "约再 5 个交易日可 READY (Lrets≥5)",
+  "eta_note": "约再 5 个交易日可 READY (Lrets≥5); 另需 asof 先推进",
   "readable_yield": false,
-  "text": "======== 有效收益 (live段) ========\n时间: 2026-07-21T23:27:33\n行情截至: 2026-07-21\n动作: ⚪ 空仓观望  市场: 关\n策略: c01_q10_vt08_soft_oh38_xgn\nlive=0.0 xs=0.0 bench=0.0 Lrets=0 thin=True\nfrom=2026-07-21 持仓=空仓\ndays_to_ready=5 eta=约再 5 个交易日可 READY (Lrets≥5)\n========\n"
+  "text": "======== 有效收益 (live段) ========\n时间: 2026-07-22T06:43:42\n行情截至: 2026-07-21  DATA_LAG\n动作: ⚪ 空仓观望  市场: 关\n策略: c01_q10_vt08_soft_oh38_xgn\nlive=0.0 xs=0.0 bench=0.0 Lrets=0 thin=True\nfrom=2026-07-21 持仓=空仓\ndays_to_ready=5 eta=约再 5 个交易日可 READY (Lrets≥5); 另需 asof 先推进\n========\n"
 }

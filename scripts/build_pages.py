@@ -29,71 +29,201 @@ from etf_rotation.paths import LATEST_JSON, LATEST_TXT, OUTPUT_DIR  # noqa: E402
 CSS = """
 :root{
   color-scheme:dark;
-  --bg:#0d1117; --panel:#161b22; --line:#30363d; --text:#e6edf3; --muted:#8b949e;
-  --blue:#58a6ff; --green:#3fb950; --red:#f85149; --amber:#d29922; --purple:#a371f7;
+  --bg:#0b1220;
+  --bg-elev:#0f172a;
+  --panel:#121a2b;
+  --panel-2:#162033;
+  --line:rgba(148,163,184,.16);
+  --line-strong:rgba(148,163,184,.28);
+  --text:#f1f5f9;
+  --muted:#94a3b8;
+  --muted-2:#64748b;
+  --blue:#60a5fa;
+  --blue-strong:#3b82f6;
+  --green:#34d399;
+  --red:#f87171;
+  --amber:#fbbf24;
+  --purple:#a78bfa;
+  --shadow:0 10px 30px rgba(2,6,23,.35);
+  --radius:14px;
+  --radius-sm:10px;
+  --ease-out:cubic-bezier(0.23,1,0.32,1);
+  --focus:0 0 0 3px rgba(59,130,246,.35);
+  --max:76rem;
 }
 *{box-sizing:border-box}
-body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
-  background:var(--bg);color:var(--text);margin:0;line-height:1.5}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Noto Sans SC",sans-serif;
+  background:
+    radial-gradient(1200px 500px at 10% -10%,rgba(59,130,246,.12),transparent 55%),
+    radial-gradient(900px 420px at 90% 0%,rgba(52,211,153,.08),transparent 50%),
+    var(--bg);
+  color:var(--text);
+  margin:0;
+  line-height:1.55;
+  font-size:16px;
+  min-height:100vh;
+}
 a{color:var(--blue);text-decoration:none}
-a:hover{text-decoration:underline}
-header{max-width:72rem;margin:0 auto;padding:1rem 1.1rem .75rem;border-bottom:1px solid var(--line)}
-header h1{font-size:1.25rem;margin:0 0 .25rem;font-weight:650}
-.muted{color:var(--muted);font-size:.85rem}
-nav{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.7rem}
-nav a{padding:.28rem .7rem;border:1px solid var(--line);border-radius:999px;color:var(--text);
-  background:#0d1117;font-size:.85rem}
-nav a.active,nav a:hover{border-color:var(--blue);color:var(--blue);text-decoration:none}
-main{max-width:72rem;margin:0 auto;padding:1rem 1.1rem 2.5rem}
-.grid{display:grid;gap:.75rem}
-.grid.kpis{grid-template-columns:repeat(auto-fit,minmax(9.5rem,1fr))}
-.grid.two{grid-template-columns:repeat(auto-fit,minmax(18rem,1fr))}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:.9rem 1rem}
-.card h2,.card h3{margin:.1rem 0 .55rem;font-size:1rem;font-weight:650}
-.kpi .label{color:var(--muted);font-size:.75rem}
-.kpi .value{font-size:1.2rem;font-weight:700;margin-top:.15rem;word-break:break-word}
-.kpi .sub{color:var(--muted);font-size:.75rem;margin-top:.15rem}
-.badge{display:inline-block;padding:.12rem .5rem;border-radius:999px;font-size:.75rem;
-  font-weight:600;margin-right:.3rem;border:1px solid transparent}
-.badge.ok{background:rgba(63,185,80,.15);color:var(--green);border-color:rgba(63,185,80,.35)}
-.badge.off{background:rgba(110,118,129,.15);color:#c9d1d9;border-color:#484f58}
-.badge.warn{background:rgba(210,153,34,.15);color:var(--amber);border-color:rgba(210,153,34,.35)}
-.badge.err{background:rgba(248,81,73,.15);color:var(--red);border-color:rgba(248,81,73,.35)}
-.badge.info{background:rgba(88,166,255,.12);color:var(--blue);border-color:rgba(88,166,255,.35)}
-.bar{height:.55rem;background:#21262d;border-radius:999px;overflow:hidden;margin-top:.4rem}
-.bar>i{display:block;height:100%;background:linear-gradient(90deg,#1f6feb,var(--blue));border-radius:999px}
-.bar.green>i{background:linear-gradient(90deg,#238636,var(--green))}
-.bar.red>i{background:linear-gradient(90deg,#da3633,var(--red))}
+a:hover{color:#93c5fd;text-decoration:underline;text-underline-offset:2px}
+a:focus-visible,button:focus-visible,summary:focus-visible,nav a:focus-visible{
+  outline:none;box-shadow:var(--focus);border-radius:8px
+}
+header{
+  position:sticky;top:0;z-index:20;
+  backdrop-filter:blur(12px) saturate(1.2);
+  -webkit-backdrop-filter:blur(12px) saturate(1.2);
+  background:rgba(11,18,32,.82);
+  border-bottom:1px solid var(--line);
+}
+.shell{max-width:var(--max);margin:0 auto;padding:1rem 1.15rem .85rem}
+header h1{
+  font-size:clamp(1.15rem,2.2vw,1.4rem);margin:0 0 .2rem;font-weight:700;letter-spacing:-.02em
+}
+header .brand-row{display:flex;flex-wrap:wrap;gap:.55rem;align-items:center;justify-content:space-between}
+header .brand-meta{display:flex;flex-direction:column;gap:.15rem;min-width:0}
+.muted{color:var(--muted);font-size:.875rem}
+.muted-2{color:var(--muted-2);font-size:.8rem}
+.chip{
+  display:inline-flex;align-items:center;gap:.35rem;
+  padding:.28rem .6rem;border-radius:999px;font-size:.75rem;font-weight:600;
+  background:rgba(96,165,250,.1);color:var(--blue);border:1px solid rgba(96,165,250,.25);
+  white-space:nowrap
+}
+nav.primary,nav.more{display:flex;flex-wrap:wrap;gap:.4rem}
+nav.primary{margin-top:.75rem}
+nav.more{margin-top:.45rem}
+nav a{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:2rem;padding:.3rem .75rem;border:1px solid var(--line);
+  border-radius:999px;color:var(--text);background:rgba(15,23,42,.72);
+  font-size:.84rem;font-weight:500;transition:border-color .18s var(--ease-out),color .18s var(--ease-out),background .18s var(--ease-out),transform .12s var(--ease-out)
+}
+nav a.active{
+  border-color:rgba(96,165,250,.55);color:#dbeafe;background:rgba(59,130,246,.16);text-decoration:none
+}
+@media (hover:hover) and (pointer:fine){
+  nav a:hover{border-color:rgba(96,165,250,.55);color:#dbeafe;text-decoration:none;background:rgba(59,130,246,.12)}
+}
+nav a:active{transform:scale(.97)}
+nav.more a{opacity:.9;font-size:.8rem;min-height:1.85rem;padding:.22rem .65rem;color:var(--muted)}
+main{max-width:var(--max);margin:0 auto;padding:1.05rem 1.15rem 2.8rem}
+.grid{display:grid;gap:.85rem}
+.grid.kpis{grid-template-columns:repeat(auto-fit,minmax(10.5rem,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(18.5rem,1fr))}
+.grid.insight{grid-template-columns:repeat(auto-fit,minmax(16.5rem,1fr));margin:.75rem 0 .35rem}
+.card{
+  background:linear-gradient(180deg,rgba(22,32,51,.96),rgba(18,26,43,.96));
+  border:1px solid var(--line);border-radius:var(--radius);padding:1rem 1.05rem;
+  box-shadow:var(--shadow)
+}
+.card h2,.card h3{margin:.05rem 0 .6rem;font-size:.98rem;font-weight:700;letter-spacing:-.01em}
+.card.hero{
+  display:flex;flex-wrap:wrap;gap:.85rem 1.1rem;align-items:flex-start;justify-content:space-between;
+  background:
+    linear-gradient(135deg,rgba(59,130,246,.12),transparent 42%),
+    linear-gradient(180deg,rgba(24,35,56,.98),rgba(15,23,42,.96));
+  border-color:rgba(96,165,250,.18)
+}
+.card.insight{padding:.9rem 1rem;box-shadow:none;background:rgba(15,23,42,.72)}
+.card.insight .k{display:flex;align-items:center;justify-content:space-between;gap:.5rem;margin-bottom:.4rem}
+.card.insight .k b{font-size:.82rem;letter-spacing:.02em;color:#e2e8f0}
+.card.insight .v{font-size:.95rem;font-weight:650;line-height:1.45;word-break:break-word}
+.card.insight .links{display:flex;flex-wrap:wrap;gap:.45rem .65rem;margin-top:.55rem;font-size:.8rem}
+.card.banner{
+  margin:0 0 .75rem;padding:.7rem .9rem;border-color:rgba(251,191,36,.28);
+  background:rgba(251,191,36,.08);color:#fde68a;box-shadow:none
+}
+.card.banner.warn{border-color:rgba(251,191,36,.28);background:rgba(251,191,36,.08);color:#fde68a}
+.card.banner.err{border-color:rgba(248,113,113,.28);background:rgba(248,113,113,.08);color:#fecaca}
+.kpi{
+  min-height:6.2rem;display:flex;flex-direction:column;justify-content:space-between;
+  transition:border-color .18s var(--ease-out),transform .12s var(--ease-out)
+}
+.kpi .label{color:var(--muted);font-size:.75rem;font-weight:600;letter-spacing:.02em;text-transform:none}
+.kpi .value{font-size:clamp(1.15rem,2.4vw,1.35rem);font-weight:750;margin-top:.2rem;word-break:break-word;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.kpi .sub{color:var(--muted);font-size:.75rem;margin-top:.28rem;line-height:1.4}
+.kpi .value.green,.value.green{color:var(--green)}
+.kpi .value.red,.value.red{color:var(--red)}
+.kpi .value.amber,.value.amber{color:var(--amber)}
+.pillrow{display:flex;flex-wrap:wrap;gap:.35rem;align-items:center}
+.badge{
+  display:inline-flex;align-items:center;padding:.16rem .55rem;border-radius:999px;font-size:.74rem;
+  font-weight:650;border:1px solid transparent;line-height:1.2;white-space:nowrap
+}
+.badge.ok{background:rgba(52,211,153,.12);color:var(--green);border-color:rgba(52,211,153,.32)}
+.badge.off{background:rgba(100,116,139,.14);color:#cbd5e1;border-color:rgba(100,116,139,.35)}
+.badge.warn{background:rgba(251,191,36,.12);color:var(--amber);border-color:rgba(251,191,36,.35)}
+.badge.err{background:rgba(248,113,113,.12);color:var(--red);border-color:rgba(248,113,113,.35)}
+.badge.info{background:rgba(96,165,250,.12);color:var(--blue);border-color:rgba(96,165,250,.32)}
+.bar{height:.55rem;background:rgba(148,163,184,.12);border-radius:999px;overflow:hidden;margin-top:.45rem}
+.bar>i{display:block;height:100%;background:linear-gradient(90deg,#2563eb,var(--blue));border-radius:999px}
+.bar.green>i{background:linear-gradient(90deg,#059669,var(--green))}
+.bar.red>i{background:linear-gradient(90deg,#dc2626,var(--red))}
 table{width:100%;border-collapse:collapse;font-size:.88rem}
-th,td{padding:.42rem .35rem;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-th{color:var(--muted);font-weight:600;font-size:.75rem}
+th,td{padding:.5rem .4rem;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{color:var(--muted);font-weight:650;font-size:.74rem;letter-spacing:.02em}
 tr:last-child td{border-bottom:0}
-.num{font-variant-numeric:tabular-nums;font-family:ui-monospace,Menlo,Consolas,monospace}
+tbody tr{transition:background .15s var(--ease-out)}
+@media (hover:hover) and (pointer:fine){
+  tbody tr:hover{background:rgba(148,163,184,.05)}
+}
+.num{font-variant-numeric:tabular-nums;font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
 .pos{color:var(--green)}.neg{color:var(--red)}
 .check-ok{color:var(--green)}.check-bad{color:var(--red)}
-pre.raw{white-space:pre-wrap;word-break:break-word;background:#0d1117;padding:.85rem;
-  border-radius:8px;border:1px solid var(--line);font-size:.8rem;overflow:auto}
-details{margin-top:.8rem}
-details summary{cursor:pointer;color:var(--muted);font-size:.85rem}
-ul.alerts{padding-left:1.1rem;margin:.4rem 0}
-ul.alerts li{margin:.28rem 0}
-.hero{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;justify-content:space-between}
-.hero .action{font-size:1.35rem;font-weight:750}
-@media (max-width:640px){
-  .kpi .value{font-size:1.05rem}
-  th,td{font-size:.8rem}
+pre.raw,code{
+  font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:.8rem
+}
+pre.raw{
+  white-space:pre-wrap;word-break:break-word;background:rgba(2,6,23,.55);padding:.9rem;
+  border-radius:var(--radius-sm);border:1px solid var(--line);overflow:auto;line-height:1.5
+}
+code{
+  background:rgba(148,163,184,.1);border:1px solid var(--line);border-radius:6px;
+  padding:.08rem .35rem;color:#e2e8f0
+}
+details{margin-top:1rem}
+details summary{
+  cursor:pointer;color:var(--muted);font-size:.88rem;font-weight:600;
+  padding:.35rem 0;list-style-position:outside
+}
+details summary:hover{color:var(--text)}
+ul.alerts{padding-left:1.15rem;margin:.4rem 0}
+ul.alerts li{margin:.3rem 0}
+.hero .action{font-size:clamp(1.25rem,2.6vw,1.55rem);font-weight:780;letter-spacing:-.02em;line-height:1.25}
+.hero .hero-main{min-width:min(100%,18rem);flex:1 1 18rem}
+.hero .hero-side{flex:1 1 14rem;max-width:28rem}
+.stack{display:flex;flex-direction:column;gap:.45rem}
+.section-title{font-size:1rem;margin:1.05rem 0 .55rem;font-weight:700;letter-spacing:-.01em}
+footer{
+  max-width:var(--max);margin:0 auto;padding:0 1.15rem 2rem;
+  color:var(--muted-2);font-size:.8rem
 }
 .chart-wrap{width:100%;overflow:hidden}
-.chart-wrap svg{width:100%;height:auto;display:block}
+.chart-wrap svg{width:100%;height:auto;display:block;border-radius:10px}
 .tl{list-style:none;padding:0;margin:0}
-.tl li{display:grid;grid-template-columns:6.2rem 1fr;gap:.55rem;padding:.42rem 0;border-bottom:1px solid var(--line)}
+.tl li{
+  display:grid;grid-template-columns:6.4rem 1fr;gap:.6rem;padding:.5rem 0;
+  border-bottom:1px solid var(--line)
+}
 .tl li:last-child{border-bottom:0}
-.tl .when{color:var(--muted);font-size:.78rem;font-variant-numeric:tabular-nums}
-.tl .what{font-size:.88rem}
-.tl .why{color:var(--muted);font-size:.78rem;margin-top:.15rem}
-.legend{display:flex;flex-wrap:wrap;gap:.55rem;margin:.35rem 0 .2rem;font-size:.75rem;color:var(--muted)}
-.legend i{display:inline-block;width:.7rem;height:.25rem;border-radius:2px;margin-right:.25rem;vertical-align:middle}
-.legend .l1{background:#58a6ff}.legend .l2{background:#3fb950}.legend .l3{background:#a371f7}
+.tl .when{color:var(--muted);font-size:.78rem;font-variant-numeric:tabular-nums;padding-top:.12rem}
+.tl .what{font-size:.9rem}
+.tl .why{color:var(--muted);font-size:.78rem;margin-top:.18rem;line-height:1.4}
+.legend{display:flex;flex-wrap:wrap;gap:.55rem;margin:.35rem 0 .35rem;font-size:.75rem;color:var(--muted)}
+.legend i{display:inline-block;width:.75rem;height:.25rem;border-radius:2px;margin-right:.28rem;vertical-align:middle}
+.legend .l1{background:#60a5fa}.legend .l2{background:#34d399}.legend .l3{background:#a78bfa}
+@media (max-width:720px){
+  .shell,main,footer{padding-left:1rem;padding-right:1rem}
+  .kpi .value{font-size:1.1rem}
+  th,td{font-size:.8rem}
+  .tl li{grid-template-columns:5.2rem 1fr;gap:.4rem}
+  header{position:static}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
 """
 
 
@@ -224,25 +354,33 @@ def _page(title: str, body_html: str, active: str = "面板") -> str:
         cls = ' class="active"' if name == active else ""
         return f'<a href="{href}"{cls}>{name}</a>'
 
-    nav = " ".join(
+    primary = " ".join(
         [
             link("面板", "index.html"),
-            link("今日", "today.html"),
-            link("速览", "brief.html"),
+            link("脉搏", "pulse.html"),
+            link("收益", "yield.html"),
+            link("可判", "ready.html"),
+            link("摘要", "digest.html"),
             link("行情", "data.html"),
             link("下一步", "next.html"),
+            link("轨迹", "progress.html"),
+            link("今日", "today.html"),
+            link("监控", "monitor.html"),
+        ]
+    )
+    more = " ".join(
+        [
+            link("速览", "brief.html"),
             link("GO", "go.html"),
-            link("可判", "ready.html"), link("摘要", "digest.html"), link("EOD", "eod.html"), link("轨迹", "progress.html"), link("脉搏", "pulse.html"),
+            link("EOD", "eod.html"),
             link("拉取", "pull.html"),
             link("取证", "asof.html"),
-            link("收益", "yield.html"),
             link("对照", "compare.html"),
             link("LIVE", "live.html"),
             link("信号原文", "signal.html"),
             link("状态", "status.html"),
-            link("监控", "monitor.html"),
             link("告警", "alerts.html"),
-            link("摘要", "summary.html"),
+            link("日报", "summary.html"),
             link("JSON", "latest.json"),
         ]
     )
@@ -253,19 +391,28 @@ def _page(title: str, body_html: str, active: str = "面板") -> str:
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0b1220">
 <title>{_esc(title)}</title>
 <style>{CSS}</style>
 </head>
 <body>
 <header>
-  <h1>ETF 轮动 · 日更面板</h1>
-  <div class="muted">生成于 {_esc(stamp)} · 生产 c01 冻结 · 研究影子 xgn</div>
-  <nav>{nav}</nav>
+  <div class="shell">
+    <div class="brand-row">
+      <div class="brand-meta">
+        <h1>ETF 轮动 · 日更面板</h1>
+        <div class="muted">生成于 {_esc(stamp)} · 生产 c01 冻结 · 研究影子 xgn</div>
+      </div>
+      <span class="chip">只读 · 非投资建议</span>
+    </div>
+    <nav class="primary" aria-label="常用页面">{primary}</nav>
+    <nav class="more" aria-label="更多页面">{more}</nav>
+  </div>
 </header>
 <main>
 {body_html}
 </main>
-<footer>只读面板 · 非投资建议 · 数据来自本地 output/ 日更产物</footer>
+<footer>只读面板 · 非投资建议 · 数据来自本地 output/ 日更产物 · 有效收益以“实盘段 / 相对大盘”为准</footer>
 </body>
 </html>
 """
@@ -504,7 +651,7 @@ def _svg_nav_chart(series_map: dict[str, list[dict]], width: int = 720, height: 
 <div class="chart-wrap">
   <div class="legend">{''.join(legend)}</div>
   <svg viewBox="0 0 {width} {height}" role="img" aria-label="影子净值曲线">
-    <rect x="0" y="0" width="{width}" height="{height}" fill="#0d1117" rx="8" />
+    <rect x="0" y="0" width="{width}" height="{height}" fill="#0b1220" rx="8" />
     {''.join(y_ticks)}
     {base_line}
     {''.join(polylines)}
@@ -834,10 +981,28 @@ def _dashboard(
     try:
         td_date = str((td or {}).get("date") or "")[:10]
         when_day = str(when or "")[:10]
-        data_asof = str((td or {}).get("data_asof") or (latest or {}).get("market_asof") or "")[:10]
-        data_lag = bool((td or {}).get("data_lag")) or (
-            bool(data_asof and td_date and data_asof < td_date)
-        )
+        data_asof = str(
+            (td or {}).get("data_asof")
+            or (latest or {}).get("market_asof")
+            or ""
+        )[:10]
+        data_lag = bool((td or {}).get("data_lag"))
+        try:
+            from etf_rotation.calendar_util import resolve_trading_day as _rtd
+
+            _td_live = _rtd()
+            td_date = str(_td_live.get("date") or td_date or "")[:10]
+            data_asof = str(
+                _td_live.get("data_asof")
+                or data_asof
+                or (latest or {}).get("market_asof")
+                or ""
+            )[:10]
+            data_lag = bool(_td_live.get("data_lag")) or data_lag or (
+                bool(data_asof and td_date and data_asof < td_date)
+            )
+        except Exception:
+            data_lag = data_lag or bool(data_asof and td_date and data_asof < td_date)
         stale = bool((status or {}).get("latest_stale"))
         if not stale and (td or {}).get("is_trading_day") and td_date and when_day and when_day < td_date:
             stale = True
@@ -854,7 +1019,7 @@ def _dashboard(
             )
         if notes:
             stale_banner = (
-                "<div class='card' style='border-color:var(--amber);margin-bottom:.75rem'>"
+                "<div class='card banner warn'>"
                 + "<br>".join(notes)
                 + "</div>"
             )
@@ -951,14 +1116,18 @@ def _dashboard(
             if lag_dg:
                 sample_note += " · 行情还没更新完"
             digest_line = (
-                "<div class='card' style='margin:.55rem 0 .2rem;padding:.55rem .7rem'>"
-                f"<b>一句话结论</b> · <code>{_esc(_zh_level(lv))}</code> · "
-                f"{live_label} · {xs_label}{sample_note}"
-                f"{eta_s} · "
-                f"建议 <code>{_esc(rec)}</code> · "
-                "<a href='digest.html'>摘要</a> · <a href='ready.html'>能不能当真</a> · "
-                "<a href='progress.html'>进度</a> · <a href='eod.html'>收盘</a>"
-                "</div>"
+                "<div class='card insight'>"
+                "<div class='k'><b>一句话结论</b>"
+                f"<span class='badge {'ok' if str(lv)=='READY' else 'warn'}'>{_esc(_zh_level(lv))}</span></div>"
+                f"<div class='v'>{live_label} · {xs_label}{sample_note}"
+                f"{eta_s}</div>"
+                f"<div class='v muted' style='margin-top:.35rem'>建议 <code>{_esc(rec)}</code></div>"
+                "<div class='links'>"
+                "<a href='digest.html'>摘要</a>"
+                "<a href='ready.html'>能不能当真</a>"
+                "<a href='progress.html'>进度</a>"
+                "<a href='eod.html'>收盘</a>"
+                "</div></div>"
             )
             # progress spark from progress_latest
             try:
@@ -983,14 +1152,17 @@ def _dashboard(
                                 _peta = ""
                         _peta_s = f" · {_esc(_peta)}" if _peta else ""
                         progress_line = (
-                            "<div class='card' style='margin:.35rem 0 .2rem;padding:.45rem .7rem'>"
-                            f"<b>统计进度</b> · <code>{_esc(_zh_level(_plv))}</code> · "
-                            f"{_esc(_zh_sample_days(_pdl))} · "
-                            f"{_esc(_zh_dtr(_pdtr, bool(_pj.get('data_lag'))))}"
-                            f"{_peta_s} · "
-                            f"行情截至 {_esc(_pj.get('market_asof') or '—')} · "
-                            "<a href='progress.html'>进度</a> · <a href='ready.html'>能不能当真</a>"
-                            "</div>"
+                            "<div class='card insight'>"
+                            "<div class='k'><b>统计进度</b>"
+                            f"<span class='badge {'ok' if str(_plv)=='READY' else 'warn'}'>{_esc(_zh_level(_plv))}</span></div>"
+                            f"<div class='v'>{_esc(_zh_sample_days(_pdl))}"
+                            f"{(' · ' + _esc(_zh_dtr(_pdtr, bool(_pj.get('data_lag'))))) if _zh_dtr(_pdtr, bool(_pj.get('data_lag'))) else ''}"
+                            f"{_peta_s}</div>"
+                            f"<div class='v muted' style='margin-top:.35rem'>行情截至 {_esc(_pj.get('market_asof') or '—')}</div>"
+                            "<div class='links'>"
+                            "<a href='progress.html'>进度</a>"
+                            "<a href='ready.html'>能不能当真</a>"
+                            "</div></div>"
                         )
             except Exception:
                 pass
@@ -1019,14 +1191,17 @@ def _dashboard(
                         _pact = _pu.get("next_action") or "—"
                         _pread = _pu.get("readable_yield")
                         pulse_line = (
-                            "<div class='card' style='margin:.35rem 0 .2rem;padding:.45rem .7rem'>"
-                            f"<b>现在怎么办</b> · <code>{_esc(_zh_level(_plv))}</code> · "
-                            f"{_esc(_zh_dtr(_pdtr, bool(_pu.get('data_lag'))))} · "
-                            f"下一步: {_esc(_zh_action(_pact))} · "
-                            f"{_esc(_zh_readable(_pread))} · "
-                            f"{_esc(_peta or '')} · "
-                            f"<a href='pulse.html'>详情</a> · <code>./etf do</code>"
-                            "</div>"
+                            "<div class='card insight'>"
+                            "<div class='k'><b>现在怎么办</b>"
+                            f"<span class='badge {'ok' if str(_plv)=='READY' else 'warn'}'>{_esc(_zh_level(_plv))}</span></div>"
+                            f"<div class='v'>下一步: {_esc(_zh_action(_pact))}"
+                            f"{(' · ' + _esc(_zh_dtr(_pdtr, bool(_pu.get('data_lag'))))) if _zh_dtr(_pdtr, bool(_pu.get('data_lag'))) else ''}</div>"
+                            f"<div class='v muted' style='margin-top:.35rem'>{_esc(_zh_readable(_pread))}"
+                            f"{(' · ' + _esc(_peta)) if _peta else ''}</div>"
+                            "<div class='links'>"
+                            "<a href='pulse.html'>详情</a>"
+                            "<code>./etf do</code>"
+                            "</div></div>"
                         )
             except Exception:
                 pass
@@ -1035,21 +1210,34 @@ def _dashboard(
 
     body = f"""
 {stale_banner}<div class="card hero">
-  <div>
+  <div class="hero-main">
     <div class="pillrow">{trend_badge} {freeze_badge} {td_badge} {pipe_badge} {mon_badge} {decision_badge} {ready_badge} {ab}</div>
-    <div class="action" style="margin-top:.45rem">{_esc(action)}</div>
-    <div class="muted">{_esc(cfg)} · {_esc(when)}</div>
+    <div class="action" style="margin-top:.5rem">{_esc(action)}</div>
+    <div class="muted" style="margin-top:.3rem">{_esc(cfg)} · {_esc(when)}</div>
   </div>
-    <div class="muted">生产只读 · 研究影子不交易 · “实盘段收益/相对大盘”才是日更有效收益 · 样本未满5天别当真 · 行情未更新时别解读 · <a href="digest.html">摘要</a> · <a href="ready.html">可判性</a> · <a href="yield.html">有效收益</a> · <code>./etf digest</code> · <code>./etf go --timeout 600</code> · <code>./etf eod</code> · <code>./etf ready</code> · <code>./etf open --launch site</code></div>
+  <div class="hero-side muted">
+    生产只读 · 研究影子不交易 · “实盘段 / 相对大盘”才是日更有效收益 · 样本未满 5 天别当真 · 行情未更新时别解读
+    <div class="links" style="margin-top:.55rem;display:flex;flex-wrap:wrap;gap:.45rem .7rem">
+      <a href="digest.html">摘要</a>
+      <a href="ready.html">可判性</a>
+      <a href="yield.html">有效收益</a>
+      <a href="pulse.html">脉搏</a>
+      <code>./etf</code>
+      <code>./etf do</code>
+      <code>./etf eod</code>
+    </div>
+  </div>
 </div>
+<div class="grid insight">
 {digest_line}{progress_line}{pulse_line}
+</div>
 <div class="grid kpis" style="margin-top:.75rem">
   {_kpi('持仓', _esc(hold_name), '生产模拟账户')}
   {_kpi('总资产', _money(tv), f"收益 {ret if ret is not None else '—'}%")}
   {_kpi('研究影子·实盘段', sh_live_s, _esc(sh_cfg) + ('' if sh_days is None else f' · 已统计{sh_days}天') + (' · 还没开始统计' if sh_days == 0 else '') + (' · 行情未更新' if (latest or {}).get('market_asof') and str((td or {}).get('date') or '')[:10] > str((latest or {}).get('market_asof') or '')[:10] else ''), 'green' if (sh_live_pct or 0) > 0 else '')}
   {_kpi('相对大盘', sh_xs_s, f"vs 基准 {'' if sh_bench_ret is None else f'{float(sh_bench_ret):+.2f}%'}", 'green' if (sh_xs or 0) > 0 else '')}
 </div>
-<div style="margin:.35rem 0 .9rem">{_bar(br_pct)}</div>
+<div style="margin:.35rem 0 .95rem">{_bar(br_pct)}</div>
 
 <div class="grid two">
   <div class="card stack">
@@ -1066,7 +1254,7 @@ def _dashboard(
   </div>
 </div>
 
-<div class="grid two" style="margin-top:.75rem">
+<div class="grid two" style="margin-top:.85rem">
   <div class="card">
     <h2>影子净值 (归一化)</h2>
     {nav_chart}
@@ -1077,7 +1265,7 @@ def _dashboard(
   </div>
 </div>
 
-<div class="grid two" style="margin-top:.75rem">
+<div class="grid two" style="margin-top:.85rem">
   <div class="card">
     <h2>决策检查清单</h2>
     {checks_table}
@@ -1088,8 +1276,8 @@ def _dashboard(
   </div>
 </div>
 
-<div style="margin-top:.9rem">
-  <h2 style="font-size:1rem;margin:0 0 .5rem">影子监控</h2>
+<div style="margin-top:1rem">
+  <h2 class="section-title">影子监控</h2>
   <div class="stack">{mon_html}</div>
   <p class="muted">{_esc((mon or {}).get('bench') or '')}</p>
 </div>
@@ -1118,8 +1306,8 @@ def _lag_banner_html(latest_obj: dict | None = None) -> str:
                 asof = sl.get("market_asof")
         if lag or (asof and str(td.get("date") or "")[:10] > str(asof)[:10]):
             return (
-                f"<p class='muted' style='color:var(--amber)'>⚠ 行情未更新: 行情截至 {_esc(asof)} · "
-                f"wall/交易日 {_esc(td.get('date'))} · <code>./etf asof</code></p>"
+                f"<div class='card banner warn'>⚠ 行情未更新: 行情截至 {_esc(asof)} · "
+                f"wall/交易日 {_esc(td.get('date'))} · <code>./etf asof</code></div>"
             )
     except Exception:
         pass
@@ -1295,8 +1483,8 @@ def build(out_dir: Path) -> dict:
             asof = asof or _td.get("data_asof")
             if _td.get("data_lag") or (asof and str(_td.get("date") or "")[:10] > str(asof)[:10]):
                 lag_note = (
-                    f"<p class='muted' style='color:var(--amber)'>⚠ 行情未更新: 行情截至 {_esc(asof)} · "
-                    f"wall/交易日 {_esc(_td.get('date'))} · 已统计0天通常还没开始算, 等行情更新后再看相对大盘</p>"
+                    f"<div class='card banner warn'>⚠ 行情未更新: 行情截至 {_esc(asof)} · "
+                    f"wall/交易日 {_esc(_td.get('date'))} · 已统计0天通常还没开始算, 等行情更新后再看相对大盘</div>"
                 )
         except Exception:
             lag_note = ""
@@ -1495,16 +1683,16 @@ def build(out_dir: Path) -> dict:
         warn_bits = []
         if data_lag:
             warn_bits.append(
-                "<p class='muted' style='color:var(--amber)'>⚠ 行情滞后 行情未更新: 行情截至 "
+                "<div class='card banner warn'>⚠ 行情滞后 行情未更新: 行情截至 "
                 f"{_esc(data_asof)} · wall/交易日 {_esc(td0.get('date'))} "
-                f"(nav/live 以 asof 为准)</p>"
+                f"(nav/live 以 asof 为准)</div>"
             )
         if stale:
             warn_bits.append(
-                "<p class='muted' style='color:var(--amber)'>⚠ latest 过旧: 信号时间 "
+                "<div class='card banner warn'>⚠ latest 过旧: 信号时间 "
                 f"{_esc(status_obj.get('latest_time'))} · 交易日 "
                 f"{_esc(td0.get('date'))} → "
-                f"<code>./etf refresh</code></p>"
+                f"<code>./etf refresh</code></div>"
             )
         stale_html = "".join(warn_bits)
         st_body = f"""

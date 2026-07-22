@@ -1,5 +1,5 @@
 {
-  "stamp": "20260721_230832",
+  "stamp": "20260721_232704",
   "steps_requested": [
     "pull",
     "signal",
@@ -93,7 +93,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 1.6
+      "seconds": 1.97
     },
     {
       "step": "signal",
@@ -113,7 +113,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 38.18
+      "seconds": 20.45
     },
     {
       "step": "monitor",
@@ -162,7 +162,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.04
+      "seconds": 0.03
     },
     {
       "step": "live",
@@ -179,7 +179,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 1.53
+      "seconds": 1.57
     },
     {
       "step": "status",
@@ -193,7 +193,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.17
+      "seconds": 0.06
     },
     {
       "step": "today",
@@ -204,7 +204,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.09
+      "seconds": 0.08
     },
     {
       "step": "asof",
@@ -215,7 +215,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.1
+      "seconds": 0.08
     },
     {
       "step": "yield",
@@ -226,7 +226,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.09
+      "seconds": 0.08
     },
     {
       "step": "brief",
@@ -237,7 +237,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.09
+      "seconds": 0.08
     },
     {
       "step": "data",
@@ -248,7 +248,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.09
+      "seconds": 0.08
     },
     {
       "step": "next",
@@ -273,7 +273,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.8
+      "seconds": 0.75
     },
     {
       "step": "ready",
@@ -284,7 +284,7 @@
       ],
       "exit": 4,
       "ok": true,
-      "seconds": 0.09,
+      "seconds": 0.08,
       "decision_exit": 4,
       "note": "ready level code ignored for pipeline ok"
     },
@@ -298,7 +298,7 @@
       ],
       "exit": 4,
       "ok": true,
-      "seconds": 0.09,
+      "seconds": 0.08,
       "decision_exit": 4,
       "note": "digest level code ignored for pipeline ok"
     },
@@ -312,7 +312,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.08
+      "seconds": 0.07
     },
     {
       "step": "pulse",
@@ -325,7 +325,7 @@
       ],
       "exit": 4,
       "ok": true,
-      "seconds": 0.08,
+      "seconds": 0.07,
       "decision_exit": 4,
       "note": "pulse level code ignored for pipeline ok"
     },
@@ -355,7 +355,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 3.66
+      "seconds": 3.93
     },
     {
       "step": "pages",
@@ -372,7 +372,7 @@
   ],
   "latest_txt": "/home/runner/work/etf-rotation/etf-rotation/output/latest.txt",
   "latest_json": "/home/runner/work/etf-rotation/etf-rotation/output/latest.json",
-  "log": "/home/runner/work/etf-rotation/etf-rotation/output/logs/pipeline_20260721_230832.log",
+  "log": "/home/runner/work/etf-rotation/etf-rotation/output/logs/pipeline_20260721_232704.log",
   "pages_out": "output/site",
   "yield": {
     "name": "c01_q10_vt08_soft_oh38_xgn",
@@ -387,7 +387,7 @@
     "data_lag": false
   },
   "brief": {
-    "stamp": "2026-07-21T23:09:17",
+    "stamp": "2026-07-21T23:27:33",
     "market_asof": "2026-07-21",
     "data_lag": false,
     "action": "⚪ 空仓观望",
@@ -419,7 +419,7 @@
     "path_json": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/next.json"
   },
   "pull": {
-    "stamp": "2026-07-21T23:08:36",
+    "stamp": "2026-07-21T23:27:10",
     "before": {
       "data_asof": "2026-07-21",
       "data_lag": false
@@ -437,7 +437,7 @@
     "path_json": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/pull.json"
   },
   "go": {
-    "stamp": "2026-07-21T23:09:17",
+    "stamp": "2026-07-21T23:27:33",
     "decision": "ok",
     "market_asof": "2026-07-21",
     "data_lag": false,

@@ -1,12 +1,11 @@
-======== PULSE 脉搏 ========
-level: THIN
-asof: 2026-07-21 lag=False
-live=0.0 xs=0.0 Lrets=0 thin=True
-dtr=5 eta=约再 5 个交易日可 READY (Lrets≥5)
-decision: ok
-next_action: accumulate
-why: 样本<5日: 每个交易日 eod/daily 积累 Lrets
-推荐: ./etf eod --timeout 1800
-exit_code: 4
-readable_yield: False
+======== 现在怎么办 ========
+结论: 暂不可判
+行情截至: 2026-07-21 · 行情还没更新完
+实盘段: +0.00% · 相对大盘: +0.00%
+样本: 还没开始统计实盘天数
+距可判: 约再 5 个交易日可 READY (Lrets≥5); 另需 asof 先推进
+下一步: 先等行情更新
+原因: DATA_LAG/样本不足: 等 asof 推进后再判 live%/xs%
+建议命令: ./etf wait --timeout 600
+能不能当真看: 先别当真
 ========

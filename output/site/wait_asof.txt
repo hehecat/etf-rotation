@@ -1,0 +1,5 @@
+======== WAIT-ASOF ========
+start=2026-07-21 end=2026-07-21
+ok=False advanced=False cleared_lag=False
+attempts=2 timeout=1
+========

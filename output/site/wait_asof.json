@@ -1,0 +1,35 @@
+{
+  "stamp": "2026-07-22T06:36:18",
+  "timeout": 1,
+  "interval": 15,
+  "bench_only": true,
+  "start": {
+    "data_asof": "2026-07-21",
+    "data_lag": true
+  },
+  "end": {
+    "data_asof": "2026-07-21",
+    "data_lag": true
+  },
+  "advanced": false,
+  "cleared_lag": false,
+  "ok": false,
+  "attempts": 2,
+  "history": [
+    {
+      "attempt": 1,
+      "elapsed": 0,
+      "pull_exit": 0,
+      "data_asof": "2026-07-21",
+      "data_lag": true
+    },
+    {
+      "attempt": 2,
+      "elapsed": 4,
+      "pull_exit": 0,
+      "data_asof": "2026-07-21",
+      "data_lag": true
+    }
+  ],
+  "followed": false
+}

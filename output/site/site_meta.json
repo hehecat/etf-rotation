@@ -1,5 +1,5 @@
 {
-  "built_at": "2026-07-21T23:27:38",
+  "built_at": "2026-07-22T10:37:27",
   "has_latest": true,
   "has_monitor": true,
   "has_summary": true,
@@ -18,19 +18,19 @@
   "has_pulse": true,
   "has_progress": true,
   "days_to_ready": 5,
-  "eta_note": "约再 5 个交易日可 READY (Lrets≥5)",
-  "ready_level": "THIN",
-  "next_action": "accumulate",
+  "eta_note": "约再 5 个交易日可 READY (Lrets≥5); 另需 asof 先推进",
+  "ready_level": "NOT_READY",
+  "next_action": "wait_asof",
   "readable_yield": false,
   "has_wait_asof": true,
   "has_dashboard": true,
   "has_live": true,
   "has_compare": true,
   "market_asof": "2026-07-21",
-  "data_lag": false,
+  "data_lag": true,
   "pipeline_asof": "2026-07-21",
   "pipeline_lag": false,
   "alert_error_n": 0,
   "alert_warn_n": 4,
-  "out": "output/site"
+  "out": "/home/hehecat/vps/etf-rotation/output/site"
 }

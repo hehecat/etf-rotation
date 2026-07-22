@@ -1,0 +1,8 @@
+======== EOD 收盘闭环 ========
+level=NOT_READY
+wait_code=0 daily_code=0
+live=0.0 xs=0.0 Lrets=0
+days_to_ready=5
+eta=约再 5 个交易日可 READY (Lrets≥5); 另需 asof 先推进
+推荐: ./etf wait-asof | ./etf go --timeout 600  |  ./etf pulse  |  ./etf progress
+========

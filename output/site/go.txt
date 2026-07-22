@@ -1,6 +1,6 @@
 ======== GO 一键闭环 ========
-decision=ok
-asof=2026-07-21 lag=False
+decision=wait_data
+asof=2026-07-21 lag=True
 did_wait=False wait_code=0
-推荐: ./etf
+推荐: ./etf wait-asof | ./etf go --timeout 600  |  ./etf pulse
 ========
