@@ -1,17 +1,17 @@
 {
-  "stamp": "2026-07-22T03:12:27",
-  "level": "THIN",
-  "market_asof": "2026-07-22",
-  "data_lag": false,
-  "decision": "ok",
+  "stamp": "2026-07-22T07:42:10",
+  "level": "NOT_READY",
+  "market_asof": "2026-07-21",
+  "data_lag": true,
+  "decision": "wait_data",
   "action": "⚪ 空仓观望",
   "market_ok": false,
   "live_return_pct": 0.0,
-  "live_excess_pct": -0.2298,
-  "days_live": 1,
+  "live_excess_pct": 0.0,
+  "days_live": 0,
   "thin_live": true,
-  "days_to_ready": 4,
-  "eta_note": "约再 4 个交易日可 READY (Lrets≥5)",
-  "recommend": "./etf eod --timeout 1800",
-  "text": "======== DIGEST ========\n可判性: THIN\nasof: 2026-07-22 lag=False\nlive=0.0 xs=-0.2298 Lrets=1 thin=True\ndecision: ok\neta: 约再 4 个交易日可 READY (Lrets≥5)\n推荐: ./etf eod --timeout 1800\n========\n"
+  "days_to_ready": 5,
+  "eta_note": "约再 5 个交易日可 READY (Lrets≥5); 另需 asof 先推进",
+  "recommend": "./etf wait --timeout 600",
+  "text": "======== DIGEST ========\n能不能当真: 暂不可判\n行情截至: 2026-07-21 · 还没更新完\n实盘段=0.0 相对大盘=0.0 已统计天数=0 · 样本还少\ndecision: wait_data\neta: 约再 5 个交易日可 READY (Lrets≥5); 另需 asof 先推进\n推荐: ./etf wait --timeout 600\n========\n"
 }

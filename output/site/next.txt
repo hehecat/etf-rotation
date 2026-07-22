@@ -1,6 +1,6 @@
 ======== NEXT 决策 ========
-decision: ok
-asof: 2026-07-22 lag=False stale=False
-推荐: ./etf
-dtr=4 eta=约再 4 个交易日可 READY (Lrets≥5)
+decision: wait_data
+asof: 2026-07-21 lag=True stale=False
+推荐: ./etf wait --timeout 600
+dtr=5 eta=约再 5 个交易日可 READY (Lrets≥5); 另需 asof 先推进
 ========

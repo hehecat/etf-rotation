@@ -1,13 +1,13 @@
 {
-  "stamp": "2026-07-22T03:12:27",
-  "decision": "ok",
-  "market_asof": "2026-07-22",
-  "data_lag": false,
+  "stamp": "2026-07-22T06:38:25",
+  "decision": "wait_data",
+  "market_asof": "2026-07-21",
+  "data_lag": true,
   "latest_stale": false,
   "action": "⚪ 空仓观望",
-  "why": "数据齐: 裸 ./etf=pulse 看可判后读 yield",
-  "recommend": "./etf",
-  "days_to_ready": 4,
-  "eta_note": "约再 4 个交易日可 READY (Lrets≥5)",
-  "ready_level": null
+  "why": "DATA_LAG: 等 asof; 巡检 ./etf pulse --quiet",
+  "recommend": "./etf wait --timeout 600",
+  "days_to_ready": 5,
+  "eta_note": "约再 5 个交易日可 READY (Lrets≥5); 另需 asof 先推进",
+  "ready_level": "NOT_READY"
 }
