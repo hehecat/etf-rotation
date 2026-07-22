@@ -10,7 +10,7 @@
   "return_pct": 0.0,
   "last_rebalance": null,
   "config": "C01_Q10_VT09_OH35_双端研究候选",
-  "last_update": "2026-07-21 23:27",
+  "last_update": "2026-07-22 03:12",
   "holdings": [],
   "days_to_rebalance": 0,
   "market_ok": false,
@@ -18,9 +18,15 @@
     {
       "date": "2026-07-21",
       "nav": 100000.0
+    },
+    {
+      "date": "2026-07-22",
+      "nav": 100000.0
     }
   ],
-  "port_rets": [],
+  "port_rets": [
+    0.0
+  ],
   "live_start_date": "2026-07-21",
   "live_anchor_nav": 100000.0,
   "live": {
@@ -28,13 +34,13 @@
     "start_date": "2026-07-21",
     "nav": 100000.0,
     "return_pct": 0.0,
-    "n_nav": 1,
-    "n_rets": 0,
+    "n_nav": 2,
+    "n_rets": 1,
     "sharpe": null,
     "n_trades": 0,
     "n_holdings": 0,
     "holdings": "空仓",
-    "asof": "2026-07-21 23:27",
+    "asof": "2026-07-22 03:12",
     "from_warmup": false
   }
 }

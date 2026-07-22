@@ -1,11 +1,11 @@
 ======== 行情/收益取证 ========
-时间: 2026-07-22T06:36:25
-交易日: True date=2026-07-22 source=cn_holidays_beyond_bench
-行情截至: 2026-07-21  DATA_LAG
-信号时间: 2026-07-22 06:36  动作: ⚪ 空仓观望  市场: 关
+时间: 2026-07-22T03:12:26
+交易日: True date=2026-07-22 source=bench_calendar
+行情截至: 2026-07-22
+信号时间: 2026-07-22 03:12  动作: ⚪ 空仓观望  市场: 关
 SIGNAL: c01_q10_vt08_soft_oh38_xgn
-  live=0.0 xs=0.0 Lrets=0 thin=True 持仓=空仓
-pipeline_last: stamp=20260722_063610 ok=True asof=2026-07-21 lag=True
+  live=0.0 xs=-0.2298 Lrets=1 thin=True 持仓=空仓
+pipeline_last: stamp=20260721_232704 ok=True asof=2026-07-21 lag=False
 site_meta: asof=2026-07-21 lag=True
-dtr=5 eta=约再 5 个交易日可 READY (Lrets≥5); 另需 asof 先推进 level=NOT_READY
+dtr=4 eta=约再 4 个交易日可 READY (Lrets≥5) level=None
 ========

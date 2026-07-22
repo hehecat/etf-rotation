@@ -1,23 +1,21 @@
 {
-  "stamp": "2026-07-22T06:36:29",
-  "level": "NOT_READY",
-  "note": "先 ./etf go/--wait-asof 推进 asof, 再积累 live 样本 (样本约还需 5 个交易日≥5)",
-  "market_asof": "2026-07-21",
-  "data_lag": true,
-  "days_live": 0,
+  "stamp": "2026-07-22T03:12:27",
+  "level": "THIN",
+  "note": "asof 已齐但样本薄; 可观察方向, 勿下强结论 (约再 4 个交易日可 READY)",
+  "market_asof": "2026-07-22",
+  "data_lag": false,
+  "days_live": 1,
   "thin_live": true,
   "live_return_pct": 0.0,
-  "live_excess_pct": 0.0,
+  "live_excess_pct": -0.2298,
   "action": "⚪ 空仓观望",
   "market_ok": false,
   "holdings": "空仓",
-  "decision": "wait_data",
+  "decision": "ok",
   "blockers": [
-    "DATA_LAG: 行情未到 wall 日, xs 勿解读",
-    "THIN: live 样本<5日, 统计不稳定",
-    "Lrets=0: 仅锚日, 尚无 live 收益样本"
+    "THIN: live 样本<5日, 统计不稳定"
   ],
-  "days_to_ready": 5,
-  "eta_note": "约再 5 个交易日可 READY (Lrets≥5); 另需 asof 先推进",
+  "days_to_ready": 4,
+  "eta_note": "约再 4 个交易日可 READY (Lrets≥5)",
   "ready": false
 }

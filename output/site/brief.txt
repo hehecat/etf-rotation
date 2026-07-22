@@ -1,7 +1,7 @@
 ======== BRIEF 速览 ========
-时间: 2026-07-22T06:36:27
-行情截至: 2026-07-21  DATA_LAG
+时间: 2026-07-22T03:12:27
+行情截至: 2026-07-22
 动作: ⚪ 空仓观望  市场: 关
-live=0.0 xs=0.0 Lrets=0 thin=True
-dtr=5 eta=约再 5 个交易日可 READY (Lrets≥5); 另需 asof 先推进
+live=0.0 xs=-0.2298 Lrets=1 thin=True
+dtr=4 eta=约再 4 个交易日可 READY (Lrets≥5)
 ========
