@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#0b1220">
-<title>信号原文</title>
+<title>原文备查</title>
 <style>
 :root{
   color-scheme:dark;
@@ -176,6 +176,9 @@ ul.alerts li{margin:.3rem 0}
 .hero .hero-side{flex:1 1 14rem;max-width:28rem}
 .stack{display:flex;flex-direction:column;gap:.45rem}
 .section-title{font-size:1rem;margin:1.05rem 0 .55rem;font-weight:700;letter-spacing:-.01em}
+.section-block{scroll-margin-top:5rem}
+.toc{display:flex;flex-wrap:wrap;gap:.45rem .7rem;margin:.35rem 0 .8rem}
+.toc a{font-size:.85rem}
 footer{
   max-width:var(--max);margin:0 auto;padding:0 1.15rem 2rem;
   color:var(--muted-2);font-size:.8rem
@@ -212,97 +215,16 @@ footer{
     <div class="brand-row">
       <div class="brand-meta">
         <h1>ETF 轮动 · 日更面板</h1>
-        <div class="muted">生成于 2026-07-22 10:37:27 · 生产 c01 冻结 · 研究影子 xgn</div>
+        <div class="muted">生成于 2026-07-22 10:56:52 · 生产账户冻结 · 研究影子观察中</div>
       </div>
       <span class="chip">只读 · 非投资建议</span>
     </div>
-    <nav class="primary" aria-label="常用页面"><a href="index.html">面板</a> <a href="pulse.html">脉搏</a> <a href="yield.html">收益</a> <a href="ready.html">可判</a> <a href="digest.html">摘要</a> <a href="data.html">行情</a> <a href="next.html">下一步</a> <a href="progress.html">轨迹</a> <a href="today.html">今日</a> <a href="monitor.html">监控</a></nav>
-    <nav class="more" aria-label="更多页面"><a href="brief.html">速览</a> <a href="go.html">GO</a> <a href="eod.html">EOD</a> <a href="pull.html">拉取</a> <a href="asof.html">取证</a> <a href="compare.html">对照</a> <a href="live.html">LIVE</a> <a href="signal.html" class="active">信号原文</a> <a href="status.html">状态</a> <a href="alerts.html">告警</a> <a href="summary.html">日报</a> <a href="latest.json">JSON</a></nav>
+    <nav class="primary" aria-label="页面"><a href="index.html">总览</a> <a href="research.html">研究明细</a> <a href="raw.html" class="active">原文备查</a></nav>
   </div>
 </header>
 <main>
-<p><span class="badge warn">warn 4</span></p><div class='card'><h2>有效收益 (SIGNAL live)</h2><pre class='raw'>-------- 有效收益 (SIGNAL live) --------
-  策略: c01_q10_vt08_soft_oh38_xgn
-  live=+0.000% THIN  xs=+0.000%  bench=+0.000%
-  from=2026-07-21  Lrets=0  持仓=空仓
-  注: Lrets=0=仅锚日, 尚无 live 样本日 (DATA_LAG/刚暖机常见)
-  注: THIN=样本&lt;5日; DATA_LAG 时等行情更新后再判 xs
-  行情截至: 2026-07-21
-  口径: live%=暖机末→今 · xs%=live−基准 · 非全样本
-----------------------------------------</pre><p class='muted'>实盘段=暖机后到今天 · 相对大盘=实盘段−大盘 · 样本未满5天别当真</p></div><details open><summary>信号原文全文</summary><pre class='raw'>================================================================
-  ETF跨行业轮动 · C01_效15d  2026-07-21 23:27
-  因子: {&#x27;eff&#x27;: 0.6, &#x27;mtf&#x27;: 0.4} | 调仓15日 | 止损-8%
-  迟滞20% | 最小持仓5日 | 冻结:True
-================================================================
-
-📊 沪深300: 4.787  MA20:4.853(-1.4%)  20日:-3.1%  ❌ 向下(空仓)
-📈 市场宽度: 34%  有效池:50  剔除异常:2
-   异常样本: 通信ETF(20日-60.9%), 半导体ETF(20日-54.5%)
-
-  【主策略】效率排名 TOP10
-    # 名称                  现价     20日     效率  MTF     得分 状态
-  --------------------------------------------------------------
-   1  中概互联ETF          1.132  +14.3%  0.362 1.00  +1.14 空仓期
-   2  稀土ETF            0.790  -22.0%  0.525 0.00  +0.90 空仓期
-   3  港股创新药ETF         1.177  +19.3%  0.299 1.00  +0.87 空仓期
-   4  新能源ETF           2.403  -19.1%  0.507 0.00  +0.83 空仓期
-   5  创新药ETF银华         0.879  +16.9%  0.268 1.00  +0.75 空仓期
-   6  光伏ETF            0.815  -18.3%  0.483 0.00  +0.73 空仓期
-   7  恒生科技ETF          0.610   +9.1%  0.259 1.00  +0.71 空仓期
-   8  中药ETF银华          0.910   +9.8%  0.256 1.00  +0.69 空仓期
-   9  医疗ETF            0.328  +10.1%  0.242 1.00  +0.64 空仓期
-  10  高端制造ETF          0.809  -13.3%  0.453 0.00  +0.60 空仓期
-
-  【影子】C01_Q10_VT08_SOFT_OH38_EXTRA_GOLD_NQ TOP5 (不交易)
-    # 名称                 20日     5日    影子分
-  ------------------------------------------
-    1 中概互联ETF         +14.3%  +4.3%  +0.00
-    2 稀土ETF           -22.0%  -7.4%  +0.00
-    3 港股创新药ETF        +19.3%  +0.3%  +0.00
-    4 新能源ETF          -19.1%  -4.0%  +0.00
-    5 创新药ETF银华        +16.9%  +0.1%  +0.00
-
-================================================================
-  ▸ 今日动作: ⚪ 空仓观望
-================================================================
-    · 大盘趋势向下 → 保持空仓
-
-  决策检查清单
-    [✗] 大盘&gt;MA20     趋势过滤
-    [✓] 调仓窗口        从未调仓→可调
-    [✓] 空仓可买        当前无持仓
-    [✓] 有合格标的       中概互联ETF 得分+1.14
-    [✓] 目标暴露        0.0%
-
-  调仓时钟: 上次 无 | 已过 0 交易日 | 还需 0 交易日 | 可调仓
-
-================================================================
-  模拟账户 · C01_效15d · 起步10万
-================================================================
-  持仓: 空仓
-  现金: 100,000.00   持仓市值:       0.00
-  总资产: 100,000.00   总收益: +0.00%   累计盈亏: +0.00
-  交易: 0笔 (胜0/负0)  胜率:0%
-
-  对照 · C01_Q10_VT08_SOFT_OH38_EXTRA_GOLD_NQ
-    影子趋势: ❌  建议: 空仓(趋势关) 暴露0%
-    研究暴露: 0.0%  regime=bear×0.0  vol_scale=0.2722 src=bench  inv=0.8102
-    影子账户: 总资产=100000.0  收益=0.0%  port_rets=0  path=/home/runner/work/etf-rotation/etf-rotation/output/shadow_states/c01_q10_vt08_soft_oh38_xgn.json
-    注: vol_target 用基准波动代理 (组合收益样本不足)
-    注: 趋势关 → 目标暴露 0
-    · 大盘趋势向下 → 保持空仓
-    主策略现态: 空仓
-    主策略目标暴露: 0.0%
-
-================================================================
-  实盘备忘 (非投资建议)
-    1. 空仓, 不抄底
-    2. 等沪深300回到MA20上方后再看信号
-    · 固定配置至少跑满3个月再调参
-================================================================
-
-</pre></details>
+<div class='card'><h2>已合并到「原文备查」</h2><p class='muted'>信号原文已并入原文备查</p><p>请打开 <a href='raw.html#signal'><b>原文备查</b></a>。 若未自动跳转，点这个链接。</p><p class='muted'>机器可读 JSON/TXT 仍保留原文件名。</p></div><meta http-equiv='refresh' content='0;url=raw.html#signal'>
 </main>
-<footer>只读面板 · 非投资建议 · 数据来自本地 output/ 日更产物 · 有效收益以“实盘段 / 相对大盘”为准</footer>
+<footer>只读面板 · 非投资建议 · 日常看「总览」即可 · 有效收益以「实盘段 / 相对大盘」为准</footer>
 </body>
 </html>

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#0b1220">
-<title>EOD</title>
+<title>原文备查</title>
 <style>
 :root{
   color-scheme:dark;
@@ -176,6 +176,9 @@ ul.alerts li{margin:.3rem 0}
 .hero .hero-side{flex:1 1 14rem;max-width:28rem}
 .stack{display:flex;flex-direction:column;gap:.45rem}
 .section-title{font-size:1rem;margin:1.05rem 0 .55rem;font-weight:700;letter-spacing:-.01em}
+.section-block{scroll-margin-top:5rem}
+.toc{display:flex;flex-wrap:wrap;gap:.45rem .7rem;margin:.35rem 0 .8rem}
+.toc a{font-size:.85rem}
 footer{
   max-width:var(--max);margin:0 auto;padding:0 1.15rem 2rem;
   color:var(--muted-2);font-size:.8rem
@@ -212,25 +215,16 @@ footer{
     <div class="brand-row">
       <div class="brand-meta">
         <h1>ETF 轮动 · 日更面板</h1>
-        <div class="muted">生成于 2026-07-22 10:37:27 · 生产 c01 冻结 · 研究影子 xgn</div>
+        <div class="muted">生成于 2026-07-22 10:56:52 · 生产账户冻结 · 研究影子观察中</div>
       </div>
       <span class="chip">只读 · 非投资建议</span>
     </div>
-    <nav class="primary" aria-label="常用页面"><a href="index.html">面板</a> <a href="pulse.html">脉搏</a> <a href="yield.html">收益</a> <a href="ready.html">可判</a> <a href="digest.html">摘要</a> <a href="data.html">行情</a> <a href="next.html">下一步</a> <a href="progress.html">轨迹</a> <a href="today.html">今日</a> <a href="monitor.html">监控</a></nav>
-    <nav class="more" aria-label="更多页面"><a href="brief.html">速览</a> <a href="go.html">GO</a> <a href="eod.html" class="active">EOD</a> <a href="pull.html">拉取</a> <a href="asof.html">取证</a> <a href="compare.html">对照</a> <a href="live.html">LIVE</a> <a href="signal.html">信号原文</a> <a href="status.html">状态</a> <a href="alerts.html">告警</a> <a href="summary.html">日报</a> <a href="latest.json">JSON</a></nav>
+    <nav class="primary" aria-label="页面"><a href="index.html">总览</a> <a href="research.html">研究明细</a> <a href="raw.html" class="active">原文备查</a></nav>
   </div>
 </header>
 <main>
-<p><span class="badge warn">warn 4</span></p><div class='card banner warn'>⚠ 行情未更新: 行情截至 2026-07-21 · wall/交易日 2026-07-22 · <code>./etf asof</code></div><div class='card'><h2>EOD 收盘闭环</h2><pre class='raw'>======== EOD 收盘闭环 ========
-level=NOT_READY
-wait_code=0 daily_code=0
-live=0.0 xs=0.0 Lrets=0
-days_to_ready=5
-eta=约再 5 个交易日可 READY (Lrets≥5); 另需 asof 先推进
-推荐: ./etf wait-asof | ./etf go --timeout 600  |  ./etf pulse  |  ./etf progress
-========
-</pre></div><p class='muted'><code>./etf eod --timeout 1800</code> · 推进 asof 后积累 live 样本</p>
+<div class='card'><h2>已合并到「原文备查」</h2><p class='muted'>收盘日志已并入原文备查</p><p>请打开 <a href='raw.html#eod'><b>原文备查</b></a>。 若未自动跳转，点这个链接。</p><p class='muted'>机器可读 JSON/TXT 仍保留原文件名。</p></div><meta http-equiv='refresh' content='0;url=raw.html#eod'>
 </main>
-<footer>只读面板 · 非投资建议 · 数据来自本地 output/ 日更产物 · 有效收益以“实盘段 / 相对大盘”为准</footer>
+<footer>只读面板 · 非投资建议 · 日常看「总览」即可 · 有效收益以「实盘段 / 相对大盘」为准</footer>
 </body>
 </html>

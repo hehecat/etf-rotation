@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#0b1220">
-<title>ETF日更面板</title>
+<title>ETF日更总览</title>
 <style>
 :root{
   color-scheme:dark;
@@ -176,6 +176,9 @@ ul.alerts li{margin:.3rem 0}
 .hero .hero-side{flex:1 1 14rem;max-width:28rem}
 .stack{display:flex;flex-direction:column;gap:.45rem}
 .section-title{font-size:1rem;margin:1.05rem 0 .55rem;font-weight:700;letter-spacing:-.01em}
+.section-block{scroll-margin-top:5rem}
+.toc{display:flex;flex-wrap:wrap;gap:.45rem .7rem;margin:.35rem 0 .8rem}
+.toc a{font-size:.85rem}
 footer{
   max-width:var(--max);margin:0 auto;padding:0 1.15rem 2rem;
   color:var(--muted-2);font-size:.8rem
@@ -212,29 +215,26 @@ footer{
     <div class="brand-row">
       <div class="brand-meta">
         <h1>ETF 轮动 · 日更面板</h1>
-        <div class="muted">生成于 2026-07-22 10:37:27 · 生产 c01 冻结 · 研究影子 xgn</div>
+        <div class="muted">生成于 2026-07-22 10:56:52 · 生产账户冻结 · 研究影子观察中</div>
       </div>
       <span class="chip">只读 · 非投资建议</span>
     </div>
-    <nav class="primary" aria-label="常用页面"><a href="index.html" class="active">面板</a> <a href="pulse.html">脉搏</a> <a href="yield.html">收益</a> <a href="ready.html">可判</a> <a href="digest.html">摘要</a> <a href="data.html">行情</a> <a href="next.html">下一步</a> <a href="progress.html">轨迹</a> <a href="today.html">今日</a> <a href="monitor.html">监控</a></nav>
-    <nav class="more" aria-label="更多页面"><a href="brief.html">速览</a> <a href="go.html">GO</a> <a href="eod.html">EOD</a> <a href="pull.html">拉取</a> <a href="asof.html">取证</a> <a href="compare.html">对照</a> <a href="live.html">LIVE</a> <a href="signal.html">信号原文</a> <a href="status.html">状态</a> <a href="alerts.html">告警</a> <a href="summary.html">日报</a> <a href="latest.json">JSON</a></nav>
+    <nav class="primary" aria-label="页面"><a href="index.html" class="active">总览</a> <a href="research.html">研究明细</a> <a href="raw.html">原文备查</a></nav>
   </div>
 </header>
 <main>
 
 <div class='card banner warn'><b>⚠ 行情滞后 行情未更新</b> · 行情截至 2026-07-21 · wall/交易日 2026-07-22 (nav/live 以 asof 为准) · <code>./etf asof</code><br><b>⚠ latest 过旧</b> · 信号时间 2026-07-21 23:27 · 交易日 2026-07-22 · <code>./etf refresh</code></div><div class="card hero">
   <div class="hero-main">
-    <div class="pillrow"><span class="badge off">趋势关</span> <span class="badge info">生产冻结</span> <span class="badge ok">交易日</span> <span class="badge ok">pipeline OK</span> <span class="badge ok">monitor OK</span> <span class="badge warn">等行情</span> <span class="badge warn">暂不可判</span> <span class="badge warn">warn 4</span></div>
+    <div class="pillrow"><span class="badge off">趋势关</span> <span class="badge info">生产冻结</span> <span class="badge ok">交易日</span> <span class="badge ok">流水线正常</span> <span class="badge ok">监控正常</span> <span class="badge warn">等行情</span> <span class="badge warn">暂不可判</span> <span class="badge warn">警告 4</span></div>
     <div class="action" style="margin-top:.5rem">⚪ 空仓观望</div>
     <div class="muted" style="margin-top:.3rem">C01_效15d · 2026-07-21 23:27</div>
   </div>
   <div class="hero-side muted">
     生产只读 · 研究影子不交易 · “实盘段 / 相对大盘”才是日更有效收益 · 样本未满 5 天别当真 · 行情未更新时别解读
     <div class="links" style="margin-top:.55rem;display:flex;flex-wrap:wrap;gap:.45rem .7rem">
-      <a href="digest.html">摘要</a>
-      <a href="ready.html">可判性</a>
-      <a href="yield.html">有效收益</a>
-      <a href="pulse.html">脉搏</a>
+      <a href="research.html">研究明细</a>
+      <a href="raw.html">原文备查</a>
       <code>./etf</code>
       <code>./etf do</code>
       <code>./etf eod</code>
@@ -242,13 +242,14 @@ footer{
   </div>
 </div>
 <div class="grid insight">
-<div class='card insight'><div class='k'><b>一句话结论</b><span class='badge warn'>暂不可判</span></div><div class='v'>实盘段 +0.00% · 相对大盘 +0.00% · 还没开始统计实盘天数 · 行情还没更新完 · 大约还要5 个交易日可当真看收益; 先等今日行情写入</div><div class='v muted' style='margin-top:.35rem'>建议 <code>./etf wait --timeout 600</code></div><div class='links'><a href='digest.html'>摘要</a><a href='ready.html'>能不能当真</a><a href='progress.html'>进度</a><a href='eod.html'>收盘</a></div></div><div class='card insight'><div class='k'><b>统计进度</b><span class='badge warn'>暂不可判</span></div><div class='v'>还没开始统计实盘天数 · 大约还要5个交易日可判；先等今日行情写入 · 大约还要5个交易日(先等行情)</div><div class='v muted' style='margin-top:.35rem'>行情截至 2026-07-21</div><div class='links'><a href='progress.html'>进度</a><a href='ready.html'>能不能当真</a></div></div><div class='card insight'><div class='k'><b>现在怎么办</b><span class='badge warn'>暂不可判</span></div><div class='v'>下一步: 先等行情更新 · 大约还要5个交易日可判；先等今日行情写入</div><div class='v muted' style='margin-top:.35rem'>现在不要当真收益看 · 大约还要5 个交易日可当真看收益; 先等今日行情写入</div><div class='links'><a href='pulse.html'>详情</a><code>./etf do</code></div></div>
+<div class='card insight' id='insight-digest'><div class='k'><b>一句话结论</b><span class='badge warn'>暂不可判</span></div><div class='v'>实盘段 +0.00% · 相对大盘 +0.00% · 还没开始统计实盘天数 · 行情还没更新完 · 大约还要5 个交易日可当真看收益; 先等今日行情写入</div><div class='v muted' style='margin-top:.35rem'>建议 <code>./etf wait --timeout 600</code></div><div class='links'><a href='#insight-digest'>摘要</a><a href='#insight-progress'>能不能当真</a><a href='#insight-progress'>进度</a><a href='raw.html#eod'>收盘原文</a></div></div><div class='card insight' id='insight-progress'><div class='k'><b>统计进度</b><span class='badge warn'>暂不可判</span></div><div class='v'>还没开始统计实盘天数 · 大约还要5个交易日可判；先等今日行情写入 · 大约还要5个交易日(先等行情)</div><div class='v muted' style='margin-top:.35rem'>行情截至 2026-07-21</div><div class='links'><a href='#insight-progress'>进度</a><a href='#insight-progress'>能不能当真</a></div></div><div class='card insight' id='insight-pulse'><div class='k'><b>现在怎么办</b><span class='badge warn'>暂不可判</span></div><div class='v'>下一步: 先等行情更新 · 大约还要5个交易日可判；先等今日行情写入</div><div class='v muted' style='margin-top:.35rem'>现在不要当真收益看 · 大约还要5 个交易日可当真看收益; 先等今日行情写入</div><div class='links'><a href='#insight-pulse'>详情</a><code>./etf do</code></div></div>
 </div>
+<div class="card insight" style="margin:.35rem 0 .75rem"><div class="k"><b>怎么看这个面板</b></div><div class="v">日常只看本页「总览」。要对比影子表现去「研究明细」。命令日志与原文去「原文备查」。</div></div>
 <div class="grid kpis" style="margin-top:.75rem">
   <div class="card kpi"><div class="label">持仓</div><div class="value">空仓</div><div class="sub">生产模拟账户</div></div>
-  <div class="card kpi"><div class="label">总资产</div><div class="value">100,000.00</div><div class="sub">收益 0.0%</div></div>
+  <div class="card kpi"><div class="label">总资产</div><div class="value">100,000.00</div><div class="sub">累计收益 0.0%</div></div>
   <div class="card kpi"><div class="label">研究影子·实盘段</div><div class="value">+0.00% 样本还少</div><div class="sub">C01_Q10_VT08_SOFT_OH38_EXTRA_GOLD_NQ · 已统计0天 · 还没开始统计</div></div>
-  <div class="card kpi"><div class="label">相对大盘</div><div class="value">+0.00%</div><div class="sub">vs 基准 +0.00%</div></div>
+  <div class="card kpi"><div class="label">相对大盘</div><div class="value">+0.00%</div><div class="sub">大盘同期 +0.00%</div></div>
 </div>
 <div style="margin:.35rem 0 .95rem"><div class="bar"><i style="width:34.0%"></i></div></div>
 
@@ -256,24 +257,24 @@ footer{
   <div class="card stack">
     <h2>今日动作</h2>
     <ul class='alerts'><li>大盘趋势向下 → 保持空仓</li></ul>
-    <div class="muted">调仓时钟 days_to_rebalance=0</div>
+    <div class="muted">距下次调仓 0 天</div>
   </div>
   <div class="card stack">
     <h2>研究影子</h2>
     <div><b>空仓(趋势关) 暴露0%</b></div>
-    <div class="muted">账户 100,000.00 · 实盘段 +0.00% 样本还少 · 相对大盘 +0.00% · 全样本 0.0% · rets=0</div>
+    <div class="muted">账户 100,000.00 · 实盘段 +0.00% 样本还少 · 相对大盘 +0.00% · 全样本 0.0% · 收益样本 0</div>
     <div class="bar"><i style="width:0.0%"></i></div>
-    <div class="muted">path: c01_q10_vt08_soft_oh38_xgn.json</div>
+    <div class="muted">状态文件: c01_q10_vt08_soft_oh38_xgn.json</div>
   </div>
 </div>
 
 <div class="grid two" style="margin-top:.85rem">
   <div class="card">
-    <h2>影子净值 (归一化)</h2>
+    <h2>影子净值曲线</h2>
     <p class="muted">暂无净值历史 (影子 warmup 后可见)</p>
   </div>
   <div class="card">
-    <h2>近 N 日动作</h2>
+    <h2>近几日动作</h2>
     <ul class='tl'><li><div class='when'>2026-07-22</div><div class='what'><span class="badge off">趋势关</span>⚪ 空仓观望<div class=why>大盘趋势向下 → 保持空仓</div><div class='why'>实盘段 +0.00% 样本还少 · 相对大盘 +0.00%</div></div></li><li><div class='when'>2026-07-21</div><div class='what'><span class="badge off">趋势关</span>⚪ 空仓观望<div class=why>大盘趋势向下 → 保持空仓 · 大盘趋势向下 → 保持空仓</div><div class='why'>实盘段 +0.00% 样本还少 · 相对大盘 +0.00%</div></div></li><li><div class='when'>2026-07-20</div><div class='what'><span class="badge off">趋势关</span>⚪ 空仓观望<div class=why>大盘趋势向下 → 保持空仓</div><div class='why'>实盘段 +0.00% 样本还少 · 相对大盘 +0.00%</div></div></li><li><div class='when'>2026-07-17</div><div class='what'><span class="badge off">趋势关</span>⚪ 空仓观望<div class=why>大盘趋势向下 → 保持空仓 · 固定配置至少跑满3个月再调参</div></div></li></ul>
   </div>
 </div>
@@ -284,18 +285,18 @@ footer{
     <table><thead><tr><th></th><th>检查项</th><th>说明</th></tr></thead><tbody><tr><td class='check-bad num'>✗</td><td>大盘&gt;MA20</td><td class='muted'>趋势过滤</td></tr><tr><td class='check-ok num'>✓</td><td>调仓窗口</td><td class='muted'>从未调仓→可调</td></tr><tr><td class='check-ok num'>✓</td><td>空仓可买</td><td class='muted'>当前无持仓</td></tr><tr><td class='check-ok num'>✓</td><td>有合格标的</td><td class='muted'>中概互联ETF 得分+1.14</td></tr><tr><td class='check-ok num'>✓</td><td>目标暴露</td><td class='muted'>0.0%</td></tr></tbody></table>
   </div>
   <div class="card">
-    <h2>主策略 TOP</h2>
+    <h2>主策略候选</h2>
     <table><thead><tr><th>#</th><th>名称</th><th>代码</th><th>得分</th></tr></thead><tbody><tr><td class='num'>1</td><td>中概互联ETF</td><td class='muted num'>SH513050</td><td class='num pos'>+1.14</td></tr><tr><td class='num'>2</td><td>稀土ETF</td><td class='muted num'>SH516780</td><td class='num pos'>+0.90</td></tr><tr><td class='num'>3</td><td>港股创新药ETF</td><td class='muted num'>SH513120</td><td class='num pos'>+0.87</td></tr></tbody></table>
   </div>
 </div>
 
 <div style="margin-top:1rem">
-  <h2 class="section-title">影子监控</h2>
+  <h2 class="section-title">影子监控一览</h2>
   <div class="stack">
 <div class="card">
-  <div class="pillrow"><b>c01_q10_vt08_soft_oh38</b> <span class="badge ok">OK</span>
-    <span class="badge info">vol:portfolio</span>
-    <span class="badge off">regime:bear</span>
+  <div class="pillrow"><b>c01_q10_vt08_soft_oh38</b> <span class="badge ok">正常</span>
+    <span class="badge info">波动:portfolio</span>
+    <span class="badge off">状态:bear</span>
   </div>
   <div class="grid kpis" style="margin-top:.55rem">
     <div class="card kpi"><div class="label">目标暴露</div><div class="value">0.0%</div><div class="sub">vol_scale=0.4161</div></div>
@@ -306,9 +307,9 @@ footer{
   <div class="bar"><i style="width:0.0%"></i></div>
 </div>
 <div class="card">
-  <div class="pillrow"><b>c01_q10_vt08_soft_oh38_xgn</b> <span class="badge ok">OK</span>
-    <span class="badge info">vol:portfolio</span>
-    <span class="badge off">regime:bear</span>
+  <div class="pillrow"><b>c01_q10_vt08_soft_oh38_xgn</b> <span class="badge ok">正常</span>
+    <span class="badge info">波动:portfolio</span>
+    <span class="badge off">状态:bear</span>
   </div>
   <div class="grid kpis" style="margin-top:.55rem">
     <div class="card kpi"><div class="label">目标暴露</div><div class="value">0.0%</div><div class="sub">vol_scale=0.7009</div></div>
@@ -319,9 +320,9 @@ footer{
   <div class="bar"><i style="width:0.0%"></i></div>
 </div>
 <div class="card">
-  <div class="pillrow"><b>c01_q10_vt09_oh35</b> <span class="badge ok">OK</span>
-    <span class="badge info">vol:portfolio</span>
-    <span class="badge off">regime:—</span>
+  <div class="pillrow"><b>c01_q10_vt09_oh35</b> <span class="badge ok">正常</span>
+    <span class="badge info">波动:portfolio</span>
+    <span class="badge off">状态:—</span>
   </div>
   <div class="grid kpis" style="margin-top:.55rem">
     <div class="card kpi"><div class="label">目标暴露</div><div class="value">0.0%</div><div class="sub">vol_scale=0.4249</div></div>
@@ -332,9 +333,9 @@ footer{
   <div class="bar"><i style="width:0.0%"></i></div>
 </div>
 <div class="card">
-  <div class="pillrow"><b>c01_q10_vt11</b> <span class="badge ok">OK</span>
-    <span class="badge info">vol:portfolio</span>
-    <span class="badge off">regime:—</span>
+  <div class="pillrow"><b>c01_q10_vt11</b> <span class="badge ok">正常</span>
+    <span class="badge info">波动:portfolio</span>
+    <span class="badge off">状态:—</span>
   </div>
   <div class="grid kpis" style="margin-top:.55rem">
     <div class="card kpi"><div class="label">目标暴露</div><div class="value">0.0%</div><div class="sub">vol_scale=0.4369</div></div>
@@ -433,6 +434,6 @@ footer{
 </details>
 
 </main>
-<footer>只读面板 · 非投资建议 · 数据来自本地 output/ 日更产物 · 有效收益以“实盘段 / 相对大盘”为准</footer>
+<footer>只读面板 · 非投资建议 · 日常看「总览」即可 · 有效收益以「实盘段 / 相对大盘」为准</footer>
 </body>
 </html>

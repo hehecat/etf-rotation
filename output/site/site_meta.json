@@ -1,5 +1,5 @@
 {
-  "built_at": "2026-07-22T10:37:27",
+  "built_at": "2026-07-22T10:56:52",
   "has_latest": true,
   "has_monitor": true,
   "has_summary": true,
@@ -24,6 +24,8 @@
   "readable_yield": false,
   "has_wait_asof": true,
   "has_dashboard": true,
+  "has_research": true,
+  "has_raw": true,
   "has_live": true,
   "has_compare": true,
   "market_asof": "2026-07-21",

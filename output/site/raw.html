@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0b1220">
+<title>原文备查</title>
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#0b1220;
+  --bg-elev:#0f172a;
+  --panel:#121a2b;
+  --panel-2:#162033;
+  --line:rgba(148,163,184,.16);
+  --line-strong:rgba(148,163,184,.28);
+  --text:#f1f5f9;
+  --muted:#94a3b8;
+  --muted-2:#64748b;
+  --blue:#60a5fa;
+  --blue-strong:#3b82f6;
+  --green:#34d399;
+  --red:#f87171;
+  --amber:#fbbf24;
+  --purple:#a78bfa;
+  --shadow:0 10px 30px rgba(2,6,23,.35);
+  --radius:14px;
+  --radius-sm:10px;
+  --ease-out:cubic-bezier(0.23,1,0.32,1);
+  --focus:0 0 0 3px rgba(59,130,246,.35);
+  --max:76rem;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Noto Sans SC",sans-serif;
+  background:
+    radial-gradient(1200px 500px at 10% -10%,rgba(59,130,246,.12),transparent 55%),
+    radial-gradient(900px 420px at 90% 0%,rgba(52,211,153,.08),transparent 50%),
+    var(--bg);
+  color:var(--text);
+  margin:0;
+  line-height:1.55;
+  font-size:16px;
+  min-height:100vh;
+}
+a{color:var(--blue);text-decoration:none}
+a:hover{color:#93c5fd;text-decoration:underline;text-underline-offset:2px}
+a:focus-visible,button:focus-visible,summary:focus-visible,nav a:focus-visible{
+  outline:none;box-shadow:var(--focus);border-radius:8px
+}
+header{
+  position:sticky;top:0;z-index:20;
+  backdrop-filter:blur(12px) saturate(1.2);
+  -webkit-backdrop-filter:blur(12px) saturate(1.2);
+  background:rgba(11,18,32,.82);
+  border-bottom:1px solid var(--line);
+}
+.shell{max-width:var(--max);margin:0 auto;padding:1rem 1.15rem .85rem}
+header h1{
+  font-size:clamp(1.15rem,2.2vw,1.4rem);margin:0 0 .2rem;font-weight:700;letter-spacing:-.02em
+}
+header .brand-row{display:flex;flex-wrap:wrap;gap:.55rem;align-items:center;justify-content:space-between}
+header .brand-meta{display:flex;flex-direction:column;gap:.15rem;min-width:0}
+.muted{color:var(--muted);font-size:.875rem}
+.muted-2{color:var(--muted-2);font-size:.8rem}
+.chip{
+  display:inline-flex;align-items:center;gap:.35rem;
+  padding:.28rem .6rem;border-radius:999px;font-size:.75rem;font-weight:600;
+  background:rgba(96,165,250,.1);color:var(--blue);border:1px solid rgba(96,165,250,.25);
+  white-space:nowrap
+}
+nav.primary,nav.more{display:flex;flex-wrap:wrap;gap:.4rem}
+nav.primary{margin-top:.75rem}
+nav.more{margin-top:.45rem}
+nav a{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:2rem;padding:.3rem .75rem;border:1px solid var(--line);
+  border-radius:999px;color:var(--text);background:rgba(15,23,42,.72);
+  font-size:.84rem;font-weight:500;transition:border-color .18s var(--ease-out),color .18s var(--ease-out),background .18s var(--ease-out),transform .12s var(--ease-out)
+}
+nav a.active{
+  border-color:rgba(96,165,250,.55);color:#dbeafe;background:rgba(59,130,246,.16);text-decoration:none
+}
+@media (hover:hover) and (pointer:fine){
+  nav a:hover{border-color:rgba(96,165,250,.55);color:#dbeafe;text-decoration:none;background:rgba(59,130,246,.12)}
+}
+nav a:active{transform:scale(.97)}
+nav.more a{opacity:.9;font-size:.8rem;min-height:1.85rem;padding:.22rem .65rem;color:var(--muted)}
+main{max-width:var(--max);margin:0 auto;padding:1.05rem 1.15rem 2.8rem}
+.grid{display:grid;gap:.85rem}
+.grid.kpis{grid-template-columns:repeat(auto-fit,minmax(10.5rem,1fr))}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(18.5rem,1fr))}
+.grid.insight{grid-template-columns:repeat(auto-fit,minmax(16.5rem,1fr));margin:.75rem 0 .35rem}
+.card{
+  background:linear-gradient(180deg,rgba(22,32,51,.96),rgba(18,26,43,.96));
+  border:1px solid var(--line);border-radius:var(--radius);padding:1rem 1.05rem;
+  box-shadow:var(--shadow)
+}
+.card h2,.card h3{margin:.05rem 0 .6rem;font-size:.98rem;font-weight:700;letter-spacing:-.01em}
+.card.hero{
+  display:flex;flex-wrap:wrap;gap:.85rem 1.1rem;align-items:flex-start;justify-content:space-between;
+  background:
+    linear-gradient(135deg,rgba(59,130,246,.12),transparent 42%),
+    linear-gradient(180deg,rgba(24,35,56,.98),rgba(15,23,42,.96));
+  border-color:rgba(96,165,250,.18)
+}
+.card.insight{padding:.9rem 1rem;box-shadow:none;background:rgba(15,23,42,.72)}
+.card.insight .k{display:flex;align-items:center;justify-content:space-between;gap:.5rem;margin-bottom:.4rem}
+.card.insight .k b{font-size:.82rem;letter-spacing:.02em;color:#e2e8f0}
+.card.insight .v{font-size:.95rem;font-weight:650;line-height:1.45;word-break:break-word}
+.card.insight .links{display:flex;flex-wrap:wrap;gap:.45rem .65rem;margin-top:.55rem;font-size:.8rem}
+.card.banner{
+  margin:0 0 .75rem;padding:.7rem .9rem;border-color:rgba(251,191,36,.28);
+  background:rgba(251,191,36,.08);color:#fde68a;box-shadow:none
+}
+.card.banner.warn{border-color:rgba(251,191,36,.28);background:rgba(251,191,36,.08);color:#fde68a}
+.card.banner.err{border-color:rgba(248,113,113,.28);background:rgba(248,113,113,.08);color:#fecaca}
+.kpi{
+  min-height:6.2rem;display:flex;flex-direction:column;justify-content:space-between;
+  transition:border-color .18s var(--ease-out),transform .12s var(--ease-out)
+}
+.kpi .label{color:var(--muted);font-size:.75rem;font-weight:600;letter-spacing:.02em;text-transform:none}
+.kpi .value{font-size:clamp(1.15rem,2.4vw,1.35rem);font-weight:750;margin-top:.2rem;word-break:break-word;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.kpi .sub{color:var(--muted);font-size:.75rem;margin-top:.28rem;line-height:1.4}
+.kpi .value.green,.value.green{color:var(--green)}
+.kpi .value.red,.value.red{color:var(--red)}
+.kpi .value.amber,.value.amber{color:var(--amber)}
+.pillrow{display:flex;flex-wrap:wrap;gap:.35rem;align-items:center}
+.badge{
+  display:inline-flex;align-items:center;padding:.16rem .55rem;border-radius:999px;font-size:.74rem;
+  font-weight:650;border:1px solid transparent;line-height:1.2;white-space:nowrap
+}
+.badge.ok{background:rgba(52,211,153,.12);color:var(--green);border-color:rgba(52,211,153,.32)}
+.badge.off{background:rgba(100,116,139,.14);color:#cbd5e1;border-color:rgba(100,116,139,.35)}
+.badge.warn{background:rgba(251,191,36,.12);color:var(--amber);border-color:rgba(251,191,36,.35)}
+.badge.err{background:rgba(248,113,113,.12);color:var(--red);border-color:rgba(248,113,113,.35)}
+.badge.info{background:rgba(96,165,250,.12);color:var(--blue);border-color:rgba(96,165,250,.32)}
+.bar{height:.55rem;background:rgba(148,163,184,.12);border-radius:999px;overflow:hidden;margin-top:.45rem}
+.bar>i{display:block;height:100%;background:linear-gradient(90deg,#2563eb,var(--blue));border-radius:999px}
+.bar.green>i{background:linear-gradient(90deg,#059669,var(--green))}
+.bar.red>i{background:linear-gradient(90deg,#dc2626,var(--red))}
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+th,td{padding:.5rem .4rem;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{color:var(--muted);font-weight:650;font-size:.74rem;letter-spacing:.02em}
+tr:last-child td{border-bottom:0}
+tbody tr{transition:background .15s var(--ease-out)}
+@media (hover:hover) and (pointer:fine){
+  tbody tr:hover{background:rgba(148,163,184,.05)}
+}
+.num{font-variant-numeric:tabular-nums;font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
+.pos{color:var(--green)}.neg{color:var(--red)}
+.check-ok{color:var(--green)}.check-bad{color:var(--red)}
+pre.raw,code{
+  font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:.8rem
+}
+pre.raw{
+  white-space:pre-wrap;word-break:break-word;background:rgba(2,6,23,.55);padding:.9rem;
+  border-radius:var(--radius-sm);border:1px solid var(--line);overflow:auto;line-height:1.5
+}
+code{
+  background:rgba(148,163,184,.1);border:1px solid var(--line);border-radius:6px;
+  padding:.08rem .35rem;color:#e2e8f0
+}
+details{margin-top:1rem}
+details summary{
+  cursor:pointer;color:var(--muted);font-size:.88rem;font-weight:600;
+  padding:.35rem 0;list-style-position:outside
+}
+details summary:hover{color:var(--text)}
+ul.alerts{padding-left:1.15rem;margin:.4rem 0}
+ul.alerts li{margin:.3rem 0}
+.hero .action{font-size:clamp(1.25rem,2.6vw,1.55rem);font-weight:780;letter-spacing:-.02em;line-height:1.25}
+.hero .hero-main{min-width:min(100%,18rem);flex:1 1 18rem}
+.hero .hero-side{flex:1 1 14rem;max-width:28rem}
+.stack{display:flex;flex-direction:column;gap:.45rem}
+.section-title{font-size:1rem;margin:1.05rem 0 .55rem;font-weight:700;letter-spacing:-.01em}
+.section-block{scroll-margin-top:5rem}
+.toc{display:flex;flex-wrap:wrap;gap:.45rem .7rem;margin:.35rem 0 .8rem}
+.toc a{font-size:.85rem}
+footer{
+  max-width:var(--max);margin:0 auto;padding:0 1.15rem 2rem;
+  color:var(--muted-2);font-size:.8rem
+}
+.chart-wrap{width:100%;overflow:hidden}
+.chart-wrap svg{width:100%;height:auto;display:block;border-radius:10px}
+.tl{list-style:none;padding:0;margin:0}
+.tl li{
+  display:grid;grid-template-columns:6.4rem 1fr;gap:.6rem;padding:.5rem 0;
+  border-bottom:1px solid var(--line)
+}
+.tl li:last-child{border-bottom:0}
+.tl .when{color:var(--muted);font-size:.78rem;font-variant-numeric:tabular-nums;padding-top:.12rem}
+.tl .what{font-size:.9rem}
+.tl .why{color:var(--muted);font-size:.78rem;margin-top:.18rem;line-height:1.4}
+.legend{display:flex;flex-wrap:wrap;gap:.55rem;margin:.35rem 0 .35rem;font-size:.75rem;color:var(--muted)}
+.legend i{display:inline-block;width:.75rem;height:.25rem;border-radius:2px;margin-right:.28rem;vertical-align:middle}
+.legend .l1{background:#60a5fa}.legend .l2{background:#34d399}.legend .l3{background:#a78bfa}
+@media (max-width:720px){
+  .shell,main,footer{padding-left:1rem;padding-right:1rem}
+  .kpi .value{font-size:1.1rem}
+  th,td{font-size:.8rem}
+  .tl li{grid-template-columns:5.2rem 1fr;gap:.4rem}
+  header{position:static}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="shell">
+    <div class="brand-row">
+      <div class="brand-meta">
+        <h1>ETF 轮动 · 日更面板</h1>
+        <div class="muted">生成于 2026-07-22 10:56:52 · 生产账户冻结 · 研究影子观察中</div>
+      </div>
+      <span class="chip">只读 · 非投资建议</span>
+    </div>
+    <nav class="primary" aria-label="页面"><a href="index.html">总览</a> <a href="research.html">研究明细</a> <a href="raw.html" class="active">原文备查</a></nav>
+  </div>
+</header>
+<main>
+
+<div class='card banner warn'>⚠ 行情未更新: 行情截至 2026-07-21 · wall/交易日 2026-07-22 · <code>./etf asof</code></div>
+<div class="card hero">
+  <div class="hero-main">
+    <div class="action">原文备查</div>
+    <div class="muted" style="margin-top:.3rem">CLI 原文与 JSON 摘要。日常不看这里；排障或对账时再展开。</div>
+  </div>
+  <div class="hero-side muted">
+    <a href="index.html">返回总览</a> · <a href="research.html">研究明细</a>
+  </div>
+</div>
+<p><span class="badge warn">警告 4</span></p>
+<div class="card"><details><summary>今日速览</summary><pre class='raw'>======== ETF 今日速览 ========
+时间: 2026-07-21T23:27:32
+信号默认影子: c01_q10_vt08_soft_oh38_xgn
+----------------------------
+生产动作: ⚪ 空仓观望
+市场: 关  宽度=0.34  配置=C01_效15d  信号时间: 2026-07-21 23:27  行情截至: 2026-07-21
+原因:
+  · 大盘趋势向下 → 保持空仓
+研究影子动作: 空仓(趋势关) 暴露0%
+研究目标暴露: 0.0%
+-------- 有效收益 (SIGNAL) --------
+  策略: c01_q10_vt08_soft_oh38_xgn
+  live=+0.000% THIN  xs=+0.000%  bench=+0.000%
+  from=2026-07-21  Lrets=0  持仓=空仓
+  行情截至: 2026-07-21
+  注: Lrets=0 表示仅有锚日、尚无 live 样本日 (常见于 DATA_LAG 或刚暖机)
+  注: THIN=样本&lt;5日; DATA_LAG 时等行情更新后再判 xs
+-------- 监控告警 --------
+  error=0 warn=4 ok=True
+-------- 下一步 --------
+  ./etf asof     # 优先: DATA_LAG 取证, 等行情
+  # 勿反复 refresh 空转; 行情更新后再判 xs
+  ./etf yield    # 有效收益 live%/xs%
+  ./etf brief    # 三合一速览
+  ./etf data     # 行情状态/决策
+  ./etf next     # 唯一推荐下一步
+  ./etf preview
+  ./etf live
+  ./etf check --checks data_asof,asof
+距可判: 5 交易日
+ETA: 约再 5 个交易日可 READY (Lrets≥5)
+轨迹: ./etf progress
+口径: 有效收益=live%+xs%; DATA_LAG 等行情; 生产 c01 冻结
+========
+</pre></details><details><summary>脉搏</summary><pre class='raw'>======== 现在怎么办 ========
+结论: 暂不可判
+行情截至: 2026-07-21 · 行情还没更新完
+实盘段: +0.00% · 相对大盘: +0.00%
+样本: 还没开始统计实盘天数
+距可判: 约再 5 个交易日可 READY (Lrets≥5); 另需 asof 先推进
+下一步: 先等行情更新
+原因: DATA_LAG/样本不足: 等 asof 推进后再判 live%/xs%
+建议命令: ./etf wait --timeout 600
+能不能当真看: 先别当真
+========
+</pre></details><details><summary>摘要</summary><pre class='raw'>======== DIGEST ========
+能不能当真: 暂不可判
+行情截至: 2026-07-21 · 还没更新完
+实盘段=0.0 相对大盘=0.0 已统计天数=0 · 样本还少
+decision: wait_data
+eta: 约再 5 个交易日可 READY (Lrets≥5); 另需 asof 先推进
+推荐: ./etf wait --timeout 600
+========
+</pre></details><details><summary>可判性</summary><pre class='raw'>======== READY 有效收益可判性 ========
+level: NOT_READY
+asof: 2026-07-21 lag=True
+live=0.0 xs=0.0 Lrets=0 thin=True
+decision: wait_data
+days_to_ready: 5
+eta: 约再 5 个交易日可 READY (Lrets≥5); 另需 asof 先推进
+blockers: DATA_LAG: 行情未到 wall 日, xs 勿解读; THIN: live 样本&lt;5日, 统计不稳定; Lrets=0: 仅锚日, 尚无 live 收益样本
+========
+</pre></details><details><summary>有效收益</summary><pre class='raw'>======== 有效收益 (live段) ========
+时间: 2026-07-22T06:43:42
+行情截至: 2026-07-21  DATA_LAG
+动作: ⚪ 空仓观望  市场: 关
+策略: c01_q10_vt08_soft_oh38_xgn
+live=0.0 xs=0.0 bench=0.0 Lrets=0 thin=True
+from=2026-07-21 持仓=空仓
+days_to_ready=5 eta=约再 5 个交易日可 READY (Lrets≥5); 另需 asof 先推进
+========
+</pre></details><details id='asof'><summary>行情取证</summary><pre class='raw'>======== 行情/收益取证 ========
+时间: 2026-07-22T06:36:25
+交易日: True date=2026-07-22 source=cn_holidays_beyond_bench
+行情截至: 2026-07-21  DATA_LAG
+信号时间: 2026-07-22 06:36  动作: ⚪ 空仓观望  市场: 关
+SIGNAL: c01_q10_vt08_soft_oh38_xgn
+  live=0.0 xs=0.0 Lrets=0 thin=True 持仓=空仓
+pipeline_last: stamp=20260722_063610 ok=True asof=2026-07-21 lag=True
+site_meta: asof=2026-07-21 lag=True
+dtr=5 eta=约再 5 个交易日可 READY (Lrets≥5); 另需 asof 先推进 level=NOT_READY
+========
+</pre></details><details id='data'><summary>行情状态</summary><pre class='raw'>======== 行情状态 ========
+行情截至: 2026-07-21  DATA_LAG
+信号时间: 2026-07-22 06:36
+决策: wait_data
+dtr=5 eta=约再 5 个交易日可 READY (Lrets≥5); 另需 asof 先推进
+========
+</pre></details><details><summary>下一步</summary><pre class='raw'>======== NEXT 决策 ========
+decision: wait_data
+asof: 2026-07-21 lag=True stale=False
+推荐: ./etf wait --timeout 600
+dtr=5 eta=约再 5 个交易日可 READY (Lrets≥5); 另需 asof 先推进
+========
+</pre></details><details id='pull'><summary>强刷行情</summary><pre class='raw'>======== PULL 强刷行情 ========
+刷前 asof=2026-07-21 lag=True
+刷后 asof=2026-07-21 lag=True
+advanced=False cleared_lag=False
+ok=1 fail=0
+========
+</pre></details><details id='go'><summary>一键闭环</summary><pre class='raw'>======== GO 一键闭环 ========
+decision=wait_data
+asof=2026-07-21 lag=True
+did_wait=False wait_code=0
+推荐: ./etf wait-asof | ./etf go --timeout 600  |  ./etf pulse
+========
+</pre></details><details id='eod'><summary>收盘闭环</summary><pre class='raw'>======== EOD 收盘闭环 ========
+level=NOT_READY
+wait_code=0 daily_code=0
+live=0.0 xs=0.0 Lrets=0
+days_to_ready=5
+eta=约再 5 个交易日可 READY (Lrets≥5); 另需 asof 先推进
+推荐: ./etf wait-asof | ./etf go --timeout 600  |  ./etf pulse  |  ./etf progress
+========
+</pre></details><details><summary>可判性轨迹</summary><pre class='raw'>======== PROGRESS 可判性轨迹 ========
+2026-07-21 level=NOT_READY asof=2026-07-21 Lrets=0 dtr=5 live=0.0 xs=0.0 lag=True src=pull_noadv
+2026-07-21 level=NOT_READY asof=2026-07-21 Lrets=0 dtr=5 live=0.0 xs=0.0 lag=True src=go
+2026-07-21 level=NOT_READY asof=2026-07-21 Lrets=0 dtr=5 live=0.0 xs=0.0 lag=True src=ready
+2026-07-21 level=NOT_READY asof=2026-07-21 Lrets=0 dtr=5 live=0.0 xs=0.0 lag=True src=eod
+2026-07-21 level=NOT_READY asof=2026-07-21 Lrets=0 dtr=5 live=0.0 xs=0.0 lag=True src=pulse
+2026-07-21 level=NOT_READY asof=2026-07-21 Lrets=0 dtr=5 live=0.0 xs=0.0 lag=True src=digest
+========
+</pre></details><details id='wait'><summary>等待行情</summary><pre class='raw'>======== WAIT-ASOF ========
+start=2026-07-21 end=2026-07-21
+ok=False advanced=False cleared_lag=False
+attempts=2 timeout=1
+========
+</pre></details><details><summary>三合一速览</summary><pre class='raw'>======== BRIEF 速览 ========
+时间: 2026-07-22T06:36:27
+行情截至: 2026-07-21  DATA_LAG
+动作: ⚪ 空仓观望  市场: 关
+live=0.0 xs=0.0 Lrets=0 thin=True
+dtr=5 eta=约再 5 个交易日可 READY (Lrets≥5); 另需 asof 先推进
+========
+</pre></details><details id='signal'><summary>信号原文</summary><pre class='raw'>================================================================
+  ETF跨行业轮动 · C01_效15d  2026-07-21 23:27
+  因子: {&#x27;eff&#x27;: 0.6, &#x27;mtf&#x27;: 0.4} | 调仓15日 | 止损-8%
+  迟滞20% | 最小持仓5日 | 冻结:True
+================================================================
+
+📊 沪深300: 4.787  MA20:4.853(-1.4%)  20日:-3.1%  ❌ 向下(空仓)
+📈 市场宽度: 34%  有效池:50  剔除异常:2
+   异常样本: 通信ETF(20日-60.9%), 半导体ETF(20日-54.5%)
+
+  【主策略】效率排名 TOP10
+    # 名称                  现价     20日     效率  MTF     得分 状态
+  --------------------------------------------------------------
+   1  中概互联ETF          1.132  +14.3%  0.362 1.00  +1.14 空仓期
+   2  稀土ETF            0.790  -22.0%  0.525 0.00  +0.90 空仓期
+   3  港股创新药ETF         1.177  +19.3%  0.299 1.00  +0.87 空仓期
+   4  新能源ETF           2.403  -19.1%  0.507 0.00  +0.83 空仓期
+   5  创新药ETF银华         0.879  +16.9%  0.268 1.00  +0.75 空仓期
+   6  光伏ETF            0.815  -18.3%  0.483 0.00  +0.73 空仓期
+   7  恒生科技ETF          0.610   +9.1%  0.259 1.00  +0.71 空仓期
+   8  中药ETF银华          0.910   +9.8%  0.256 1.00  +0.69 空仓期
+   9  医疗ETF            0.328  +10.1%  0.242 1.00  +0.64 空仓期
+  10  高端制造ETF          0.809  -13.3%  0.453 0.00  +0.60 空仓期
+
+  【影子】C01_Q10_VT08_SOFT_OH38_EXTRA_GOLD_NQ TOP5 (不交易)
+    # 名称                 20日     5日    影子分
+  ------------------------------------------
+    1 中概互联ETF         +14.3%  +4.3%  +0.00
+    2 稀土ETF           -22.0%  -7.4%  +0.00
+    3 港股创新药ETF        +19.3%  +0.3%  +0.00
+    4 新能源ETF          -19.1%  -4.0%  +0.00
+    5 创新药ETF银华        +16.9%  +0.1%  +0.00
+
+================================================================
+  ▸ 今日动作: ⚪ 空仓观望
+================================================================
+    · 大盘趋势向下 → 保持空仓
+
+  决策检查清单
+    [✗] 大盘&gt;MA20     趋势过滤
+    [✓] 调仓窗口        从未调仓→可调
+    [✓] 空仓可买        当前无持仓
+    [✓] 有合格标的       中概互联ETF 得分+1.14
+    [✓] 目标暴露        0.0%
+
+  调仓时钟: 上次 无 | 已过 0 交易日 | 还需 0 交易日 | 可调仓
+
+================================================================
+  模拟账户 · C01_效15d · 起步10万
+================================================================
+  持仓: 空仓
+  现金: 100,000.00   持仓市值:       0.00
+  总资产: 100,000.00   总收益: +0.00%   累计盈亏: +0.00
+  交易: 0笔 (胜0/负0)  胜率:0%
+
+  对照 · C01_Q10_VT08_SOFT_OH38_EXTRA_GOLD_NQ
+    影子趋势: ❌  建议: 空仓(趋势关) 暴露0%
+    研究暴露: 0.0%  regime=bear×0.0  vol_scale=0.2722 src=bench  inv=0.8102
+    影子账户: 总资产=100000.0  收益=0.0%  port_rets=0  path=/home/runner/work/etf-rotation/etf-rotation/output/shadow_states/c01_q10_vt08_soft_oh38_xgn.json
+    注: vol_target 用基准波动代理 (组合收益样本不足)
+    注: 趋势关 → 目标暴露 0
+    · 大盘趋势向下 → 保持空仓
+    主策略现态: 空仓
+    主策略目标暴露: 0.0%
+
+================================================================
+  实盘备忘 (非投资建议)
+    1. 空仓, 不抄底
+    2. 等沪深300回到MA20上方后再看信号
+    · 固定配置至少跑满3个月再调参
+================================================================
+-------- 有效收益 (SIGNAL live) --------
+  策略: c01_q10_vt08_soft_oh38_xgn
+  live=+0.000% THIN  xs=+0.000%  bench=+0.000%
+  from=2026-07-21  Lrets=0  持仓=空仓
+  注: Lrets=0=仅锚日, 尚无 live 样本日 (DATA_LAG/刚暖机常见)
+  注: THIN=样本&lt;5日; DATA_LAG 时等行情更新后再判 xs
+  行情截至: 2026-07-21
+  口径: live%=暖机末→今 · xs%=live−基准 · 非全样本
+----------------------------------------
+</pre></details><details><summary>影子对照</summary><pre class='raw'>======== 主线影子对照 ========
+信号默认: c01_q10_vt08_soft_oh38_xgn
+目录: /home/runner/work/etf-rotation/etf-rotation/output/shadow_states
+----------------------------
+name                              sh     dd   live%     xs%         tv gate note
+  c01_q10_vt08_soft_oh38           —      —   +0.00   +0.00     100000    ? L@2026-07-21 THIN
+  c01_q10_vt08_soft_oh38_xgn       —      —   +0.00   +0.00     100000    ? SIGNAL L@2026-07-21 THIN
+  c01_q10_vt09_oh35                —      —   +0.00   +0.00     100000    ? L@2026-07-21 THIN
+  c01_q10_vt11                     —      —   +0.00   +0.00     100000    ? L@2026-07-21 THIN
+----------------------------
+说明: sh/dd=暖机; live%/xs%=暖机末→今 (xs=live-基准); THIN=样本&lt;5日
+  python3 scripts/etf.py live
+  python3 scripts/etf.py check
+========
+</pre></details><details><summary>实盘收益</summary><pre class='raw'>======== 主线影子 LIVE 收益 ========
+信号默认: c01_q10_vt08_soft_oh38_xgn
+目录: /home/runner/work/etf-rotation/etf-rotation/output/shadow_states
+口径: live% = (当前净值 / 暖机末锚点) - 1; 不含暖机段回测收益
+超额: excess% = live% - 基准SH510300同期%
+----------------------------
+name                              live%   bench%      xs%        nav Lrets note
+  c01_q10_vt08_soft_oh38        +0.000%  +0.000%  +0.000%     100000     0 from 2026-07-21 THIN
+  c01_q10_vt08_soft_oh38_xgn    +0.000%  +0.000%  +0.000%     100000     0 SIGNAL from 2026-07-21 THIN
+  c01_q10_vt09_oh35             +0.000%  +0.000%  +0.000%     100000     0 from 2026-07-21 THIN
+  c01_q10_vt11                  +0.000%  +0.000%  +0.000%     100000     0 from 2026-07-21 THIN
+----------------------------
+提示: 趋势关空仓 live≈0; 若基准下跌则 excess&gt;0 表示避险有效
+提示: THIN=live 样本&lt;5日 (暖机末≈最新日 / DATA_LAG 时 xs 常为0)
+提示: Lrets=0 表示仅有锚日、尚无 live 样本日; 等行情更新后再判 xs
+  python3 scripts/etf.py daily --dry-run
+========
+</pre></details><details><summary>影子监控</summary><pre class='raw'>======== 影子只读监控 ========
+基准 SH510300: 4.787 MA20=4.853(-1.4%) 20日=-3.1% 趋势=关
+生产 STATE: /home/runner/work/etf-rotation/etf-rotation/output/模拟仓位.json (本脚本只读)
+--------
+c01_q10_vt08_soft_oh38  暴露=  0.0%  regime=bear×0.0  vol_src=bench scale=0.2722  rets=0
+  账户=100000.0 收益=0.0 持仓0: 空仓
+  live=+0.000% THIN xs=+0.000% bench=+0.000% anchor=100000.0 from=2026-07-21 Lrets=0
+  注: vol_target 用基准波动代理 (组合收益样本不足)
+  注: 趋势关 → 目标暴露 0
+  !! WARN [thin_rets] port_rets=0 &lt; 20 (建议 shadow_warmup)
+--------
+c01_q10_vt08_soft_oh38_xgn  暴露=  0.0%  regime=bear×0.0  vol_src=bench scale=0.2722  rets=0
+  账户=100000.0 收益=0.0 持仓0: 空仓
+  live=+0.000% THIN xs=+0.000% bench=+0.000% anchor=100000.0 from=2026-07-21 Lrets=0
+  注: vol_target 用基准波动代理 (组合收益样本不足)
+  注: 趋势关 → 目标暴露 0
+  !! WARN [thin_rets] port_rets=0 &lt; 20 (建议 shadow_warmup)
+--------
+c01_q10_vt09_oh35  暴露=  0.0%  regime=None×1.0  vol_src=bench scale=0.3062  rets=0
+  账户=100000.0 收益=0.0 持仓0: 空仓
+  live=+0.000% THIN xs=+0.000% bench=+0.000% anchor=100000.0 from=2026-07-21 Lrets=0
+  注: vol_target 用基准波动代理 (组合收益样本不足)
+  注: 趋势关 → 目标暴露 0
+  !! WARN [thin_rets] port_rets=0 &lt; 20 (建议 shadow_warmup)
+--------
+c01_q10_vt11  暴露=  0.0%  regime=None×1.0  vol_src=bench scale=0.3743  rets=0
+  账户=100000.0 收益=0.0 持仓0: 空仓
+  live=+0.000% THIN xs=+0.000% bench=+0.000% anchor=100000.0 from=2026-07-21 Lrets=0
+  注: vol_target 用基准波动代理 (组合收益样本不足)
+  注: 趋势关 → 目标暴露 0
+  !! WARN [thin_rets] port_rets=0 &lt; 20 (建议 shadow_warmup)
+--------
+告警汇总: error=0 warn=4
+  c01_q10_vt08_soft_oh38: thin_rets; c01_q10_vt08_soft_oh38_xgn: thin_rets; c01_q10_vt09_oh35: thin_rets; c01_q10_vt11: thin_rets
+行情截至: 2026-07-21
+</pre></details><details><summary>影子摘要</summary><pre class='raw'>--------
+影子仓位 · /home/runner/work/etf-rotation/etf-rotation/output/shadow_states
+--------
+  c01_q10_vt08_soft_oh38               资产=  100000.0  live=  +0.00% THIN  xs=  +0.00%  全样本=    0.0  持仓0: 空仓  rets=0
+    更新: 2026-07-21 23:27  上次调仓: 无  live_from=2026-07-21  Lrets=0
+  c01_q10_vt08_soft_oh38_xgn           资产=  100000.0  live=  +0.00% THIN  xs=  +0.00%  全样本=    0.0  持仓0: 空仓  rets=0
+    更新: 2026-07-21 23:27  上次调仓: 无  live_from=2026-07-21  Lrets=0
+  c01_q10_vt09_oh35                    资产=  100000.0  live=  +0.00% THIN  xs=  +0.00%  全样本=    0.0  持仓0: 空仓  rets=0
+    更新: 2026-07-21 23:27  上次调仓: 无  live_from=2026-07-21  Lrets=0
+  c01_q10_vt11                         资产=  100000.0  live=  +0.00% THIN  xs=  +0.00%  全样本=    0.0  持仓0: 空仓  rets=0
+    更新: 2026-07-21 23:27  上次调仓: 无  live_from=2026-07-21  Lrets=0
+  注: THIN=live 样本&lt;5日; Lrets=0=仅锚日
+  注: DATA_LAG 时等行情更新后再判 xs
+  行情截至: 2026-07-21
+</pre></details><details><summary>研究状态</summary><pre class='raw'>======== 研究状态面板 ========
+时间: 2026-07-21T23:27:32
+交易日: True source=bench_calendar date=2026-07-21  行情截至=2026-07-21
+生产 state: True  latest: True  信号时间: 2026-07-21 23:27
+-------- 有效收益 (SIGNAL) --------
+  策略: c01_q10_vt08_soft_oh38_xgn
+  live=+0.000% THIN  xs=+0.000%  bench=+0.000%
+  from=2026-07-21  Lrets=0  持仓=空仓
+  行情截至: 2026-07-21
+  注: Lrets=0=仅锚日, 尚无 live 样本日
+  注: THIN=样本&lt;5日; DATA_LAG 时等行情更新后再判 xs
+-------- 行情取证 (asof) --------
+  · 未生成 → ./etf asof
+-------- 有效收益产物 (yield) --------
+  · 未生成 → ./etf yield
+-------- 三合一 (brief) --------
+  · 未生成 → ./etf brief
+-------- 行情状态 (data) --------
+  · 未生成 → ./etf data
+-------- 下一步 (next) --------
+  · 未生成 → ./etf next
+-------- 行情强刷 (pull) --------
+  before=2026-07-21→after=2026-07-21 advanced=False lag=False
+  · 全文 → ./etf pull --bench-only
+-------- 一键闭环 (go) --------
+  · 未生成 → ./etf go --no-wait
+-------- 可判性 (ready) --------
+  · 未生成 → ./etf ready
+-------- 摘要 (digest) --------
+  · 未生成 → ./etf digest
+-------- 收盘闭环 (eod) --------
+  · 未生成 → ./etf eod --timeout 1800
+-------- 可判轨迹 (progress) --------
+  · 未生成 → ./etf ready 或 ./etf progress
+-------- 脉搏 (pulse) --------
+  · 未生成 → ./etf pulse
+-------- 配置 --------
+  c01: frozen=True research=None vt=None top_n=1
+  c01_q10_vt08_soft_oh38: frozen=False research=True vt=0.08 top_n=1
+  c01_q10_vt08_soft_oh38_xgn: frozen=False research=True vt=0.08 top_n=1
+  c01_q10_vt09_oh35: frozen=False research=True vt=0.09 top_n=1
+  c01_q10_vt11: frozen=False research=True vt=0.11 top_n=1
+-------- 影子 --------
+  c01_q10_vt08_soft_oh38: rets=0 资产=100000.0 live=+0.00% THIN xs=+0.00% 持仓=空仓 warmup=False Lrets=0
+  c01_q10_vt08_soft_oh38_xgn: rets=0 资产=100000.0 live=+0.00% THIN xs=+0.00% 持仓=空仓 warmup=False Lrets=0
+  c01_q10_vt09_oh35: rets=0 资产=100000.0 live=+0.00% THIN xs=+0.00% 持仓=空仓 warmup=False Lrets=0
+  c01_q10_vt11: rets=0 资产=100000.0 live=+0.00% THIN xs=+0.00% 持仓=空仓 warmup=False Lrets=0
+-------- 监控告警 --------
+  error=0 warn=4 ok=True
+-------- pipeline 上次 --------
+  stamp=20260721_230832 ok=True alerts=0/4 td=True asof=2026-07-21 lag=False
+-------- healthcheck 上次 --------
+  stamp=None ok=None secs=None
+-------- weekly 上次 --------
+  stamp=None ok=None alert_fail=None
+-------- site --------
+  built=2026-07-21T23:09:21 alerts=0/4 today=True live=True compare=True
+-------- 主线对照 --------
+  ======== 主线影子对照 ========
+  信号默认: c01_q10_vt08_soft_oh38_xgn
+  c01_q10_vt08_soft_oh38           —      —   +0.00   +0.00     100000    ? L@2026-07-21 THIN
+  c01_q10_vt08_soft_oh38_xgn       —      —   +0.00   +0.00     100000    ? SIGNAL L@2026-07-21 THIN
+  c01_q10_vt09_oh35                —      —   +0.00   +0.00     100000    ? L@2026-07-21 THIN
+  c01_q10_vt11                     —      —   +0.00   +0.00     100000    ? L@2026-07-21 THIN
+  ========
+-------- 主线 LIVE --------
+  策略: c01_q10_vt08_soft_oh38_xgn
+  live=+0.000% THIN  xs=+0.000%  bench=+0.000%
+  from=2026-07-21  Lrets=0  持仓=空仓
+  注: THIN=样本&lt;5日, 等下一交易日再判 xs
+-------- 影子摘要 --------
+  影子仓位 · /home/runner/work/etf-rotation/etf-rotation/output/shadow_states
+  c01_q10_vt08_soft_oh38               资产=  100000.0  live=  +0.00% THIN  xs=  +0.00%  全样本=    0.0  持仓0: 空仓  rets=0
+  c01_q10_vt08_soft_oh38_xgn           资产=  100000.0  live=  +0.00% THIN  xs=  +0.00%  全样本=    0.0  持仓0: 空仓  rets=0
+  c01_q10_vt09_oh35                    资产=  100000.0  live=  +0.00% THIN  xs=  +0.00%  全样本=    0.0  持仓0: 空仓  rets=0
+  c01_q10_vt11                         资产=  100000.0  live=  +0.00% THIN  xs=  +0.00%  全样本=    0.0  持仓0: 空仓  rets=0
+-------- 今日速览 --------
+  时间: 2026-07-21T23:09:16
+  信号默认影子: c01_q10_vt08_soft_oh38_xgn
+  ----------------------------
+  生产动作: ⚪ 空仓观望
+  市场: 关  宽度=0.34  配置=C01_效15d  信号时间: 2026-07-21 23:08  行情截至: 2026-07-21
+  原因:
+  · 大盘趋势向下 → 保持空仓
+  研究影子动作: 空仓(趋势关) 暴露0%
+  研究目标暴露: 0.0%
+  -------- 有效收益 (SIGNAL) --------
+  策略: c01_q10_vt08_soft_oh38_xgn
+  live=+0.000% THIN  xs=+0.000%  bench=+0.000%
+  from=2026-07-21  Lrets=0  持仓=空仓
+  行情截至: 2026-07-21
+  注: Lrets=0 表示仅有锚日、尚无 live 样本日 (常见于 DATA_LAG 或刚暖机)
+  注: THIN=样本&lt;5日; DATA_LAG 时等行情更新后再判 xs
+-------- 下一步 --------
+  · 看信号: output/latest.txt · 面板: output/site/index.html
+  · 今日速览 → ./etf today
+  · 刷新面板 → ./etf preview
+  · 体检 → ./etf doctor
+  · 健康 → ./etf check
+  · 健康 live → ./etf check --checks live
+  · 健康 today → ./etf check --checks today
+  · 健康 asof → ./etf check --checks data_asof
+  · 取证 asof → ./etf asof
+  · 有效收益 → ./etf yield
+  · 三合一 → ./etf brief
+  · 行情状态 → ./etf data
+  · 下一步 → ./etf next
+  · 强刷行情 → ./etf pull
+  · 轮询 asof → ./etf wait-asof
+  · 打开面板 → ./etf open --launch site
+  · 监控 → ./etf monitor
+  · LIVE → ./etf live
+  · 摘要 → ./etf summary
+  · 暖机 → ./etf warmup --tail 120
+  · 对照 → ./etf compare
+  · 研究影子默认 c01_q10_vt08_soft_oh38_xgn (生产 c01 冻结)
+</pre></details></div>
+
+</main>
+<footer>只读面板 · 非投资建议 · 日常看「总览」即可 · 有效收益以「实盘段 / 相对大盘」为准</footer>
+</body>
+</html>

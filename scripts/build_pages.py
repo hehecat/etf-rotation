@@ -15,6 +15,7 @@ from __future__ import annotations
 import argparse
 import html
 import json
+import re
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -196,6 +197,9 @@ ul.alerts li{margin:.3rem 0}
 .hero .hero-side{flex:1 1 14rem;max-width:28rem}
 .stack{display:flex;flex-direction:column;gap:.45rem}
 .section-title{font-size:1rem;margin:1.05rem 0 .55rem;font-weight:700;letter-spacing:-.01em}
+.section-block{scroll-margin-top:5rem}
+.toc{display:flex;flex-wrap:wrap;gap:.45rem .7rem;margin:.35rem 0 .8rem}
+.toc a{font-size:.85rem}
 footer{
   max-width:var(--max);margin:0 auto;padding:0 1.15rem 2rem;
   color:var(--muted-2);font-size:.8rem
@@ -349,39 +353,16 @@ def _cls_num(x: Any) -> str:
     return "num"
 
 
-def _page(title: str, body_html: str, active: str = "面板") -> str:
+def _page(title: str, body_html: str, active: str = "总览") -> str:
     def link(name: str, href: str) -> str:
         cls = ' class="active"' if name == active else ""
         return f'<a href="{href}"{cls}>{name}</a>'
 
     primary = " ".join(
         [
-            link("面板", "index.html"),
-            link("脉搏", "pulse.html"),
-            link("收益", "yield.html"),
-            link("可判", "ready.html"),
-            link("摘要", "digest.html"),
-            link("行情", "data.html"),
-            link("下一步", "next.html"),
-            link("轨迹", "progress.html"),
-            link("今日", "today.html"),
-            link("监控", "monitor.html"),
-        ]
-    )
-    more = " ".join(
-        [
-            link("速览", "brief.html"),
-            link("GO", "go.html"),
-            link("EOD", "eod.html"),
-            link("拉取", "pull.html"),
-            link("取证", "asof.html"),
-            link("对照", "compare.html"),
-            link("LIVE", "live.html"),
-            link("信号原文", "signal.html"),
-            link("状态", "status.html"),
-            link("告警", "alerts.html"),
-            link("日报", "summary.html"),
-            link("JSON", "latest.json"),
+            link("总览", "index.html"),
+            link("研究明细", "research.html"),
+            link("原文备查", "raw.html"),
         ]
     )
     stamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -401,21 +382,22 @@ def _page(title: str, body_html: str, active: str = "面板") -> str:
     <div class="brand-row">
       <div class="brand-meta">
         <h1>ETF 轮动 · 日更面板</h1>
-        <div class="muted">生成于 {_esc(stamp)} · 生产 c01 冻结 · 研究影子 xgn</div>
+        <div class="muted">生成于 {_esc(stamp)} · 生产账户冻结 · 研究影子观察中</div>
       </div>
       <span class="chip">只读 · 非投资建议</span>
     </div>
-    <nav class="primary" aria-label="常用页面">{primary}</nav>
-    <nav class="more" aria-label="更多页面">{more}</nav>
+    <nav class="primary" aria-label="页面">{primary}</nav>
   </div>
 </header>
 <main>
 {body_html}
 </main>
-<footer>只读面板 · 非投资建议 · 数据来自本地 output/ 日更产物 · 有效收益以“实盘段 / 相对大盘”为准</footer>
+<footer>只读面板 · 非投资建议 · 日常看「总览」即可 · 有效收益以「实盘段 / 相对大盘」为准</footer>
 </body>
 </html>
 """
+
+
 
 
 def _load_alerts() -> dict:
@@ -454,11 +436,11 @@ def _load_alerts() -> dict:
 def _alert_badges(err_n: int, warn_n: int) -> str:
     parts = []
     if err_n:
-        parts.append(f'<span class="badge err">error {err_n}</span>')
+        parts.append(f'<span class="badge err">严重 {err_n}</span>')
     if warn_n:
-        parts.append(f'<span class="badge warn">warn {warn_n}</span>')
+        parts.append(f'<span class="badge warn">警告 {warn_n}</span>')
     if not parts:
-        parts.append('<span class="badge ok">alerts 0</span>')
+        parts.append('<span class="badge ok">无告警</span>')
     return " ".join(parts)
 
 
@@ -657,7 +639,7 @@ def _svg_nav_chart(series_map: dict[str, list[dict]], width: int = 720, height: 
     {''.join(polylines)}
     {''.join(x_labels)}
   </svg>
-  <div class="muted">归一化起点=100 · 虚线=基准100 · 数据来自 shadow_states nav_history</div>
+  <div class="muted">起点=100 · 虚线=基准100 · 来自影子净值历史</div>
 </div>
 """
     return svg
@@ -813,20 +795,20 @@ def _dashboard(
         ae = int(r.get("alert_error_n") or 0)
         aw = int(r.get("alert_warn_n") or 0)
         badge = (
-            f'<span class="badge err">E{ae}</span>'
+            f'<span class="badge err">严重{ae}</span>'
             if ae
             else (
-                f'<span class="badge warn">W{aw}</span>'
+                f'<span class="badge warn">警告{aw}</span>'
                 if aw
-                else '<span class="badge ok">OK</span>'
+                else '<span class="badge ok">正常</span>'
             )
         )
         mon_cards.append(
             f"""
 <div class="card">
   <div class="pillrow"><b>{_esc(r.get('name'))}</b> {badge}
-    <span class="badge info">vol:{_esc(r.get('vol_src'))}</span>
-    <span class="badge off">regime:{_esc(r.get('regime') or '—')}</span>
+    <span class="badge info">波动:{_esc(r.get('vol_src'))}</span>
+    <span class="badge off">状态:{_esc(r.get('regime') or '—')}</span>
   </div>
   <div class="grid kpis" style="margin-top:.55rem">
     {_kpi('目标暴露', f'{te_pct:.1f}%', f"vol_scale={r.get('vol_scale')}")}
@@ -851,19 +833,19 @@ def _dashboard(
 
     pipe_ok = (pipeline or {}).get("ok")
     if pipe_ok:
-        pipe_badge = '<span class="badge ok">pipeline OK</span>'
+        pipe_badge = '<span class="badge ok">流水线正常</span>'
     elif pipe_ok is False:
-        pipe_badge = '<span class="badge err">pipeline FAIL</span>'
+        pipe_badge = '<span class="badge err">流水线失败</span>'
     else:
-        pipe_badge = '<span class="badge off">pipeline —</span>'
+        pipe_badge = '<span class="badge off">流水线未知</span>'
 
     mon_ok = (mon or {}).get("ok")
     if mon_ok:
-        mon_badge = '<span class="badge ok">monitor OK</span>'
+        mon_badge = '<span class="badge ok">监控正常</span>'
     elif mon_ok is False:
-        mon_badge = '<span class="badge err">monitor FAIL</span>'
+        mon_badge = '<span class="badge err">监控失败</span>'
     else:
-        mon_badge = '<span class="badge off">monitor —</span>'
+        mon_badge = '<span class="badge off">监控未知</span>'
 
     # shadow 自 latest (structured)
     sh = (latest or {}).get("shadow") or {}
@@ -1116,17 +1098,17 @@ def _dashboard(
             if lag_dg:
                 sample_note += " · 行情还没更新完"
             digest_line = (
-                "<div class='card insight'>"
+                "<div class='card insight' id='insight-digest'>"
                 "<div class='k'><b>一句话结论</b>"
                 f"<span class='badge {'ok' if str(lv)=='READY' else 'warn'}'>{_esc(_zh_level(lv))}</span></div>"
                 f"<div class='v'>{live_label} · {xs_label}{sample_note}"
                 f"{eta_s}</div>"
                 f"<div class='v muted' style='margin-top:.35rem'>建议 <code>{_esc(rec)}</code></div>"
                 "<div class='links'>"
-                "<a href='digest.html'>摘要</a>"
-                "<a href='ready.html'>能不能当真</a>"
-                "<a href='progress.html'>进度</a>"
-                "<a href='eod.html'>收盘</a>"
+                "<a href='#insight-digest'>摘要</a>"
+                "<a href='#insight-progress'>能不能当真</a>"
+                "<a href='#insight-progress'>进度</a>"
+                "<a href='raw.html#eod'>收盘原文</a>"
                 "</div></div>"
             )
             # progress spark from progress_latest
@@ -1152,7 +1134,7 @@ def _dashboard(
                                 _peta = ""
                         _peta_s = f" · {_esc(_peta)}" if _peta else ""
                         progress_line = (
-                            "<div class='card insight'>"
+                            "<div class='card insight' id='insight-progress'>"
                             "<div class='k'><b>统计进度</b>"
                             f"<span class='badge {'ok' if str(_plv)=='READY' else 'warn'}'>{_esc(_zh_level(_plv))}</span></div>"
                             f"<div class='v'>{_esc(_zh_sample_days(_pdl))}"
@@ -1160,8 +1142,8 @@ def _dashboard(
                             f"{_peta_s}</div>"
                             f"<div class='v muted' style='margin-top:.35rem'>行情截至 {_esc(_pj.get('market_asof') or '—')}</div>"
                             "<div class='links'>"
-                            "<a href='progress.html'>进度</a>"
-                            "<a href='ready.html'>能不能当真</a>"
+                            "<a href='#insight-progress'>进度</a>"
+                            "<a href='#insight-progress'>能不能当真</a>"
                             "</div></div>"
                         )
             except Exception:
@@ -1191,7 +1173,7 @@ def _dashboard(
                         _pact = _pu.get("next_action") or "—"
                         _pread = _pu.get("readable_yield")
                         pulse_line = (
-                            "<div class='card insight'>"
+                            "<div class='card insight' id='insight-pulse'>"
                             "<div class='k'><b>现在怎么办</b>"
                             f"<span class='badge {'ok' if str(_plv)=='READY' else 'warn'}'>{_esc(_zh_level(_plv))}</span></div>"
                             f"<div class='v'>下一步: {_esc(_zh_action(_pact))}"
@@ -1199,7 +1181,7 @@ def _dashboard(
                             f"<div class='v muted' style='margin-top:.35rem'>{_esc(_zh_readable(_pread))}"
                             f"{(' · ' + _esc(_peta)) if _peta else ''}</div>"
                             "<div class='links'>"
-                            "<a href='pulse.html'>详情</a>"
+                            "<a href='#insight-pulse'>详情</a>"
                             "<code>./etf do</code>"
                             "</div></div>"
                         )
@@ -1218,10 +1200,8 @@ def _dashboard(
   <div class="hero-side muted">
     生产只读 · 研究影子不交易 · “实盘段 / 相对大盘”才是日更有效收益 · 样本未满 5 天别当真 · 行情未更新时别解读
     <div class="links" style="margin-top:.55rem;display:flex;flex-wrap:wrap;gap:.45rem .7rem">
-      <a href="digest.html">摘要</a>
-      <a href="ready.html">可判性</a>
-      <a href="yield.html">有效收益</a>
-      <a href="pulse.html">脉搏</a>
+      <a href="research.html">研究明细</a>
+      <a href="raw.html">原文备查</a>
       <code>./etf</code>
       <code>./etf do</code>
       <code>./etf eod</code>
@@ -1231,11 +1211,12 @@ def _dashboard(
 <div class="grid insight">
 {digest_line}{progress_line}{pulse_line}
 </div>
+<div class="card insight" style="margin:.35rem 0 .75rem"><div class="k"><b>怎么看这个面板</b></div><div class="v">日常只看本页「总览」。要对比影子表现去「研究明细」。命令日志与原文去「原文备查」。</div></div>
 <div class="grid kpis" style="margin-top:.75rem">
   {_kpi('持仓', _esc(hold_name), '生产模拟账户')}
-  {_kpi('总资产', _money(tv), f"收益 {ret if ret is not None else '—'}%")}
+  {_kpi('总资产', _money(tv), f"累计收益 {ret if ret is not None else '—'}%")}
   {_kpi('研究影子·实盘段', sh_live_s, _esc(sh_cfg) + ('' if sh_days is None else f' · 已统计{sh_days}天') + (' · 还没开始统计' if sh_days == 0 else '') + (' · 行情未更新' if (latest or {}).get('market_asof') and str((td or {}).get('date') or '')[:10] > str((latest or {}).get('market_asof') or '')[:10] else ''), 'green' if (sh_live_pct or 0) > 0 else '')}
-  {_kpi('相对大盘', sh_xs_s, f"vs 基准 {'' if sh_bench_ret is None else f'{float(sh_bench_ret):+.2f}%'}", 'green' if (sh_xs or 0) > 0 else '')}
+  {_kpi('相对大盘', sh_xs_s, f"大盘同期 {'' if sh_bench_ret is None else f'{float(sh_bench_ret):+.2f}%'}", 'green' if (sh_xs or 0) > 0 else '')}
 </div>
 <div style="margin:.35rem 0 .95rem">{_bar(br_pct)}</div>
 
@@ -1243,24 +1224,24 @@ def _dashboard(
   <div class="card stack">
     <h2>今日动作</h2>
     {reason_html}
-    <div class="muted">调仓时钟 days_to_rebalance={_esc((latest or {}).get('days_to_rebalance'))}</div>
+    <div class="muted">距下次调仓 {_esc((latest or {}).get('days_to_rebalance'))} 天</div>
   </div>
   <div class="card stack">
     <h2>研究影子</h2>
     <div><b>{_esc(sh_action)}</b></div>
-    <div class="muted">账户 {_money(sh_state.get('total_value'))} · 实盘段 {sh_live_s} · 相对大盘 {sh_xs_s} · 全样本 {_esc(sh_state.get('return_pct'))}% · rets={_esc(sh_rets)}</div>
+    <div class="muted">账户 {_money(sh_state.get('total_value'))} · 实盘段 {sh_live_s} · 相对大盘 {sh_xs_s} · 全样本 {_esc(sh_state.get('return_pct'))}% · 收益样本 {_esc(sh_rets)}</div>
     {_bar(sh_exp_pct, 'green' if sh_exp_pct > 0 else '')}
-    <div class="muted">path: {_esc(Path(str(sh.get('state_path') or '')).name or '—')}</div>
+    <div class="muted">状态文件: {_esc(Path(str(sh.get('state_path') or '')).name or '—')}</div>
   </div>
 </div>
 
 <div class="grid two" style="margin-top:.85rem">
   <div class="card">
-    <h2>影子净值 (归一化)</h2>
+    <h2>影子净值曲线</h2>
     {nav_chart}
   </div>
   <div class="card">
-    <h2>近 N 日动作</h2>
+    <h2>近几日动作</h2>
     {timeline}
   </div>
 </div>
@@ -1271,13 +1252,13 @@ def _dashboard(
     {checks_table}
   </div>
   <div class="card">
-    <h2>主策略 TOP</h2>
+    <h2>主策略候选</h2>
     {top_table}
   </div>
 </div>
 
 <div style="margin-top:1rem">
-  <h2 class="section-title">影子监控</h2>
+  <h2 class="section-title">影子监控一览</h2>
   <div class="stack">{mon_html}</div>
   <p class="muted">{_esc((mon or {}).get('bench') or '')}</p>
 </div>
@@ -1314,6 +1295,95 @@ def _lag_banner_html(latest_obj: dict | None = None) -> str:
     return ""
 
 
+
+def _redirect_body(target: str, label: str, reason: str = "") -> str:
+    why = reason or "页面已合并，避免导航过碎"
+    return (
+        f"<div class='card'>"
+        f"<h2>已合并到「{_esc(label)}」</h2>"
+        f"<p class='muted'>{_esc(why)}</p>"
+        f"<p>请打开 <a href='{_esc(target)}'><b>{_esc(label)}</b></a>。"
+        f" 若未自动跳转，点这个链接。</p>"
+        f"<p class='muted'>机器可读 JSON/TXT 仍保留原文件名。</p>"
+        f"</div>"
+        f"<meta http-equiv='refresh' content='0;url={_esc(target)}'>"
+    )
+
+
+def _raw_section(title: str, text: str, open_: bool = False) -> str:
+    if not text:
+        return ""
+    op = " open" if open_ else ""
+    return (
+        f"<details{op}><summary>{_esc(title)}</summary>"
+        f"<pre class='raw'>{_esc(text)}</pre></details>"
+    )
+
+
+def _research_page_body(
+    ab: str,
+    lag: str,
+    cbody: str,
+    lbody: str,
+    mbody: str,
+    abody: str,
+    sbody: str,
+    st_body: str,
+) -> str:
+    """研究明细: 对照/实盘/监控/告警/状态，中文表头。"""
+    return f"""
+{lag}
+<div class="card hero">
+  <div class="hero-main">
+    <div class="action">研究明细</div>
+    <div class="muted" style="margin-top:.3rem">对照影子表现、实盘段收益、监控与告警。日常只需看「总览」；这里给深挖用。</div>
+  </div>
+  <div class="hero-side muted">
+    <div class="links" style="margin-top:.2rem;display:flex;flex-wrap:wrap;gap:.45rem .7rem">
+      <a href="index.html">返回总览</a>
+      <a href="raw.html">原文备查</a>
+      <code>./etf compare</code>
+      <code>./etf live</code>
+    </div>
+  </div>
+</div>
+<p>{ab}</p>
+<nav class="toc" aria-label="本页目录">
+  <a href="#compare">主线对照</a>
+  <a href="#live">实盘收益</a>
+  <a href="#monitor">影子监控</a>
+  <a href="#alerts">告警</a>
+  <a href="#summary">仓位摘要</a>
+  <a href="#status">研究状态</a>
+</nav>
+<section id="compare" class="section-block">{cbody}</section>
+<section id="live" class="section-block" style="margin-top:.85rem">{lbody}</section>
+<section id="monitor" class="section-block" style="margin-top:.85rem">{mbody}</section>
+<section id="alerts" class="section-block" style="margin-top:.85rem">{abody}</section>
+<section id="summary" class="section-block" style="margin-top:.85rem">{sbody}</section>
+<section id="status" class="section-block" style="margin-top:.85rem">{st_body}</section>
+"""
+
+
+def _raw_page_body(ab: str, lag: str, sections: list[tuple[str, str]]) -> str:
+    parts = [s for s in (_raw_section(t, x) for t, x in sections) if s]
+    body = "".join(parts) or "<div class='card'><p class='muted'>暂无原文产物</p></div>"
+    return f"""
+{lag}
+<div class="card hero">
+  <div class="hero-main">
+    <div class="action">原文备查</div>
+    <div class="muted" style="margin-top:.3rem">CLI 原文与 JSON 摘要。日常不看这里；排障或对账时再展开。</div>
+  </div>
+  <div class="hero-side muted">
+    <a href="index.html">返回总览</a> · <a href="research.html">研究明细</a>
+  </div>
+</div>
+<p>{ab}</p>
+<div class="card">{body}</div>
+"""
+
+
 def build(out_dir: Path) -> dict:
     out_dir.mkdir(parents=True, exist_ok=True)
     latest_txt = _read(LATEST_TXT)
@@ -1338,7 +1408,7 @@ def build(out_dir: Path) -> dict:
 
     # index = dashboard
     body = _dashboard(latest_obj, mon_obj, status_obj, pipeline_obj, alerts, latest_txt)
-    (out_dir / "index.html").write_text(_page("ETF日更面板", body, "面板"), encoding="utf-8")
+    (out_dir / "index.html").write_text(_page("ETF日更总览", body, "总览"), encoding="utf-8")
     if latest_txt:
         (out_dir / "index.txt").write_text(latest_txt, encoding="utf-8")
 
@@ -1370,7 +1440,7 @@ def build(out_dir: Path) -> dict:
             )
     else:
         sbody = f"<p>{ab}</p><p>暂无信号 (output/latest.txt 缺失)</p>"
-    (out_dir / "signal.html").write_text(_page("信号原文", sbody, "信号原文"), encoding="utf-8")
+    (out_dir / "signal.html").write_text(_page("原文备查", _redirect_body("raw.html#signal", "原文备查", "信号原文已并入原文备查"), "原文备查"), encoding="utf-8")
 
     # compare page
     cmp_txt = _read(OUTPUT_DIR / "shadow_compare.txt")
@@ -1380,7 +1450,7 @@ def build(out_dir: Path) -> dict:
         for r in cmp_json:
             if not r.get("exists"):
                 rows_html.append(
-                    f"<tr><td>{_esc(r.get('name'))}</td><td colspan='10' class='muted'>MISSING</td></tr>"
+                    f"<tr><td>{_esc(r.get('name'))}</td><td colspan='10' class='muted'>缺失</td></tr>"
                 )
                 continue
             sh = r.get("bt_sharpe")
@@ -1401,8 +1471,8 @@ def build(out_dir: Path) -> dict:
                 xs_s = f"{float(xs):+.2f}%" if xs is not None else ""
             except Exception:
                 xs_s = ""
-            gate = "OK" if r.get("gate_ok") else ("FAIL" if r.get("gate") else "—")
-            mark = "SIGNAL" if (r.get("is_signal_default") or r.get("signal")) else ""
+            gate = "通过" if r.get("gate_ok") else ("未过" if r.get("gate") else "—")
+            mark = "信号默认" if (r.get("is_signal_default") or r.get("signal")) else ""
             rows_html.append(
                 f"<tr>"
                 f"<td>{_esc(r.get('name'))} <span class='muted'>{mark}</span></td>"
@@ -1420,8 +1490,8 @@ def build(out_dir: Path) -> dict:
             )
         cbody = (
             f"<p>{ab}</p>{_lag_banner_html(latest_obj)}<div class='card'><h2>主线影子对照</h2>"
-            "<table><thead><tr><th>策略</th><th>sh</th><th>dd</th><th>净值</th>"
-            "<th>实盘段</th><th>相对大盘</th><th>持仓</th><th>已统计天数</th><th>gate</th><th>3bp</th><th>最近成交</th></tr></thead>"
+            "<table><thead><tr><th>策略</th><th>夏普</th><th>回撤</th><th>净值</th>"
+            "<th>实盘段</th><th>相对大盘</th><th>持仓</th><th>已统计天数</th><th>门槛</th><th>3bp夏普</th><th>最近成交</th></tr></thead>"
             f"<tbody>{''.join(rows_html)}</tbody></table>"
             f"<p class='muted'>回撤等=暖机期 · 实盘段/相对大盘=暖机后到今天 · 已统计天数=实盘样本 · 未满5天别当真 · 0天=还没开始算</p></div>"
         )
@@ -1434,7 +1504,7 @@ def build(out_dir: Path) -> dict:
             f"<p>{ab}</p><div class='card'><p>暂无对照 · "
             f"<code>./etf compare</code></p></div>"
         )
-    (out_dir / "compare.html").write_text(_page("主线对照", cbody, "对照"), encoding="utf-8")
+    (out_dir / "compare.html").write_text(_page("研究明细", _redirect_body("research.html#compare", "研究明细", "主线对照已并入研究明细"), "研究明细"), encoding="utf-8")
     if cmp_txt:
         (out_dir / "compare.txt").write_text(cmp_txt, encoding="utf-8")
 
@@ -1446,13 +1516,13 @@ def build(out_dir: Path) -> dict:
         for r in live_json:
             if not r.get("exists"):
                 lrows.append(
-                    f"<tr><td>{_esc(r.get('name'))}</td><td colspan='8' class='muted'>MISSING</td></tr>"
+                    f"<tr><td>{_esc(r.get('name'))}</td><td colspan='8' class='muted'>缺失</td></tr>"
                 )
                 continue
             lr = r.get("live_return_pct")
             br = r.get("bench_return_pct")
             xs = r.get("live_excess_pct")
-            mark = "SIGNAL" if r.get("signal") else ""
+            mark = "信号默认" if r.get("signal") else ""
             thin = (
                 " 样本还少"
                 if (
@@ -1489,24 +1559,24 @@ def build(out_dir: Path) -> dict:
         except Exception:
             lag_note = ""
         lbody = (
-            f"<p>{ab}</p>{lag_note}<div class='card'><h2>主线 LIVE 收益</h2>"
+            f"<p>{ab}</p>{lag_note}<div class='card'><h2>主线实盘收益</h2>"
             "<p class='muted'>实盘段=暖机后到今天 · 相对大盘=实盘段−大盘 · 样本未满5天别当真 · "
             "已统计0天=还没开始算实盘 (行情未更新/刚暖机常见)</p>"
-            "<table><thead><tr><th>策略</th><th>实盘段</th><th>bench%</th><th>相对大盘</th><th>净值</th>"
+            "<table><thead><tr><th>策略</th><th>实盘段</th><th>大盘同期</th><th>相对大盘</th><th>净值</th>"
             "<th>持仓</th><th>已统计天数</th><th>备注</th></tr></thead>"
             f"<tbody>{''.join(lrows)}</tbody></table>"
             f"<p class='muted'><code>./etf live</code></p></div>"
         )
         if live_txt:
-            lbody += f"<details><summary>LIVE 原文</summary><pre class='raw'>{_esc(live_txt)}</pre></details>"
+            lbody += f"<details><summary>实盘收益原文</summary><pre class='raw'>{_esc(live_txt)}</pre></details>"
     elif live_txt:
-        lbody = f"<p>{ab}</p><h2>主线 LIVE</h2><pre class='raw'>{_esc(live_txt)}</pre>"
+        lbody = f"<p>{ab}</p><h2>主线实盘收益</h2><pre class='raw'>{_esc(live_txt)}</pre>"
     else:
         lbody = (
-            f"<p>{ab}</p><div class='card'><p>暂无 LIVE · "
+            f"<p>{ab}</p><div class='card'><p>暂无实盘收益表 · "
             f"<code>./etf live</code></p></div>"
         )
-    (out_dir / "live.html").write_text(_page("主线 LIVE", lbody, "LIVE"), encoding="utf-8")
+    (out_dir / "live.html").write_text(_page("研究明细", _redirect_body("research.html#live", "研究明细", "实盘收益表已并入研究明细"), "研究明细"), encoding="utf-8")
     if live_txt:
         (out_dir / "live.txt").write_text(live_txt, encoding="utf-8")
 
@@ -1538,8 +1608,8 @@ def build(out_dir: Path) -> dict:
         mbody = (
             f"<p>{ab}</p>{_lag_banner_html(latest_obj)}<div class='card'><h2>影子监控表</h2>"
             f"<p class='muted'>{_esc(mon_obj.get('bench'))} · 样本未满5天别当真 · 0天=还没开始算 · 行情未更新时别解读</p>"
-            "<table><thead><tr><th>影子</th><th>暴露</th><th>vol</th><th>资产</th>"
-            "<th>实盘段</th><th>相对大盘</th><th>全样本</th><th>持仓</th><th>rets</th><th>告警</th></tr></thead>"
+            "<table><thead><tr><th>影子</th><th>目标仓位</th><th>波动来源</th><th>资产</th>"
+            "<th>实盘段</th><th>相对大盘</th><th>全样本</th><th>持仓</th><th>收益样本数</th><th>告警</th></tr></thead>"
             f"<tbody>{''.join(rows_html)}</tbody></table></div>"
         )
         if monitor_txt:
@@ -1547,8 +1617,8 @@ def build(out_dir: Path) -> dict:
     elif monitor_txt:
         mbody = f"<p>{ab}</p>{_lag_banner_html(latest_obj)}<h2>影子监控</h2><pre class='raw'>{_esc(monitor_txt)}</pre>"
     else:
-        mbody = f"<p>{ab}</p><p>暂无 monitor (先跑 shadow_monitor / pipeline)</p>"
-    (out_dir / "monitor.html").write_text(_page("影子监控", mbody, "监控"), encoding="utf-8")
+        mbody = f"<p>{ab}</p><p>暂无监控 (先跑影子监控 / 日更流水线)</p>"
+    (out_dir / "monitor.html").write_text(_page("研究明细", _redirect_body("research.html#monitor", "研究明细", "影子监控已并入研究明细"), "研究明细"), encoding="utf-8")
     if monitor_txt:
         (out_dir / "monitor.txt").write_text(monitor_txt, encoding="utf-8")
 
@@ -1563,14 +1633,15 @@ def build(out_dir: Path) -> dict:
         abody = (
             f"<p>{ab}</p>{_lag_banner_html(latest_obj)}<div class='card'><h2>告警列表</h2>"
             f"<ul class='alerts'>{''.join(lis)}</ul>"
-            f"<p class='muted'>来源: shadow_monitor.json / pipeline_last.json · 行情未更新 不是告警</p></div>"
+            f"<p class='muted'>来源: 影子监控 / 日更流水线 · 行情未更新不算告警</p></div>"
         )
     else:
         abody = (
             f"<p>{ab}</p>{_lag_banner_html(latest_obj)}"
             f"<div class='card'><h2>告警列表</h2><p>当前无告警</p></div>"
         )
-    (out_dir / "alerts.html").write_text(_page("告警", abody, "告警"), encoding="utf-8")
+    alerts_body = abody
+    (out_dir / "alerts.html").write_text(_page("研究明细", _redirect_body("research.html#alerts", "研究明细", "告警列表已并入研究明细"), "研究明细"), encoding="utf-8")
     (out_dir / "alerts.json").write_text(
         json.dumps(alerts, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
@@ -1585,7 +1656,7 @@ def build(out_dir: Path) -> dict:
         )
     else:
         sbody = f"{_lag_banner_html(latest_obj)}<div class='card'><p>暂无 summary</p></div>"
-    (out_dir / "summary.html").write_text(_page("影子摘要", sbody, "摘要"), encoding="utf-8")
+    (out_dir / "summary.html").write_text(_page("研究明细", _redirect_body("research.html#summary", "研究明细", "影子摘要已并入研究明细"), "研究明细"), encoding="utf-8")
     if summary:
         (out_dir / "summary.txt").write_text(summary, encoding="utf-8")
 
@@ -1640,7 +1711,7 @@ def build(out_dir: Path) -> dict:
             sl = latest_obj.get("signal_live")
         sl_live_s = "—"
         sl_xs_s = "—"
-        sl_sub = "无 signal_live → etf live"
+        sl_sub = "暂无信号实盘段 → ./etf live"
         if sl:
             try:
                 lr = sl.get("live_return_pct")
@@ -1675,7 +1746,7 @@ def build(out_dir: Path) -> dict:
         if isinstance(sl, dict):
             extra = []
             if sl.get("market_asof") or data_asof:
-                extra.append(f"asof={sl.get('market_asof') or data_asof}")
+                extra.append(f"行情截至={sl.get('market_asof') or data_asof}")
             if data_lag:
                 extra.append("行情未更新")
             if extra:
@@ -1699,18 +1770,18 @@ def build(out_dir: Path) -> dict:
 <p>{ab}</p>
 {stale_html}
 <div class="grid kpis">
-  {_kpi('状态时间', _esc(status_obj.get('stamp')), _esc(status_obj.get('latest_time') or ''))}
-  {_kpi('交易日', _esc(td0.get('is_trading_day')), f"date={td0.get('date') or '—'} asof={data_asof or '—'}" + (" 行情未更新" if data_lag else ""))}
-  {_kpi('信号·实盘段', sl_live_s, sl_sub, 'green' if (sl and (sl.get('live_return_pct') or 0) > 0) else '')}
-  {_kpi('信号·相对大盘', sl_xs_s, 'vs 基准同期', 'green' if (sl and (sl.get('live_excess_pct') or 0) > 0) else '')}
+  {_kpi('状态生成时间', _esc(status_obj.get('stamp')), _esc(status_obj.get('latest_time') or ''))}
+  {_kpi('是否交易日', '是' if td0.get('is_trading_day') else ('否' if td0.get('is_trading_day') is False else '未知'), f"日期 {td0.get('date') or '—'} · 行情截至 {data_asof or '—'}" + (" · 行情未更新" if data_lag else ""))}
+  {_kpi('信号实盘段', sl_live_s, sl_sub, 'green' if (sl and (sl.get('live_return_pct') or 0) > 0) else '')}
+  {_kpi('信号相对大盘', sl_xs_s, '相对大盘同期', 'green' if (sl and (sl.get('live_excess_pct') or 0) > 0) else '')}
 </div>
 <div class="grid kpis" style="margin-top:.55rem">
-  {_kpi('监控', f"E{(status_obj.get('monitor') or {}).get('alert_error_n',0)}/W{(status_obj.get('monitor') or {}).get('alert_warn_n',0)}", '')}
-  {_kpi('pipeline', _esc((status_obj.get('pipeline_last') or {}).get('ok')), _esc((status_obj.get('pipeline_last') or {}).get('stamp')))}
+  {_kpi('监控告警', f"严重 {(status_obj.get('monitor') or {}).get('alert_error_n',0)} · 警告 {(status_obj.get('monitor') or {}).get('alert_warn_n',0)}", '')}
+  {_kpi('日更流水线', '正常' if (status_obj.get('pipeline_last') or {}).get('ok') else '异常/未知', _esc((status_obj.get('pipeline_last') or {}).get('stamp')))}
 </div>
 <div class="grid two" style="margin-top:.75rem">
   <div class="card"><h2>配置</h2>
-    <table><thead><tr><th>名</th><th>frozen</th><th>research</th><th>vt</th><th>top_n</th></tr></thead>
+    <table><thead><tr><th>配置</th><th>生产冻结</th><th>研究</th><th>波动目标</th><th>持仓数</th></tr></thead>
     <tbody>{cfg_rows or '<tr><td colspan=5 class=muted>无</td></tr>'}</tbody></table>
   </div>
   <div class="card"><h2>影子</h2>
@@ -1747,7 +1818,7 @@ def build(out_dir: Path) -> dict:
             f"<p>{ab}</p>{_lag_banner_html(latest_obj)}"
             f"<div class='card'><p>暂无 today → <code>./etf today</code></p></div>"
         )
-    (out_dir / "today.html").write_text(_page("今日速览", tbody, "今日"), encoding="utf-8")
+    (out_dir / "today.html").write_text(_page("总览", _redirect_body("index.html", "总览", "今日速览已并入总览"), "总览"), encoding="utf-8")
     if today_txt:
         (out_dir / "today.txt").write_text(today_txt, encoding="utf-8")
     asof_txt = _read(OUTPUT_DIR / "asof.txt")
@@ -1775,7 +1846,7 @@ def build(out_dir: Path) -> dict:
             f"<p>{ab}</p>{_lag_banner_html(latest_obj)}"
             f"<div class='card'><p>暂无 asof → <code>./etf asof</code></p></div>"
         )
-    (out_dir / "asof.html").write_text(_page("行情取证", abody, "取证"), encoding="utf-8")
+    (out_dir / "asof.html").write_text(_page("原文备查", _redirect_body("raw.html#asof", "原文备查", "行情取证原文已并入原文备查"), "原文备查"), encoding="utf-8")
 
     # yield 有效收益页
     yield_txt = _read(OUTPUT_DIR / "yield.txt")
@@ -1802,7 +1873,7 @@ def build(out_dir: Path) -> dict:
             f"<p>{ab}</p>{_lag_banner_html(latest_obj)}"
             f"<div class='card'><p>暂无 yield → <code>./etf yield</code> · <code>./etf progress</code></p></div>"
         )
-    (out_dir / "yield.html").write_text(_page("有效收益", ybody, "收益"), encoding="utf-8")
+    (out_dir / "yield.html").write_text(_page("总览", _redirect_body("index.html", "总览", "有效收益结论已放在总览"), "总览"), encoding="utf-8")
 
     # brief 三合一页
     brief_txt = _read(OUTPUT_DIR / "brief.txt")
@@ -1829,7 +1900,7 @@ def build(out_dir: Path) -> dict:
             f"<p>{ab}</p>{_lag_banner_html(latest_obj)}"
             f"<div class='card'><p>暂无 brief → <code>./etf brief</code></p></div>"
         )
-    (out_dir / "brief.html").write_text(_page("三合一速览", bbody, "速览"), encoding="utf-8")
+    (out_dir / "brief.html").write_text(_page("总览", _redirect_body("index.html", "总览", "三合一速览已并入总览"), "总览"), encoding="utf-8")
 
     # data 行情状态页
     data_txt = _read(OUTPUT_DIR / "data_status.txt")
@@ -1862,7 +1933,7 @@ def build(out_dir: Path) -> dict:
             f"<p>{ab}</p>{_lag_banner_html(latest_obj)}"
             f"<div class='card'><p>暂无 data → <code>./etf data</code></p></div>"
         )
-    (out_dir / "data.html").write_text(_page("行情状态", dbody, "行情"), encoding="utf-8")
+    (out_dir / "data.html").write_text(_page("原文备查", _redirect_body("raw.html#data", "原文备查", "行情状态原文已并入原文备查"), "原文备查"), encoding="utf-8")
 
     # next 决策页
     next_txt = _read(OUTPUT_DIR / "next.txt")
@@ -1895,7 +1966,7 @@ def build(out_dir: Path) -> dict:
             f"<p>{ab}</p>{_lag_banner_html(latest_obj)}"
             f"<div class='card'><p>暂无 next → <code>./etf next</code></p></div>"
         )
-    (out_dir / "next.html").write_text(_page("一键下一步", nbody, "下一步"), encoding="utf-8")
+    (out_dir / "next.html").write_text(_page("总览", _redirect_body("index.html", "总览", "下一步建议已在总览展示"), "总览"), encoding="utf-8")
 
     # pull 强刷页
     pull_txt = _read(OUTPUT_DIR / "pull.txt")
@@ -1930,7 +2001,7 @@ def build(out_dir: Path) -> dict:
             f"<p>{ab}</p>{_lag_banner_html(latest_obj)}"
             f"<div class='card'><p>暂无 pull → <code>./etf pull --bench-only</code></p></div>"
         )
-    (out_dir / "pull.html").write_text(_page("行情强刷", pbody, "拉取"), encoding="utf-8")
+    (out_dir / "pull.html").write_text(_page("原文备查", _redirect_body("raw.html#pull", "原文备查", "强刷日志已并入原文备查"), "原文备查"), encoding="utf-8")
 
     # go 一键闭环页
     go_txt = _read(OUTPUT_DIR / "go.txt")
@@ -1963,7 +2034,7 @@ def build(out_dir: Path) -> dict:
             f"<p>{ab}</p>{_lag_banner_html(latest_obj)}"
             f"<div class='card'><p>暂无 go → <code>./etf go --no-wait</code></p></div>"
         )
-    (out_dir / "go.html").write_text(_page("一键闭环", gbody, "GO"), encoding="utf-8")
+    (out_dir / "go.html").write_text(_page("原文备查", _redirect_body("raw.html#go", "原文备查", "GO 日志已并入原文备查"), "原文备查"), encoding="utf-8")
 
     # ready 可判性页
     ready_txt = _read(OUTPUT_DIR / "ready.txt")
@@ -1996,7 +2067,7 @@ def build(out_dir: Path) -> dict:
             f"<p>{ab}</p>{_lag_banner_html(latest_obj)}"
             f"<div class='card'><p>暂无 ready → <code>./etf ready</code></p></div>"
         )
-    (out_dir / "ready.html").write_text(_page("可判性", rbody, "可判"), encoding="utf-8")
+    (out_dir / "ready.html").write_text(_page("总览", _redirect_body("index.html", "总览", "可判性已在总览展示"), "总览"), encoding="utf-8")
 
     # digest 人读一页
     digest_txt = _read(OUTPUT_DIR / "digest.txt")
@@ -2023,7 +2094,7 @@ def build(out_dir: Path) -> dict:
             f"<p>{ab}</p>{_lag_banner_html(latest_obj)}"
             f"<div class='card'><p>暂无 digest → <code>./etf digest</code></p></div>"
         )
-    (out_dir / "digest.html").write_text(_page("DIGEST", dgbody, "可判"), encoding="utf-8")
+    (out_dir / "digest.html").write_text(_page("总览", _redirect_body("index.html", "总览", "摘要结论已在总览展示"), "总览"), encoding="utf-8")
 
     # eod 收盘闭环页
     eod_txt = _read(OUTPUT_DIR / "eod.txt")
@@ -2057,7 +2128,7 @@ def build(out_dir: Path) -> dict:
             f"<p>{ab}</p>{_lag_banner_html(latest_obj)}"
             f"<div class='card'><p>暂无 eod → <code>./etf eod --no-wait</code></p></div>"
         )
-    (out_dir / "eod.html").write_text(_page("EOD", ebody, "EOD"), encoding="utf-8")
+    (out_dir / "eod.html").write_text(_page("原文备查", _redirect_body("raw.html#eod", "原文备查", "收盘日志已并入原文备查"), "原文备查"), encoding="utf-8")
 
     # progress 轨迹页
     prog_txt = _read(OUTPUT_DIR / "progress.txt")
@@ -2073,7 +2144,7 @@ def build(out_dir: Path) -> dict:
             f"<p>{ab}</p>{_lag_banner_html(latest_obj)}"
             f"<div class='card'><p>暂无 progress → <code>./etf ready</code> 或 <code>./etf progress</code></p></div>"
         )
-    (out_dir / "progress.html").write_text(_page("轨迹", pbody, "轨迹"), encoding="utf-8")
+    (out_dir / "progress.html").write_text(_page("总览", _redirect_body("index.html", "总览", "进度信息已在总览展示"), "总览"), encoding="utf-8")
 
     # pulse 脉搏页
     pulse_txt = _read(OUTPUT_DIR / "pulse.txt")
@@ -2089,7 +2160,7 @@ def build(out_dir: Path) -> dict:
             f"<p>{ab}</p>{_lag_banner_html(latest_obj)}"
             f"<div class='card'><p>暂无 pulse → <code>./etf pulse</code></p></div>"
         )
-    (out_dir / "pulse.html").write_text(_page("脉搏", ubody, "脉搏"), encoding="utf-8")
+    (out_dir / "pulse.html").write_text(_page("总览", _redirect_body("index.html", "总览", "脉搏决策已在总览展示"), "总览"), encoding="utf-8")
 
     # wait-asof 页
     wait_txt = _read(OUTPUT_DIR / "wait_asof.txt")
@@ -2121,13 +2192,71 @@ def build(out_dir: Path) -> dict:
             f"<p>{ab}</p>{_lag_banner_html(latest_obj)}"
             f"<div class='card'><p>暂无 wait-asof → <code>./etf wait-asof --timeout 120 --no-follow</code></p></div>"
         )
-    (out_dir / "wait_asof.html").write_text(_page("WAIT-ASOF", wbody, "拉取"), encoding="utf-8")
+    (out_dir / "wait_asof.html").write_text(_page("原文备查", _redirect_body("raw.html#wait", "原文备查", "等待行情日志已并入原文备查"), "原文备查"), encoding="utf-8")
 
-    (out_dir / "status.html").write_text(_page("研究状态", st_body, "状态"), encoding="utf-8")
+    (out_dir / "status.html").write_text(_page("研究明细", _redirect_body("research.html#status", "研究明细", "研究状态已并入研究明细"), "研究明细"), encoding="utf-8")
     if status_txt:
         (out_dir / "status.txt").write_text(status_txt, encoding="utf-8")
     if status_json:
         (out_dir / "research_status.json").write_text(status_json, encoding="utf-8")
+
+
+
+    # 三页结构: 总览 index / 研究明细 research / 原文备查 raw
+    lag_html = _lag_banner_html(latest_obj)
+    def _strip_chrome(html: str) -> str:
+        s = html or ""
+        # 去掉段首重复告警徽标与滞后条，研究页顶部已统一展示
+        s = re.sub(r"^\s*<p>.*?</p>", "", s, count=1, flags=re.S)
+        s = re.sub(r"^\s*<div class='card banner warn'>.*?</div>", "", s, count=1, flags=re.S)
+        s = re.sub(r'^\s*<div class="card banner warn">.*?</div>', "", s, count=1, flags=re.S)
+        return s
+
+    research_body = _research_page_body(
+        ab,
+        lag_html,
+        _strip_chrome(cbody),
+        _strip_chrome(lbody),
+        _strip_chrome(mbody),
+        _strip_chrome(alerts_body),
+        _strip_chrome(sbody),
+        _strip_chrome(st_body),
+    )
+    (out_dir / "research.html").write_text(
+        _page("研究明细", research_body, "研究明细"), encoding="utf-8"
+    )
+
+    raw_sections = [
+        ("今日速览", _read(OUTPUT_DIR / "today.txt") or (today_obj.get("text") if isinstance(today_obj, dict) else "") or ""),
+        ("脉搏", _read(OUTPUT_DIR / "pulse.txt")),
+        ("摘要", _read(OUTPUT_DIR / "digest.txt")),
+        ("可判性", _read(OUTPUT_DIR / "ready.txt")),
+        ("有效收益", _read(OUTPUT_DIR / "yield.txt")),
+        ("行情取证", _read(OUTPUT_DIR / "asof.txt")),
+        ("行情状态", _read(OUTPUT_DIR / "data_status.txt")),
+        ("下一步", _read(OUTPUT_DIR / "next.txt")),
+        ("强刷行情", _read(OUTPUT_DIR / "pull.txt")),
+        ("一键闭环", _read(OUTPUT_DIR / "go.txt")),
+        ("收盘闭环", _read(OUTPUT_DIR / "eod.txt")),
+        ("可判性轨迹", _read(OUTPUT_DIR / "progress.txt")),
+        ("等待行情", _read(OUTPUT_DIR / "wait_asof.txt")),
+        ("三合一速览", _read(OUTPUT_DIR / "brief.txt")),
+        ("信号原文", latest_txt),
+        ("影子对照", cmp_txt),
+        ("实盘收益", live_txt),
+        ("影子监控", monitor_txt),
+        ("影子摘要", summary),
+        ("研究状态", status_txt),
+    ]
+    raw_body = _raw_page_body(ab, lag_html, [(t, x) for t, x in raw_sections if x])
+    raw_body = raw_body.replace("<details><summary>信号原文</summary>", "<details id='signal'><summary>信号原文</summary>", 1)
+    raw_body = raw_body.replace("<details><summary>行情取证</summary>", "<details id='asof'><summary>行情取证</summary>", 1)
+    raw_body = raw_body.replace("<details><summary>行情状态</summary>", "<details id='data'><summary>行情状态</summary>", 1)
+    raw_body = raw_body.replace("<details><summary>强刷行情</summary>", "<details id='pull'><summary>强刷行情</summary>", 1)
+    raw_body = raw_body.replace("<details><summary>一键闭环</summary>", "<details id='go'><summary>一键闭环</summary>", 1)
+    raw_body = raw_body.replace("<details><summary>收盘闭环</summary>", "<details id='eod'><summary>收盘闭环</summary>", 1)
+    raw_body = raw_body.replace("<details><summary>等待行情</summary>", "<details id='wait'><summary>等待行情</summary>", 1)
+    (out_dir / "raw.html").write_text(_page("原文备查", raw_body, "原文备查"), encoding="utf-8")
 
     if latest_json:
         (out_dir / "latest.json").write_text(latest_json, encoding="utf-8")
@@ -2272,6 +2401,8 @@ def build(out_dir: Path) -> dict:
             or (out_dir / "wait_asof.html").exists()
         ),
         "has_dashboard": True,
+        "has_research": True,
+        "has_raw": True,
         "has_live": bool(
             live_txt
             or (isinstance(live_json, list) and live_json)
