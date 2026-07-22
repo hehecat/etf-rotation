@@ -10,11 +10,11 @@
   "return_pct": 0.0,
   "last_rebalance": null,
   "config": "C01_效15d",
-  "last_update": "2026-07-22 03:12",
+  "last_update": "2026-07-22 03:31",
   "note": "重置: 云端首跑无基准误买稀土, 已回滚空仓",
   "days_to_rebalance": 0,
   "market_ok": false,
-  "breadth": 0.36,
+  "breadth": 0.4,
   "shadow": {
     "config": "C01_Q10_VT08_SOFT_OH38_EXTRA_GOLD_NQ",
     "research": true,
@@ -23,7 +23,7 @@
       {
         "code": "SH516160",
         "name": "新能源ETF",
-        "score": 0.902
+        "score": 0.847
       }
     ],
     "action": "空仓(趋势关) 暴露0%",
@@ -149,21 +149,21 @@
         "target_exposure": 0.0,
         "parts": {
           "position_pct": 0.95,
-          "inv_vol_scale": 0.8119,
+          "inv_vol_scale": 0.8081,
           "inv_vol_src": "bench",
-          "vol20": 0.018475,
+          "vol20": 0.018561,
           "regime": "bear",
           "regime_mult": 0.0,
           "regime_info": {
             "market_ok": false,
-            "ma20": 4.845,
-            "ma60": 4.87525,
+            "ma20": 4.84615,
+            "ma60": 4.875633,
             "ma_up": false,
-            "vol20": 0.018475
+            "vol20": 0.018561
           },
           "vol_target": 0.08,
-          "vol_ann": 0.2933,
-          "vol_scale": 0.2728,
+          "vol_ann": 0.2947,
+          "vol_scale": 0.2715,
           "vol_src": "bench"
         },
         "notes": [

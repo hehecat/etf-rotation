@@ -1,58 +1,58 @@
 {
-  "stamp": "2026-07-22T06:36:27",
+  "stamp": "2026-07-22T03:31:40",
   "trading_day": {
     "date": "2026-07-22",
     "is_trading_day": true,
-    "source": "cn_holidays_beyond_bench",
-    "data_asof": "2026-07-21",
-    "data_lag": true
+    "source": "bench_calendar",
+    "data_asof": "2026-07-22",
+    "data_lag": false
   },
-  "market_asof": "2026-07-21",
-  "data_lag": true,
-  "latest_time": "2026-07-22 06:36",
+  "market_asof": "2026-07-22",
+  "data_lag": false,
+  "latest_time": "2026-07-22 03:31",
   "latest_stale": false,
   "action": "⚪ 空仓观望",
   "market_ok": false,
   "signal_live": {
     "name": "c01_q10_vt08_soft_oh38_xgn",
     "live_return_pct": 0.0,
-    "bench_return_pct": 0.0,
-    "live_excess_pct": 0.0,
-    "days_live": 0,
+    "bench_return_pct": 0.7311,
+    "live_excess_pct": -0.7311,
+    "days_live": 1,
     "thin_live": true,
     "live_start": "2026-07-21",
     "holdings": "空仓",
-    "total_value": 913889.39,
-    "market_asof": "2026-07-21",
-    "data_lag": true
+    "total_value": 100000.0,
+    "market_asof": "2026-07-22",
+    "data_lag": false
   },
   "pipeline_yield": {
     "name": "c01_q10_vt08_soft_oh38_xgn",
     "live_return_pct": 0.0,
-    "live_excess_pct": 0.0,
-    "bench_return_pct": 0.0,
-    "days_live": 0,
+    "live_excess_pct": -0.2298,
+    "bench_return_pct": 0.2298,
+    "days_live": 1,
     "thin_live": true,
     "live_start": "2026-07-21",
     "holdings": "空仓",
-    "market_asof": "2026-07-21",
-    "data_lag": true
+    "market_asof": "2026-07-22",
+    "data_lag": false
   },
   "pipeline_brief": {
-    "stamp": "2026-07-22T06:22:21",
-    "market_asof": "2026-07-21",
-    "data_lag": true,
+    "stamp": "2026-07-22T03:12:27",
+    "market_asof": "2026-07-22",
+    "data_lag": false,
     "action": "⚪ 空仓观望",
     "market_ok": false,
     "live_return_pct": 0.0,
-    "live_excess_pct": 0.0,
-    "days_live": 0,
+    "live_excess_pct": -0.2298,
+    "days_live": 1,
     "thin_live": true,
-    "path_txt": "/home/hehecat/vps/etf-rotation/output/brief.txt",
-    "path_json": "/home/hehecat/vps/etf-rotation/output/risk_audit/brief.json"
+    "path_txt": "/home/runner/work/etf-rotation/etf-rotation/output/brief.txt",
+    "path_json": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/brief.json"
   },
-  "decision": "wait_data",
-  "days_to_ready": 5,
-  "eta_note": "约再 5 个交易日可 READY (Lrets≥5); 另需 asof 先推进",
-  "ready_level": "NOT_READY"
+  "decision": "ok",
+  "days_to_ready": 4,
+  "eta_note": "约再 4 个交易日可 READY (Lrets≥5)",
+  "ready_level": null
 }

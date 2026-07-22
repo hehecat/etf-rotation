@@ -1,5 +1,5 @@
 {
-  "time": "2026-07-22 03:12",
+  "time": "2026-07-22 03:31",
   "market_asof": "2026-07-22",
   "config": "C01_效15d",
   "frozen": true,
@@ -8,7 +8,7 @@
     "大盘趋势向下 → 保持空仓"
   ],
   "market_ok": false,
-  "breadth": 0.36,
+  "breadth": 0.4,
   "holding": null,
   "total_value": 100000.0,
   "return_pct": 0.0,
@@ -17,17 +17,17 @@
     {
       "code": "SH516160",
       "name": "新能源ETF",
-      "score": 0.902
+      "score": 0.847
     },
     {
       "code": "SH516780",
       "name": "稀土ETF",
-      "score": 0.89
+      "score": 0.795
     },
     {
       "code": "SH512690",
       "name": "酒ETF",
-      "score": 0.727
+      "score": 0.748
     }
   ],
   "shadow": {
@@ -38,7 +38,7 @@
       {
         "code": "SH516160",
         "name": "新能源ETF",
-        "score": 0.902
+        "score": 0.847
       }
     ],
     "action": "空仓(趋势关) 暴露0%",
@@ -64,13 +64,13 @@
           "n_trades": 0,
           "n_holdings": 0,
           "holdings": "空仓",
-          "asof": "2026-07-22 03:12",
+          "asof": "2026-07-22 03:31",
           "from_warmup": false
         },
         "live_return_pct": 0.0,
         "executed": null,
-        "live_excess_pct": -0.2298,
-        "bench_return_pct": 0.2298,
+        "live_excess_pct": -0.7311,
+        "bench_return_pct": 0.7311,
         "days_live": 1,
         "thin_live": true
       },
@@ -95,13 +95,13 @@
           "n_trades": 0,
           "n_holdings": 0,
           "holdings": "空仓",
-          "asof": "2026-07-22 03:12",
+          "asof": "2026-07-22 03:31",
           "from_warmup": false
         },
         "live_return_pct": 0.0,
         "executed": null,
-        "live_excess_pct": -0.2298,
-        "bench_return_pct": 0.2298,
+        "live_excess_pct": -0.7311,
+        "bench_return_pct": 0.7311,
         "days_live": 1,
         "thin_live": true
       },
@@ -126,13 +126,13 @@
           "n_trades": 0,
           "n_holdings": 0,
           "holdings": "空仓",
-          "asof": "2026-07-22 03:12",
+          "asof": "2026-07-22 03:31",
           "from_warmup": false
         },
         "live_return_pct": 0.0,
         "executed": null,
-        "live_excess_pct": -0.2298,
-        "bench_return_pct": 0.2298,
+        "live_excess_pct": -0.7311,
+        "bench_return_pct": 0.7311,
         "days_live": 1,
         "thin_live": true
       },
@@ -157,13 +157,13 @@
           "n_trades": 0,
           "n_holdings": 0,
           "holdings": "空仓",
-          "asof": "2026-07-22 03:12",
+          "asof": "2026-07-22 03:31",
           "from_warmup": false
         },
         "live_return_pct": 0.0,
         "executed": null,
-        "live_excess_pct": -0.2298,
-        "bench_return_pct": 0.2298,
+        "live_excess_pct": -0.7311,
+        "bench_return_pct": 0.7311,
         "days_live": 1,
         "thin_live": true
       }
@@ -180,21 +180,21 @@
         "target_exposure": 0.0,
         "parts": {
           "position_pct": 0.95,
-          "inv_vol_scale": 0.8119,
+          "inv_vol_scale": 0.8081,
           "inv_vol_src": "bench",
-          "vol20": 0.018475,
+          "vol20": 0.018561,
           "regime": "bear",
           "regime_mult": 0.0,
           "regime_info": {
             "market_ok": false,
-            "ma20": 4.845,
-            "ma60": 4.87525,
+            "ma20": 4.84615,
+            "ma60": 4.875633,
             "ma_up": false,
-            "vol20": 0.018475
+            "vol20": 0.018561
           },
           "vol_target": 0.08,
-          "vol_ann": 0.2933,
-          "vol_scale": 0.2728,
+          "vol_ann": 0.2947,
+          "vol_scale": 0.2715,
           "vol_src": "bench"
         },
         "notes": [
@@ -249,7 +249,7 @@
     {
       "name": "有合格标的",
       "ok": true,
-      "detail": "新能源ETF 得分+0.90"
+      "detail": "新能源ETF 得分+0.85"
     },
     {
       "name": "目标暴露",
@@ -260,8 +260,8 @@
   "signal_live": {
     "name": "c01_q10_vt08_soft_oh38_xgn",
     "live_return_pct": 0.0,
-    "bench_return_pct": 0.2298,
-    "live_excess_pct": -0.2298,
+    "bench_return_pct": 0.7311,
+    "live_excess_pct": -0.7311,
     "days_live": 1,
     "thin_live": true,
     "live_start": "2026-07-21",
