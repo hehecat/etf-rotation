@@ -10,7 +10,7 @@
   "return_pct": 0.0,
   "last_rebalance": null,
   "config": "C01_效15d",
-  "last_update": "2026-07-22 10:01",
+  "last_update": "2026-07-23 10:01",
   "note": "重置: 云端首跑无基准误买稀土, 已回滚空仓",
   "days_to_rebalance": 0,
   "market_ok": false,
@@ -21,9 +21,9 @@
     "market_ok": false,
     "picks": [
       {
-        "code": "SH515170",
-        "name": "食品饮料ETF",
-        "score": 0.871
+        "code": "SH512890",
+        "name": "红利低波ETF",
+        "score": 1.287
       }
     ],
     "action": "空仓(趋势关) 暴露0%",
@@ -43,13 +43,13 @@
           "start_date": "2026-07-21",
           "nav": 100000.0,
           "return_pct": 0.0,
-          "n_nav": 2,
-          "n_rets": 1,
+          "n_nav": 3,
+          "n_rets": 2,
           "sharpe": null,
           "n_trades": 0,
           "n_holdings": 0,
           "holdings": "空仓",
-          "asof": "2026-07-22",
+          "asof": "2026-07-23",
           "from_warmup": false
         },
         "live_return_pct": 0.0,
@@ -70,13 +70,13 @@
           "start_date": "2026-07-21",
           "nav": 100000.0,
           "return_pct": 0.0,
-          "n_nav": 2,
-          "n_rets": 1,
+          "n_nav": 3,
+          "n_rets": 2,
           "sharpe": null,
           "n_trades": 0,
           "n_holdings": 0,
           "holdings": "空仓",
-          "asof": "2026-07-22",
+          "asof": "2026-07-23",
           "from_warmup": false
         },
         "live_return_pct": 0.0,
@@ -97,13 +97,13 @@
           "start_date": "2026-07-21",
           "nav": 100000.0,
           "return_pct": 0.0,
-          "n_nav": 2,
-          "n_rets": 1,
+          "n_nav": 3,
+          "n_rets": 2,
           "sharpe": null,
           "n_trades": 0,
           "n_holdings": 0,
           "holdings": "空仓",
-          "asof": "2026-07-22",
+          "asof": "2026-07-23",
           "from_warmup": false
         },
         "live_return_pct": 0.0,
@@ -124,13 +124,13 @@
           "start_date": "2026-07-21",
           "nav": 100000.0,
           "return_pct": 0.0,
-          "n_nav": 2,
-          "n_rets": 1,
+          "n_nav": 3,
+          "n_rets": 2,
           "sharpe": null,
           "n_trades": 0,
           "n_holdings": 0,
           "holdings": "空仓",
-          "asof": "2026-07-22",
+          "asof": "2026-07-23",
           "from_warmup": false
         },
         "live_return_pct": 0.0,
@@ -149,21 +149,21 @@
         "target_exposure": 0.0,
         "parts": {
           "position_pct": 0.95,
-          "inv_vol_scale": 0.8125,
+          "inv_vol_scale": 0.8318,
           "inv_vol_src": "bench",
-          "vol20": 0.018461,
+          "vol20": 0.018034,
           "regime": "bear",
           "regime_mult": 0.0,
           "regime_info": {
             "market_ok": false,
-            "ma20": 4.8433,
-            "ma60": 4.874683,
+            "ma20": 4.83025,
+            "ma60": 4.874767,
             "ma_up": false,
-            "vol20": 0.018461
+            "vol20": 0.018034
           },
           "vol_target": 0.08,
-          "vol_ann": 0.2931,
-          "vol_scale": 0.273,
+          "vol_ann": 0.2863,
+          "vol_scale": 0.2795,
           "vol_src": "bench"
         },
         "notes": [
@@ -181,19 +181,19 @@
       "cash": 100000.0,
       "total_value": 100000.0,
       "return_pct": 0.0,
-      "n_port_rets": 1,
+      "n_port_rets": 2,
       "live": {
         "anchor_nav": 100000.0,
         "start_date": "2026-07-21",
         "nav": 100000.0,
         "return_pct": 0.0,
-        "n_nav": 2,
-        "n_rets": 1,
+        "n_nav": 3,
+        "n_rets": 2,
         "sharpe": null,
         "n_trades": 0,
         "n_holdings": 0,
         "holdings": "空仓",
-        "asof": "2026-07-22",
+        "asof": "2026-07-23",
         "from_warmup": false
       },
       "executed": null
@@ -212,9 +212,14 @@
     {
       "date": "2026-07-22",
       "nav": 100000.0
+    },
+    {
+      "date": "2026-07-23",
+      "nav": 100000.0
     }
   ],
   "port_rets": [
+    0.0,
     0.0
   ]
 }

@@ -1,6 +1,6 @@
 ======== GO 一键闭环 ========
 decision=ok
-asof=2026-07-22 lag=False
+asof=2026-07-23 lag=False
 did_wait=False wait_code=0
 推荐: ./etf
 ========

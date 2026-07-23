@@ -1,8 +1,8 @@
 ======== DIGEST ========
 可判性: THIN
-asof: 2026-07-22 lag=False
-live=0.0 xs=0.4596 Lrets=1 thin=True
+asof: 2026-07-23 lag=False
+live=0.0 xs=0.0 Lrets=2 thin=True
 decision: ok
-eta: 约再 4 个交易日可 READY (Lrets≥5)
+eta: 约再 3 个交易日可 READY (Lrets≥5)
 推荐: ./etf eod --timeout 1800
 ========

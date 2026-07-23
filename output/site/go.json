@@ -1,12 +1,12 @@
 {
-  "stamp": "2026-07-22T10:01:30",
+  "stamp": "2026-07-23T10:01:49",
   "decision": "ok",
   "data_lag": false,
-  "market_asof": "2026-07-22",
+  "market_asof": "2026-07-23",
   "wait_code": 0,
   "did_wait": false,
   "recommend": "./etf",
-  "days_to_ready": 4,
-  "eta_note": "约再 4 个交易日可 READY (Lrets≥5)",
+  "days_to_ready": 3,
+  "eta_note": "约再 3 个交易日可 READY (Lrets≥5)",
   "ready_level": "THIN"
 }

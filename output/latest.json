@@ -1,6 +1,6 @@
 {
-  "time": "2026-07-22 10:01",
-  "market_asof": "2026-07-22",
+  "time": "2026-07-23 10:01",
+  "market_asof": "2026-07-23",
   "config": "C01_效15d",
   "frozen": true,
   "action": "⚪ 空仓观望",
@@ -15,19 +15,19 @@
   "days_to_rebalance": 0,
   "top3": [
     {
-      "code": "SH515170",
-      "name": "食品饮料ETF",
-      "score": 0.871
+      "code": "SH512890",
+      "name": "红利低波ETF",
+      "score": 1.287
     },
     {
-      "code": "SH516160",
-      "name": "新能源ETF",
-      "score": 0.859
+      "code": "SH510880",
+      "name": "红利ETF",
+      "score": 1.034
     },
     {
-      "code": "SH516780",
-      "name": "稀土ETF",
-      "score": 0.847
+      "code": "SH515020",
+      "name": "银行ETF",
+      "score": 0.92
     }
   ],
   "shadow": {
@@ -36,9 +36,9 @@
     "market_ok": false,
     "picks": [
       {
-        "code": "SH515170",
-        "name": "食品饮料ETF",
-        "score": 0.871
+        "code": "SH512890",
+        "name": "红利低波ETF",
+        "score": 1.287
       }
     ],
     "action": "空仓(趋势关) 暴露0%",
@@ -58,20 +58,20 @@
           "start_date": "2026-07-21",
           "nav": 100000.0,
           "return_pct": 0.0,
-          "n_nav": 2,
-          "n_rets": 1,
+          "n_nav": 3,
+          "n_rets": 2,
           "sharpe": null,
           "n_trades": 0,
           "n_holdings": 0,
           "holdings": "空仓",
-          "asof": "2026-07-22 10:01",
+          "asof": "2026-07-23 10:01",
           "from_warmup": false
         },
         "live_return_pct": 0.0,
         "executed": null,
-        "live_excess_pct": 0.4596,
-        "bench_return_pct": -0.4596,
-        "days_live": 1,
+        "live_excess_pct": 0.0,
+        "bench_return_pct": 0.0,
+        "days_live": 2,
         "thin_live": true
       },
       {
@@ -89,20 +89,20 @@
           "start_date": "2026-07-21",
           "nav": 100000.0,
           "return_pct": 0.0,
-          "n_nav": 2,
-          "n_rets": 1,
+          "n_nav": 3,
+          "n_rets": 2,
           "sharpe": null,
           "n_trades": 0,
           "n_holdings": 0,
           "holdings": "空仓",
-          "asof": "2026-07-22 10:01",
+          "asof": "2026-07-23 10:01",
           "from_warmup": false
         },
         "live_return_pct": 0.0,
         "executed": null,
-        "live_excess_pct": 0.4596,
-        "bench_return_pct": -0.4596,
-        "days_live": 1,
+        "live_excess_pct": 0.0,
+        "bench_return_pct": 0.0,
+        "days_live": 2,
         "thin_live": true
       },
       {
@@ -120,20 +120,20 @@
           "start_date": "2026-07-21",
           "nav": 100000.0,
           "return_pct": 0.0,
-          "n_nav": 2,
-          "n_rets": 1,
+          "n_nav": 3,
+          "n_rets": 2,
           "sharpe": null,
           "n_trades": 0,
           "n_holdings": 0,
           "holdings": "空仓",
-          "asof": "2026-07-22 10:01",
+          "asof": "2026-07-23 10:01",
           "from_warmup": false
         },
         "live_return_pct": 0.0,
         "executed": null,
-        "live_excess_pct": 0.4596,
-        "bench_return_pct": -0.4596,
-        "days_live": 1,
+        "live_excess_pct": 0.0,
+        "bench_return_pct": 0.0,
+        "days_live": 2,
         "thin_live": true
       },
       {
@@ -151,20 +151,20 @@
           "start_date": "2026-07-21",
           "nav": 100000.0,
           "return_pct": 0.0,
-          "n_nav": 2,
-          "n_rets": 1,
+          "n_nav": 3,
+          "n_rets": 2,
           "sharpe": null,
           "n_trades": 0,
           "n_holdings": 0,
           "holdings": "空仓",
-          "asof": "2026-07-22 10:01",
+          "asof": "2026-07-23 10:01",
           "from_warmup": false
         },
         "live_return_pct": 0.0,
         "executed": null,
-        "live_excess_pct": 0.4596,
-        "bench_return_pct": -0.4596,
-        "days_live": 1,
+        "live_excess_pct": 0.0,
+        "bench_return_pct": 0.0,
+        "days_live": 2,
         "thin_live": true
       }
     ],
@@ -180,21 +180,21 @@
         "target_exposure": 0.0,
         "parts": {
           "position_pct": 0.95,
-          "inv_vol_scale": 0.8125,
+          "inv_vol_scale": 0.8318,
           "inv_vol_src": "bench",
-          "vol20": 0.018461,
+          "vol20": 0.018034,
           "regime": "bear",
           "regime_mult": 0.0,
           "regime_info": {
             "market_ok": false,
-            "ma20": 4.8433,
-            "ma60": 4.874683,
+            "ma20": 4.83025,
+            "ma60": 4.874767,
             "ma_up": false,
-            "vol20": 0.018461
+            "vol20": 0.018034
           },
           "vol_target": 0.08,
-          "vol_ann": 0.2931,
-          "vol_scale": 0.273,
+          "vol_ann": 0.2863,
+          "vol_scale": 0.2795,
           "vol_src": "bench"
         },
         "notes": [
@@ -212,19 +212,19 @@
       "cash": 100000.0,
       "total_value": 100000.0,
       "return_pct": 0.0,
-      "n_port_rets": 1,
+      "n_port_rets": 2,
       "live": {
         "anchor_nav": 100000.0,
         "start_date": "2026-07-21",
         "nav": 100000.0,
         "return_pct": 0.0,
-        "n_nav": 2,
-        "n_rets": 1,
+        "n_nav": 3,
+        "n_rets": 2,
         "sharpe": null,
         "n_trades": 0,
         "n_holdings": 0,
         "holdings": "空仓",
-        "asof": "2026-07-22",
+        "asof": "2026-07-23",
         "from_warmup": false
       },
       "executed": null
@@ -249,7 +249,7 @@
     {
       "name": "有合格标的",
       "ok": true,
-      "detail": "食品饮料ETF 得分+0.87"
+      "detail": "红利低波ETF 得分+1.29"
     },
     {
       "name": "目标暴露",
@@ -260,14 +260,14 @@
   "signal_live": {
     "name": "c01_q10_vt08_soft_oh38_xgn",
     "live_return_pct": 0.0,
-    "bench_return_pct": -0.4596,
-    "live_excess_pct": 0.4596,
-    "days_live": 1,
+    "bench_return_pct": 0.0,
+    "live_excess_pct": 0.0,
+    "days_live": 2,
     "thin_live": true,
     "live_start": "2026-07-21",
     "holdings": "空仓",
     "total_value": 100000.0,
-    "market_asof": "2026-07-22",
+    "market_asof": "2026-07-23",
     "data_lag": false
   }
 }

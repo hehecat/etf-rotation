@@ -1,35 +1,35 @@
 ======== 影子只读监控 ========
-基准 SH510300: 4.765 MA20=4.843(-1.6%) 20日=-4.1% 趋势=关
+基准 SH510300: 4.787 MA20=4.830(-0.9%) 20日=-5.2% 趋势=关
 生产 STATE: /home/runner/work/etf-rotation/etf-rotation/output/模拟仓位.json (本脚本只读)
 --------
-c01_q10_vt08_soft_oh38  暴露=  0.0%  regime=bear×0.0  vol_src=bench scale=0.273  rets=1
+c01_q10_vt08_soft_oh38  暴露=  0.0%  regime=bear×0.0  vol_src=bench scale=0.2795  rets=2
   账户=100000.0 收益=0.0 持仓0: 空仓
-  live=+0.000% THIN xs=-0.731% bench=+0.731% anchor=100000.0 from=2026-07-21 Lrets=1
+  live=+0.000% THIN xs=+0.460% bench=-0.460% anchor=100000.0 from=2026-07-21 Lrets=1
   注: vol_target 用基准波动代理 (组合收益样本不足)
   注: 趋势关 → 目标暴露 0
-  !! WARN [thin_rets] port_rets=1 < 20 (建议 shadow_warmup)
+  !! WARN [thin_rets] port_rets=2 < 20 (建议 shadow_warmup)
 --------
-c01_q10_vt08_soft_oh38_xgn  暴露=  0.0%  regime=bear×0.0  vol_src=bench scale=0.273  rets=1
+c01_q10_vt08_soft_oh38_xgn  暴露=  0.0%  regime=bear×0.0  vol_src=bench scale=0.2795  rets=2
   账户=100000.0 收益=0.0 持仓0: 空仓
-  live=+0.000% THIN xs=-0.731% bench=+0.731% anchor=100000.0 from=2026-07-21 Lrets=1
+  live=+0.000% THIN xs=+0.460% bench=-0.460% anchor=100000.0 from=2026-07-21 Lrets=1
   注: vol_target 用基准波动代理 (组合收益样本不足)
   注: 趋势关 → 目标暴露 0
-  !! WARN [thin_rets] port_rets=1 < 20 (建议 shadow_warmup)
+  !! WARN [thin_rets] port_rets=2 < 20 (建议 shadow_warmup)
 --------
-c01_q10_vt09_oh35  暴露=  0.0%  regime=None×1.0  vol_src=bench scale=0.3071  rets=1
+c01_q10_vt09_oh35  暴露=  0.0%  regime=None×1.0  vol_src=bench scale=0.3144  rets=2
   账户=100000.0 收益=0.0 持仓0: 空仓
-  live=+0.000% THIN xs=-0.731% bench=+0.731% anchor=100000.0 from=2026-07-21 Lrets=1
+  live=+0.000% THIN xs=+0.460% bench=-0.460% anchor=100000.0 from=2026-07-21 Lrets=1
   注: vol_target 用基准波动代理 (组合收益样本不足)
   注: 趋势关 → 目标暴露 0
-  !! WARN [thin_rets] port_rets=1 < 20 (建议 shadow_warmup)
+  !! WARN [thin_rets] port_rets=2 < 20 (建议 shadow_warmup)
 --------
-c01_q10_vt11  暴露=  0.0%  regime=None×1.0  vol_src=bench scale=0.3754  rets=1
+c01_q10_vt11  暴露=  0.0%  regime=None×1.0  vol_src=bench scale=0.3842  rets=2
   账户=100000.0 收益=0.0 持仓0: 空仓
-  live=+0.000% THIN xs=-0.731% bench=+0.731% anchor=100000.0 from=2026-07-21 Lrets=1
+  live=+0.000% THIN xs=+0.460% bench=-0.460% anchor=100000.0 from=2026-07-21 Lrets=1
   注: vol_target 用基准波动代理 (组合收益样本不足)
   注: 趋势关 → 目标暴露 0
-  !! WARN [thin_rets] port_rets=1 < 20 (建议 shadow_warmup)
+  !! WARN [thin_rets] port_rets=2 < 20 (建议 shadow_warmup)
 --------
 告警汇总: error=0 warn=4
   c01_q10_vt08_soft_oh38: thin_rets; c01_q10_vt08_soft_oh38_xgn: thin_rets; c01_q10_vt09_oh35: thin_rets; c01_q10_vt11: thin_rets
-行情截至: 2026-07-22
+行情截至: 2026-07-23
