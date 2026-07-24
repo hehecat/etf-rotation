@@ -1,6 +1,6 @@
 ======== PROGRESS 可判性轨迹 ========
-2026-07-23 level=THIN asof=2026-07-23 Lrets=2 dtr=3 live=0.0 xs=0.0 lag=False src=go
-2026-07-23 level=THIN asof=2026-07-23 Lrets=2 dtr=3 live=0.0 xs=0.0 lag=False src=ready
-2026-07-23 level=THIN asof=2026-07-23 Lrets=2 dtr=3 live=0.0 xs=0.0 lag=False src=digest
-2026-07-23 level=THIN asof=2026-07-23 Lrets=2 dtr=3 live=0.0 xs=0.0 lag=False src=pulse
+2026-07-24 level=THIN asof=2026-07-24 Lrets=3 dtr=2 live=0.0 xs=1.7965 lag=False src=go
+2026-07-24 level=THIN asof=2026-07-24 Lrets=3 dtr=2 live=0.0 xs=1.7965 lag=False src=ready
+2026-07-24 level=THIN asof=2026-07-24 Lrets=3 dtr=2 live=0.0 xs=1.7965 lag=False src=digest
+2026-07-24 level=THIN asof=2026-07-24 Lrets=3 dtr=2 live=0.0 xs=1.7965 lag=False src=pulse
 ========

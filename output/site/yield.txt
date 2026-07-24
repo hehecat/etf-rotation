@@ -1,9 +1,9 @@
 ======== 有效收益 (live段) ========
-时间: 2026-07-23T10:01:48
-行情截至: 2026-07-23
+时间: 2026-07-24T09:57:55
+行情截至: 2026-07-24
 动作: ⚪ 空仓观望  市场: 关
 策略: c01_q10_vt08_soft_oh38_xgn
-live=0.0 xs=0.0 bench=0.0 Lrets=2 thin=True
+live=0.0 xs=1.7965 bench=-1.7965 Lrets=3 thin=True
 from=2026-07-21 持仓=空仓
-days_to_ready=3 eta=约再 3 个交易日可 READY (Lrets≥5)
+days_to_ready=2 eta=约再 2 个交易日可 READY (Lrets≥5)
 ========

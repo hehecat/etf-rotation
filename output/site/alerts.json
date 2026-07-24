@@ -6,25 +6,25 @@
       "shadow": "c01_q10_vt08_soft_oh38",
       "level": "warn",
       "code": "thin_rets",
-      "msg": "port_rets=2 < 20 (建议 shadow_warmup)"
+      "msg": "port_rets=3 < 20 (建议 shadow_warmup)"
     },
     {
       "shadow": "c01_q10_vt08_soft_oh38_xgn",
       "level": "warn",
       "code": "thin_rets",
-      "msg": "port_rets=2 < 20 (建议 shadow_warmup)"
+      "msg": "port_rets=3 < 20 (建议 shadow_warmup)"
     },
     {
       "shadow": "c01_q10_vt09_oh35",
       "level": "warn",
       "code": "thin_rets",
-      "msg": "port_rets=2 < 20 (建议 shadow_warmup)"
+      "msg": "port_rets=3 < 20 (建议 shadow_warmup)"
     },
     {
       "shadow": "c01_q10_vt11",
       "level": "warn",
       "code": "thin_rets",
-      "msg": "port_rets=2 < 20 (建议 shadow_warmup)"
+      "msg": "port_rets=3 < 20 (建议 shadow_warmup)"
     }
   ]
 }

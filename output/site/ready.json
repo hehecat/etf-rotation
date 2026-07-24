@@ -1,13 +1,13 @@
 {
-  "stamp": "2026-07-23T10:01:49",
+  "stamp": "2026-07-24T09:57:56",
   "level": "THIN",
-  "note": "asof 已齐但样本薄; 可观察方向, 勿下强结论 (约再 3 个交易日可 READY)",
-  "market_asof": "2026-07-23",
+  "note": "asof 已齐但样本薄; 可观察方向, 勿下强结论 (约再 2 个交易日可 READY)",
+  "market_asof": "2026-07-24",
   "data_lag": false,
-  "days_live": 2,
+  "days_live": 3,
   "thin_live": true,
   "live_return_pct": 0.0,
-  "live_excess_pct": 0.0,
+  "live_excess_pct": 1.7965,
   "action": "⚪ 空仓观望",
   "market_ok": false,
   "holdings": "空仓",
@@ -15,7 +15,7 @@
   "blockers": [
     "THIN: live 样本<5日, 统计不稳定"
   ],
-  "days_to_ready": 3,
-  "eta_note": "约再 3 个交易日可 READY (Lrets≥5)",
+  "days_to_ready": 2,
+  "eta_note": "约再 2 个交易日可 READY (Lrets≥5)",
   "ready": false
 }

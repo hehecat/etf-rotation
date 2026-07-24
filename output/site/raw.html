@@ -225,7 +225,7 @@ footer{
     <div class="brand-row">
       <div class="brand-meta">
         <h1>ETF 轮动 · 日更面板</h1>
-        <div class="muted">生成于 2026-07-23 10:01:53 · 生产账户冻结 · 研究影子观察中</div>
+        <div class="muted">生成于 2026-07-24 09:58:01 · 生产账户冻结 · 研究影子观察中</div>
       </div>
       <span class="chip">只读 · 非投资建议</span>
     </div>
@@ -246,20 +246,20 @@ footer{
 </div>
 <p><span class="badge warn">警告 4</span></p>
 <div class="card"><details><summary>今日速览</summary><pre class='raw'>======== ETF 今日速览 ========
-时间: 2026-07-23T10:01:47
+时间: 2026-07-24T09:57:54
 信号默认影子: c01_q10_vt08_soft_oh38_xgn
 ----------------------------
 生产动作: ⚪ 空仓观望
-市场: 关  宽度=0.38  配置=C01_效15d  信号时间: 2026-07-23 10:01  行情截至: 2026-07-23
+市场: 关  宽度=0.4  配置=C01_效15d  信号时间: 2026-07-24 09:57  行情截至: 2026-07-24
 原因:
   · 大盘趋势向下 → 保持空仓
 研究影子动作: 空仓(趋势关) 暴露0%
 研究目标暴露: 0.0%
 -------- 有效收益 (SIGNAL) --------
   策略: c01_q10_vt08_soft_oh38_xgn
-  live=+0.000% THIN  xs=+0.000%  bench=+0.000%
-  from=2026-07-21  Lrets=2  持仓=空仓
-  行情截至: 2026-07-23
+  live=+0.000% THIN  xs=+1.796%  bench=-1.796%
+  from=2026-07-21  Lrets=3  持仓=空仓
+  行情截至: 2026-07-24
   注: THIN=样本&lt;5日; DATA_LAG 时等行情更新后再判 xs
 -------- 监控告警 --------
   error=0 warn=4 ok=True
@@ -273,16 +273,16 @@ footer{
   ./etf preview
   ./etf live
   ./etf check --checks data_asof,asof
-距可判: 3 交易日
-ETA: 约再 3 个交易日可 READY (Lrets≥5)
+距可判: 2 交易日
+ETA: 约再 2 个交易日可 READY (Lrets≥5)
 轨迹: ./etf progress
 口径: 有效收益=live%+xs%; DATA_LAG 等行情; 生产 c01 冻结
 ========
 </pre></details><details><summary>脉搏</summary><pre class='raw'>======== PULSE 脉搏 ========
 level: THIN
-asof: 2026-07-23 lag=False
-live=0.0 xs=0.0 Lrets=2 thin=True
-dtr=3 eta=约再 3 个交易日可 READY (Lrets≥5)
+asof: 2026-07-24 lag=False
+live=0.0 xs=1.7965 Lrets=3 thin=True
+dtr=2 eta=约再 2 个交易日可 READY (Lrets≥5)
 decision: ok
 next_action: accumulate
 why: 样本&lt;5日: 每个交易日 eod/daily 积累 Lrets
@@ -292,110 +292,110 @@ readable_yield: False
 ========
 </pre></details><details><summary>摘要</summary><pre class='raw'>======== DIGEST ========
 可判性: THIN
-asof: 2026-07-23 lag=False
-live=0.0 xs=0.0 Lrets=2 thin=True
+asof: 2026-07-24 lag=False
+live=0.0 xs=1.7965 Lrets=3 thin=True
 decision: ok
-eta: 约再 3 个交易日可 READY (Lrets≥5)
+eta: 约再 2 个交易日可 READY (Lrets≥5)
 推荐: ./etf eod --timeout 1800
 ========
 </pre></details><details><summary>可判性</summary><pre class='raw'>======== READY 有效收益可判性 ========
 level: THIN
-asof: 2026-07-23 lag=False
-live=0.0 xs=0.0 Lrets=2 thin=True
+asof: 2026-07-24 lag=False
+live=0.0 xs=1.7965 Lrets=3 thin=True
 decision: ok
-days_to_ready: 3
-eta: 约再 3 个交易日可 READY (Lrets≥5)
+days_to_ready: 2
+eta: 约再 2 个交易日可 READY (Lrets≥5)
 blockers: THIN: live 样本&lt;5日, 统计不稳定
 ========
 </pre></details><details><summary>有效收益</summary><pre class='raw'>======== 有效收益 (live段) ========
-时间: 2026-07-23T10:01:48
-行情截至: 2026-07-23
+时间: 2026-07-24T09:57:55
+行情截至: 2026-07-24
 动作: ⚪ 空仓观望  市场: 关
 策略: c01_q10_vt08_soft_oh38_xgn
-live=0.0 xs=0.0 bench=0.0 Lrets=2 thin=True
+live=0.0 xs=1.7965 bench=-1.7965 Lrets=3 thin=True
 from=2026-07-21 持仓=空仓
-days_to_ready=3 eta=约再 3 个交易日可 READY (Lrets≥5)
+days_to_ready=2 eta=约再 2 个交易日可 READY (Lrets≥5)
 ========
 </pre></details><details id='asof'><summary>行情取证</summary><pre class='raw'>======== 行情/收益取证 ========
-时间: 2026-07-23T10:01:48
-交易日: True date=2026-07-23 source=bench_calendar
-行情截至: 2026-07-23
-信号时间: 2026-07-23 10:01  动作: ⚪ 空仓观望  市场: 关
+时间: 2026-07-24T09:57:54
+交易日: True date=2026-07-24 source=bench_calendar
+行情截至: 2026-07-24
+信号时间: 2026-07-24 09:57  动作: ⚪ 空仓观望  市场: 关
 SIGNAL: c01_q10_vt08_soft_oh38_xgn
-  live=0.0 xs=0.0 Lrets=2 thin=True 持仓=空仓
-pipeline_last: stamp=20260722_100108 ok=True asof=2026-07-22 lag=False
-site_meta: asof=2026-07-22 lag=False
-dtr=3 eta=约再 3 个交易日可 READY (Lrets≥5) level=None
+  live=0.0 xs=1.7965 Lrets=3 thin=True 持仓=空仓
+pipeline_last: stamp=20260723_100104 ok=True asof=2026-07-23 lag=False
+site_meta: asof=2026-07-23 lag=False
+dtr=2 eta=约再 2 个交易日可 READY (Lrets≥5) level=None
 ========
 </pre></details><details id='data'><summary>行情状态</summary><pre class='raw'>======== 行情状态 ========
-行情截至: 2026-07-23
-信号时间: 2026-07-23 10:01
+行情截至: 2026-07-24
+信号时间: 2026-07-24 09:57
 决策: ok
-dtr=3 eta=约再 3 个交易日可 READY (Lrets≥5)
+dtr=2 eta=约再 2 个交易日可 READY (Lrets≥5)
 ========
 </pre></details><details><summary>下一步</summary><pre class='raw'>======== NEXT 决策 ========
 decision: ok
-asof: 2026-07-23 lag=False stale=False
+asof: 2026-07-24 lag=False stale=False
 推荐: ./etf
-dtr=3 eta=约再 3 个交易日可 READY (Lrets≥5)
+dtr=2 eta=约再 2 个交易日可 READY (Lrets≥5)
 ========
 </pre></details><details id='pull'><summary>强刷行情</summary><pre class='raw'>======== PULL 强刷行情 ========
-刷前 asof=2026-07-23 lag=False
-刷后 asof=2026-07-23 lag=False
+刷前 asof=2026-07-24 lag=False
+刷后 asof=2026-07-24 lag=False
 advanced=False cleared_lag=False
 ok=1 fail=0
 ========
 </pre></details><details id='go'><summary>一键闭环</summary><pre class='raw'>======== GO 一键闭环 ========
 decision=ok
-asof=2026-07-23 lag=False
+asof=2026-07-24 lag=False
 did_wait=False wait_code=0
 推荐: ./etf
 ========
 </pre></details><details><summary>可判性轨迹</summary><pre class='raw'>======== PROGRESS 可判性轨迹 ========
-2026-07-23 level=THIN asof=2026-07-23 Lrets=2 dtr=3 live=0.0 xs=0.0 lag=False src=go
-2026-07-23 level=THIN asof=2026-07-23 Lrets=2 dtr=3 live=0.0 xs=0.0 lag=False src=ready
-2026-07-23 level=THIN asof=2026-07-23 Lrets=2 dtr=3 live=0.0 xs=0.0 lag=False src=digest
-2026-07-23 level=THIN asof=2026-07-23 Lrets=2 dtr=3 live=0.0 xs=0.0 lag=False src=pulse
+2026-07-24 level=THIN asof=2026-07-24 Lrets=3 dtr=2 live=0.0 xs=1.7965 lag=False src=go
+2026-07-24 level=THIN asof=2026-07-24 Lrets=3 dtr=2 live=0.0 xs=1.7965 lag=False src=ready
+2026-07-24 level=THIN asof=2026-07-24 Lrets=3 dtr=2 live=0.0 xs=1.7965 lag=False src=digest
+2026-07-24 level=THIN asof=2026-07-24 Lrets=3 dtr=2 live=0.0 xs=1.7965 lag=False src=pulse
 ========
 </pre></details><details><summary>三合一速览</summary><pre class='raw'>======== BRIEF 速览 ========
-时间: 2026-07-23T10:01:48
-行情截至: 2026-07-23
+时间: 2026-07-24T09:57:56
+行情截至: 2026-07-24
 动作: ⚪ 空仓观望  市场: 关
-live=0.0 xs=0.0 Lrets=2 thin=True
-dtr=3 eta=约再 3 个交易日可 READY (Lrets≥5)
+live=0.0 xs=1.7965 Lrets=3 thin=True
+dtr=2 eta=约再 2 个交易日可 READY (Lrets≥5)
 ========
 </pre></details><details id='signal'><summary>信号原文</summary><pre class='raw'>================================================================
-  ETF跨行业轮动 · C01_效15d  2026-07-23 10:01
+  ETF跨行业轮动 · C01_效15d  2026-07-24 09:57
   因子: {&#x27;eff&#x27;: 0.6, &#x27;mtf&#x27;: 0.4} | 调仓15日 | 止损-8%
   迟滞20% | 最小持仓5日 | 冻结:True
 ================================================================
 
-📊 沪深300: 4.787  MA20:4.830(-0.9%)  20日:-5.2%  ❌ 向下(空仓)
-📈 市场宽度: 38%  有效池:50  剔除异常:2
-   异常样本: 通信ETF(20日-64.4%), 半导体ETF(20日-60.1%)
+📊 沪深300: 4.701  MA20:4.820(-2.5%)  20日:-4.2%  ❌ 向下(空仓)
+📈 市场宽度: 40%  有效池:50  剔除异常:2
+   异常样本: 通信ETF(20日-63.2%), 半导体ETF(20日-59.5%)
 
   【主策略】效率排名 TOP10
     # 名称                  现价     20日     效率  MTF     得分 状态
   --------------------------------------------------------------
-   1  红利低波ETF          1.174   +8.1%  0.376 1.00  +1.29 空仓期
-   2  红利ETF            3.280   +9.1%  0.329 1.00  +1.03 空仓期
-   3  银行ETF            1.717   +6.8%  0.307 1.00  +0.92 空仓期
-   4  光伏ETF            0.839  -16.8%  0.430 0.33  +0.87 空仓期
-   5  新能源ETF           2.486  -16.9%  0.420 0.33  +0.82 空仓期
-   6  畜牧养殖ETF          0.596  +11.2%  0.341 0.67  +0.75 空仓期
-   7  稀土ETF            0.806  -20.8%  0.473 0.00  +0.75 空仓期
-   8  中药ETF银华          0.904  +12.4%  0.333 0.67  +0.71 空仓期
-   9  工业母机ETF          0.650  -28.9%  0.463 0.00  +0.69 空仓期
-  10  电力ETF            1.335   +5.6%  0.256 1.00  +0.65 空仓期
+   1  银行ETF            1.723   +8.0%  0.364 1.00  +1.39 空仓期
+   2  红利低波ETF          1.162   +7.5%  0.336 1.00  +1.24 空仓期
+   3  红利ETF            3.223   +9.1%  0.321 1.00  +1.16 空仓期
+   4  光伏ETF            0.811  -19.1%  0.462 0.33  +1.11 空仓期
+   5  稀土ETF            0.780  -20.4%  0.459 0.33  +1.09 空仓期
+   6  新能源ETF           2.409  -16.6%  0.408 0.33  +0.83 空仓期
+   7  食品饮料ETF          0.458   +6.5%  0.250 1.00  +0.80 空仓期
+   8  中药ETF银华          0.880  +12.1%  0.311 0.67  +0.72 空仓期
+   9  工业母机ETF          0.630  -28.2%  0.448 0.00  +0.64 空仓期
+  10  中证500ETF         7.545  -14.9%  0.369 0.33  +0.62 空仓期
 
   【影子】C01_Q10_VT08_SOFT_OH38_EXTRA_GOLD_NQ TOP5 (不交易)
     # 名称                 20日     5日    影子分
   ------------------------------------------
-    1 红利低波ETF          +8.1%  +2.9%  +0.00
-    2 红利ETF            +9.1%  +4.3%  +0.00
-    3 银行ETF            +6.8%  +2.5%  +0.00
-    4 光伏ETF           -16.8%  +1.6%  +0.00
-    5 新能源ETF          -16.9%  +2.5%  +0.00
+    1 银行ETF            +8.0%  +1.7%  +0.00
+    2 红利低波ETF          +7.5%  +1.4%  +0.00
+    3 红利ETF            +9.1%  +2.8%  +0.00
+    4 光伏ETF           -19.1%  +1.8%  +0.00
+    5 稀土ETF           -20.4%  +0.8%  +0.00
 
 ================================================================
   ▸ 今日动作: ⚪ 空仓观望
@@ -406,7 +406,7 @@ dtr=3 eta=约再 3 个交易日可 READY (Lrets≥5)
     [✗] 大盘&gt;MA20     趋势过滤
     [✓] 调仓窗口        从未调仓→可调
     [✓] 空仓可买        当前无持仓
-    [✓] 有合格标的       红利低波ETF 得分+1.29
+    [✓] 有合格标的       银行ETF 得分+1.39
     [✓] 目标暴露        0.0%
 
   调仓时钟: 上次 无 | 已过 0 交易日 | 还需 0 交易日 | 可调仓
@@ -421,8 +421,8 @@ dtr=3 eta=约再 3 个交易日可 READY (Lrets≥5)
 
   对照 · C01_Q10_VT08_SOFT_OH38_EXTRA_GOLD_NQ
     影子趋势: ❌  建议: 空仓(趋势关) 暴露0%
-    研究暴露: 0.0%  regime=bear×0.0  vol_scale=0.2795 src=bench  inv=0.8318
-    影子账户: 总资产=100000.0  收益=0.0%  port_rets=2  path=/home/runner/work/etf-rotation/etf-rotation/output/shadow_states/c01_q10_vt08_soft_oh38_xgn.json
+    研究暴露: 0.0%  regime=bear×0.0  vol_scale=0.2893 src=bench  inv=0.861
+    影子账户: 总资产=100000.0  收益=0.0%  port_rets=3  path=/home/runner/work/etf-rotation/etf-rotation/output/shadow_states/c01_q10_vt08_soft_oh38_xgn.json
     注: vol_target 用基准波动代理 (组合收益样本不足)
     注: 趋势关 → 目标暴露 0
     · 大盘趋势向下 → 保持空仓
@@ -437,10 +437,10 @@ dtr=3 eta=约再 3 个交易日可 READY (Lrets≥5)
 ================================================================
 -------- 有效收益 (SIGNAL live) --------
   策略: c01_q10_vt08_soft_oh38_xgn
-  live=+0.000% THIN  xs=+0.000%  bench=+0.000%
-  from=2026-07-21  Lrets=2  持仓=空仓
+  live=+0.000% THIN  xs=+1.796%  bench=-1.796%
+  from=2026-07-21  Lrets=3  持仓=空仓
   注: THIN=样本&lt;5日; DATA_LAG 时等行情更新后再判 xs
-  行情截至: 2026-07-23
+  行情截至: 2026-07-24
   口径: live%=暖机末→今 · xs%=live−基准 · 非全样本
 ----------------------------------------
 </pre></details><details><summary>影子对照</summary><pre class='raw'>======== 主线影子对照 ========
@@ -448,10 +448,10 @@ dtr=3 eta=约再 3 个交易日可 READY (Lrets≥5)
 目录: /home/runner/work/etf-rotation/etf-rotation/output/shadow_states
 ----------------------------
 name                              sh     dd   live%     xs%         tv gate note
-  c01_q10_vt08_soft_oh38           —      —   +0.00   +0.46     100000    ? L@2026-07-21 THIN
-  c01_q10_vt08_soft_oh38_xgn       —      —   +0.00   +0.46     100000    ? SIGNAL L@2026-07-21 THIN
-  c01_q10_vt09_oh35                —      —   +0.00   +0.46     100000    ? L@2026-07-21 THIN
-  c01_q10_vt11                     —      —   +0.00   +0.46     100000    ? L@2026-07-21 THIN
+  c01_q10_vt08_soft_oh38           —      —   +0.00   +0.00     100000    ? L@2026-07-21 THIN
+  c01_q10_vt08_soft_oh38_xgn       —      —   +0.00   +0.00     100000    ? SIGNAL L@2026-07-21 THIN
+  c01_q10_vt09_oh35                —      —   +0.00   +0.00     100000    ? L@2026-07-21 THIN
+  c01_q10_vt11                     —      —   +0.00   +0.00     100000    ? L@2026-07-21 THIN
 ----------------------------
 说明: sh/dd=暖机; live%/xs%=暖机末→今 (xs=live-基准); THIN=样本&lt;5日
   python3 scripts/etf.py live
@@ -464,10 +464,10 @@ name                              sh     dd   live%     xs%         tv gate note
 超额: excess% = live% - 基准SH510300同期%
 ----------------------------
 name                              live%   bench%      xs%        nav Lrets note
-  c01_q10_vt08_soft_oh38        +0.000%  +0.000%  +0.000%     100000     2 from 2026-07-21 THIN
-  c01_q10_vt08_soft_oh38_xgn    +0.000%  +0.000%  +0.000%     100000     2 SIGNAL from 2026-07-21 THIN
-  c01_q10_vt09_oh35             +0.000%  +0.000%  +0.000%     100000     2 from 2026-07-21 THIN
-  c01_q10_vt11                  +0.000%  +0.000%  +0.000%     100000     2 from 2026-07-21 THIN
+  c01_q10_vt08_soft_oh38        +0.000%  -1.796%  +1.796%     100000     3 from 2026-07-21 THIN
+  c01_q10_vt08_soft_oh38_xgn    +0.000%  -1.796%  +1.796%     100000     3 SIGNAL from 2026-07-21 THIN
+  c01_q10_vt09_oh35             +0.000%  -1.796%  +1.796%     100000     3 from 2026-07-21 THIN
+  c01_q10_vt11                  +0.000%  -1.796%  +1.796%     100000     3 from 2026-07-21 THIN
 ----------------------------
 提示: 趋势关空仓 live≈0; 若基准下跌则 excess&gt;0 表示避险有效
 提示: THIN=live 样本&lt;5日 (暖机末≈最新日 / DATA_LAG 时 xs 常为0)
@@ -475,63 +475,63 @@ name                              live%   bench%      xs%        nav Lrets note
   python3 scripts/etf.py daily --dry-run
 ========
 </pre></details><details><summary>影子监控</summary><pre class='raw'>======== 影子只读监控 ========
-基准 SH510300: 4.787 MA20=4.830(-0.9%) 20日=-5.2% 趋势=关
+基准 SH510300: 4.701 MA20=4.820(-2.5%) 20日=-4.2% 趋势=关
 生产 STATE: /home/runner/work/etf-rotation/etf-rotation/output/模拟仓位.json (本脚本只读)
 --------
-c01_q10_vt08_soft_oh38  暴露=  0.0%  regime=bear×0.0  vol_src=bench scale=0.2795  rets=2
+c01_q10_vt08_soft_oh38  暴露=  0.0%  regime=bear×0.0  vol_src=bench scale=0.2893  rets=3
   账户=100000.0 收益=0.0 持仓0: 空仓
-  live=+0.000% THIN xs=+0.460% bench=-0.460% anchor=100000.0 from=2026-07-21 Lrets=1
+  live=+0.000% THIN xs=+0.000% bench=+0.000% anchor=100000.0 from=2026-07-21 Lrets=2
   注: vol_target 用基准波动代理 (组合收益样本不足)
   注: 趋势关 → 目标暴露 0
-  !! WARN [thin_rets] port_rets=2 &lt; 20 (建议 shadow_warmup)
+  !! WARN [thin_rets] port_rets=3 &lt; 20 (建议 shadow_warmup)
 --------
-c01_q10_vt08_soft_oh38_xgn  暴露=  0.0%  regime=bear×0.0  vol_src=bench scale=0.2795  rets=2
+c01_q10_vt08_soft_oh38_xgn  暴露=  0.0%  regime=bear×0.0  vol_src=bench scale=0.2893  rets=3
   账户=100000.0 收益=0.0 持仓0: 空仓
-  live=+0.000% THIN xs=+0.460% bench=-0.460% anchor=100000.0 from=2026-07-21 Lrets=1
+  live=+0.000% THIN xs=+0.000% bench=+0.000% anchor=100000.0 from=2026-07-21 Lrets=2
   注: vol_target 用基准波动代理 (组合收益样本不足)
   注: 趋势关 → 目标暴露 0
-  !! WARN [thin_rets] port_rets=2 &lt; 20 (建议 shadow_warmup)
+  !! WARN [thin_rets] port_rets=3 &lt; 20 (建议 shadow_warmup)
 --------
-c01_q10_vt09_oh35  暴露=  0.0%  regime=None×1.0  vol_src=bench scale=0.3144  rets=2
+c01_q10_vt09_oh35  暴露=  0.0%  regime=None×1.0  vol_src=bench scale=0.3254  rets=3
   账户=100000.0 收益=0.0 持仓0: 空仓
-  live=+0.000% THIN xs=+0.460% bench=-0.460% anchor=100000.0 from=2026-07-21 Lrets=1
+  live=+0.000% THIN xs=+0.000% bench=+0.000% anchor=100000.0 from=2026-07-21 Lrets=2
   注: vol_target 用基准波动代理 (组合收益样本不足)
   注: 趋势关 → 目标暴露 0
-  !! WARN [thin_rets] port_rets=2 &lt; 20 (建议 shadow_warmup)
+  !! WARN [thin_rets] port_rets=3 &lt; 20 (建议 shadow_warmup)
 --------
-c01_q10_vt11  暴露=  0.0%  regime=None×1.0  vol_src=bench scale=0.3842  rets=2
+c01_q10_vt11  暴露=  0.0%  regime=None×1.0  vol_src=bench scale=0.3978  rets=3
   账户=100000.0 收益=0.0 持仓0: 空仓
-  live=+0.000% THIN xs=+0.460% bench=-0.460% anchor=100000.0 from=2026-07-21 Lrets=1
+  live=+0.000% THIN xs=+0.000% bench=+0.000% anchor=100000.0 from=2026-07-21 Lrets=2
   注: vol_target 用基准波动代理 (组合收益样本不足)
   注: 趋势关 → 目标暴露 0
-  !! WARN [thin_rets] port_rets=2 &lt; 20 (建议 shadow_warmup)
+  !! WARN [thin_rets] port_rets=3 &lt; 20 (建议 shadow_warmup)
 --------
 告警汇总: error=0 warn=4
   c01_q10_vt08_soft_oh38: thin_rets; c01_q10_vt08_soft_oh38_xgn: thin_rets; c01_q10_vt09_oh35: thin_rets; c01_q10_vt11: thin_rets
-行情截至: 2026-07-23
+行情截至: 2026-07-24
 </pre></details><details><summary>影子摘要</summary><pre class='raw'>--------
 影子仓位 · /home/runner/work/etf-rotation/etf-rotation/output/shadow_states
 --------
-  c01_q10_vt08_soft_oh38               资产=  100000.0  live=  +0.00% THIN  xs=  +0.00%  全样本=    0.0  持仓0: 空仓  rets=2
-    更新: 2026-07-23 10:01  上次调仓: 无  live_from=2026-07-21  Lrets=2
-  c01_q10_vt08_soft_oh38_xgn           资产=  100000.0  live=  +0.00% THIN  xs=  +0.00%  全样本=    0.0  持仓0: 空仓  rets=2
-    更新: 2026-07-23 10:01  上次调仓: 无  live_from=2026-07-21  Lrets=2
-  c01_q10_vt09_oh35                    资产=  100000.0  live=  +0.00% THIN  xs=  +0.00%  全样本=    0.0  持仓0: 空仓  rets=2
-    更新: 2026-07-23 10:01  上次调仓: 无  live_from=2026-07-21  Lrets=2
-  c01_q10_vt11                         资产=  100000.0  live=  +0.00% THIN  xs=  +0.00%  全样本=    0.0  持仓0: 空仓  rets=2
-    更新: 2026-07-23 10:01  上次调仓: 无  live_from=2026-07-21  Lrets=2
+  c01_q10_vt08_soft_oh38               资产=  100000.0  live=  +0.00% THIN  xs=  +1.80%  全样本=    0.0  持仓0: 空仓  rets=3
+    更新: 2026-07-24 09:57  上次调仓: 无  live_from=2026-07-21  Lrets=3
+  c01_q10_vt08_soft_oh38_xgn           资产=  100000.0  live=  +0.00% THIN  xs=  +1.80%  全样本=    0.0  持仓0: 空仓  rets=3
+    更新: 2026-07-24 09:57  上次调仓: 无  live_from=2026-07-21  Lrets=3
+  c01_q10_vt09_oh35                    资产=  100000.0  live=  +0.00% THIN  xs=  +1.80%  全样本=    0.0  持仓0: 空仓  rets=3
+    更新: 2026-07-24 09:57  上次调仓: 无  live_from=2026-07-21  Lrets=3
+  c01_q10_vt11                         资产=  100000.0  live=  +0.00% THIN  xs=  +1.80%  全样本=    0.0  持仓0: 空仓  rets=3
+    更新: 2026-07-24 09:57  上次调仓: 无  live_from=2026-07-21  Lrets=3
   注: THIN=live 样本&lt;5日; Lrets=0=仅锚日
   注: DATA_LAG 时等行情更新后再判 xs
-  行情截至: 2026-07-23
+  行情截至: 2026-07-24
 </pre></details><details><summary>研究状态</summary><pre class='raw'>======== 研究状态面板 ========
-时间: 2026-07-23T10:01:47
-交易日: True source=bench_calendar date=2026-07-23  行情截至=2026-07-23
-生产 state: True  latest: True  信号时间: 2026-07-23 10:01
+时间: 2026-07-24T09:57:54
+交易日: True source=bench_calendar date=2026-07-24  行情截至=2026-07-24
+生产 state: True  latest: True  信号时间: 2026-07-24 09:57
 -------- 有效收益 (SIGNAL) --------
   策略: c01_q10_vt08_soft_oh38_xgn
-  live=+0.000% THIN  xs=+0.000%  bench=+0.000%
-  from=2026-07-21  Lrets=2  持仓=空仓
-  行情截至: 2026-07-23
+  live=+0.000% THIN  xs=+1.796%  bench=-1.796%
+  from=2026-07-21  Lrets=3  持仓=空仓
+  行情截至: 2026-07-24
   注: THIN=样本&lt;5日; DATA_LAG 时等行情更新后再判 xs
 -------- 行情取证 (asof) --------
   · 未生成 → ./etf asof
@@ -544,7 +544,7 @@ c01_q10_vt11  暴露=  0.0%  regime=None×1.0  vol_src=bench scale=0.3842  rets=
 -------- 下一步 (next) --------
   · 未生成 → ./etf next
 -------- 行情强刷 (pull) --------
-  before=2026-07-23→after=2026-07-23 advanced=False lag=False
+  before=2026-07-24→after=2026-07-24 advanced=False lag=False
   · 全文 → ./etf pull --bench-only
 -------- 一键闭环 (go) --------
   · 未生成 → ./etf go --no-wait
@@ -565,54 +565,54 @@ c01_q10_vt11  暴露=  0.0%  regime=None×1.0  vol_src=bench scale=0.3842  rets=
   c01_q10_vt09_oh35: frozen=False research=True vt=0.09 top_n=1
   c01_q10_vt11: frozen=False research=True vt=0.11 top_n=1
 -------- 影子 --------
-  c01_q10_vt08_soft_oh38: rets=2 资产=100000.0 live=+0.00% THIN xs=+0.00% 持仓=空仓 warmup=False Lrets=2
-  c01_q10_vt08_soft_oh38_xgn: rets=2 资产=100000.0 live=+0.00% THIN xs=+0.00% 持仓=空仓 warmup=False Lrets=2
-  c01_q10_vt09_oh35: rets=2 资产=100000.0 live=+0.00% THIN xs=+0.00% 持仓=空仓 warmup=False Lrets=2
-  c01_q10_vt11: rets=2 资产=100000.0 live=+0.00% THIN xs=+0.00% 持仓=空仓 warmup=False Lrets=2
+  c01_q10_vt08_soft_oh38: rets=3 资产=100000.0 live=+0.00% THIN xs=+1.80% 持仓=空仓 warmup=False Lrets=3
+  c01_q10_vt08_soft_oh38_xgn: rets=3 资产=100000.0 live=+0.00% THIN xs=+1.80% 持仓=空仓 warmup=False Lrets=3
+  c01_q10_vt09_oh35: rets=3 资产=100000.0 live=+0.00% THIN xs=+1.80% 持仓=空仓 warmup=False Lrets=3
+  c01_q10_vt11: rets=3 资产=100000.0 live=+0.00% THIN xs=+1.80% 持仓=空仓 warmup=False Lrets=3
 -------- 监控告警 --------
   error=0 warn=4 ok=True
 -------- pipeline 上次 --------
-  stamp=20260722_100108 ok=True alerts=0/4 td=True asof=2026-07-22 lag=False
+  stamp=20260723_100104 ok=True alerts=0/4 td=True asof=2026-07-23 lag=False
 -------- healthcheck 上次 --------
   stamp=None ok=None secs=None
 -------- weekly 上次 --------
   stamp=None ok=None alert_fail=None
 -------- site --------
-  built=2026-07-22T10:01:34 alerts=0/4 today=True live=True compare=True
+  built=2026-07-23T10:01:53 alerts=0/4 today=True live=True compare=True
 -------- 主线对照 --------
   ======== 主线影子对照 ========
   信号默认: c01_q10_vt08_soft_oh38_xgn
-  c01_q10_vt08_soft_oh38           —      —   +0.00   +0.46     100000    ? L@2026-07-21 THIN
-  c01_q10_vt08_soft_oh38_xgn       —      —   +0.00   +0.46     100000    ? SIGNAL L@2026-07-21 THIN
-  c01_q10_vt09_oh35                —      —   +0.00   +0.46     100000    ? L@2026-07-21 THIN
-  c01_q10_vt11                     —      —   +0.00   +0.46     100000    ? L@2026-07-21 THIN
+  c01_q10_vt08_soft_oh38           —      —   +0.00   +0.00     100000    ? L@2026-07-21 THIN
+  c01_q10_vt08_soft_oh38_xgn       —      —   +0.00   +0.00     100000    ? SIGNAL L@2026-07-21 THIN
+  c01_q10_vt09_oh35                —      —   +0.00   +0.00     100000    ? L@2026-07-21 THIN
+  c01_q10_vt11                     —      —   +0.00   +0.00     100000    ? L@2026-07-21 THIN
   ========
 -------- 主线 LIVE --------
   策略: c01_q10_vt08_soft_oh38_xgn
-  live=+0.000% THIN  xs=+0.000%  bench=+0.000%
-  from=2026-07-21  Lrets=2  持仓=空仓
+  live=+0.000% THIN  xs=+1.796%  bench=-1.796%
+  from=2026-07-21  Lrets=3  持仓=空仓
   注: THIN=样本&lt;5日, 等下一交易日再判 xs
 -------- 影子摘要 --------
   影子仓位 · /home/runner/work/etf-rotation/etf-rotation/output/shadow_states
-  c01_q10_vt08_soft_oh38               资产=  100000.0  live=  +0.00% THIN  xs=  +0.46%  全样本=    0.0  持仓0: 空仓  rets=2
-  c01_q10_vt08_soft_oh38_xgn           资产=  100000.0  live=  +0.00% THIN  xs=  +0.46%  全样本=    0.0  持仓0: 空仓  rets=2
-  c01_q10_vt09_oh35                    资产=  100000.0  live=  +0.00% THIN  xs=  +0.46%  全样本=    0.0  持仓0: 空仓  rets=2
-  c01_q10_vt11                         资产=  100000.0  live=  +0.00% THIN  xs=  +0.46%  全样本=    0.0  持仓0: 空仓  rets=2
+  c01_q10_vt08_soft_oh38               资产=  100000.0  live=  +0.00% THIN  xs=  +0.00%  全样本=    0.0  持仓0: 空仓  rets=3
+  c01_q10_vt08_soft_oh38_xgn           资产=  100000.0  live=  +0.00% THIN  xs=  +0.00%  全样本=    0.0  持仓0: 空仓  rets=3
+  c01_q10_vt09_oh35                    资产=  100000.0  live=  +0.00% THIN  xs=  +0.00%  全样本=    0.0  持仓0: 空仓  rets=3
+  c01_q10_vt11                         资产=  100000.0  live=  +0.00% THIN  xs=  +0.00%  全样本=    0.0  持仓0: 空仓  rets=3
 -------- 今日速览 --------
-  时间: 2026-07-22T10:01:29
+  时间: 2026-07-23T10:01:47
   信号默认影子: c01_q10_vt08_soft_oh38_xgn
   ----------------------------
   生产动作: ⚪ 空仓观望
-  市场: 关  宽度=0.38  配置=C01_效15d  信号时间: 2026-07-22 10:01  行情截至: 2026-07-22
+  市场: 关  宽度=0.38  配置=C01_效15d  信号时间: 2026-07-23 10:01  行情截至: 2026-07-23
   原因:
   · 大盘趋势向下 → 保持空仓
   研究影子动作: 空仓(趋势关) 暴露0%
   研究目标暴露: 0.0%
   -------- 有效收益 (SIGNAL) --------
   策略: c01_q10_vt08_soft_oh38_xgn
-  live=+0.000% THIN  xs=+0.460%  bench=-0.460%
-  from=2026-07-21  Lrets=1  持仓=空仓
-  行情截至: 2026-07-22
+  live=+0.000% THIN  xs=+0.000%  bench=+0.000%
+  from=2026-07-21  Lrets=2  持仓=空仓
+  行情截至: 2026-07-23
   注: THIN=样本&lt;5日; DATA_LAG 时等行情更新后再判 xs
   -------- 监控告警 --------
 -------- 下一步 --------
