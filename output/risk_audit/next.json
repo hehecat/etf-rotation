@@ -1,5 +1,5 @@
 {
-  "stamp": "2026-07-27T10:55:06",
+  "stamp": "2026-07-27T10:55:11",
   "decision": "ok",
   "market_asof": "2026-07-27",
   "data_lag": false,
@@ -7,7 +7,7 @@
   "action": "⚪ 空仓观望",
   "why": "数据齐: 裸 ./etf=pulse 看可判后读 yield",
   "recommend": "./etf",
-  "days_to_ready": 5,
-  "eta_note": "约再 5 个交易日可 READY (Lrets≥5); 另需 asof 先推进",
-  "ready_level": "NOT_READY"
+  "days_to_ready": 1,
+  "eta_note": "约再 1 个交易日可 READY (Lrets≥5)",
+  "ready_level": "THIN"
 }

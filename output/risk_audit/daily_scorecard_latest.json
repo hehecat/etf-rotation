@@ -1,26 +1,26 @@
 {
   "schema": 1,
-  "source": "history",
-  "date": "2026-07-21",
-  "market_asof": "2026-07-21",
-  "data_lag": true,
+  "source": "pipeline",
+  "date": "2026-07-27",
+  "market_asof": "2026-07-27",
+  "data_lag": false,
   "latest_stale": false,
   "trading_day": {
-    "date": "2026-07-22",
+    "date": "2026-07-27",
     "is_trading_day": true,
-    "data_asof": "2026-07-21",
-    "data_lag": true
+    "data_asof": "2026-07-27",
+    "data_lag": false
   },
-  "level": "NOT_READY",
-  "decision": "wait_data",
-  "next_action": "wait_asof",
+  "level": "THIN",
+  "decision": "ok",
+  "next_action": "accumulate",
   "readable_yield": false,
-  "days_live": 0,
-  "days_to_ready": 5,
+  "days_live": 4,
+  "days_to_ready": 1,
   "thin_live": true,
   "live_return_pct": 0.0,
-  "live_excess_pct": 0.0,
-  "eta_note": "约再 5 个交易日可 READY (Lrets≥5); 另需 asof 先推进",
+  "live_excess_pct": 0.7103,
+  "eta_note": "约再 1 个交易日可 READY (Lrets≥5)",
   "prod": {
     "config": "C01_效15d",
     "action": "⚪ 空仓观望",
@@ -28,23 +28,23 @@
     "holding": null,
     "total_value": 100000.0,
     "return_pct": 0.0,
-    "time": "2026-07-22 03:12"
+    "time": "2026-07-27 10:54"
   },
   "signal_live": {
     "name": "c01_q10_vt08_soft_oh38_xgn",
     "live_return_pct": 0.0,
-    "live_excess_pct": -0.2298,
-    "days_live": 1,
+    "live_excess_pct": 0.7103,
+    "days_live": 4,
     "thin_live": true,
     "holdings": "空仓",
-    "market_asof": "2026-07-22"
+    "market_asof": "2026-07-27"
   },
   "shadows": [
     {
       "name": "c01_q10_vt08_soft_oh38",
       "live_return_pct": 0.0,
-      "live_excess_pct": -0.2298,
-      "days_live": 1,
+      "live_excess_pct": 0.7103,
+      "days_live": 4,
       "thin_live": true,
       "holdings": "空仓",
       "total_value": 100000.0,
@@ -53,8 +53,8 @@
     {
       "name": "c01_q10_vt08_soft_oh38_xgn",
       "live_return_pct": 0.0,
-      "live_excess_pct": -0.2298,
-      "days_live": 1,
+      "live_excess_pct": 0.7103,
+      "days_live": 4,
       "thin_live": true,
       "holdings": "空仓",
       "total_value": 100000.0,
@@ -63,8 +63,8 @@
     {
       "name": "c01_q10_vt09_oh35",
       "live_return_pct": 0.0,
-      "live_excess_pct": -0.2298,
-      "days_live": 1,
+      "live_excess_pct": 0.7103,
+      "days_live": 4,
       "thin_live": true,
       "holdings": "空仓",
       "total_value": 100000.0,
@@ -73,8 +73,8 @@
     {
       "name": "c01_q10_vt11",
       "live_return_pct": 0.0,
-      "live_excess_pct": -0.2298,
-      "days_live": 1,
+      "live_excess_pct": 0.7103,
+      "days_live": 4,
       "thin_live": true,
       "holdings": "空仓",
       "total_value": 100000.0,
@@ -83,9 +83,9 @@
   ],
   "alerts": {
     "error_n": 0,
-    "warn_n": 0
+    "warn_n": 4
   },
   "pipeline_ok": true,
-  "pipeline_stamp": "20260722_031206",
-  "stamp": "2026-07-27T11:03:46"
+  "pipeline_stamp": "20260724_095727",
+  "stamp": "2026-07-27T10:55:07"
 }

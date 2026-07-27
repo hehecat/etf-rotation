@@ -1,5 +1,5 @@
 {
-  "stamp": "2026-07-27T10:55:07",
+  "stamp": "2026-07-27T10:55:11",
   "market_asof": "2026-07-27",
   "data_lag": false,
   "action": "⚪ 空仓观望",
@@ -18,7 +18,7 @@
     "market_asof": "2026-07-27",
     "data_lag": false
   },
-  "days_to_ready": 5,
-  "eta_note": "约再 5 个交易日可 READY (Lrets≥5); 另需 asof 先推进",
-  "text": "======== BRIEF 速览 ========\n时间: 2026-07-27T10:55:07\n行情截至: 2026-07-27\n动作: ⚪ 空仓观望  市场: 关\nlive=0.0 xs=0.7103 Lrets=4 thin=True\ndtr=5 eta=约再 5 个交易日可 READY (Lrets≥5); 另需 asof 先推进\n========\n"
+  "days_to_ready": 1,
+  "eta_note": "约再 1 个交易日可 READY (Lrets≥5)",
+  "text": "======== BRIEF 速览 ========\n时间: 2026-07-27T10:55:11\n行情截至: 2026-07-27\n动作: ⚪ 空仓观望  市场: 关\nlive=0.0 xs=0.7103 Lrets=4 thin=True\ndtr=1 eta=约再 1 个交易日可 READY (Lrets≥5)\n========\n"
 }
