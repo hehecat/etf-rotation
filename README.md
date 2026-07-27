@@ -65,7 +65,8 @@ python3 scripts/etf.py ready                  # 有效收益是否可判
 ./etf                                        # 默认 digest (免 PYTHONPATH)
 ./etf go --timeout 600                       # 等 asof 推进并重算有效收益
 ./etf eod --timeout 1800                     # 收盘后一键: 等 asof + daily + digest
-./etf pulse --quiet                          # 收盘后/巡检: 单行可判摘要
+./etf pulse
+./etf history              # 日更账本汇总 (多年可回溯) --quiet                          # 收盘后/巡检: 单行可判摘要
 ./etf pulse                                  # 一键脉搏 data+ready+ETA
 ./etf progress                               # 可判性轨迹 Lrets→READY
 ./etf progress --json                        # 轨迹 JSON (脚本)

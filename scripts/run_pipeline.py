@@ -441,6 +441,42 @@ def main() -> None:
             results.append(r)
 
 
+
+        # 多年日更记分卡 (同日覆盖; 不依赖邮箱)
+        try:
+            from etf_rotation.ledger import append_daily_scorecard, write_summary_files
+
+            _sc = append_daily_scorecard(source="pipeline")
+            write_summary_files()
+            results.append(
+                {
+                    "step": "ledger",
+                    "ok": True,
+                    "exit": 0,
+                    "date": _sc.get("date"),
+                    "readable_yield": _sc.get("readable_yield"),
+                    "level": _sc.get("level"),
+                    "seconds": 0,
+                }
+            )
+            print(
+                f"<<< [ledger] date={_sc.get('date')} level={_sc.get('level')} "
+                f"readable={_sc.get('readable_yield')} "
+                f"live={_sc.get('live_return_pct')} xs={_sc.get('live_excess_pct')}",
+                flush=True,
+            )
+        except Exception as _ex:
+            results.append(
+                {
+                    "step": "ledger",
+                    "ok": False,
+                    "exit": 1,
+                    "error": str(_ex),
+                    "seconds": 0,
+                }
+            )
+            print(f"<<< [ledger] failed: {_ex}", flush=True)
+
         # email 放在 .../ready/digest 后
         if "email" in steps:
             smtp_ok = all(

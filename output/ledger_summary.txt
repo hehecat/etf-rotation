@@ -1,0 +1,9 @@
+======== LEDGER 日更账本 ========
+样本日: 1  (2026-07-21 → 2026-07-21)
+可读收益日: 0  THIN: 1  DATA_LAG: 1
+趋势开/关: 0/1  生产空仓/有仓: 1/0
+可读 xs%: 尚无 (需 READY 且无 lag)
+最新: 2026-07-21 level=NOT_READY readable=False live=0.0 xs=0.0 action=⚪ 空仓观望 next=wait_asof
+口径: 只认 live%+xs%; lag/THIN 日不参与改进判断
+改进门槛: 可读日≥60 且 dual-end 门控仍过, 才讨论结构变更
+========

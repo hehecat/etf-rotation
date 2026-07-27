@@ -246,7 +246,7 @@ def write_latest_json(path: Path | str, payload: dict):
         pass
 
 
-def append_action_history(payload: dict, path: Path | str | None = None, max_lines: int = 400) -> Path:
+def append_action_history(payload: dict, path: Path | str | None = None, max_lines: int = 2800) -> Path:
     """追加/覆盖当日动作到 action_history.jsonl, 供 Pages 时间线."""
     from .paths import OUTPUT_DIR
 

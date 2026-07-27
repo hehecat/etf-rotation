@@ -1,0 +1,29 @@
+{
+  "n": 1,
+  "path": "/home/hehecat/vps/etf-rotation/output/risk_audit/daily_scorecard.jsonl",
+  "first_date": "2026-07-21",
+  "last_date": "2026-07-21",
+  "readable_n": 0,
+  "lag_n": 1,
+  "thin_n": 1,
+  "trend_on_n": 0,
+  "trend_off_n": 1,
+  "prod_empty_n": 1,
+  "prod_open_n": 0,
+  "xs_readable": {
+    "n": 0
+  },
+  "live_readable": {
+    "n": 0
+  },
+  "last_row": {
+    "date": "2026-07-21",
+    "level": "NOT_READY",
+    "readable_yield": false,
+    "live_return_pct": 0.0,
+    "live_excess_pct": 0.0,
+    "data_lag": true,
+    "next_action": "wait_asof",
+    "action": "⚪ 空仓观望"
+  }
+}

@@ -137,7 +137,7 @@ def _append_progress(row: dict) -> None:
             ):
                 kept.append(ln)
         kept.append(json.dumps(rec, ensure_ascii=False))
-        kept = kept[-120:]
+        kept = kept[-2800:]
         path.write_text("\n".join(kept) + "\n", encoding="utf-8")
         (risk / "progress_latest.json").write_text(
             json.dumps(rec, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
@@ -158,6 +158,20 @@ def _append_progress(row: dict) -> None:
         (out / "progress.txt").write_text("\n".join(txt_lines) + "\n", encoding="utf-8")
     except Exception:
         pass
+
+
+
+def _append_daily_scorecard(source: str = "pulse") -> dict | None:
+    """日更记分卡: 多年可回溯主账本 (同日覆盖)."""
+    try:
+        from etf_rotation.ledger import append_daily_scorecard, write_summary_files
+
+        rec = append_daily_scorecard(source=source)
+        write_summary_files()
+        return rec
+    except Exception:
+        return None
+
 
 
 SCRIPTS = ROOT / "scripts"
@@ -1753,6 +1767,10 @@ def cmd_pulse(args: argparse.Namespace) -> int:
         else:
             print(json.dumps(payload, ensure_ascii=False, indent=2))
 
+    try:
+        _append_daily_scorecard("pulse")
+    except Exception:
+        pass
     return int(exit_code)
 
 
@@ -3326,6 +3344,54 @@ ETF 轮动 · 统一入口
     return 0
 
 
+def cmd_history(args: argparse.Namespace) -> int:
+    """多年日更账本: 追加记分卡 / 汇总可读 live·xs."""
+    import json
+    from etf_rotation.ledger import (
+        append_daily_scorecard,
+        summarize_scorecard,
+        write_summary_files,
+        render_summary_text,
+        SCORECARD_PATH,
+    )
+    from etf_rotation.paths import OUTPUT_DIR
+
+    if getattr(args, "append", False) or getattr(args, "record", False):
+        src = getattr(args, "source", None) or "history"
+        rec = append_daily_scorecard(source=str(src))
+        print(
+            f"scorecard appended date={rec.get('date')} level={rec.get('level')} "
+            f"readable={rec.get('readable_yield')} live={rec.get('live_return_pct')} "
+            f"xs={rec.get('live_excess_pct')}"
+        )
+    limit = getattr(args, "limit", None)
+    summary = summarize_scorecard(limit=limit)
+    write_summary_files(summary)
+    text = render_summary_text(summary)
+    print(text, end="")
+    if getattr(args, "json", False):
+        print(json.dumps(summary, ensure_ascii=False, indent=2))
+    # tail raw rows
+    if getattr(args, "tail", None):
+        path = OUTPUT_DIR / SCORECARD_PATH
+        if path.exists():
+            lines = [ln for ln in path.read_text(encoding="utf-8").splitlines() if ln.strip()]
+            n = int(args.tail)
+            print(f"---- tail {n} ----")
+            for ln in lines[-n:]:
+                try:
+                    o = json.loads(ln)
+                    print(
+                        f"{o.get('date')} lvl={o.get('level')} read={o.get('readable_yield')} "
+                        f"live={o.get('live_return_pct')} xs={o.get('live_excess_pct')} "
+                        f"lag={o.get('data_lag')} act={(o.get('prod') or {}).get('action')}"
+                    )
+                except Exception:
+                    print(ln[:160])
+    return 0
+
+
+
 def main() -> None:
     # 易用别名: ./etf wait → wait-asof
     if len(sys.argv) >= 2 and sys.argv[1] == "wait":
@@ -3607,6 +3673,15 @@ def main() -> None:
     p_mail = sub.add_parser("email-preview", help="邮件预览")
     p_mail.add_argument("--append-all", action="store_true", default=True)
     p_mail.set_defaults(func=cmd_email_preview)
+
+    p_hist = sub.add_parser("history", help="日更账本汇总/追加 (多年可回溯)")
+    p_hist.add_argument("--append", action="store_true", help="从当前产物追加/覆盖记分卡")
+    p_hist.add_argument("--record", action="store_true", help="--append 别名")
+    p_hist.add_argument("--source", default="history", help="记分卡 source 字段")
+    p_hist.add_argument("--limit", type=int, default=None, help="只汇总最近 N 日")
+    p_hist.add_argument("--tail", type=int, default=None, help="打印最近 N 行原始记分卡")
+    p_hist.add_argument("--json", action="store_true", help="额外打印 summary JSON")
+    p_hist.set_defaults(func=cmd_history)
 
     p_help = sub.add_parser("help", help="帮助")
     p_help.set_defaults(func=cmd_help)

@@ -158,9 +158,23 @@ jobs:
             output/risk_audit/shadow_live.json
             output/risk_audit/shadow_summary.json
             output/risk_audit/today.json
+            output/risk_audit/pulse.json
+            output/risk_audit/ready.json
+            output/risk_audit/yield.json
+            output/risk_audit/digest.json
+            output/risk_audit/data_status.json
+            output/risk_audit/progress.jsonl
+            output/risk_audit/progress_latest.json
+            output/risk_audit/daily_scorecard.jsonl
+            output/risk_audit/daily_scorecard_latest.json
+            output/risk_audit/ledger_summary.json
+            output/action_history.jsonl
+            output/progress.txt
+            output/pulse.txt
+            output/ledger_summary.txt
             output/logs/pipeline_*.log
           if-no-files-found: warn
-          retention-days: 30
+          retention-days: 90
 
       - name: Commit output state (仓位持久化)
         if: success()
@@ -179,6 +193,17 @@ jobs:
           git add -f output/risk_audit/shadow_compare.json output/risk_audit/shadow_live.json 2>/dev/null || true
           git add -f output/risk_audit/shadow_summary.json output/risk_audit/today.json 2>/dev/null || true
           git add -f output/site 2>/dev/null || true
+          # 多年可回溯账本 (同日覆盖 jsonl)
+          git add -f output/action_history.jsonl 2>/dev/null || true
+          git add -f output/progress.txt output/pulse.txt output/ledger_summary.txt 2>/dev/null || true
+          git add -f output/asof.txt output/yield.txt output/brief.txt output/data_status.txt 2>/dev/null || true
+          git add -f output/next.txt output/pull.txt output/go.txt output/ready.txt output/digest.txt 2>/dev/null || true
+          git add -f output/risk_audit/asof.json output/risk_audit/yield.json output/risk_audit/brief.json 2>/dev/null || true
+          git add -f output/risk_audit/data_status.json output/risk_audit/next.json output/risk_audit/pull.json 2>/dev/null || true
+          git add -f output/risk_audit/go.json output/risk_audit/ready.json output/risk_audit/digest.json 2>/dev/null || true
+          git add -f output/risk_audit/pulse.json output/risk_audit/progress.jsonl output/risk_audit/progress_latest.json 2>/dev/null || true
+          git add -f output/risk_audit/daily_scorecard.jsonl output/risk_audit/daily_scorecard_latest.json 2>/dev/null || true
+          git add -f output/risk_audit/ledger_summary.json 2>/dev/null || true
           if git diff --staged --quiet; then
             echo "无变更, 跳过 commit"
           else

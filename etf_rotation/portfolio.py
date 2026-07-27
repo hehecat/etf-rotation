@@ -91,7 +91,7 @@ def update_nav_history(
     *,
     date_str: str,
     nav: float,
-    max_len: int = 260,
+    max_len: int = 2800,
 ) -> dict:
     """追加净值点并维护 port_rets (相邻交易日收益). 原地更新并返回 state.
 
