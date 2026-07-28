@@ -1,12 +1,12 @@
 ======== PULSE 脉搏 ========
-level: THIN
-asof: 2026-07-27 lag=False
-live=0.0 xs=0.7103 Lrets=4 thin=True
-dtr=1 eta=约再 1 个交易日可 READY (Lrets≥5)
+level: READY
+asof: 2026-07-28 lag=False
+live=0.0 xs=3.3424 Lrets=5 thin=False
+dtr=0 eta=样本已够, 若无 DATA_LAG 则应 READY
 decision: ok
-next_action: accumulate
-why: 样本<5日: 每个交易日 eod/daily 积累 Lrets
-推荐: ./etf eod --timeout 1800
-exit_code: 4
-readable_yield: False
+next_action: read_yield
+why: 可判: 以 live%+xs% 为真实有效收益
+推荐: ./etf yield
+exit_code: 0
+readable_yield: True
 ========

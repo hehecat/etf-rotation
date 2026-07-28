@@ -10,7 +10,7 @@
   "return_pct": 0.0,
   "last_rebalance": null,
   "config": "C01_Q10_VT08_SOFT_OH38_EXTRA_GOLD_NQ",
-  "last_update": "2026-07-27 10:54",
+  "last_update": "2026-07-28 10:10",
   "holdings": [],
   "days_to_rebalance": 0,
   "market_ok": false,
@@ -34,9 +34,14 @@
     {
       "date": "2026-07-27",
       "nav": 100000.0
+    },
+    {
+      "date": "2026-07-28",
+      "nav": 100000.0
     }
   ],
   "port_rets": [
+    0.0,
     0.0,
     0.0,
     0.0,
@@ -49,13 +54,13 @@
     "start_date": "2026-07-21",
     "nav": 100000.0,
     "return_pct": 0.0,
-    "n_nav": 5,
-    "n_rets": 4,
+    "n_nav": 6,
+    "n_rets": 5,
     "sharpe": null,
     "n_trades": 0,
     "n_holdings": 0,
     "holdings": "空仓",
-    "asof": "2026-07-27 10:54",
+    "asof": "2026-07-28 10:10",
     "from_warmup": false
   }
 }
