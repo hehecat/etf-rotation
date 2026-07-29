@@ -10,7 +10,7 @@
   "return_pct": 0.0,
   "last_rebalance": null,
   "config": "C01_效15d",
-  "last_update": "2026-07-28 10:10",
+  "last_update": "2026-07-29 10:10",
   "note": "重置: 云端首跑无基准误买稀土, 已回滚空仓",
   "days_to_rebalance": 0,
   "market_ok": false,
@@ -23,7 +23,7 @@
       {
         "code": "SH515020",
         "name": "银行ETF",
-        "score": 1.771
+        "score": 1.745
       }
     ],
     "action": "空仓(趋势关) 暴露0%",
@@ -43,13 +43,13 @@
           "start_date": "2026-07-21",
           "nav": 100000.0,
           "return_pct": 0.0,
-          "n_nav": 6,
-          "n_rets": 5,
+          "n_nav": 7,
+          "n_rets": 6,
           "sharpe": null,
           "n_trades": 0,
           "n_holdings": 0,
           "holdings": "空仓",
-          "asof": "2026-07-28",
+          "asof": "2026-07-29",
           "from_warmup": false
         },
         "live_return_pct": 0.0,
@@ -70,13 +70,13 @@
           "start_date": "2026-07-21",
           "nav": 100000.0,
           "return_pct": 0.0,
-          "n_nav": 6,
-          "n_rets": 5,
+          "n_nav": 7,
+          "n_rets": 6,
           "sharpe": null,
           "n_trades": 0,
           "n_holdings": 0,
           "holdings": "空仓",
-          "asof": "2026-07-28",
+          "asof": "2026-07-29",
           "from_warmup": false
         },
         "live_return_pct": 0.0,
@@ -97,13 +97,13 @@
           "start_date": "2026-07-21",
           "nav": 100000.0,
           "return_pct": 0.0,
-          "n_nav": 6,
-          "n_rets": 5,
+          "n_nav": 7,
+          "n_rets": 6,
           "sharpe": null,
           "n_trades": 0,
           "n_holdings": 0,
           "holdings": "空仓",
-          "asof": "2026-07-28",
+          "asof": "2026-07-29",
           "from_warmup": false
         },
         "live_return_pct": 0.0,
@@ -124,13 +124,13 @@
           "start_date": "2026-07-21",
           "nav": 100000.0,
           "return_pct": 0.0,
-          "n_nav": 6,
-          "n_rets": 5,
+          "n_nav": 7,
+          "n_rets": 6,
           "sharpe": null,
           "n_trades": 0,
           "n_holdings": 0,
           "holdings": "空仓",
-          "asof": "2026-07-28",
+          "asof": "2026-07-29",
           "from_warmup": false
         },
         "live_return_pct": 0.0,
@@ -149,25 +149,24 @@
         "target_exposure": 0.0,
         "parts": {
           "position_pct": 0.95,
-          "inv_vol_scale": 0.8366,
-          "inv_vol_src": "bench",
-          "vol20": 0.017929,
+          "inv_vol_scale": 0.9,
+          "inv_vol_src": "portfolio",
+          "vol20": 0.0,
           "regime": "bear",
           "regime_mult": 0.0,
           "regime_info": {
             "market_ok": false,
-            "ma20": 4.79005,
-            "ma60": 4.8699,
+            "ma20": 4.773,
+            "ma60": 4.867117,
             "ma_up": false,
-            "vol20": 0.017929
+            "vol20": 0.018079
           },
           "vol_target": 0.08,
-          "vol_ann": 0.2846,
-          "vol_scale": 0.2811,
-          "vol_src": "bench"
+          "vol_scale": 1.0,
+          "vol_src": "none"
         },
         "notes": [
-          "vol_target 用基准波动代理 (组合收益样本不足)",
+          "vol_target 缺波动数据, 未缩放",
           "趋势关 → 目标暴露 0"
         ]
       }
@@ -181,19 +180,19 @@
       "cash": 100000.0,
       "total_value": 100000.0,
       "return_pct": 0.0,
-      "n_port_rets": 5,
+      "n_port_rets": 6,
       "live": {
         "anchor_nav": 100000.0,
         "start_date": "2026-07-21",
         "nav": 100000.0,
         "return_pct": 0.0,
-        "n_nav": 6,
-        "n_rets": 5,
+        "n_nav": 7,
+        "n_rets": 6,
         "sharpe": null,
         "n_trades": 0,
         "n_holdings": 0,
         "holdings": "空仓",
-        "asof": "2026-07-28",
+        "asof": "2026-07-29",
         "from_warmup": false
       },
       "executed": null
@@ -228,9 +227,14 @@
     {
       "date": "2026-07-28",
       "nav": 100000.0
+    },
+    {
+      "date": "2026-07-29",
+      "nav": 100000.0
     }
   ],
   "port_rets": [
+    0.0,
     0.0,
     0.0,
     0.0,

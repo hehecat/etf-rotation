@@ -1,6 +1,6 @@
 ======== NEXT 决策 ========
 decision: ok
-asof: 2026-07-28 lag=False stale=False
+asof: 2026-07-29 lag=False stale=False
 推荐: ./etf
-dtr=1 eta=约再 1 个交易日可 READY (Lrets≥5)
+dtr=0 eta=样本已够, 若无 DATA_LAG 则应 READY
 ========
