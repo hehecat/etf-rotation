@@ -1,15 +1,15 @@
 {
-  "stamp": "2026-07-29T10:10:57",
+  "stamp": "2026-07-30T10:00:05",
   "pool": "pool",
   "bars": 120,
   "bench": "SH510300",
   "bench_only": true,
   "before": {
-    "data_asof": "2026-07-29",
+    "data_asof": "2026-07-30",
     "data_lag": false
   },
   "after": {
-    "data_asof": "2026-07-29",
+    "data_asof": "2026-07-30",
     "data_lag": false
   },
   "advanced": false,
@@ -17,5 +17,5 @@
   "ok_n": 1,
   "fail_n": 0,
   "fail": [],
-  "bench_last": "2026-07-29"
+  "bench_last": "2026-07-30"
 }

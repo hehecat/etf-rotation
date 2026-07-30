@@ -1,48 +1,48 @@
 {
-  "stamp": "2026-07-29T10:11:18",
+  "stamp": "2026-07-30T10:00:28",
   "trading_day": {
-    "date": "2026-07-29",
+    "date": "2026-07-30",
     "is_trading_day": true,
     "source": "bench_calendar",
     "bench_n": 120,
-    "bench_first": "2026-01-28",
-    "bench_last": "2026-07-29",
-    "data_asof": "2026-07-29",
+    "bench_first": "2026-01-29",
+    "bench_last": "2026-07-30",
+    "data_asof": "2026-07-30",
     "data_lag": false,
     "in_closed_table": false,
     "in_makeup_table": false
   },
-  "market_asof": "2026-07-29",
+  "market_asof": "2026-07-30",
   "data_lag": false,
-  "latest_time": "2026-07-29 10:10",
+  "latest_time": "2026-07-30 10:00",
   "action": "⚪ 空仓观望",
   "market_ok": false,
   "signal_live": {
     "name": "c01_q10_vt08_soft_oh38_xgn",
     "live_return_pct": 0.0,
-    "bench_return_pct": -2.7157,
-    "live_excess_pct": 2.7157,
-    "days_live": 6,
+    "bench_return_pct": -3.802,
+    "live_excess_pct": 3.802,
+    "days_live": 7,
     "thin_live": false,
     "live_start": "2026-07-21",
     "holdings": "空仓",
     "total_value": 100000.0,
-    "market_asof": "2026-07-29",
+    "market_asof": "2026-07-30",
     "data_lag": false
   },
   "pipeline_last": {
-    "stamp": "20260728_101016",
+    "stamp": "20260729_101053",
     "ok": true,
-    "data_asof": "2026-07-28",
+    "data_asof": "2026-07-29",
     "data_lag": false
   },
   "site_meta": {
-    "market_asof": "2026-07-28",
+    "market_asof": "2026-07-29",
     "data_lag": false,
-    "built_at": "2026-07-28T10:10:47"
+    "built_at": "2026-07-29T10:11:23"
   },
   "days_to_ready": 0,
   "eta_note": "样本已够, 若无 DATA_LAG 则应 READY",
   "ready_level": "READY",
-  "text": "======== 行情/收益取证 ========\n时间: 2026-07-29T10:11:18\n交易日: True date=2026-07-29 source=bench_calendar\n行情截至: 2026-07-29\n信号时间: 2026-07-29 10:10  动作: ⚪ 空仓观望  市场: 关\nSIGNAL: c01_q10_vt08_soft_oh38_xgn\n  live=0.0 xs=2.7157 Lrets=6 thin=False 持仓=空仓\npipeline_last: stamp=20260728_101016 ok=True asof=2026-07-28 lag=False\nsite_meta: asof=2026-07-28 lag=False\ndtr=0 eta=样本已够, 若无 DATA_LAG 则应 READY level=READY\n========\n"
+  "text": "======== 行情/收益取证 ========\n时间: 2026-07-30T10:00:28\n交易日: True date=2026-07-30 source=bench_calendar\n行情截至: 2026-07-30\n信号时间: 2026-07-30 10:00  动作: ⚪ 空仓观望  市场: 关\nSIGNAL: c01_q10_vt08_soft_oh38_xgn\n  live=0.0 xs=3.802 Lrets=7 thin=False 持仓=空仓\npipeline_last: stamp=20260729_101053 ok=True asof=2026-07-29 lag=False\nsite_meta: asof=2026-07-29 lag=False\ndtr=0 eta=样本已够, 若无 DATA_LAG 则应 READY level=READY\n========\n"
 }
