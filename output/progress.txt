@@ -1,9 +1,4 @@
 ======== PROGRESS 可判性轨迹 ========
-2026-07-29 level=READY asof=2026-07-29 Lrets=6 dtr=0 live=0.0 xs=2.7157 lag=False src=pulse
-2026-07-29 level=READY asof=2026-07-29 Lrets=6 dtr=0 live=0.0 xs=2.7157 lag=False src=pull_noadv
-2026-07-30 level=READY asof=2026-07-30 Lrets=7 dtr=0 live=0.0 xs=3.802 lag=False src=go
-2026-07-30 level=READY asof=2026-07-30 Lrets=7 dtr=0 live=0.0 xs=3.802 lag=False src=ready
-2026-07-30 level=READY asof=2026-07-30 Lrets=7 dtr=0 live=0.0 xs=3.802 lag=False src=digest
 2026-07-30 level=READY asof=2026-07-30 Lrets=7 dtr=0 live=0.0 xs=3.802 lag=False src=pulse
 2026-07-30 level=READY asof=2026-07-30 Lrets=7 dtr=0 live=0.0 xs=3.802 lag=False src=pull_noadv
 2026-07-31 level=READY asof=2026-07-31 Lrets=8 dtr=0 live=0.0 xs=2.7992 lag=False src=go
@@ -11,4 +6,9 @@
 2026-07-31 level=READY asof=2026-07-31 Lrets=8 dtr=0 live=0.0 xs=2.7992 lag=False src=digest
 2026-07-31 level=READY asof=2026-07-31 Lrets=8 dtr=0 live=0.0 xs=2.7992 lag=False src=pulse
 2026-07-31 level=READY asof=2026-07-31 Lrets=8 dtr=0 live=0.0 xs=2.7992 lag=False src=pull_noadv
+2026-08-03 level=READY asof=2026-08-03 Lrets=9 dtr=0 live=0.0 xs=3.9273 lag=False src=go
+2026-08-03 level=READY asof=2026-08-03 Lrets=9 dtr=0 live=0.0 xs=3.9273 lag=False src=ready
+2026-08-03 level=READY asof=2026-08-03 Lrets=9 dtr=0 live=0.0 xs=3.9273 lag=False src=digest
+2026-08-03 level=READY asof=2026-08-03 Lrets=9 dtr=0 live=0.0 xs=3.9273 lag=False src=pulse
+2026-08-03 level=READY asof=2026-08-03 Lrets=9 dtr=0 live=0.0 xs=3.9273 lag=False src=pull_noadv
 ========
