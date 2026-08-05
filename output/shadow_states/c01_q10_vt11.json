@@ -10,7 +10,7 @@
   "return_pct": 0.0,
   "last_rebalance": null,
   "config": "C01_Q10_VT11_防过拟合主候选",
-  "last_update": "2026-08-04 10:13",
+  "last_update": "2026-08-05 10:09",
   "holdings": [],
   "days_to_rebalance": 0,
   "market_ok": false,
@@ -58,9 +58,14 @@
     {
       "date": "2026-08-04",
       "nav": 100000.0
+    },
+    {
+      "date": "2026-08-05",
+      "nav": 100000.0
     }
   ],
   "port_rets": [
+    0.0,
     0.0,
     0.0,
     0.0,
@@ -79,13 +84,13 @@
     "start_date": "2026-07-21",
     "nav": 100000.0,
     "return_pct": 0.0,
-    "n_nav": 11,
-    "n_rets": 10,
+    "n_nav": 12,
+    "n_rets": 11,
     "sharpe": null,
     "n_trades": 0,
     "n_holdings": 0,
     "holdings": "空仓",
-    "asof": "2026-08-04 10:13",
+    "asof": "2026-08-05 10:09",
     "from_warmup": false
   }
 }

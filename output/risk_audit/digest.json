@@ -1,17 +1,17 @@
 {
-  "stamp": "2026-08-04T10:13:24",
+  "stamp": "2026-08-05T10:09:28",
   "level": "READY",
-  "market_asof": "2026-08-04",
+  "market_asof": "2026-08-05",
   "data_lag": false,
   "decision": "ok",
   "action": "⚪ 空仓观望",
   "market_ok": false,
   "live_return_pct": 0.0,
-  "live_excess_pct": 2.841,
-  "days_live": 10,
+  "live_excess_pct": 1.525,
+  "days_live": 11,
   "thin_live": false,
   "days_to_ready": 0,
   "eta_note": "样本已够, 若无 DATA_LAG 则应 READY",
   "recommend": "./etf yield",
-  "text": "======== DIGEST ========\n可判性: READY\nasof: 2026-08-04 lag=False\nlive=0.0 xs=2.841 Lrets=10 thin=False\ndecision: ok\neta: 样本已够, 若无 DATA_LAG 则应 READY\n推荐: ./etf yield\n========\n"
+  "text": "======== DIGEST ========\n可判性: READY\nasof: 2026-08-05 lag=False\nlive=0.0 xs=1.525 Lrets=11 thin=False\ndecision: ok\neta: 样本已够, 若无 DATA_LAG 则应 READY\n推荐: ./etf yield\n========\n"
 }
