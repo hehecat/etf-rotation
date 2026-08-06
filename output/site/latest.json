@@ -1,6 +1,6 @@
 {
-  "time": "2026-08-05 10:09",
-  "market_asof": "2026-08-05",
+  "time": "2026-08-06 10:10",
+  "market_asof": "2026-08-06",
   "config": "C01_效15d",
   "frozen": true,
   "action": "⚪ 空仓观望",
@@ -17,17 +17,17 @@
     {
       "code": "SH513500",
       "name": "标普500ETF",
-      "score": 1.549
+      "score": 1.371
     },
     {
       "code": "SH516910",
       "name": "物流ETF",
-      "score": 1.511
+      "score": 1.154
     },
     {
-      "code": "SH512690",
-      "name": "酒ETF",
-      "score": 1.382
+      "code": "SH515220",
+      "name": "煤炭ETF",
+      "score": 0.969
     }
   ],
   "shadow": {
@@ -38,7 +38,7 @@
       {
         "code": "SH513500",
         "name": "标普500ETF",
-        "score": 1.549
+        "score": 1.371
       }
     ],
     "action": "空仓(趋势关) 暴露0%",
@@ -58,20 +58,20 @@
           "start_date": "2026-07-21",
           "nav": 100000.0,
           "return_pct": 0.0,
-          "n_nav": 12,
-          "n_rets": 11,
+          "n_nav": 13,
+          "n_rets": 12,
           "sharpe": null,
           "n_trades": 0,
           "n_holdings": 0,
           "holdings": "空仓",
-          "asof": "2026-08-05 10:09",
+          "asof": "2026-08-06 10:10",
           "from_warmup": false
         },
         "live_return_pct": 0.0,
         "executed": null,
-        "live_excess_pct": 1.525,
-        "bench_return_pct": -1.525,
-        "days_live": 11,
+        "live_excess_pct": 1.6294,
+        "bench_return_pct": -1.6294,
+        "days_live": 12,
         "thin_live": false
       },
       {
@@ -89,20 +89,20 @@
           "start_date": "2026-07-21",
           "nav": 100000.0,
           "return_pct": 0.0,
-          "n_nav": 12,
-          "n_rets": 11,
+          "n_nav": 13,
+          "n_rets": 12,
           "sharpe": null,
           "n_trades": 0,
           "n_holdings": 0,
           "holdings": "空仓",
-          "asof": "2026-08-05 10:09",
+          "asof": "2026-08-06 10:10",
           "from_warmup": false
         },
         "live_return_pct": 0.0,
         "executed": null,
-        "live_excess_pct": 1.525,
-        "bench_return_pct": -1.525,
-        "days_live": 11,
+        "live_excess_pct": 1.6294,
+        "bench_return_pct": -1.6294,
+        "days_live": 12,
         "thin_live": false
       },
       {
@@ -120,20 +120,20 @@
           "start_date": "2026-07-21",
           "nav": 100000.0,
           "return_pct": 0.0,
-          "n_nav": 12,
-          "n_rets": 11,
+          "n_nav": 13,
+          "n_rets": 12,
           "sharpe": null,
           "n_trades": 0,
           "n_holdings": 0,
           "holdings": "空仓",
-          "asof": "2026-08-05 10:09",
+          "asof": "2026-08-06 10:10",
           "from_warmup": false
         },
         "live_return_pct": 0.0,
         "executed": null,
-        "live_excess_pct": 1.525,
-        "bench_return_pct": -1.525,
-        "days_live": 11,
+        "live_excess_pct": 1.6294,
+        "bench_return_pct": -1.6294,
+        "days_live": 12,
         "thin_live": false
       },
       {
@@ -151,20 +151,20 @@
           "start_date": "2026-07-21",
           "nav": 100000.0,
           "return_pct": 0.0,
-          "n_nav": 12,
-          "n_rets": 11,
+          "n_nav": 13,
+          "n_rets": 12,
           "sharpe": null,
           "n_trades": 0,
           "n_holdings": 0,
           "holdings": "空仓",
-          "asof": "2026-08-05 10:09",
+          "asof": "2026-08-06 10:10",
           "from_warmup": false
         },
         "live_return_pct": 0.0,
         "executed": null,
-        "live_excess_pct": 1.525,
-        "bench_return_pct": -1.525,
-        "days_live": 11,
+        "live_excess_pct": 1.6294,
+        "bench_return_pct": -1.6294,
+        "days_live": 12,
         "thin_live": false
       }
     ],
@@ -187,10 +187,10 @@
           "regime_mult": 0.0,
           "regime_info": {
             "market_ok": false,
-            "ma20": 4.72275,
-            "ma60": 4.8439,
+            "ma20": 4.7124,
+            "ma60": 4.838767,
             "ma_up": false,
-            "vol20": 0.017855
+            "vol20": 0.016832
           },
           "vol_target": 0.08,
           "vol_scale": 1.0,
@@ -211,19 +211,19 @@
       "cash": 100000.0,
       "total_value": 100000.0,
       "return_pct": 0.0,
-      "n_port_rets": 11,
+      "n_port_rets": 12,
       "live": {
         "anchor_nav": 100000.0,
         "start_date": "2026-07-21",
         "nav": 100000.0,
         "return_pct": 0.0,
-        "n_nav": 12,
-        "n_rets": 11,
+        "n_nav": 13,
+        "n_rets": 12,
         "sharpe": null,
         "n_trades": 0,
         "n_holdings": 0,
         "holdings": "空仓",
-        "asof": "2026-08-05",
+        "asof": "2026-08-06",
         "from_warmup": false
       },
       "executed": null
@@ -248,7 +248,7 @@
     {
       "name": "有合格标的",
       "ok": true,
-      "detail": "标普500ETF 得分+1.55"
+      "detail": "标普500ETF 得分+1.37"
     },
     {
       "name": "目标暴露",
@@ -259,14 +259,14 @@
   "signal_live": {
     "name": "c01_q10_vt08_soft_oh38_xgn",
     "live_return_pct": 0.0,
-    "bench_return_pct": -1.525,
-    "live_excess_pct": 1.525,
-    "days_live": 11,
+    "bench_return_pct": -1.6294,
+    "live_excess_pct": 1.6294,
+    "days_live": 12,
     "thin_live": false,
     "live_start": "2026-07-21",
     "holdings": "空仓",
     "total_value": 100000.0,
-    "market_asof": "2026-08-05",
+    "market_asof": "2026-08-06",
     "data_lag": false
   }
 }
