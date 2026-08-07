@@ -1,41 +1,41 @@
 {
-  "n": 10,
+  "n": 11,
   "path": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/daily_scorecard.jsonl",
   "first_date": "2026-07-21",
-  "last_date": "2026-08-06",
-  "readable_n": 8,
+  "last_date": "2026-08-07",
+  "readable_n": 9,
   "lag_n": 1,
   "thin_n": 2,
-  "trend_on_n": 0,
+  "trend_on_n": 1,
   "trend_off_n": 10,
   "prod_empty_n": 10,
-  "prod_open_n": 0,
+  "prod_open_n": 1,
   "xs_readable": {
-    "n": 8,
-    "min": 1.525,
+    "n": 9,
+    "min": 0.748,
     "max": 3.9273,
-    "median": 2.841,
-    "last": 1.6294,
-    "pos": 8,
+    "median": 2.7992,
+    "last": 0.748,
+    "pos": 9,
     "neg": 0
   },
   "live_readable": {
-    "n": 8,
-    "min": 0.0,
+    "n": 9,
+    "min": -0.004,
     "max": 0.0,
     "median": 0.0,
-    "last": 0.0,
+    "last": -0.004,
     "pos": 0,
-    "neg": 0
+    "neg": 1
   },
   "last_row": {
-    "date": "2026-08-06",
+    "date": "2026-08-07",
     "level": "READY",
     "readable_yield": true,
-    "live_return_pct": 0.0,
-    "live_excess_pct": 1.6294,
+    "live_return_pct": -0.004,
+    "live_excess_pct": 0.748,
     "data_lag": false,
     "next_action": "read_yield",
-    "action": "⚪ 空仓观望"
+    "action": "🟢 买入 标普500ETF"
   }
 }

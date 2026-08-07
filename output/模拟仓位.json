@@ -1,208 +1,274 @@
 {
-  "cash": 100000.0,
-  "holding": null,
-  "trades": [],
+  "cash": 5131.26,
+  "holding": {
+    "code": "SH513500",
+    "name": "标普500ETF",
+    "buy_price": 2.695,
+    "shares": 35200,
+    "buy_date": "2026-08-07",
+    "park": false
+  },
+  "trades": [
+    {
+      "date": "2026-08-07",
+      "action": "BUY",
+      "code": "SH513500",
+      "name": "标普500ETF",
+      "price": 2.695,
+      "shares": 35200,
+      "reason": "信号买入"
+    }
+  ],
   "total_trades": 0,
   "wins": 0,
   "losses": 0,
   "total_pnl": 0.0,
-  "total_value": 100000.0,
-  "return_pct": 0.0,
-  "last_rebalance": null,
+  "total_value": 99995.26,
+  "return_pct": -0.0,
+  "last_rebalance": "2026-08-07",
   "config": "C01_效15d",
-  "last_update": "2026-08-06 10:10",
+  "last_update": "2026-08-07 08:34",
   "note": "重置: 云端首跑无基准误买稀土, 已回滚空仓",
-  "days_to_rebalance": 0,
-  "market_ok": false,
-  "breadth": 0.558,
+  "days_to_rebalance": 15,
+  "market_ok": true,
+  "breadth": 0.538,
   "shadow": {
     "config": "C01_Q10_VT08_SOFT_OH38_EXTRA_GOLD_NQ",
     "research": true,
-    "market_ok": false,
+    "market_ok": true,
     "picks": [
       {
         "code": "SH513500",
         "name": "标普500ETF",
-        "score": 1.371
+        "score": 1.522
       }
     ],
-    "action": "空仓(趋势关) 暴露0%",
+    "action": "BUY 标普500ETF @暴露77%",
     "mainline": [
       {
         "name": "c01_q10_vt08_soft_oh38_xgn",
-        "action": "空仓(趋势关) 暴露0%",
-        "market_ok": false,
+        "action": "BUY 标普500ETF @暴露77%",
+        "market_ok": true,
         "signal": true,
         "error": null,
-        "holdings": "空仓",
-        "n_holdings": 0,
-        "total_value": 100000.0,
-        "return_pct": 0.0,
+        "holdings": "标普500ETF",
+        "n_holdings": 1,
+        "total_value": 99996.16,
+        "return_pct": -0.0,
         "live": {
           "anchor_nav": 100000.0,
           "start_date": "2026-07-21",
-          "nav": 100000.0,
-          "return_pct": 0.0,
-          "n_nav": 13,
-          "n_rets": 12,
-          "sharpe": null,
-          "n_trades": 0,
-          "n_holdings": 0,
-          "holdings": "空仓",
-          "asof": "2026-08-06",
+          "nav": 99996.16,
+          "return_pct": -0.004,
+          "n_nav": 14,
+          "n_rets": 13,
+          "sharpe": -4.385,
+          "n_trades": 1,
+          "n_holdings": 1,
+          "holdings": "标普500ETF",
+          "asof": "2026-08-07",
           "from_warmup": false
         },
-        "live_return_pct": 0.0,
-        "executed": null
+        "live_return_pct": -0.004,
+        "executed": {
+          "side": "买入",
+          "name": "标普500ETF",
+          "pnl": null,
+          "reason": "信号买入"
+        }
       },
       {
         "name": "c01_q10_vt08_soft_oh38",
-        "action": "空仓(趋势关) 暴露0%",
-        "market_ok": false,
+        "action": "BUY 标普500ETF @暴露77%",
+        "market_ok": true,
         "signal": false,
         "error": null,
-        "holdings": "空仓",
-        "n_holdings": 0,
-        "total_value": 100000.0,
-        "return_pct": 0.0,
+        "holdings": "标普500ETF",
+        "n_holdings": 1,
+        "total_value": 99996.16,
+        "return_pct": -0.0,
         "live": {
           "anchor_nav": 100000.0,
           "start_date": "2026-07-21",
-          "nav": 100000.0,
-          "return_pct": 0.0,
-          "n_nav": 13,
-          "n_rets": 12,
-          "sharpe": null,
-          "n_trades": 0,
-          "n_holdings": 0,
-          "holdings": "空仓",
-          "asof": "2026-08-06",
+          "nav": 99996.16,
+          "return_pct": -0.004,
+          "n_nav": 14,
+          "n_rets": 13,
+          "sharpe": -4.385,
+          "n_trades": 1,
+          "n_holdings": 1,
+          "holdings": "标普500ETF",
+          "asof": "2026-08-07",
           "from_warmup": false
         },
-        "live_return_pct": 0.0,
-        "executed": null
+        "live_return_pct": -0.004,
+        "executed": {
+          "side": "买入",
+          "name": "标普500ETF",
+          "pnl": null,
+          "reason": "信号买入"
+        }
       },
       {
         "name": "c01_q10_vt09_oh35",
-        "action": "空仓(趋势关) 暴露0%",
-        "market_ok": false,
+        "action": "BUY 标普500ETF @暴露86%",
+        "market_ok": true,
         "signal": false,
         "error": null,
-        "holdings": "空仓",
-        "n_holdings": 0,
-        "total_value": 100000.0,
-        "return_pct": 0.0,
+        "holdings": "标普500ETF",
+        "n_holdings": 1,
+        "total_value": 99995.73,
+        "return_pct": -0.0,
         "live": {
           "anchor_nav": 100000.0,
           "start_date": "2026-07-21",
-          "nav": 100000.0,
-          "return_pct": 0.0,
-          "n_nav": 13,
-          "n_rets": 12,
-          "sharpe": null,
-          "n_trades": 0,
-          "n_holdings": 0,
-          "holdings": "空仓",
-          "asof": "2026-08-06",
+          "nav": 99995.73,
+          "return_pct": -0.004,
+          "n_nav": 14,
+          "n_rets": 13,
+          "sharpe": -4.385,
+          "n_trades": 1,
+          "n_holdings": 1,
+          "holdings": "标普500ETF",
+          "asof": "2026-08-07",
           "from_warmup": false
         },
-        "live_return_pct": 0.0,
-        "executed": null
+        "live_return_pct": -0.004,
+        "executed": {
+          "side": "买入",
+          "name": "标普500ETF",
+          "pnl": null,
+          "reason": "信号买入"
+        }
       },
       {
         "name": "c01_q10_vt11",
-        "action": "空仓(趋势关) 暴露0%",
-        "market_ok": false,
+        "action": "BUY 标普500ETF @暴露86%",
+        "market_ok": true,
         "signal": false,
         "error": null,
-        "holdings": "空仓",
-        "n_holdings": 0,
-        "total_value": 100000.0,
-        "return_pct": 0.0,
+        "holdings": "标普500ETF",
+        "n_holdings": 1,
+        "total_value": 99995.73,
+        "return_pct": -0.0,
         "live": {
           "anchor_nav": 100000.0,
           "start_date": "2026-07-21",
-          "nav": 100000.0,
-          "return_pct": 0.0,
-          "n_nav": 13,
-          "n_rets": 12,
-          "sharpe": null,
-          "n_trades": 0,
-          "n_holdings": 0,
-          "holdings": "空仓",
-          "asof": "2026-08-06",
+          "nav": 99995.73,
+          "return_pct": -0.004,
+          "n_nav": 14,
+          "n_rets": 13,
+          "sharpe": -4.385,
+          "n_trades": 1,
+          "n_holdings": 1,
+          "holdings": "标普500ETF",
+          "asof": "2026-08-07",
           "from_warmup": false
         },
-        "live_return_pct": 0.0,
-        "executed": null
+        "live_return_pct": -0.004,
+        "executed": {
+          "side": "买入",
+          "name": "标普500ETF",
+          "pnl": null,
+          "reason": "信号买入"
+        }
       }
     ],
     "decision": {
-      "action": "HOLD",
-      "target": null,
-      "name": "",
-      "target_exposure": 0.0,
+      "action": "BUY",
+      "target": "SH513500",
+      "name": "标普500ETF",
+      "target_exposure": 0.7695,
       "reasons": [
-        "大盘趋势向下 → 保持空仓"
+        "空仓+趋势开 → 买入 标普500ETF"
       ],
       "exposure": {
-        "target_exposure": 0.0,
+        "target_exposure": 0.7695,
         "parts": {
           "position_pct": 0.95,
           "inv_vol_scale": 0.9,
           "inv_vol_src": "portfolio",
           "vol20": 0.0,
-          "regime": "bear",
-          "regime_mult": 0.0,
+          "regime": "chop",
+          "regime_mult": 0.9,
           "regime_info": {
-            "market_ok": false,
-            "ma20": 4.7124,
-            "ma60": 4.838767,
+            "market_ok": true,
+            "ma20": 4.7085,
+            "ma60": 4.8356,
             "ma_up": false,
-            "vol20": 0.016832
+            "vol20": 0.016577
           },
           "vol_target": 0.08,
           "vol_scale": 1.0,
           "vol_src": "none"
         },
         "notes": [
-          "vol_target 缺波动数据, 未缩放",
-          "趋势关 → 目标暴露 0"
+          "vol_target 缺波动数据, 未缩放"
         ]
       }
     },
     "state_path": "/home/runner/work/etf-rotation/etf-rotation/output/shadow_states/c01_q10_vt08_soft_oh38_xgn.json",
     "state": {
-      "holding": null,
-      "holdings": [],
-      "holdings_str": "空仓",
-      "n_holdings": 0,
-      "cash": 100000.0,
-      "total_value": 100000.0,
-      "return_pct": 0.0,
-      "n_port_rets": 12,
+      "holding": {
+        "code": "SH513500",
+        "name": "标普500ETF",
+        "buy_price": 2.695,
+        "shares": 28500,
+        "buy_date": "2026-08-07",
+        "park": false
+      },
+      "holdings": [
+        {
+          "code": "SH513500",
+          "name": "标普500ETF",
+          "buy_price": 2.695,
+          "shares": 28500,
+          "buy_date": "2026-08-07",
+          "park": false
+        }
+      ],
+      "holdings_str": "标普500ETF",
+      "n_holdings": 1,
+      "cash": 23188.66,
+      "total_value": 99996.16,
+      "return_pct": -0.0,
+      "n_port_rets": 13,
       "live": {
         "anchor_nav": 100000.0,
         "start_date": "2026-07-21",
-        "nav": 100000.0,
-        "return_pct": 0.0,
-        "n_nav": 13,
-        "n_rets": 12,
-        "sharpe": null,
-        "n_trades": 0,
-        "n_holdings": 0,
-        "holdings": "空仓",
-        "asof": "2026-08-06",
+        "nav": 99996.16,
+        "return_pct": -0.004,
+        "n_nav": 14,
+        "n_rets": 13,
+        "sharpe": -4.385,
+        "n_trades": 1,
+        "n_holdings": 1,
+        "holdings": "标普500ETF",
+        "asof": "2026-08-07",
         "from_warmup": false
       },
-      "executed": null
+      "executed": {
+        "side": "买入",
+        "name": "标普500ETF",
+        "pnl": null,
+        "reason": "信号买入"
+      }
     }
   },
-  "action_summary": "⚪ 空仓观望",
+  "action_summary": "🟢 买入 标普500ETF",
   "decision_reasons": [
-    "大盘趋势向下 → 保持空仓"
+    "空仓+趋势开 → 买入 标普500ETF"
   ],
-  "holdings": [],
+  "holdings": [
+    {
+      "code": "SH513500",
+      "name": "标普500ETF",
+      "buy_price": 2.695,
+      "shares": 35200,
+      "buy_date": "2026-08-07",
+      "park": false
+    }
+  ],
   "nav_history": [
     {
       "date": "2026-07-21",
@@ -255,6 +321,10 @@
     {
       "date": "2026-08-06",
       "nav": 100000.0
+    },
+    {
+      "date": "2026-08-07",
+      "nav": 99995.26
     }
   ],
   "port_rets": [
@@ -269,6 +339,7 @@
     0.0,
     0.0,
     0.0,
-    0.0
+    0.0,
+    -4.740000000003075e-05
   ]
 }

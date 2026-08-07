@@ -1,10 +1,10 @@
 ======== LEDGER 日更账本 ========
-样本日: 10  (2026-07-21 → 2026-08-06)
-可读收益日: 8  THIN: 2  DATA_LAG: 1
-趋势开/关: 0/10  生产空仓/有仓: 10/0
-可读 xs%: n=8 中位=2.841  min=1.525 max=3.9273  +日8/-日0  last=1.6294
-可读 live%: n=8 中位=0.0  min=0.0 max=0.0  last=0.0
-最新: 2026-08-06 level=READY readable=True live=0.0 xs=1.6294 action=⚪ 空仓观望 next=read_yield
+样本日: 11  (2026-07-21 → 2026-08-07)
+可读收益日: 9  THIN: 2  DATA_LAG: 1
+趋势开/关: 1/10  生产空仓/有仓: 10/1
+可读 xs%: n=9 中位=2.7992  min=0.748 max=3.9273  +日9/-日0  last=0.748
+可读 live%: n=9 中位=0.0  min=-0.004 max=0.0  last=-0.004
+最新: 2026-08-07 level=READY readable=True live=-0.004 xs=0.748 action=🟢 买入 标普500ETF next=read_yield
 口径: 只认 live%+xs%; lag/THIN 日不参与改进判断
 改进门槛: 可读日≥60 且 dual-end 门控仍过, 才讨论结构变更
 ========
