@@ -1,10 +1,10 @@
 {
-  "stamp": "2026-08-07T08:35:13",
+  "stamp": "2026-08-10T08:58:48",
   "decision": "ok",
-  "market_asof": "2026-08-07",
+  "market_asof": "2026-08-10",
   "data_lag": false,
   "latest_stale": false,
-  "action": "🟢 买入 标普500ETF",
+  "action": "🟡 持有 标普500ETF (无需操作)",
   "why": "数据齐: 裸 ./etf=pulse 看可判后读 yield",
   "recommend": "./etf",
   "days_to_ready": 0,

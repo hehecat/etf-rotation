@@ -23,11 +23,11 @@
   "wins": 0,
   "losses": 0,
   "total_pnl": 0.0,
-  "total_value": 99996.16,
-  "return_pct": -0.0,
+  "total_value": 100024.66,
+  "return_pct": 0.02,
   "last_rebalance": "2026-08-07",
   "config": "C01_Q10_VT08_SOFT_OH38_双端研究候选",
-  "last_update": "2026-08-07 08:34",
+  "last_update": "2026-08-10 08:58",
   "holdings": [
     {
       "code": "SH513500",
@@ -38,7 +38,7 @@
       "park": false
     }
   ],
-  "days_to_rebalance": 10,
+  "days_to_rebalance": 9,
   "market_ok": true,
   "nav_history": [
     {
@@ -96,6 +96,10 @@
     {
       "date": "2026-08-07",
       "nav": 99996.16
+    },
+    {
+      "date": "2026-08-10",
+      "nav": 100024.66
     }
   ],
   "port_rets": [
@@ -111,22 +115,23 @@
     0.0,
     0.0,
     0.0,
-    -3.8399999999993994e-05
+    -3.8399999999993994e-05,
+    0.0002850109444203497
   ],
   "live_start_date": "2026-07-21",
   "live_anchor_nav": 100000.0,
   "live": {
     "anchor_nav": 100000.0,
     "start_date": "2026-07-21",
-    "nav": 99996.16,
-    "return_pct": -0.004,
-    "n_nav": 14,
-    "n_rets": 13,
-    "sharpe": -4.385,
+    "nav": 100024.66,
+    "return_pct": 0.025,
+    "n_nav": 15,
+    "n_rets": 14,
+    "sharpe": 3.587,
     "n_trades": 1,
     "n_holdings": 1,
     "holdings": "标普500ETF",
-    "asof": "2026-08-07 08:34",
+    "asof": "2026-08-10 08:58",
     "from_warmup": false
   }
 }
