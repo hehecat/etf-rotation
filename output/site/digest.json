@@ -1,17 +1,17 @@
 {
-  "stamp": "2026-08-10T08:58:48",
+  "stamp": "2026-08-11T08:31:22",
   "level": "READY",
-  "market_asof": "2026-08-10",
+  "market_asof": "2026-08-11",
   "data_lag": false,
   "decision": "ok",
   "action": "🟡 持有 标普500ETF (无需操作)",
   "market_ok": true,
-  "live_return_pct": 0.025,
-  "live_excess_pct": 0.6099,
-  "days_live": 14,
+  "live_return_pct": 0.595,
+  "live_excess_pct": 1.8275,
+  "days_live": 15,
   "thin_live": false,
   "days_to_ready": 0,
   "eta_note": "样本已够, 若无 DATA_LAG 则应 READY",
   "recommend": "./etf yield",
-  "text": "======== DIGEST ========\n可判性: READY\nasof: 2026-08-10 lag=False\nlive=0.025 xs=0.6099 Lrets=14 thin=False\ndecision: ok\neta: 样本已够, 若无 DATA_LAG 则应 READY\n推荐: ./etf yield\n========\n"
+  "text": "======== DIGEST ========\n可判性: READY\nasof: 2026-08-11 lag=False\nlive=0.595 xs=1.8275 Lrets=15 thin=False\ndecision: ok\neta: 样本已够, 若无 DATA_LAG 则应 READY\n推荐: ./etf yield\n========\n"
 }
