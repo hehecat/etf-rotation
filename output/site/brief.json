@@ -1,24 +1,24 @@
 {
-  "stamp": "2026-08-12T08:49:12",
-  "market_asof": "2026-08-12",
+  "stamp": "2026-08-13T08:52:16",
+  "market_asof": "2026-08-13",
   "data_lag": false,
   "action": "🟡 持有 标普500ETF (无需操作)",
   "market_ok": true,
-  "latest_time": "2026-08-12 08:48",
+  "latest_time": "2026-08-13 08:51",
   "signal_live": {
     "name": "c01_q10_vt08_soft_oh38_xgn",
-    "live_return_pct": 0.082,
-    "bench_return_pct": -0.8147,
-    "live_excess_pct": 0.8967,
-    "days_live": 16,
+    "live_return_pct": 0.452,
+    "bench_return_pct": -1.2116,
+    "live_excess_pct": 1.6636,
+    "days_live": 17,
     "thin_live": false,
     "live_start": "2026-07-21",
     "holdings": "标普500ETF",
-    "total_value": 100081.66,
-    "market_asof": "2026-08-12",
+    "total_value": 100452.16,
+    "market_asof": "2026-08-13",
     "data_lag": false
   },
   "days_to_ready": 0,
   "eta_note": "样本已够, 若无 DATA_LAG 则应 READY",
-  "text": "======== BRIEF 速览 ========\n时间: 2026-08-12T08:49:12\n行情截至: 2026-08-12\n动作: 🟡 持有 标普500ETF (无需操作)  市场: 开\nlive=0.082 xs=0.8967 Lrets=16 thin=False\ndtr=0 eta=样本已够, 若无 DATA_LAG 则应 READY\n========\n"
+  "text": "======== BRIEF 速览 ========\n时间: 2026-08-13T08:52:16\n行情截至: 2026-08-13\n动作: 🟡 持有 标普500ETF (无需操作)  市场: 开\nlive=0.452 xs=1.6636 Lrets=17 thin=False\ndtr=0 eta=样本已够, 若无 DATA_LAG 则应 READY\n========\n"
 }

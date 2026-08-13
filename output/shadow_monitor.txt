@@ -1,31 +1,31 @@
 ======== 影子只读监控 ========
-基准 SH510300: 4.748 MA20=4.699(+1.0%) 20日=-1.9% 趋势=开
+基准 SH510300: 4.729 MA20=4.698(+0.7%) 20日=-0.5% 趋势=开
 生产 STATE: /home/runner/work/etf-rotation/etf-rotation/output/模拟仓位.json (本脚本只读)
 --------
-c01_q10_vt08_soft_oh38  暴露= 85.5%  regime=chop×0.9  vol_src=portfolio scale=1.0  rets=16
-  账户=100081.66 收益=0.08 持仓1: 标普500ETF
-  live=+0.082% xs=+1.827% bench=-1.232% anchor=100000.0 from=2026-07-21 Lrets=15
+c01_q10_vt08_soft_oh38  暴露= 85.5%  regime=chop×0.9  vol_src=portfolio scale=1.0  rets=17
+  账户=100452.16 收益=0.45 持仓1: 标普500ETF
+  live=+0.452% xs=+0.897% bench=-0.815% anchor=100000.0 from=2026-07-21 Lrets=16
   注: vol_target 用组合已实现波动
-  !! WARN [thin_rets] port_rets=16 < 20 (建议 shadow_warmup)
+  !! WARN [thin_rets] port_rets=17 < 20 (建议 shadow_warmup)
 --------
-c01_q10_vt08_soft_oh38_xgn  暴露= 85.5%  regime=chop×0.9  vol_src=portfolio scale=1.0  rets=16
-  账户=100081.66 收益=0.08 持仓1: 标普500ETF
-  live=+0.082% xs=+1.827% bench=-1.232% anchor=100000.0 from=2026-07-21 Lrets=15
+c01_q10_vt08_soft_oh38_xgn  暴露= 85.5%  regime=chop×0.9  vol_src=portfolio scale=1.0  rets=17
+  账户=100452.16 收益=0.45 持仓1: 标普500ETF
+  live=+0.452% xs=+0.897% bench=-0.815% anchor=100000.0 from=2026-07-21 Lrets=16
   注: vol_target 用组合已实现波动
-  !! WARN [thin_rets] port_rets=16 < 20 (建议 shadow_warmup)
+  !! WARN [thin_rets] port_rets=17 < 20 (建议 shadow_warmup)
 --------
-c01_q10_vt09_oh35  暴露= 95.0%  regime=None×1.0  vol_src=portfolio scale=1.0  rets=16
-  账户=100090.83 收益=0.09 持仓1: 标普500ETF
-  live=+0.091% xs=+1.893% bench=-1.232% anchor=100000.0 from=2026-07-21 Lrets=15
+c01_q10_vt09_oh35  暴露= 95.0%  regime=None×1.0  vol_src=portfolio scale=1.0  rets=17
+  账户=100502.93 收益=0.5 持仓1: 标普500ETF
+  live=+0.503% xs=+0.906% bench=-0.815% anchor=100000.0 from=2026-07-21 Lrets=16
   注: vol_target 用组合已实现波动
-  !! WARN [thin_rets] port_rets=16 < 20 (建议 shadow_warmup)
+  !! WARN [thin_rets] port_rets=17 < 20 (建议 shadow_warmup)
 --------
-c01_q10_vt11  暴露= 95.0%  regime=None×1.0  vol_src=portfolio scale=1.0  rets=16
-  账户=100090.83 收益=0.09 持仓1: 标普500ETF
-  live=+0.091% xs=+1.893% bench=-1.232% anchor=100000.0 from=2026-07-21 Lrets=15
+c01_q10_vt11  暴露= 95.0%  regime=None×1.0  vol_src=portfolio scale=1.0  rets=17
+  账户=100502.93 收益=0.5 持仓1: 标普500ETF
+  live=+0.503% xs=+0.906% bench=-0.815% anchor=100000.0 from=2026-07-21 Lrets=16
   注: vol_target 用组合已实现波动
-  !! WARN [thin_rets] port_rets=16 < 20 (建议 shadow_warmup)
+  !! WARN [thin_rets] port_rets=17 < 20 (建议 shadow_warmup)
 --------
 告警汇总: error=0 warn=4
   c01_q10_vt08_soft_oh38: thin_rets; c01_q10_vt08_soft_oh38_xgn: thin_rets; c01_q10_vt09_oh35: thin_rets; c01_q10_vt11: thin_rets
-行情截至: 2026-08-12
+行情截至: 2026-08-13

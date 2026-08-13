@@ -1,14 +1,14 @@
 {
-  "time": "2026-08-12 08:48",
-  "market_asof": "2026-08-12",
+  "time": "2026-08-13 08:51",
+  "market_asof": "2026-08-13",
   "config": "C01_效15d",
   "frozen": true,
   "action": "🟡 持有 标普500ETF (无需操作)",
   "reasons": [
-    "有更优标黄金ETF, 但调仓窗口未到(还需12日)"
+    "有更优标黄金ETF, 但调仓窗口未到(还需11日)"
   ],
   "market_ok": true,
-  "breadth": 0.7115384615384616,
+  "breadth": 0.6923076923076923,
   "holding": {
     "code": "SH513500",
     "name": "标普500ETF",
@@ -17,24 +17,24 @@
     "buy_date": "2026-08-07",
     "park": false
   },
-  "total_value": 100100.86,
-  "return_pct": 0.1,
-  "days_to_rebalance": 12,
+  "total_value": 100558.46,
+  "return_pct": 0.56,
+  "days_to_rebalance": 11,
   "top3": [
     {
       "code": "SZ159934",
       "name": "黄金ETF",
-      "score": 2.865
+      "score": 2.557
+    },
+    {
+      "code": "SZ159790",
+      "name": "碳中和ETF",
+      "score": 2.074
     },
     {
       "code": "SH513500",
       "name": "标普500ETF",
-      "score": 1.308
-    },
-    {
-      "code": "SH515060",
-      "name": "房地产ETF",
-      "score": 1.167
+      "score": 1.399
     }
   ],
   "shadow": {
@@ -45,7 +45,7 @@
       {
         "code": "SZ159934",
         "name": "黄金ETF",
-        "score": 2.865
+        "score": 2.557
       }
     ],
     "action": "HOLD 黄金ETF @暴露86%",
@@ -58,27 +58,27 @@
         "error": null,
         "holdings": "标普500ETF",
         "n_holdings": 1,
-        "total_value": 100081.66,
-        "return_pct": 0.08,
+        "total_value": 100452.16,
+        "return_pct": 0.45,
         "live": {
           "anchor_nav": 100000.0,
           "start_date": "2026-07-21",
-          "nav": 100081.66,
-          "return_pct": 0.082,
-          "n_nav": 17,
-          "n_rets": 16,
-          "sharpe": 0.423,
+          "nav": 100452.16,
+          "return_pct": 0.452,
+          "n_nav": 18,
+          "n_rets": 17,
+          "sharpe": 2.007,
           "n_trades": 1,
           "n_holdings": 1,
           "holdings": "标普500ETF",
-          "asof": "2026-08-12 08:48",
+          "asof": "2026-08-13 08:51",
           "from_warmup": false
         },
-        "live_return_pct": 0.082,
+        "live_return_pct": 0.452,
         "executed": null,
-        "live_excess_pct": 0.8967,
-        "bench_return_pct": -0.8147,
-        "days_live": 16,
+        "live_excess_pct": 1.6636,
+        "bench_return_pct": -1.2116,
+        "days_live": 17,
         "thin_live": false
       },
       {
@@ -89,27 +89,27 @@
         "error": null,
         "holdings": "标普500ETF",
         "n_holdings": 1,
-        "total_value": 100081.66,
-        "return_pct": 0.08,
+        "total_value": 100452.16,
+        "return_pct": 0.45,
         "live": {
           "anchor_nav": 100000.0,
           "start_date": "2026-07-21",
-          "nav": 100081.66,
-          "return_pct": 0.082,
-          "n_nav": 17,
-          "n_rets": 16,
-          "sharpe": 0.423,
+          "nav": 100452.16,
+          "return_pct": 0.452,
+          "n_nav": 18,
+          "n_rets": 17,
+          "sharpe": 2.007,
           "n_trades": 1,
           "n_holdings": 1,
           "holdings": "标普500ETF",
-          "asof": "2026-08-12 08:48",
+          "asof": "2026-08-13 08:51",
           "from_warmup": false
         },
-        "live_return_pct": 0.082,
+        "live_return_pct": 0.452,
         "executed": null,
-        "live_excess_pct": 0.8967,
-        "bench_return_pct": -0.8147,
-        "days_live": 16,
+        "live_excess_pct": 1.6636,
+        "bench_return_pct": -1.2116,
+        "days_live": 17,
         "thin_live": false
       },
       {
@@ -120,27 +120,27 @@
         "error": null,
         "holdings": "标普500ETF",
         "n_holdings": 1,
-        "total_value": 100090.83,
-        "return_pct": 0.09,
+        "total_value": 100502.93,
+        "return_pct": 0.5,
         "live": {
           "anchor_nav": 100000.0,
           "start_date": "2026-07-21",
-          "nav": 100090.83,
-          "return_pct": 0.091,
-          "n_nav": 17,
-          "n_rets": 16,
-          "sharpe": 0.425,
+          "nav": 100502.93,
+          "return_pct": 0.503,
+          "n_nav": 18,
+          "n_rets": 17,
+          "sharpe": 2.009,
           "n_trades": 1,
           "n_holdings": 1,
           "holdings": "标普500ETF",
-          "asof": "2026-08-12 08:48",
+          "asof": "2026-08-13 08:51",
           "from_warmup": false
         },
-        "live_return_pct": 0.091,
+        "live_return_pct": 0.503,
         "executed": null,
-        "live_excess_pct": 0.9057,
-        "bench_return_pct": -0.8147,
-        "days_live": 16,
+        "live_excess_pct": 1.7146,
+        "bench_return_pct": -1.2116,
+        "days_live": 17,
         "thin_live": false
       },
       {
@@ -151,27 +151,27 @@
         "error": null,
         "holdings": "标普500ETF",
         "n_holdings": 1,
-        "total_value": 100090.83,
-        "return_pct": 0.09,
+        "total_value": 100502.93,
+        "return_pct": 0.5,
         "live": {
           "anchor_nav": 100000.0,
           "start_date": "2026-07-21",
-          "nav": 100090.83,
-          "return_pct": 0.091,
-          "n_nav": 17,
-          "n_rets": 16,
-          "sharpe": 0.425,
+          "nav": 100502.93,
+          "return_pct": 0.503,
+          "n_nav": 18,
+          "n_rets": 17,
+          "sharpe": 2.009,
           "n_trades": 1,
           "n_holdings": 1,
           "holdings": "标普500ETF",
-          "asof": "2026-08-12 08:48",
+          "asof": "2026-08-13 08:51",
           "from_warmup": false
         },
-        "live_return_pct": 0.091,
+        "live_return_pct": 0.503,
         "executed": null,
-        "live_excess_pct": 0.9057,
-        "bench_return_pct": -0.8147,
-        "days_live": 16,
+        "live_excess_pct": 1.7146,
+        "bench_return_pct": -1.2116,
+        "days_live": 17,
         "thin_live": false
       }
     ],
@@ -181,7 +181,7 @@
       "name": "黄金ETF",
       "target_exposure": 0.855,
       "reasons": [
-        "有更优标黄金ETF, 但调仓窗口未到(还需7日)"
+        "有更优标黄金ETF, 但调仓窗口未到(还需6日)"
       ],
       "exposure": {
         "target_exposure": 0.855,
@@ -189,18 +189,18 @@
           "position_pct": 0.95,
           "inv_vol_scale": 1.0,
           "inv_vol_src": "portfolio",
-          "vol20": 0.001469,
+          "vol20": 0.001975,
           "regime": "chop",
           "regime_mult": 0.9,
           "regime_info": {
             "market_ok": true,
-            "ma20": 4.6993,
-            "ma60": 4.829533,
+            "ma20": 4.6981,
+            "ma60": 4.827167,
             "ma_up": false,
-            "vol20": 0.015536
+            "vol20": 0.015055
           },
           "vol_target": 0.08,
-          "vol_ann": 0.0233,
+          "vol_ann": 0.0314,
           "vol_scale": 1.0,
           "vol_src": "portfolio"
         },
@@ -232,21 +232,21 @@
       "holdings_str": "标普500ETF",
       "n_holdings": 1,
       "cash": 23188.66,
-      "total_value": 100081.66,
-      "return_pct": 0.08,
-      "n_port_rets": 16,
+      "total_value": 100452.16,
+      "return_pct": 0.45,
+      "n_port_rets": 17,
       "live": {
         "anchor_nav": 100000.0,
         "start_date": "2026-07-21",
-        "nav": 100081.66,
-        "return_pct": 0.082,
-        "n_nav": 17,
-        "n_rets": 16,
-        "sharpe": 0.423,
+        "nav": 100452.16,
+        "return_pct": 0.452,
+        "n_nav": 18,
+        "n_rets": 17,
+        "sharpe": 2.007,
         "n_trades": 1,
         "n_holdings": 1,
         "holdings": "标普500ETF",
-        "asof": "2026-08-12",
+        "asof": "2026-08-13",
         "from_warmup": false
       },
       "executed": null
@@ -261,22 +261,22 @@
     {
       "name": "调仓窗口",
       "ok": false,
-      "detail": "距上次3日 / 需≥15日"
+      "detail": "距上次4日 / 需≥15日"
     },
     {
       "name": "最小持仓",
       "ok": false,
-      "detail": "已持3/5日"
+      "detail": "已持4/5日"
     },
     {
       "name": "未触止损",
       "ok": true,
-      "detail": "浮盈亏+0.1% / 线-8%"
+      "detail": "浮盈亏+0.6% / 线-8%"
     },
     {
       "name": "有合格标的",
       "ok": true,
-      "detail": "黄金ETF 得分+2.86"
+      "detail": "黄金ETF 得分+2.56"
     },
     {
       "name": "目标暴露",
@@ -286,15 +286,15 @@
   ],
   "signal_live": {
     "name": "c01_q10_vt08_soft_oh38_xgn",
-    "live_return_pct": 0.082,
-    "bench_return_pct": -0.8147,
-    "live_excess_pct": 0.8967,
-    "days_live": 16,
+    "live_return_pct": 0.452,
+    "bench_return_pct": -1.2116,
+    "live_excess_pct": 1.6636,
+    "days_live": 17,
     "thin_live": false,
     "live_start": "2026-07-21",
     "holdings": "标普500ETF",
-    "total_value": 100081.66,
-    "market_asof": "2026-08-12",
+    "total_value": 100452.16,
+    "market_asof": "2026-08-13",
     "data_lag": false
   }
 }

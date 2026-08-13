@@ -3,10 +3,10 @@
 目录: /home/runner/work/etf-rotation/etf-rotation/output/shadow_states
 ----------------------------
 name                              sh     dd   live%     xs%         tv gate note
-  c01_q10_vt08_soft_oh38           —      —   +0.08   +1.83     100082    ? CASH≠NAV H=标普500ETF T=BUY 标普500ETF L@2026-07-21
-  c01_q10_vt08_soft_oh38_xgn       —      —   +0.08   +1.83     100082    ? SIGNAL CASH≠NAV H=标普500ETF T=BUY 标普500ETF L@2026-07-21
-  c01_q10_vt09_oh35                —      —   +0.09   +1.89     100091    ? CASH≠NAV H=标普500ETF T=BUY 标普500ETF L@2026-07-21
-  c01_q10_vt11                     —      —   +0.09   +1.89     100091    ? CASH≠NAV H=标普500ETF T=BUY 标普500ETF L@2026-07-21
+  c01_q10_vt08_soft_oh38           —      —   +0.45   +0.90     100452    ? CASH≠NAV H=标普500ETF T=BUY 标普500ETF L@2026-07-21
+  c01_q10_vt08_soft_oh38_xgn       —      —   +0.45   +0.90     100452    ? SIGNAL CASH≠NAV H=标普500ETF T=BUY 标普500ETF L@2026-07-21
+  c01_q10_vt09_oh35                —      —   +0.50   +0.91     100503    ? CASH≠NAV H=标普500ETF T=BUY 标普500ETF L@2026-07-21
+  c01_q10_vt11                     —      —   +0.50   +0.91     100503    ? CASH≠NAV H=标普500ETF T=BUY 标普500ETF L@2026-07-21
 ----------------------------
 说明: sh/dd=暖机; live%/xs%=暖机末→今 (xs=live-基准); THIN=样本<5日
   python3 scripts/etf.py live
