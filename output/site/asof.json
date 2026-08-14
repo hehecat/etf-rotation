@@ -1,48 +1,48 @@
 {
-  "stamp": "2026-08-13T08:52:15",
+  "stamp": "2026-08-14T08:46:35",
   "trading_day": {
-    "date": "2026-08-13",
+    "date": "2026-08-14",
     "is_trading_day": true,
     "source": "bench_calendar",
     "bench_n": 120,
-    "bench_first": "2026-02-12",
-    "bench_last": "2026-08-13",
-    "data_asof": "2026-08-13",
+    "bench_first": "2026-02-13",
+    "bench_last": "2026-08-14",
+    "data_asof": "2026-08-14",
     "data_lag": false,
     "in_closed_table": false,
     "in_makeup_table": false
   },
-  "market_asof": "2026-08-13",
+  "market_asof": "2026-08-14",
   "data_lag": false,
-  "latest_time": "2026-08-13 08:51",
+  "latest_time": "2026-08-14 08:46",
   "action": "🟡 持有 标普500ETF (无需操作)",
   "market_ok": true,
   "signal_live": {
     "name": "c01_q10_vt08_soft_oh38_xgn",
-    "live_return_pct": 0.452,
-    "bench_return_pct": -1.2116,
-    "live_excess_pct": 1.6636,
-    "days_live": 17,
+    "live_return_pct": 2.362,
+    "bench_return_pct": -1.2743,
+    "live_excess_pct": 3.6363,
+    "days_live": 18,
     "thin_live": false,
     "live_start": "2026-07-21",
     "holdings": "标普500ETF",
-    "total_value": 100452.16,
-    "market_asof": "2026-08-13",
+    "total_value": 102361.66,
+    "market_asof": "2026-08-14",
     "data_lag": false
   },
   "pipeline_last": {
-    "stamp": "20260812_084847",
+    "stamp": "20260813_085151",
     "ok": true,
-    "data_asof": "2026-08-12",
+    "data_asof": "2026-08-13",
     "data_lag": false
   },
   "site_meta": {
-    "market_asof": "2026-08-12",
+    "market_asof": "2026-08-13",
     "data_lag": false,
-    "built_at": "2026-08-12T08:49:16"
+    "built_at": "2026-08-13T08:52:20"
   },
   "days_to_ready": 0,
   "eta_note": "样本已够, 若无 DATA_LAG 则应 READY",
   "ready_level": "READY",
-  "text": "======== 行情/收益取证 ========\n时间: 2026-08-13T08:52:15\n交易日: True date=2026-08-13 source=bench_calendar\n行情截至: 2026-08-13\n信号时间: 2026-08-13 08:51  动作: 🟡 持有 标普500ETF (无需操作)  市场: 开\nSIGNAL: c01_q10_vt08_soft_oh38_xgn\n  live=0.452 xs=1.6636 Lrets=17 thin=False 持仓=标普500ETF\npipeline_last: stamp=20260812_084847 ok=True asof=2026-08-12 lag=False\nsite_meta: asof=2026-08-12 lag=False\ndtr=0 eta=样本已够, 若无 DATA_LAG 则应 READY level=READY\n========\n"
+  "text": "======== 行情/收益取证 ========\n时间: 2026-08-14T08:46:35\n交易日: True date=2026-08-14 source=bench_calendar\n行情截至: 2026-08-14\n信号时间: 2026-08-14 08:46  动作: 🟡 持有 标普500ETF (无需操作)  市场: 开\nSIGNAL: c01_q10_vt08_soft_oh38_xgn\n  live=2.362 xs=3.6363 Lrets=18 thin=False 持仓=标普500ETF\npipeline_last: stamp=20260813_085151 ok=True asof=2026-08-13 lag=False\nsite_meta: asof=2026-08-13 lag=False\ndtr=0 eta=样本已够, 若无 DATA_LAG 则应 READY level=READY\n========\n"
 }
