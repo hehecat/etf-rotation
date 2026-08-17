@@ -1,9 +1,9 @@
 ======== 有效收益 (live段) ========
-时间: 2026-08-14T08:46:36
-行情截至: 2026-08-14
+时间: 2026-08-17T08:08:41
+行情截至: 2026-08-17
 动作: 🟡 持有 标普500ETF (无需操作)  市场: 开
 策略: c01_q10_vt08_soft_oh38_xgn
-live=2.362 xs=3.6363 bench=-1.2743 Lrets=18 thin=False
+live=1.507 xs=1.2145 bench=0.2925 Lrets=19 thin=False
 from=2026-07-21 持仓=标普500ETF
 days_to_ready=0 eta=样本已够, 若无 DATA_LAG 则应 READY
 ========

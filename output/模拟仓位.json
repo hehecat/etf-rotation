@@ -23,15 +23,15 @@
   "wins": 0,
   "losses": 0,
   "total_pnl": 0.0,
-  "total_value": 102916.86,
-  "return_pct": 2.92,
+  "total_value": 101860.86,
+  "return_pct": 1.86,
   "last_rebalance": "2026-08-07",
   "config": "C01_效15d",
-  "last_update": "2026-08-14 08:46",
+  "last_update": "2026-08-17 08:08",
   "note": "重置: 云端首跑无基准误买稀土, 已回滚空仓",
-  "days_to_rebalance": 10,
+  "days_to_rebalance": 9,
   "market_ok": true,
-  "breadth": 0.942,
+  "breadth": 0.846,
   "shadow": {
     "config": "C01_Q10_VT08_SOFT_OH38_EXTRA_GOLD_NQ",
     "research": true,
@@ -40,7 +40,7 @@
       {
         "code": "SH513500",
         "name": "标普500ETF",
-        "score": 2.241
+        "score": 1.523
       }
     ],
     "action": "HOLD 标普500ETF @暴露86%",
@@ -53,23 +53,23 @@
         "error": null,
         "holdings": "标普500ETF",
         "n_holdings": 1,
-        "total_value": 102361.66,
-        "return_pct": 2.36,
+        "total_value": 101506.66,
+        "return_pct": 1.51,
         "live": {
           "anchor_nav": 100000.0,
           "start_date": "2026-07-21",
-          "nav": 102361.66,
-          "return_pct": 2.362,
-          "n_nav": 19,
-          "n_rets": 18,
-          "sharpe": 4.251,
+          "nav": 101506.66,
+          "return_pct": 1.507,
+          "n_nav": 20,
+          "n_rets": 19,
+          "sharpe": 2.422,
           "n_trades": 1,
           "n_holdings": 1,
           "holdings": "标普500ETF",
-          "asof": "2026-08-14",
+          "asof": "2026-08-17",
           "from_warmup": false
         },
-        "live_return_pct": 2.362,
+        "live_return_pct": 1.507,
         "executed": null
       },
       {
@@ -80,23 +80,23 @@
         "error": null,
         "holdings": "标普500ETF",
         "n_holdings": 1,
-        "total_value": 102361.66,
-        "return_pct": 2.36,
+        "total_value": 101506.66,
+        "return_pct": 1.51,
         "live": {
           "anchor_nav": 100000.0,
           "start_date": "2026-07-21",
-          "nav": 102361.66,
-          "return_pct": 2.362,
-          "n_nav": 19,
-          "n_rets": 18,
-          "sharpe": 4.251,
+          "nav": 101506.66,
+          "return_pct": 1.507,
+          "n_nav": 20,
+          "n_rets": 19,
+          "sharpe": 2.422,
           "n_trades": 1,
           "n_holdings": 1,
           "holdings": "标普500ETF",
-          "asof": "2026-08-14",
+          "asof": "2026-08-17",
           "from_warmup": false
         },
-        "live_return_pct": 2.362,
+        "live_return_pct": 1.507,
         "executed": null
       },
       {
@@ -107,23 +107,23 @@
         "error": null,
         "holdings": "标普500ETF",
         "n_holdings": 1,
-        "total_value": 102626.83,
-        "return_pct": 2.63,
+        "total_value": 101675.83,
+        "return_pct": 1.68,
         "live": {
           "anchor_nav": 100000.0,
           "start_date": "2026-07-21",
-          "nav": 102626.83,
-          "return_pct": 2.627,
-          "n_nav": 19,
-          "n_rets": 18,
-          "sharpe": 4.252,
+          "nav": 101675.83,
+          "return_pct": 1.676,
+          "n_nav": 20,
+          "n_rets": 19,
+          "sharpe": 2.426,
           "n_trades": 1,
           "n_holdings": 1,
           "holdings": "标普500ETF",
-          "asof": "2026-08-14",
+          "asof": "2026-08-17",
           "from_warmup": false
         },
-        "live_return_pct": 2.627,
+        "live_return_pct": 1.676,
         "executed": null
       },
       {
@@ -134,23 +134,23 @@
         "error": null,
         "holdings": "标普500ETF",
         "n_holdings": 1,
-        "total_value": 102626.83,
-        "return_pct": 2.63,
+        "total_value": 101675.83,
+        "return_pct": 1.68,
         "live": {
           "anchor_nav": 100000.0,
           "start_date": "2026-07-21",
-          "nav": 102626.83,
-          "return_pct": 2.627,
-          "n_nav": 19,
-          "n_rets": 18,
-          "sharpe": 4.252,
+          "nav": 101675.83,
+          "return_pct": 1.676,
+          "n_nav": 20,
+          "n_rets": 19,
+          "sharpe": 2.426,
           "n_trades": 1,
           "n_holdings": 1,
           "holdings": "标普500ETF",
-          "asof": "2026-08-14",
+          "asof": "2026-08-17",
           "from_warmup": false
         },
-        "live_return_pct": 2.627,
+        "live_return_pct": 1.676,
         "executed": null
       }
     ],
@@ -168,18 +168,18 @@
           "position_pct": 0.95,
           "inv_vol_scale": 1.0,
           "inv_vol_src": "portfolio",
-          "vol20": 0.002107,
+          "vol20": 0.004868,
           "regime": "chop",
           "regime_mult": 0.9,
           "regime_info": {
             "market_ok": true,
-            "ma20": 4.70495,
-            "ma60": 4.8258,
+            "ma20": 4.7125,
+            "ma60": 4.824783,
             "ma_up": false,
-            "vol20": 0.012709
+            "vol20": 0.012846
           },
           "vol_target": 0.08,
-          "vol_ann": 0.0335,
+          "vol_ann": 0.0773,
           "vol_scale": 1.0,
           "vol_src": "portfolio"
         },
@@ -211,21 +211,21 @@
       "holdings_str": "标普500ETF",
       "n_holdings": 1,
       "cash": 23188.66,
-      "total_value": 102361.66,
-      "return_pct": 2.36,
-      "n_port_rets": 18,
+      "total_value": 101506.66,
+      "return_pct": 1.51,
+      "n_port_rets": 19,
       "live": {
         "anchor_nav": 100000.0,
         "start_date": "2026-07-21",
-        "nav": 102361.66,
-        "return_pct": 2.362,
-        "n_nav": 19,
-        "n_rets": 18,
-        "sharpe": 4.251,
+        "nav": 101506.66,
+        "return_pct": 1.507,
+        "n_nav": 20,
+        "n_rets": 19,
+        "sharpe": 2.422,
         "n_trades": 1,
         "n_holdings": 1,
         "holdings": "标普500ETF",
-        "asof": "2026-08-14",
+        "asof": "2026-08-17",
         "from_warmup": false
       },
       "executed": null
@@ -321,6 +321,10 @@
     {
       "date": "2026-08-14",
       "nav": 102916.86
+    },
+    {
+      "date": "2026-08-17",
+      "nav": 101860.86
     }
   ],
   "port_rets": [
@@ -341,6 +345,7 @@
     0.007037856268980569,
     -0.006289803906230462,
     0.004571389296755379,
-    0.02345302424082485
+    0.02345302424082485,
+    -0.01026070946976032
   ]
 }

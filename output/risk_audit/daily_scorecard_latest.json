@@ -1,83 +1,83 @@
 {
   "schema": 1,
   "source": "pipeline",
-  "date": "2026-08-14",
-  "market_asof": "2026-08-14",
+  "date": "2026-08-17",
+  "market_asof": "2026-08-17",
   "data_lag": false,
   "latest_stale": false,
   "trading_day": {
-    "date": "2026-08-14",
+    "date": "2026-08-17",
     "is_trading_day": true,
-    "data_asof": "2026-08-14",
+    "data_asof": "2026-08-17",
     "data_lag": false
   },
   "level": "READY",
   "decision": "ok",
   "next_action": "read_yield",
   "readable_yield": true,
-  "days_live": 18,
+  "days_live": 19,
   "days_to_ready": 0,
   "thin_live": false,
-  "live_return_pct": 2.362,
-  "live_excess_pct": 3.6363,
+  "live_return_pct": 1.507,
+  "live_excess_pct": 1.2145,
   "eta_note": "样本已够, 若无 DATA_LAG 则应 READY",
   "prod": {
     "config": "C01_效15d",
     "action": "🟡 持有 标普500ETF (无需操作)",
     "market_ok": true,
     "holding": "标普500ETF",
-    "total_value": 102916.86,
-    "return_pct": 2.92,
-    "time": "2026-08-14 08:46"
+    "total_value": 101860.86,
+    "return_pct": 1.86,
+    "time": "2026-08-17 08:08"
   },
   "signal_live": {
     "name": "c01_q10_vt08_soft_oh38_xgn",
-    "live_return_pct": 2.362,
-    "live_excess_pct": 3.6363,
-    "days_live": 18,
+    "live_return_pct": 1.507,
+    "live_excess_pct": 1.2145,
+    "days_live": 19,
     "thin_live": false,
     "holdings": "标普500ETF",
-    "market_asof": "2026-08-14"
+    "market_asof": "2026-08-17"
   },
   "shadows": [
     {
       "name": "c01_q10_vt08_soft_oh38",
-      "live_return_pct": 2.362,
-      "live_excess_pct": 3.6363,
-      "days_live": 18,
+      "live_return_pct": 1.507,
+      "live_excess_pct": 1.2145,
+      "days_live": 19,
       "thin_live": false,
       "holdings": "标普500ETF",
-      "total_value": 102361.66,
+      "total_value": 101506.66,
       "signal": false
     },
     {
       "name": "c01_q10_vt08_soft_oh38_xgn",
-      "live_return_pct": 2.362,
-      "live_excess_pct": 3.6363,
-      "days_live": 18,
+      "live_return_pct": 1.507,
+      "live_excess_pct": 1.2145,
+      "days_live": 19,
       "thin_live": false,
       "holdings": "标普500ETF",
-      "total_value": 102361.66,
+      "total_value": 101506.66,
       "signal": true
     },
     {
       "name": "c01_q10_vt09_oh35",
-      "live_return_pct": 2.627,
-      "live_excess_pct": 3.9013,
-      "days_live": 18,
+      "live_return_pct": 1.676,
+      "live_excess_pct": 1.3835,
+      "days_live": 19,
       "thin_live": false,
       "holdings": "标普500ETF",
-      "total_value": 102626.83,
+      "total_value": 101675.83,
       "signal": false
     },
     {
       "name": "c01_q10_vt11",
-      "live_return_pct": 2.627,
-      "live_excess_pct": 3.9013,
-      "days_live": 18,
+      "live_return_pct": 1.676,
+      "live_excess_pct": 1.3835,
+      "days_live": 19,
       "thin_live": false,
       "holdings": "标普500ETF",
-      "total_value": 102626.83,
+      "total_value": 101675.83,
       "signal": false
     }
   ],
@@ -86,6 +86,6 @@
     "warn_n": 4
   },
   "pipeline_ok": true,
-  "pipeline_stamp": "20260813_085151",
-  "stamp": "2026-08-14T08:46:37"
+  "pipeline_stamp": "20260814_084608",
+  "stamp": "2026-08-17T08:08:42"
 }
