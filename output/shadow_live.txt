@@ -5,10 +5,10 @@
 超额: excess% = live% - 基准SH510300同期%
 ----------------------------
 name                              live%   bench%      xs%        nav Lrets note
-  c01_q10_vt08_soft_oh38        +1.507%  +0.292%  +1.214%     101507    19 H=标普500ETF from 2026-07-21 BUY 标普500ETF Lsh=2.422
-  c01_q10_vt08_soft_oh38_xgn    +1.507%  +0.292%  +1.214%     101507    19 SIGNAL H=标普500ETF from 2026-07-21 BUY 标普500ETF Lsh=2.422
-  c01_q10_vt09_oh35             +1.676%  +0.292%  +1.383%     101676    19 H=标普500ETF from 2026-07-21 BUY 标普500ETF Lsh=2.426
-  c01_q10_vt11                  +1.676%  +0.292%  +1.383%     101676    19 H=标普500ETF from 2026-07-21 BUY 标普500ETF Lsh=2.426
+  c01_q10_vt08_soft_oh38        -0.203%  +0.000%  -0.203%      99797    20 H=标普500ETF from 2026-07-21 BUY 标普500ETF Lsh=-0.202
+  c01_q10_vt08_soft_oh38_xgn    -0.203%  +0.000%  -0.203%      99797    20 SIGNAL H=标普500ETF from 2026-07-21 BUY 标普500ETF Lsh=-0.202
+  c01_q10_vt09_oh35             -0.226%  +0.000%  -0.226%      99774    20 H=标普500ETF from 2026-07-21 BUY 标普500ETF Lsh=-0.197
+  c01_q10_vt11                  -0.226%  +0.000%  -0.226%      99774    20 H=标普500ETF from 2026-07-21 BUY 标普500ETF Lsh=-0.197
 ----------------------------
 提示: 趋势关空仓 live≈0; 若基准下跌则 excess>0 表示避险有效
   python3 scripts/etf.py daily --dry-run

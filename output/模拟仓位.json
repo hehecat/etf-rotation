@@ -23,164 +23,164 @@
   "wins": 0,
   "losses": 0,
   "total_pnl": 0.0,
-  "total_value": 101860.86,
-  "return_pct": 1.86,
+  "total_value": 99748.86,
+  "return_pct": -0.25,
   "last_rebalance": "2026-08-07",
   "config": "C01_效15d",
-  "last_update": "2026-08-17 08:08",
+  "last_update": "2026-08-18 08:03",
   "note": "重置: 云端首跑无基准误买稀土, 已回滚空仓",
-  "days_to_rebalance": 9,
+  "days_to_rebalance": 8,
   "market_ok": true,
-  "breadth": 0.846,
+  "breadth": 0.827,
   "shadow": {
     "config": "C01_Q10_VT08_SOFT_OH38_EXTRA_GOLD_NQ",
     "research": true,
     "market_ok": true,
     "picks": [
       {
-        "code": "SH513500",
-        "name": "标普500ETF",
-        "score": 1.523
+        "code": "SZ159790",
+        "name": "碳中和ETF",
+        "score": 1.544
       }
     ],
-    "action": "HOLD 标普500ETF @暴露86%",
+    "action": "HOLD 碳中和ETF @暴露82%",
     "mainline": [
       {
         "name": "c01_q10_vt08_soft_oh38_xgn",
-        "action": "HOLD 标普500ETF @暴露86%",
+        "action": "HOLD 碳中和ETF @暴露82%",
         "market_ok": true,
         "signal": true,
         "error": null,
         "holdings": "标普500ETF",
         "n_holdings": 1,
-        "total_value": 101506.66,
-        "return_pct": 1.51,
+        "total_value": 99796.66,
+        "return_pct": -0.2,
         "live": {
           "anchor_nav": 100000.0,
           "start_date": "2026-07-21",
-          "nav": 101506.66,
-          "return_pct": 1.507,
-          "n_nav": 20,
-          "n_rets": 19,
-          "sharpe": 2.422,
+          "nav": 99796.66,
+          "return_pct": -0.203,
+          "n_nav": 21,
+          "n_rets": 20,
+          "sharpe": -0.202,
           "n_trades": 1,
           "n_holdings": 1,
           "holdings": "标普500ETF",
-          "asof": "2026-08-17",
+          "asof": "2026-08-18",
           "from_warmup": false
         },
-        "live_return_pct": 1.507,
+        "live_return_pct": -0.203,
         "executed": null
       },
       {
         "name": "c01_q10_vt08_soft_oh38",
-        "action": "HOLD 标普500ETF @暴露86%",
+        "action": "HOLD 碳中和ETF @暴露82%",
         "market_ok": true,
         "signal": false,
         "error": null,
         "holdings": "标普500ETF",
         "n_holdings": 1,
-        "total_value": 101506.66,
-        "return_pct": 1.51,
+        "total_value": 99796.66,
+        "return_pct": -0.2,
         "live": {
           "anchor_nav": 100000.0,
           "start_date": "2026-07-21",
-          "nav": 101506.66,
-          "return_pct": 1.507,
-          "n_nav": 20,
-          "n_rets": 19,
-          "sharpe": 2.422,
+          "nav": 99796.66,
+          "return_pct": -0.203,
+          "n_nav": 21,
+          "n_rets": 20,
+          "sharpe": -0.202,
           "n_trades": 1,
           "n_holdings": 1,
           "holdings": "标普500ETF",
-          "asof": "2026-08-17",
+          "asof": "2026-08-18",
           "from_warmup": false
         },
-        "live_return_pct": 1.507,
+        "live_return_pct": -0.203,
         "executed": null
       },
       {
         "name": "c01_q10_vt09_oh35",
-        "action": "HOLD 标普500ETF @暴露95%",
+        "action": "HOLD 碳中和ETF @暴露93%",
         "market_ok": true,
         "signal": false,
         "error": null,
         "holdings": "标普500ETF",
         "n_holdings": 1,
-        "total_value": 101675.83,
-        "return_pct": 1.68,
+        "total_value": 99773.83,
+        "return_pct": -0.23,
         "live": {
           "anchor_nav": 100000.0,
           "start_date": "2026-07-21",
-          "nav": 101675.83,
-          "return_pct": 1.676,
-          "n_nav": 20,
-          "n_rets": 19,
-          "sharpe": 2.426,
+          "nav": 99773.83,
+          "return_pct": -0.226,
+          "n_nav": 21,
+          "n_rets": 20,
+          "sharpe": -0.197,
           "n_trades": 1,
           "n_holdings": 1,
           "holdings": "标普500ETF",
-          "asof": "2026-08-17",
+          "asof": "2026-08-18",
           "from_warmup": false
         },
-        "live_return_pct": 1.676,
+        "live_return_pct": -0.226,
         "executed": null
       },
       {
         "name": "c01_q10_vt11",
-        "action": "HOLD 标普500ETF @暴露95%",
+        "action": "HOLD 碳中和ETF @暴露95%",
         "market_ok": true,
         "signal": false,
         "error": null,
         "holdings": "标普500ETF",
         "n_holdings": 1,
-        "total_value": 101675.83,
-        "return_pct": 1.68,
+        "total_value": 99773.83,
+        "return_pct": -0.23,
         "live": {
           "anchor_nav": 100000.0,
           "start_date": "2026-07-21",
-          "nav": 101675.83,
-          "return_pct": 1.676,
-          "n_nav": 20,
-          "n_rets": 19,
-          "sharpe": 2.426,
+          "nav": 99773.83,
+          "return_pct": -0.226,
+          "n_nav": 21,
+          "n_rets": 20,
+          "sharpe": -0.197,
           "n_trades": 1,
           "n_holdings": 1,
           "holdings": "标普500ETF",
-          "asof": "2026-08-17",
+          "asof": "2026-08-18",
           "from_warmup": false
         },
-        "live_return_pct": 1.676,
+        "live_return_pct": -0.226,
         "executed": null
       }
     ],
     "decision": {
       "action": "HOLD",
-      "target": "SH513500",
-      "name": "标普500ETF",
-      "target_exposure": 0.855,
+      "target": "SZ159790",
+      "name": "碳中和ETF",
+      "target_exposure": 0.8248,
       "reasons": [
-        "持仓即最优 标普500ETF → 继续持有"
+        "有更优标碳中和ETF, 但调仓窗口未到(还需3日)"
       ],
       "exposure": {
-        "target_exposure": 0.855,
+        "target_exposure": 0.8248,
         "parts": {
           "position_pct": 0.95,
           "inv_vol_scale": 1.0,
           "inv_vol_src": "portfolio",
-          "vol20": 0.004868,
+          "vol20": 0.005224,
           "regime": "chop",
           "regime_mult": 0.9,
           "regime_info": {
             "market_ok": true,
             "ma20": 4.7125,
-            "ma60": 4.824783,
+            "ma60": 4.822283,
             "ma_up": false,
-            "vol20": 0.012846
+            "vol20": 0.011079
           },
           "vol_target": 0.08,
-          "vol_ann": 0.0773,
-          "vol_scale": 1.0,
+          "vol_ann": 0.0829,
+          "vol_scale": 0.9647,
           "vol_src": "portfolio"
         },
         "notes": [
@@ -211,21 +211,21 @@
       "holdings_str": "标普500ETF",
       "n_holdings": 1,
       "cash": 23188.66,
-      "total_value": 101506.66,
-      "return_pct": 1.51,
-      "n_port_rets": 19,
+      "total_value": 99796.66,
+      "return_pct": -0.2,
+      "n_port_rets": 20,
       "live": {
         "anchor_nav": 100000.0,
         "start_date": "2026-07-21",
-        "nav": 101506.66,
-        "return_pct": 1.507,
-        "n_nav": 20,
-        "n_rets": 19,
-        "sharpe": 2.422,
+        "nav": 99796.66,
+        "return_pct": -0.203,
+        "n_nav": 21,
+        "n_rets": 20,
+        "sharpe": -0.202,
         "n_trades": 1,
         "n_holdings": 1,
         "holdings": "标普500ETF",
-        "asof": "2026-08-17",
+        "asof": "2026-08-18",
         "from_warmup": false
       },
       "executed": null
@@ -233,7 +233,7 @@
   },
   "action_summary": "🟡 持有 标普500ETF (无需操作)",
   "decision_reasons": [
-    "持仓即最优 标普500ETF → 继续持有"
+    "有更优标碳中和ETF, 但调仓窗口未到(还需8日)"
   ],
   "holdings": [
     {
@@ -325,6 +325,10 @@
     {
       "date": "2026-08-17",
       "nav": 101860.86
+    },
+    {
+      "date": "2026-08-18",
+      "nav": 99748.86
     }
   ],
   "port_rets": [
@@ -346,6 +350,7 @@
     -0.006289803906230462,
     0.004571389296755379,
     0.02345302424082485,
-    -0.01026070946976032
+    -0.01026070946976032,
+    -0.020734166194944725
   ]
 }
