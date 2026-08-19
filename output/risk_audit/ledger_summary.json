@@ -1,41 +1,41 @@
 {
-  "n": 18,
+  "n": 19,
   "path": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/daily_scorecard.jsonl",
   "first_date": "2026-07-21",
-  "last_date": "2026-08-18",
-  "readable_n": 16,
+  "last_date": "2026-08-19",
+  "readable_n": 17,
   "lag_n": 1,
   "thin_n": 2,
   "trend_on_n": 8,
-  "trend_off_n": 10,
-  "prod_empty_n": 10,
+  "trend_off_n": 11,
+  "prod_empty_n": 11,
   "prod_open_n": 8,
   "xs_readable": {
-    "n": 16,
+    "n": 17,
     "min": -0.203,
     "max": 3.9273,
-    "median": 1.8275,
-    "last": -0.203,
-    "pos": 15,
+    "median": 1.6636,
+    "last": 1.2604,
+    "pos": 16,
     "neg": 1
   },
   "live_readable": {
-    "n": 16,
-    "min": -0.203,
+    "n": 17,
+    "min": -1.518,
     "max": 2.362,
     "median": 0.0,
-    "last": -0.203,
+    "last": -1.518,
     "pos": 6,
-    "neg": 2
+    "neg": 3
   },
   "last_row": {
-    "date": "2026-08-18",
+    "date": "2026-08-19",
     "level": "READY",
     "readable_yield": true,
-    "live_return_pct": -0.203,
-    "live_excess_pct": -0.203,
+    "live_return_pct": -1.518,
+    "live_excess_pct": 1.2604,
     "data_lag": false,
     "next_action": "read_yield",
-    "action": "🟡 持有 标普500ETF (无需操作)"
+    "action": "🔴 卖出 标普500ETF (趋势空仓) 盈亏-2.0%"
   }
 }

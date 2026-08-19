@@ -225,7 +225,7 @@ footer{
     <div class="brand-row">
       <div class="brand-meta">
         <h1>ETF 轮动 · 日更面板</h1>
-        <div class="muted">生成于 2026-08-18 08:04:14 · 生产账户冻结 · 研究影子观察中</div>
+        <div class="muted">生成于 2026-08-19 08:04:43 · 生产账户冻结 · 研究影子观察中</div>
       </div>
       <span class="chip">只读 · 非投资建议</span>
     </div>
@@ -244,22 +244,22 @@ footer{
     <a href="index.html">返回总览</a> · <a href="research.html">研究明细</a>
   </div>
 </div>
-<p><span class="badge warn">警告 4</span></p>
+<p><span class="badge ok">无告警</span></p>
 <div class="card"><details><summary>今日速览</summary><pre class='raw'>======== ETF 今日速览 ========
-时间: 2026-08-18T08:04:08
+时间: 2026-08-19T08:04:37
 信号默认影子: c01_q10_vt08_soft_oh38_xgn
 ----------------------------
-生产动作: 🟡 持有 标普500ETF (无需操作)
-市场: 开  宽度=0.8269230769230769  配置=C01_效15d  信号时间: 2026-08-18 08:03  行情截至: 2026-08-18
+生产动作: 🔴 卖出 标普500ETF (趋势空仓) 盈亏-2.0%
+市场: 关  宽度=0.6923076923076923  配置=C01_效15d  信号时间: 2026-08-19 08:04  行情截至: 2026-08-19
 原因:
-  · 有更优标碳中和ETF, 但调仓窗口未到(还需8日)
-研究影子动作: HOLD 碳中和ETF @暴露82%
-研究目标暴露: 82.5%
+  · 沪深300跌破MA20 → 清仓
+研究影子动作: SELL (沪深300跌破MA20 → 清仓)
+研究目标暴露: 0.0%
 -------- 有效收益 (SIGNAL) --------
   策略: c01_q10_vt08_soft_oh38_xgn
-  live=-0.203%  xs=-0.203%  bench=+0.000%
-  from=2026-07-21  Lrets=20  持仓=标普500ETF
-  行情截至: 2026-08-18
+  live=-1.518%  xs=+1.260%  bench=-2.778%
+  from=2026-07-21  Lrets=21  持仓=空仓
+  行情截至: 2026-08-19
 -------- 监控告警 --------
   error=0 warn=0 ok=True
 -------- 下一步 --------
@@ -278,8 +278,8 @@ ETA: 样本已够, 若无 DATA_LAG 则应 READY
 ========
 </pre></details><details><summary>脉搏</summary><pre class='raw'>======== PULSE 脉搏 ========
 level: READY
-asof: 2026-08-18 lag=False
-live=-0.203 xs=-0.203 Lrets=20 thin=False
+asof: 2026-08-19 lag=False
+live=-1.518 xs=1.2604 Lrets=21 thin=False
 dtr=0 eta=样本已够, 若无 DATA_LAG 则应 READY
 decision: ok
 next_action: read_yield
@@ -290,71 +290,66 @@ readable_yield: True
 ========
 </pre></details><details><summary>摘要</summary><pre class='raw'>======== DIGEST ========
 可判性: READY
-asof: 2026-08-18 lag=False
-live=-0.203 xs=-0.203 Lrets=20 thin=False
+asof: 2026-08-19 lag=False
+live=-1.518 xs=1.2604 Lrets=21 thin=False
 decision: ok
 eta: 样本已够, 若无 DATA_LAG 则应 READY
 推荐: ./etf yield
 ========
 </pre></details><details><summary>可判性</summary><pre class='raw'>======== READY 有效收益可判性 ========
 level: READY
-asof: 2026-08-18 lag=False
-live=-0.203 xs=-0.203 Lrets=20 thin=False
+asof: 2026-08-19 lag=False
+live=-1.518 xs=1.2604 Lrets=21 thin=False
 decision: ok
 days_to_ready: 0
 eta: 样本已够, 若无 DATA_LAG 则应 READY
 blockers: 无
 ========
 </pre></details><details><summary>有效收益</summary><pre class='raw'>======== 有效收益 (live段) ========
-时间: 2026-08-18T08:04:09
-行情截至: 2026-08-18
-动作: 🟡 持有 标普500ETF (无需操作)  市场: 开
+时间: 2026-08-19T08:04:38
+行情截至: 2026-08-19
+动作: 🔴 卖出 标普500ETF (趋势空仓) 盈亏-2.0%  市场: 关
 策略: c01_q10_vt08_soft_oh38_xgn
-live=-0.203 xs=-0.203 bench=0.0 Lrets=20 thin=False
-from=2026-07-21 持仓=标普500ETF
+live=-1.518 xs=1.2604 bench=-2.7784 Lrets=21 thin=False
+from=2026-07-21 持仓=空仓
 days_to_ready=0 eta=样本已够, 若无 DATA_LAG 则应 READY
 ========
 </pre></details><details id='asof'><summary>行情取证</summary><pre class='raw'>======== 行情/收益取证 ========
-时间: 2026-08-18T08:04:08
-交易日: True date=2026-08-18 source=bench_calendar
-行情截至: 2026-08-18
-信号时间: 2026-08-18 08:03  动作: 🟡 持有 标普500ETF (无需操作)  市场: 开
+时间: 2026-08-19T08:04:37
+交易日: True date=2026-08-19 source=bench_calendar
+行情截至: 2026-08-19
+信号时间: 2026-08-19 08:04  动作: 🔴 卖出 标普500ETF (趋势空仓) 盈亏-2.0%  市场: 关
 SIGNAL: c01_q10_vt08_soft_oh38_xgn
-  live=-0.203 xs=-0.203 Lrets=20 thin=False 持仓=标普500ETF
-pipeline_last: stamp=20260817_080812 ok=True asof=2026-08-17 lag=False
-site_meta: asof=2026-08-17 lag=False
+  live=-1.518 xs=1.2604 Lrets=21 thin=False 持仓=空仓
+pipeline_last: stamp=20260818_080343 ok=True asof=2026-08-18 lag=False
+site_meta: asof=2026-08-18 lag=False
 dtr=0 eta=样本已够, 若无 DATA_LAG 则应 READY level=READY
 ========
 </pre></details><details id='data'><summary>行情状态</summary><pre class='raw'>======== 行情状态 ========
-行情截至: 2026-08-18
-信号时间: 2026-08-18 08:03
+行情截至: 2026-08-19
+信号时间: 2026-08-19 08:04
 决策: ok
 dtr=0 eta=样本已够, 若无 DATA_LAG 则应 READY
 ========
 </pre></details><details><summary>下一步</summary><pre class='raw'>======== NEXT 决策 ========
 decision: ok
-asof: 2026-08-18 lag=False stale=False
+asof: 2026-08-19 lag=False stale=False
 推荐: ./etf
 dtr=0 eta=样本已够, 若无 DATA_LAG 则应 READY
 ========
 </pre></details><details id='pull'><summary>强刷行情</summary><pre class='raw'>======== PULL 强刷行情 ========
-刷前 asof=2026-08-18 lag=False
-刷后 asof=2026-08-18 lag=False
+刷前 asof=2026-08-19 lag=False
+刷后 asof=2026-08-19 lag=False
 advanced=False cleared_lag=False
 ok=1 fail=0
 ========
 </pre></details><details id='go'><summary>一键闭环</summary><pre class='raw'>======== GO 一键闭环 ========
 decision=ok
-asof=2026-08-18 lag=False
+asof=2026-08-19 lag=False
 did_wait=False wait_code=0
 推荐: ./etf
 ========
 </pre></details><details><summary>可判性轨迹</summary><pre class='raw'>======== PROGRESS 可判性轨迹 ========
-2026-08-14 level=READY asof=2026-08-14 Lrets=18 dtr=0 live=2.362 xs=3.6363 lag=False src=digest
-2026-08-14 level=READY asof=2026-08-14 Lrets=18 dtr=0 live=2.362 xs=3.6363 lag=False src=pulse
-2026-08-14 level=READY asof=2026-08-14 Lrets=18 dtr=0 live=2.362 xs=3.6363 lag=False src=pull_noadv
-2026-08-17 level=READY asof=2026-08-17 Lrets=19 dtr=0 live=1.507 xs=1.2145 lag=False src=go
-2026-08-17 level=READY asof=2026-08-17 Lrets=19 dtr=0 live=1.507 xs=1.2145 lag=False src=ready
 2026-08-17 level=READY asof=2026-08-17 Lrets=19 dtr=0 live=1.507 xs=1.2145 lag=False src=digest
 2026-08-17 level=READY asof=2026-08-17 Lrets=19 dtr=0 live=1.507 xs=1.2145 lag=False src=pulse
 2026-08-17 level=READY asof=2026-08-17 Lrets=19 dtr=0 live=1.507 xs=1.2145 lag=False src=pull_noadv
@@ -362,98 +357,99 @@ did_wait=False wait_code=0
 2026-08-18 level=READY asof=2026-08-18 Lrets=20 dtr=0 live=-0.203 xs=-0.203 lag=False src=ready
 2026-08-18 level=READY asof=2026-08-18 Lrets=20 dtr=0 live=-0.203 xs=-0.203 lag=False src=digest
 2026-08-18 level=READY asof=2026-08-18 Lrets=20 dtr=0 live=-0.203 xs=-0.203 lag=False src=pulse
+2026-08-18 level=READY asof=2026-08-18 Lrets=20 dtr=0 live=-0.203 xs=-0.203 lag=False src=pull_noadv
+2026-08-19 level=READY asof=2026-08-19 Lrets=21 dtr=0 live=-1.518 xs=1.2604 lag=False src=go
+2026-08-19 level=READY asof=2026-08-19 Lrets=21 dtr=0 live=-1.518 xs=1.2604 lag=False src=ready
+2026-08-19 level=READY asof=2026-08-19 Lrets=21 dtr=0 live=-1.518 xs=1.2604 lag=False src=digest
+2026-08-19 level=READY asof=2026-08-19 Lrets=21 dtr=0 live=-1.518 xs=1.2604 lag=False src=pulse
 ========
 </pre></details><details><summary>三合一速览</summary><pre class='raw'>======== BRIEF 速览 ========
-时间: 2026-08-18T08:04:09
-行情截至: 2026-08-18
-动作: 🟡 持有 标普500ETF (无需操作)  市场: 开
-live=-0.203 xs=-0.203 Lrets=20 thin=False
+时间: 2026-08-19T08:04:38
+行情截至: 2026-08-19
+动作: 🔴 卖出 标普500ETF (趋势空仓) 盈亏-2.0%  市场: 关
+live=-1.518 xs=1.2604 Lrets=21 thin=False
 dtr=0 eta=样本已够, 若无 DATA_LAG 则应 READY
 ========
 </pre></details><details id='signal'><summary>信号原文</summary><pre class='raw'>================================================================
-  ETF跨行业轮动 · C01_效15d  2026-08-18 08:03
+  ETF跨行业轮动 · C01_效15d  2026-08-19 08:04
   因子: {&#x27;eff&#x27;: 0.6, &#x27;mtf&#x27;: 0.4} | 调仓15日 | 止损-8%
   迟滞20% | 最小持仓5日 | 冻结:True
 ================================================================
 
-📊 沪深300: 4.787  MA20:4.713(+1.6%)  20日:+0.0%  ✅ 向上(可开仓)
-📈 市场宽度: 83%  有效池:52  剔除异常:0
+📊 沪深300: 4.654  MA20:4.707(-1.1%)  20日:-2.3%  ❌ 向下(空仓)
+📈 市场宽度: 69%  有效池:52  剔除异常:0
 
   【主策略】效率排名 TOP10
     # 名称                  现价     20日     效率  MTF     得分 状态
   --------------------------------------------------------------
-   1★ 碳中和ETF           0.733   +6.7%  0.397 1.00  +1.54 可选
-   2  黄金ETF            9.483   +7.2%  0.384 1.00  +1.47 可选
-   3  物流ETF            1.179   +6.3%  0.327 1.00  +1.15 可选
-   4  稀土ETF            0.896  +13.4%  0.315 1.00  +1.08 可选
-   5  房地产ETF           0.593   +8.2%  0.315 1.00  +1.08 可选
-   6  新能源ETF           2.616   +8.9%  0.299 1.00  +0.99 可选
-   7  光伏ETF            0.890   +9.2%  0.294 1.00  +0.96 可选
-   8  高端制造ETF          0.877   +8.4%  0.291 1.00  +0.94 可选
-   9  医疗ETF            0.353   +7.6%  0.281 1.00  +0.88 可选
-  10  卫星ETF            1.488  +13.2%  0.262 1.00  +0.78 可选
+   1  物流ETF            1.178   +4.6%  0.263 1.00  +1.81 空仓期
+   2  港股创新药ETF         1.276   +7.4%  0.237 1.00  +1.62 空仓期
+   3  红利ETF            3.360   +3.3%  0.217 1.00  +1.47 空仓期
+   4  黄金ETF            9.375   +4.9%  0.261 0.67  +1.38 空仓期
+   5  电力ETF            1.249   -5.6%  0.356 0.00  +1.23 空仓期
+   6  稀土ETF            0.864  +10.2%  0.221 0.67  +1.08 空仓期
+   7  煤炭ETF            1.273   +4.0%  0.157 1.00  +1.03 空仓期
+   8  银行ETF            1.750   +2.5%  0.153 1.00  +1.00 空仓期
+   9  房地产ETF           0.583   +5.2%  0.197 0.67  +0.91 空仓期
+  10  证券ETF            1.062   -4.7%  0.292 0.00  +0.76 空仓期
 
   【影子】C01_Q10_VT08_SOFT_OH38_EXTRA_GOLD_NQ TOP5 (不交易)
     # 名称                 20日     5日    影子分
   ------------------------------------------
-    1 碳中和ETF           +6.7%  +1.4%  +0.00
-    2 黄金ETF            +7.2%  +0.8%  +0.00
-    3 物流ETF            +6.3%  +2.3%  +0.00
-    4 稀土ETF           +13.4%  +2.9%  +0.00
-    5 房地产ETF           +8.2%  +1.0%  +0.00
+    1 物流ETF            +4.6%  +1.6%  +0.00
+    2 港股创新药ETF         +7.4%  +0.2%  +0.00
+    3 红利ETF            +3.3%  +1.7%  +0.00
+    4 黄金ETF            +4.9%  -1.4%  +0.00
+    5 电力ETF            -5.6%  -3.1%  +0.00
 
 ================================================================
-  ▸ 今日动作: 🟡 持有 标普500ETF (无需操作)
+  ▸ 今日动作: 🔴 卖出 标普500ETF (趋势空仓) 盈亏-2.0%
 ================================================================
-    · 有更优标碳中和ETF, 但调仓窗口未到(还需8日)
+    · 沪深300跌破MA20 → 清仓
 
   决策检查清单
-    [✓] 大盘&gt;MA20     趋势过滤
-    [✗] 调仓窗口        距上次7日 / 需≥15日
-    [✓] 最小持仓        已持7/5日
-    [✓] 未触止损        浮盈亏-0.3% / 线-8%
-    [✓] 有合格标的       碳中和ETF 得分+1.54
-    [✓] 目标暴露        95.0%
+    [✗] 大盘&gt;MA20     趋势过滤
+    [✗] 调仓窗口        距上次8日 / 需≥15日
+    [✓] 最小持仓        已持8/5日
+    [✓] 未触止损        浮盈亏-2.0% / 线-8%
+    [✓] 有合格标的       物流ETF 得分+1.81
+    [✓] 目标暴露        0.0%
 
-  调仓时钟: 上次 2026-08-07 | 已过 7 交易日 | 还需 8 交易日 | 锁定中
+  调仓时钟: 上次 2026-08-07 | 已过 8 交易日 | 还需 7 交易日 | 锁定中
 
 ================================================================
   模拟账户 · C01_效15d · 起步10万
 ================================================================
-  持仓: 标普500ETF(SH513500)  35200股
-  成本:2.695  止损:2.479
-  持仓天数: 7
-  现金:   5,131.26   持仓市值:  94,617.60
-  总资产:  99,748.86   总收益: -0.25%   累计盈亏: +0.00
-  交易: 0笔 (胜0/负0)  胜率:0%
+  持仓: 空仓
+  现金:  98,125.01   持仓市值:       0.00
+  总资产:  98,125.01   总收益: -1.87%   累计盈亏: -1,870.25
+  交易: 1笔 (胜0/负1)  胜率:0%
 
   最近交易:
     2026-08-07 BUY  标普500ETF       2.695×35200 信号买入
+    2026-08-19 SELL 标普500ETF       2.642×35200 盈亏:-1.97% 趋势空仓
 
   对照 · C01_Q10_VT08_SOFT_OH38_EXTRA_GOLD_NQ
-    影子趋势: ✅  建议: HOLD 碳中和ETF @暴露82%
-    研究暴露: 82.5%  regime=chop×0.9  vol_scale=0.9647 src=portfolio  inv=1.0
-    影子账户: 总资产=99796.66  收益=-0.2%  port_rets=20  path=/home/runner/work/etf-rotation/etf-rotation/output/shadow_states/c01_q10_vt08_soft_oh38_xgn.json
-    影子持仓: 标普500ETF 28500股 @ 2.695
+    影子趋势: ❌  建议: SELL (沪深300跌破MA20 → 清仓)
+    研究暴露: 0.0%  regime=bear×0.0  vol_scale=0.783 src=portfolio  inv=1.0
+    影子账户: 总资产=98481.9  收益=-1.52%  port_rets=21  path=/home/runner/work/etf-rotation/etf-rotation/output/shadow_states/c01_q10_vt08_soft_oh38_xgn.json
     注: vol_target 用组合已实现波动
-    · 有更优标碳中和ETF, 但调仓窗口未到(还需3日)
-    主策略现态: 标普500ETF
-    主策略目标暴露: 95.0%
+    注: 趋势关 → 目标暴露 0
+    · 沪深300跌破MA20 → 清仓
+    主策略现态: 空仓
+    主策略目标暴露: 0.0%
 
 ================================================================
   实盘备忘 (非投资建议)
-    1. 继续持有 标普500ETF, 无需操作
-    2. 盯止损 2.479
-    3. 调仓窗口还需 8 交易日
+    1. 卖出 标普500ETF  原因:趋势空仓
+    2. 当前空仓, 等趋势恢复或下一调仓窗
     · 固定配置至少跑满3个月再调参
 ================================================================
-
-  [持仓快照] 现价:2.688 浮盈亏:-0.26% 止损:2.479(距7.8%) 得分:+0.55
 -------- 有效收益 (SIGNAL live) --------
   策略: c01_q10_vt08_soft_oh38_xgn
-  live=-0.203%  xs=-0.203%  bench=+0.000%
-  from=2026-07-21  Lrets=20  持仓=标普500ETF
-  行情截至: 2026-08-18
+  live=-1.518%  xs=+1.260%  bench=-2.778%
+  from=2026-07-21  Lrets=21  持仓=空仓
+  行情截至: 2026-08-19
   口径: live%=暖机末→今 · xs%=live−基准 · 非全样本
 ----------------------------------------
 </pre></details><details><summary>影子对照</summary><pre class='raw'>======== 主线影子对照 ========
@@ -461,10 +457,10 @@ dtr=0 eta=样本已够, 若无 DATA_LAG 则应 READY
 目录: /home/runner/work/etf-rotation/etf-rotation/output/shadow_states
 ----------------------------
 name                              sh     dd   live%     xs%         tv gate note
-  c01_q10_vt08_soft_oh38           —      —   -0.20   +1.21      99797    ? CASH≠NAV H=标普500ETF T=BUY 标普500ETF L@2026-07-21
-  c01_q10_vt08_soft_oh38_xgn       —      —   -0.20   +1.21      99797    ? SIGNAL CASH≠NAV H=标普500ETF T=BUY 标普500ETF L@2026-07-21
-  c01_q10_vt09_oh35                —      —   -0.23   +1.38      99774    ? CASH≠NAV H=标普500ETF T=BUY 标普500ETF L@2026-07-21
-  c01_q10_vt11                     —      —   -0.23   +1.38      99774    ? CASH≠NAV H=标普500ETF T=BUY 标普500ETF L@2026-07-21
+  c01_q10_vt08_soft_oh38           —      —   -1.52   -0.20      98482    ? T=SELL 标普500ETF L@2026-07-21
+  c01_q10_vt08_soft_oh38_xgn       —      —   -1.52   -0.20      98482    ? SIGNAL T=SELL 标普500ETF L@2026-07-21
+  c01_q10_vt09_oh35                —      —   -1.69   -0.23      98311    ? T=SELL 标普500ETF L@2026-07-21
+  c01_q10_vt11                     —      —   -1.69   -0.23      98311    ? T=SELL 标普500ETF L@2026-07-21
 ----------------------------
 说明: sh/dd=暖机; live%/xs%=暖机末→今 (xs=live-基准); THIN=样本&lt;5日
   python3 scripts/etf.py live
@@ -477,56 +473,60 @@ name                              sh     dd   live%     xs%         tv gate note
 超额: excess% = live% - 基准SH510300同期%
 ----------------------------
 name                              live%   bench%      xs%        nav Lrets note
-  c01_q10_vt08_soft_oh38        -0.203%  +0.000%  -0.203%      99797    20 H=标普500ETF from 2026-07-21 BUY 标普500ETF Lsh=-0.202
-  c01_q10_vt08_soft_oh38_xgn    -0.203%  +0.000%  -0.203%      99797    20 SIGNAL H=标普500ETF from 2026-07-21 BUY 标普500ETF Lsh=-0.202
-  c01_q10_vt09_oh35             -0.226%  +0.000%  -0.226%      99774    20 H=标普500ETF from 2026-07-21 BUY 标普500ETF Lsh=-0.197
-  c01_q10_vt11                  -0.226%  +0.000%  -0.226%      99774    20 H=标普500ETF from 2026-07-21 BUY 标普500ETF Lsh=-0.197
+  c01_q10_vt08_soft_oh38        -1.518%  -2.778%  +1.260%      98482    21 from 2026-07-21 SELL 标普500ETF Lsh=-1.618
+  c01_q10_vt08_soft_oh38_xgn    -1.518%  -2.778%  +1.260%      98482    21 SIGNAL from 2026-07-21 SELL 标普500ETF Lsh=-1.618
+  c01_q10_vt09_oh35             -1.689%  -2.778%  +1.089%      98311    21 from 2026-07-21 SELL 标普500ETF Lsh=-1.615
+  c01_q10_vt11                  -1.689%  -2.778%  +1.089%      98311    21 from 2026-07-21 SELL 标普500ETF Lsh=-1.615
 ----------------------------
 提示: 趋势关空仓 live≈0; 若基准下跌则 excess&gt;0 表示避险有效
   python3 scripts/etf.py daily --dry-run
 ========
 </pre></details><details><summary>影子监控</summary><pre class='raw'>======== 影子只读监控 ========
-基准 SH510300: 4.787 MA20=4.713(+1.6%) 20日=+0.0% 趋势=开
+基准 SH510300: 4.654 MA20=4.707(-1.1%) 20日=-2.3% 趋势=关
 生产 STATE: /home/runner/work/etf-rotation/etf-rotation/output/模拟仓位.json (本脚本只读)
 --------
-c01_q10_vt08_soft_oh38  暴露= 67.0%  regime=chop×0.9  vol_src=portfolio scale=0.783  rets=20
-  账户=99796.66 收益=-0.2 持仓1: 标普500ETF
-  live=-0.203% xs=+1.214% bench=+0.292% anchor=100000.0 from=2026-07-21 Lrets=19
+c01_q10_vt08_soft_oh38  暴露=  0.0%  regime=bear×0.0  vol_src=portfolio scale=0.7128  rets=21
+  账户=98481.9 收益=-1.52 持仓0: 空仓
+  live=-1.518% xs=-0.203% bench=+0.000% anchor=100000.0 from=2026-07-21 Lrets=20
   注: vol_target 用组合已实现波动
+  注: 趋势关 → 目标暴露 0
 --------
-c01_q10_vt08_soft_oh38_xgn  暴露= 67.0%  regime=chop×0.9  vol_src=portfolio scale=0.783  rets=20
-  账户=99796.66 收益=-0.2 持仓1: 标普500ETF
-  live=-0.203% xs=+1.214% bench=+0.292% anchor=100000.0 from=2026-07-21 Lrets=19
+c01_q10_vt08_soft_oh38_xgn  暴露=  0.0%  regime=bear×0.0  vol_src=portfolio scale=0.7128  rets=21
+  账户=98481.9 收益=-1.52 持仓0: 空仓
+  live=-1.518% xs=-0.203% bench=+0.000% anchor=100000.0 from=2026-07-21 Lrets=20
   注: vol_target 用组合已实现波动
+  注: 趋势关 → 目标暴露 0
 --------
-c01_q10_vt09_oh35  暴露= 75.3%  regime=None×1.0  vol_src=portfolio scale=0.7928  rets=20
-  账户=99773.83 收益=-0.23 持仓1: 标普500ETF
-  live=-0.226% xs=+1.383% bench=+0.292% anchor=100000.0 from=2026-07-21 Lrets=19
+c01_q10_vt09_oh35  暴露=  0.0%  regime=None×1.0  vol_src=portfolio scale=0.7215  rets=21
+  账户=98311.44 收益=-1.69 持仓0: 空仓
+  live=-1.689% xs=-0.226% bench=+0.000% anchor=100000.0 from=2026-07-21 Lrets=20
   注: vol_target 用组合已实现波动
+  注: 趋势关 → 目标暴露 0
 --------
-c01_q10_vt11  暴露= 92.1%  regime=None×1.0  vol_src=portfolio scale=0.969  rets=20
-  账户=99773.83 收益=-0.23 持仓1: 标普500ETF
-  live=-0.226% xs=+1.383% bench=+0.292% anchor=100000.0 from=2026-07-21 Lrets=19
+c01_q10_vt11  暴露=  0.0%  regime=None×1.0  vol_src=portfolio scale=0.8819  rets=21
+  账户=98311.44 收益=-1.69 持仓0: 空仓
+  live=-1.689% xs=-0.226% bench=+0.000% anchor=100000.0 from=2026-07-21 Lrets=20
   注: vol_target 用组合已实现波动
+  注: 趋势关 → 目标暴露 0
 --------
 告警汇总: error=0 warn=0
-行情截至: 2026-08-18
+行情截至: 2026-08-19
 </pre></details><details><summary>影子摘要</summary><pre class='raw'>--------
 影子仓位 · /home/runner/work/etf-rotation/etf-rotation/output/shadow_states
 --------
-  c01_q10_vt08_soft_oh38               资产=  99796.66  live=  -0.20%  xs=  -0.20%  全样本=   -0.2  持仓1: 标普500ETF  rets=20
-    更新: 2026-08-18 08:03  上次调仓: 2026-08-07  live_from=2026-07-21  Lrets=20
-  c01_q10_vt08_soft_oh38_xgn           资产=  99796.66  live=  -0.20%  xs=  -0.20%  全样本=   -0.2  持仓1: 标普500ETF  rets=20
-    更新: 2026-08-18 08:03  上次调仓: 2026-08-07  live_from=2026-07-21  Lrets=20
-  c01_q10_vt09_oh35                    资产=  99773.83  live=  -0.23%  xs=  -0.23%  全样本=  -0.23  持仓1: 标普500ETF  rets=20
-    更新: 2026-08-18 08:03  上次调仓: 2026-08-07  live_from=2026-07-21  Lrets=20
-  c01_q10_vt11                         资产=  99773.83  live=  -0.23%  xs=  -0.23%  全样本=  -0.23  持仓1: 标普500ETF  rets=20
-    更新: 2026-08-18 08:03  上次调仓: 2026-08-07  live_from=2026-07-21  Lrets=20
-  行情截至: 2026-08-18
+  c01_q10_vt08_soft_oh38               资产=   98481.9  live=  -1.52%  xs=  +1.26%  全样本=  -1.52  持仓0: 空仓  rets=21
+    更新: 2026-08-19 08:04  上次调仓: 2026-08-07  live_from=2026-07-21  Lrets=21
+  c01_q10_vt08_soft_oh38_xgn           资产=   98481.9  live=  -1.52%  xs=  +1.26%  全样本=  -1.52  持仓0: 空仓  rets=21
+    更新: 2026-08-19 08:04  上次调仓: 2026-08-07  live_from=2026-07-21  Lrets=21
+  c01_q10_vt09_oh35                    资产=  98311.44  live=  -1.69%  xs=  +1.09%  全样本=  -1.69  持仓0: 空仓  rets=21
+    更新: 2026-08-19 08:04  上次调仓: 2026-08-07  live_from=2026-07-21  Lrets=21
+  c01_q10_vt11                         资产=  98311.44  live=  -1.69%  xs=  +1.09%  全样本=  -1.69  持仓0: 空仓  rets=21
+    更新: 2026-08-19 08:04  上次调仓: 2026-08-07  live_from=2026-07-21  Lrets=21
+  行情截至: 2026-08-19
 </pre></details><details><summary>研究状态</summary><pre class='raw'>======== 研究状态面板 ========
-时间: 2026-08-18T08:04:08
-交易日: True source=bench_calendar date=2026-08-18  行情截至=2026-08-18
-生产 state: True  latest: True  信号时间: 2026-08-18 08:03
+时间: 2026-08-19T08:04:37
+交易日: True source=bench_calendar date=2026-08-19  行情截至=2026-08-19
+生产 state: True  latest: True  信号时间: 2026-08-19 08:04
 -------- 可判性首屏 --------
   level=READY  → ./etf pulse | ./etf digest
   days_to_ready=0  → ./etf pulse | ./etf progress
@@ -534,54 +534,54 @@ c01_q10_vt11  暴露= 92.1%  regime=None×1.0  vol_src=portfolio scale=0.969  re
   推荐: ./etf yield
 -------- 有效收益 (SIGNAL) --------
   策略: c01_q10_vt08_soft_oh38_xgn
-  live=-0.203%  xs=-0.203%  bench=+0.000%
-  from=2026-07-21  Lrets=20  持仓=标普500ETF
-  行情截至: 2026-08-18
+  live=-1.518%  xs=+1.260%  bench=-2.778%
+  from=2026-07-21  Lrets=21  持仓=空仓
+  行情截至: 2026-08-19
 -------- 行情取证 (asof) --------
-  行情截至=2026-08-17  lag=False  动作=🟡 持有 标普500ETF (无需操作)
-  live=1.507 xs=1.2145 Lrets=19 thin=False
+  行情截至=2026-08-18  lag=False  动作=🟡 持有 标普500ETF (无需操作)
+  live=-0.203 xs=-0.203 Lrets=20 thin=False
   · 全文 → ./etf asof
 -------- 有效收益产物 (yield) --------
-  live=1.507 xs=1.2145 Lrets=19 thin=False asof=2026-08-17
+  live=-0.203 xs=-0.203 Lrets=20 thin=False asof=2026-08-18
   · 全文 → ./etf yield
 -------- 三合一 (brief) --------
-  asof=2026-08-17 lag=False 动作=🟡 持有 标普500ETF (无需操作)
-  live=1.507 xs=1.2145 Lrets=19
+  asof=2026-08-18 lag=False 动作=🟡 持有 标普500ETF (无需操作)
+  live=-0.203 xs=-0.203 Lrets=20
   · 全文 → ./etf brief
 -------- 行情状态 (data) --------
-  asof=2026-08-17 lag=False stale=False decision=ok
+  asof=2026-08-18 lag=False stale=False decision=ok
   · 全文 → ./etf data
 -------- 下一步 (next) --------
-  decision=ok asof=2026-08-17 lag=False
+  decision=ok asof=2026-08-18 lag=False
   推荐: ./etf
   · 全文 → ./etf next
 -------- 行情强刷 (pull) --------
-  before=2026-08-18→after=2026-08-18 advanced=False lag=False
+  before=2026-08-19→after=2026-08-19 advanced=False lag=False
   · 全文 → ./etf pull --bench-only
 -------- 一键闭环 (go) --------
-  decision=ok asof=2026-08-17 lag=False did_wait=False
+  decision=ok asof=2026-08-18 lag=False did_wait=False
   · 全文 → ./etf go --no-wait
 -------- 可判性 (ready) --------
-  level=READY asof=2026-08-17 Lrets=19 thin=False days_to_ready=0
+  level=READY asof=2026-08-18 Lrets=20 thin=False days_to_ready=0
   说明: 可用 live%/xs% 做真实有效收益结论
   · 全文 → ./etf ready
 -------- 摘要 (digest) --------
-  level=READY decision=ok live=1.507 xs=1.2145
+  level=READY decision=ok live=-0.203 xs=-0.203
   推荐: ./etf yield
   · 全文 → ./etf digest
 -------- 收盘闭环 (eod) --------
   · 未生成 → ./etf eod --timeout 1800
 -------- 可判轨迹 (progress) --------
-  latest: 2026-08-17 level=READY Lrets=19 dtr=0 live=1.507 xs=1.2145 src=pull_noadv
+  latest: 2026-08-18 level=READY Lrets=20 dtr=0 live=-0.203 xs=-0.203 src=pull_noadv
   ETA: 样本已够 (若无 DATA_LAG → READY)
-  Δ: Lrets 0→19 (+19)  level NOT_READY→READY
-  2026-08-17 level=READY asof=2026-08-17 Lrets=19 dtr=0 live=1.507 xs=1.2145 lag=False src=ready
-  2026-08-17 level=READY asof=2026-08-17 Lrets=19 dtr=0 live=1.507 xs=1.2145 lag=False src=digest
-  2026-08-17 level=READY asof=2026-08-17 Lrets=19 dtr=0 live=1.507 xs=1.2145 lag=False src=pulse
-  2026-08-17 level=READY asof=2026-08-17 Lrets=19 dtr=0 live=1.507 xs=1.2145 lag=False src=pull_noadv
+  Δ: Lrets 0→20 (+20)  level NOT_READY→READY
+  2026-08-18 level=READY asof=2026-08-18 Lrets=20 dtr=0 live=-0.203 xs=-0.203 lag=False src=ready
+  2026-08-18 level=READY asof=2026-08-18 Lrets=20 dtr=0 live=-0.203 xs=-0.203 lag=False src=digest
+  2026-08-18 level=READY asof=2026-08-18 Lrets=20 dtr=0 live=-0.203 xs=-0.203 lag=False src=pulse
+  2026-08-18 level=READY asof=2026-08-18 Lrets=20 dtr=0 live=-0.203 xs=-0.203 lag=False src=pull_noadv
   · 全文 → ./etf pulse | ./etf progress | ./etf progress --json
 -------- 脉搏 (pulse) --------
-  level=READY dtr=0 live=1.507 xs=1.2145 asof=2026-08-17
+  level=READY dtr=0 live=-0.203 xs=-0.203 asof=2026-08-18
   next_action=read_yield readable=True → ./etf do
   ETA: 样本已够, 若无 DATA_LAG 则应 READY
   推荐: ./etf yield
@@ -593,55 +593,55 @@ c01_q10_vt11  暴露= 92.1%  regime=None×1.0  vol_src=portfolio scale=0.969  re
   c01_q10_vt09_oh35: frozen=False research=True vt=0.09 top_n=1
   c01_q10_vt11: frozen=False research=True vt=0.11 top_n=1
 -------- 影子 --------
-  c01_q10_vt08_soft_oh38: rets=20 资产=99796.66 live=-0.20% xs=-0.20% 持仓=标普500ETF warmup=False Lrets=20
-  c01_q10_vt08_soft_oh38_xgn: rets=20 资产=99796.66 live=-0.20% xs=-0.20% 持仓=标普500ETF warmup=False Lrets=20
-  c01_q10_vt09_oh35: rets=20 资产=99773.83 live=-0.23% xs=-0.23% 持仓=标普500ETF warmup=False Lrets=20
-  c01_q10_vt11: rets=20 资产=99773.83 live=-0.23% xs=-0.23% 持仓=标普500ETF warmup=False Lrets=20
+  c01_q10_vt08_soft_oh38: rets=21 资产=98481.9 live=-1.52% xs=+1.26% 持仓=空仓 warmup=False Lrets=21
+  c01_q10_vt08_soft_oh38_xgn: rets=21 资产=98481.9 live=-1.52% xs=+1.26% 持仓=空仓 warmup=False Lrets=21
+  c01_q10_vt09_oh35: rets=21 资产=98311.44 live=-1.69% xs=+1.09% 持仓=空仓 warmup=False Lrets=21
+  c01_q10_vt11: rets=21 资产=98311.44 live=-1.69% xs=+1.09% 持仓=空仓 warmup=False Lrets=21
 -------- 监控告警 --------
   error=0 warn=0 ok=True
 -------- pipeline 上次 --------
-  stamp=20260817_080812 ok=True alerts=0/4 td=True asof=2026-08-17 lag=False
+  stamp=20260818_080343 ok=True alerts=0/0 td=True asof=2026-08-18 lag=False
 -------- healthcheck 上次 --------
   stamp=None ok=None secs=None
 -------- weekly 上次 --------
   stamp=None ok=None alert_fail=None
 -------- site --------
-  built=2026-08-17T08:08:46 alerts=0/4 today=True live=True compare=True
+  built=2026-08-18T08:04:14 alerts=0/4 today=True live=True compare=True
 -------- 主线对照 --------
   ======== 主线影子对照 ========
   信号默认: c01_q10_vt08_soft_oh38_xgn
-  c01_q10_vt08_soft_oh38           —      —   -0.20   +1.21      99797    ? CASH≠NAV H=标普500ETF T=BUY 标普500ETF L@2026-07-21
-  c01_q10_vt08_soft_oh38_xgn       —      —   -0.20   +1.21      99797    ? SIGNAL CASH≠NAV H=标普500ETF T=BUY 标普500ETF L@2026-07-21
-  c01_q10_vt09_oh35                —      —   -0.23   +1.38      99774    ? CASH≠NAV H=标普500ETF T=BUY 标普500ETF L@2026-07-21
-  c01_q10_vt11                     —      —   -0.23   +1.38      99774    ? CASH≠NAV H=标普500ETF T=BUY 标普500ETF L@2026-07-21
+  c01_q10_vt08_soft_oh38           —      —   -1.52   -0.20      98482    ? T=SELL 标普500ETF L@2026-07-21
+  c01_q10_vt08_soft_oh38_xgn       —      —   -1.52   -0.20      98482    ? SIGNAL T=SELL 标普500ETF L@2026-07-21
+  c01_q10_vt09_oh35                —      —   -1.69   -0.23      98311    ? T=SELL 标普500ETF L@2026-07-21
+  c01_q10_vt11                     —      —   -1.69   -0.23      98311    ? T=SELL 标普500ETF L@2026-07-21
   ========
 -------- 主线 LIVE --------
   策略: c01_q10_vt08_soft_oh38_xgn
-  live=-0.203%  xs=-0.203%  bench=+0.000%
-  from=2026-07-21  Lrets=20  持仓=标普500ETF
+  live=-1.518%  xs=+1.260%  bench=-2.778%
+  from=2026-07-21  Lrets=21  持仓=空仓
 -------- 影子摘要 --------
   影子仓位 · /home/runner/work/etf-rotation/etf-rotation/output/shadow_states
-  c01_q10_vt08_soft_oh38               资产=  99796.66  live=  -0.20%  xs=  +1.21%  全样本=   -0.2  持仓1: 标普500ETF  rets=20
-  c01_q10_vt08_soft_oh38_xgn           资产=  99796.66  live=  -0.20%  xs=  +1.21%  全样本=   -0.2  持仓1: 标普500ETF  rets=20
-  c01_q10_vt09_oh35                    资产=  99773.83  live=  -0.23%  xs=  +1.38%  全样本=  -0.23  持仓1: 标普500ETF  rets=20
-  c01_q10_vt11                         资产=  99773.83  live=  -0.23%  xs=  +1.38%  全样本=  -0.23  持仓1: 标普500ETF  rets=20
+  c01_q10_vt08_soft_oh38               资产=   98481.9  live=  -1.52%  xs=  -0.20%  全样本=  -1.52  持仓0: 空仓  rets=21
+  c01_q10_vt08_soft_oh38_xgn           资产=   98481.9  live=  -1.52%  xs=  -0.20%  全样本=  -1.52  持仓0: 空仓  rets=21
+  c01_q10_vt09_oh35                    资产=  98311.44  live=  -1.69%  xs=  -0.23%  全样本=  -1.69  持仓0: 空仓  rets=21
+  c01_q10_vt11                         资产=  98311.44  live=  -1.69%  xs=  -0.23%  全样本=  -1.69  持仓0: 空仓  rets=21
 -------- 今日速览 --------
-  时间: 2026-08-17T08:08:40
+  时间: 2026-08-18T08:04:08
   信号默认影子: c01_q10_vt08_soft_oh38_xgn
   ----------------------------
   生产动作: 🟡 持有 标普500ETF (无需操作)
-  市场: 开  宽度=0.8461538461538461  配置=C01_效15d  信号时间: 2026-08-17 08:08  行情截至: 2026-08-17
+  市场: 开  宽度=0.8269230769230769  配置=C01_效15d  信号时间: 2026-08-18 08:03  行情截至: 2026-08-18
   原因:
-  · 持仓即最优 标普500ETF → 继续持有
-  研究影子动作: HOLD 标普500ETF @暴露86%
-  研究目标暴露: 85.5%
+  · 有更优标碳中和ETF, 但调仓窗口未到(还需8日)
+  研究影子动作: HOLD 碳中和ETF @暴露82%
+  研究目标暴露: 82.5%
   -------- 有效收益 (SIGNAL) --------
   策略: c01_q10_vt08_soft_oh38_xgn
-  live=+1.507%  xs=+1.214%  bench=+0.292%
-  from=2026-07-21  Lrets=19  持仓=标普500ETF
-  行情截至: 2026-08-17
+  live=-0.203%  xs=-0.203%  bench=+0.000%
+  from=2026-07-21  Lrets=20  持仓=标普500ETF
+  行情截至: 2026-08-18
   -------- 监控告警 --------
-  error=0 warn=4 ok=True
+  error=0 warn=0 ok=True
 -------- 下一步 --------
   · 看信号: output/latest.txt · 面板: output/site/index.html
   · 今日速览 → ./etf today

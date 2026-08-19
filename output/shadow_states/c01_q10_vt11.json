@@ -1,13 +1,6 @@
 {
-  "cash": 14564.23,
-  "holding": {
-    "code": "SH513500",
-    "name": "标普500ETF",
-    "buy_price": 2.695,
-    "shares": 31700,
-    "buy_date": "2026-08-07",
-    "park": false
-  },
+  "cash": 98311.44,
+  "holding": null,
   "trades": [
     {
       "date": "2026-08-07",
@@ -17,29 +10,30 @@
       "price": 2.695,
       "shares": 31700,
       "reason": "信号买入"
-    }
-  ],
-  "total_trades": 0,
-  "wins": 0,
-  "losses": 0,
-  "total_pnl": 0.0,
-  "total_value": 99773.83,
-  "return_pct": -0.23,
-  "last_rebalance": "2026-08-07",
-  "config": "C01_Q10_VT11_防过拟合主候选",
-  "last_update": "2026-08-18 08:03",
-  "holdings": [
+    },
     {
+      "date": "2026-08-19",
+      "action": "SELL",
       "code": "SH513500",
       "name": "标普500ETF",
-      "buy_price": 2.695,
+      "price": 2.642,
       "shares": 31700,
-      "buy_date": "2026-08-07",
-      "park": false
+      "pnl_pct": -1.97,
+      "reason": "趋势空仓"
     }
   ],
-  "days_to_rebalance": 3,
-  "market_ok": true,
+  "total_trades": 1,
+  "wins": 0,
+  "losses": 1,
+  "total_pnl": -1684.29,
+  "total_value": 98311.44,
+  "return_pct": -1.69,
+  "last_rebalance": "2026-08-07",
+  "config": "C01_Q10_VT11_防过拟合主候选",
+  "last_update": "2026-08-19 08:04",
+  "holdings": [],
+  "days_to_rebalance": 2,
+  "market_ok": false,
   "nav_history": [
     {
       "date": "2026-07-21",
@@ -124,6 +118,10 @@
     {
       "date": "2026-08-18",
       "nav": 99773.83
+    },
+    {
+      "date": "2026-08-19",
+      "nav": 98311.44
     }
   ],
   "port_rets": [
@@ -146,22 +144,23 @@
     0.004117260292476388,
     0.021132717225259112,
     -0.009266582627564302,
-    -0.018706510682037214
+    -0.018706510682037214,
+    -0.014657049849644888
   ],
   "live_start_date": "2026-07-21",
   "live_anchor_nav": 100000.0,
   "live": {
     "anchor_nav": 100000.0,
     "start_date": "2026-07-21",
-    "nav": 99773.83,
-    "return_pct": -0.226,
-    "n_nav": 21,
-    "n_rets": 20,
-    "sharpe": -0.197,
-    "n_trades": 1,
-    "n_holdings": 1,
-    "holdings": "标普500ETF",
-    "asof": "2026-08-18 08:03",
+    "nav": 98311.44,
+    "return_pct": -1.689,
+    "n_nav": 22,
+    "n_rets": 21,
+    "sharpe": -1.615,
+    "n_trades": 2,
+    "n_holdings": 0,
+    "holdings": "空仓",
+    "asof": "2026-08-19 08:04",
     "from_warmup": false
   }
 }

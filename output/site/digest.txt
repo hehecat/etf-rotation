@@ -1,7 +1,7 @@
 ======== DIGEST ========
 可判性: READY
-asof: 2026-08-18 lag=False
-live=-0.203 xs=-0.203 Lrets=20 thin=False
+asof: 2026-08-19 lag=False
+live=-1.518 xs=1.2604 Lrets=21 thin=False
 decision: ok
 eta: 样本已够, 若无 DATA_LAG 则应 READY
 推荐: ./etf yield

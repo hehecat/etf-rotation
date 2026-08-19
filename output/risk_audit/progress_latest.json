@@ -1,15 +1,15 @@
 {
-  "stamp": "2026-08-18T08:04:15",
-  "date": "2026-08-18",
+  "stamp": "2026-08-19T08:04:45",
+  "date": "2026-08-19",
   "level": "READY",
-  "market_asof": "2026-08-18",
+  "market_asof": "2026-08-19",
   "data_lag": false,
-  "days_live": 20,
+  "days_live": 21,
   "days_to_ready": 0,
   "thin_live": false,
-  "live_return_pct": -0.203,
-  "live_excess_pct": -0.203,
+  "live_return_pct": -1.518,
+  "live_excess_pct": 1.2604,
   "decision": "ok",
-  "action": "🟡 持有 标普500ETF (无需操作)",
+  "action": "🔴 卖出 标普500ETF (趋势空仓) 盈亏-2.0%",
   "source": "pull_noadv"
 }

@@ -1,11 +1,11 @@
 ======== 行情/收益取证 ========
-时间: 2026-08-18T08:04:08
-交易日: True date=2026-08-18 source=bench_calendar
-行情截至: 2026-08-18
-信号时间: 2026-08-18 08:03  动作: 🟡 持有 标普500ETF (无需操作)  市场: 开
+时间: 2026-08-19T08:04:37
+交易日: True date=2026-08-19 source=bench_calendar
+行情截至: 2026-08-19
+信号时间: 2026-08-19 08:04  动作: 🔴 卖出 标普500ETF (趋势空仓) 盈亏-2.0%  市场: 关
 SIGNAL: c01_q10_vt08_soft_oh38_xgn
-  live=-0.203 xs=-0.203 Lrets=20 thin=False 持仓=标普500ETF
-pipeline_last: stamp=20260817_080812 ok=True asof=2026-08-17 lag=False
-site_meta: asof=2026-08-17 lag=False
+  live=-1.518 xs=1.2604 Lrets=21 thin=False 持仓=空仓
+pipeline_last: stamp=20260818_080343 ok=True asof=2026-08-18 lag=False
+site_meta: asof=2026-08-18 lag=False
 dtr=0 eta=样本已够, 若无 DATA_LAG 则应 READY level=READY
 ========

@@ -1,10 +1,10 @@
 {
-  "stamp": "2026-08-18T08:04:09",
+  "stamp": "2026-08-19T08:04:38",
   "decision": "ok",
-  "market_asof": "2026-08-18",
+  "market_asof": "2026-08-19",
   "data_lag": false,
   "latest_stale": false,
-  "action": "🟡 持有 标普500ETF (无需操作)",
+  "action": "🔴 卖出 标普500ETF (趋势空仓) 盈亏-2.0%",
   "why": "数据齐: 裸 ./etf=pulse 看可判后读 yield",
   "recommend": "./etf",
   "days_to_ready": 0,
