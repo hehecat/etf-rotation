@@ -30,27 +30,27 @@
   "return_pct": -1.87,
   "last_rebalance": "2026-08-07",
   "config": "C01_效15d",
-  "last_update": "2026-08-19 08:04",
+  "last_update": "2026-08-20 08:06",
   "note": "重置: 云端首跑无基准误买稀土, 已回滚空仓",
-  "days_to_rebalance": 7,
+  "days_to_rebalance": 6,
   "market_ok": false,
-  "breadth": 0.692,
+  "breadth": 0.731,
   "shadow": {
     "config": "C01_Q10_VT08_SOFT_OH38_EXTRA_GOLD_NQ",
     "research": true,
     "market_ok": false,
     "picks": [
       {
-        "code": "SH516910",
-        "name": "物流ETF",
-        "score": 1.81
+        "code": "SZ159934",
+        "name": "黄金ETF",
+        "score": 1.883
       }
     ],
-    "action": "SELL (沪深300跌破MA20 → 清仓)",
+    "action": "空仓(趋势关) 暴露0%",
     "mainline": [
       {
         "name": "c01_q10_vt08_soft_oh38_xgn",
-        "action": "SELL (沪深300跌破MA20 → 清仓)",
+        "action": "空仓(趋势关) 暴露0%",
         "market_ok": false,
         "signal": true,
         "error": null,
@@ -63,26 +63,21 @@
           "start_date": "2026-07-21",
           "nav": 98481.9,
           "return_pct": -1.518,
-          "n_nav": 22,
-          "n_rets": 21,
-          "sharpe": -1.618,
+          "n_nav": 23,
+          "n_rets": 22,
+          "sharpe": -1.583,
           "n_trades": 2,
           "n_holdings": 0,
           "holdings": "空仓",
-          "asof": "2026-08-19",
+          "asof": "2026-08-20",
           "from_warmup": false
         },
         "live_return_pct": -1.518,
-        "executed": {
-          "side": "卖出",
-          "name": "标普500ETF",
-          "pnl": -1.9666048237476788,
-          "reason": "趋势空仓"
-        }
+        "executed": null
       },
       {
         "name": "c01_q10_vt08_soft_oh38",
-        "action": "SELL (沪深300跌破MA20 → 清仓)",
+        "action": "空仓(趋势关) 暴露0%",
         "market_ok": false,
         "signal": false,
         "error": null,
@@ -95,26 +90,21 @@
           "start_date": "2026-07-21",
           "nav": 98481.9,
           "return_pct": -1.518,
-          "n_nav": 22,
-          "n_rets": 21,
-          "sharpe": -1.618,
+          "n_nav": 23,
+          "n_rets": 22,
+          "sharpe": -1.583,
           "n_trades": 2,
           "n_holdings": 0,
           "holdings": "空仓",
-          "asof": "2026-08-19",
+          "asof": "2026-08-20",
           "from_warmup": false
         },
         "live_return_pct": -1.518,
-        "executed": {
-          "side": "卖出",
-          "name": "标普500ETF",
-          "pnl": -1.9666048237476788,
-          "reason": "趋势空仓"
-        }
+        "executed": null
       },
       {
         "name": "c01_q10_vt09_oh35",
-        "action": "SELL (沪深300跌破MA20 → 清仓)",
+        "action": "空仓(趋势关) 暴露0%",
         "market_ok": false,
         "signal": false,
         "error": null,
@@ -127,26 +117,21 @@
           "start_date": "2026-07-21",
           "nav": 98311.44,
           "return_pct": -1.689,
-          "n_nav": 22,
-          "n_rets": 21,
-          "sharpe": -1.615,
+          "n_nav": 23,
+          "n_rets": 22,
+          "sharpe": -1.58,
           "n_trades": 2,
           "n_holdings": 0,
           "holdings": "空仓",
-          "asof": "2026-08-19",
+          "asof": "2026-08-20",
           "from_warmup": false
         },
         "live_return_pct": -1.689,
-        "executed": {
-          "side": "卖出",
-          "name": "标普500ETF",
-          "pnl": -1.9666048237476788,
-          "reason": "趋势空仓"
-        }
+        "executed": null
       },
       {
         "name": "c01_q10_vt11",
-        "action": "SELL (沪深300跌破MA20 → 清仓)",
+        "action": "空仓(趋势关) 暴露0%",
         "market_ok": false,
         "signal": false,
         "error": null,
@@ -159,31 +144,26 @@
           "start_date": "2026-07-21",
           "nav": 98311.44,
           "return_pct": -1.689,
-          "n_nav": 22,
-          "n_rets": 21,
-          "sharpe": -1.615,
+          "n_nav": 23,
+          "n_rets": 22,
+          "sharpe": -1.58,
           "n_trades": 2,
           "n_holdings": 0,
           "holdings": "空仓",
-          "asof": "2026-08-19",
+          "asof": "2026-08-20",
           "from_warmup": false
         },
         "live_return_pct": -1.689,
-        "executed": {
-          "side": "卖出",
-          "name": "标普500ETF",
-          "pnl": -1.9666048237476788,
-          "reason": "趋势空仓"
-        }
+        "executed": null
       }
     ],
     "decision": {
-      "action": "SELL",
+      "action": "HOLD",
       "target": null,
       "name": "",
       "target_exposure": 0.0,
       "reasons": [
-        "沪深300跌破MA20 → 清仓"
+        "大盘趋势向下 → 保持空仓"
       ],
       "exposure": {
         "target_exposure": 0.0,
@@ -191,19 +171,19 @@
           "position_pct": 0.95,
           "inv_vol_scale": 1.0,
           "inv_vol_src": "portfolio",
-          "vol20": 0.006436,
+          "vol20": 0.00707,
           "regime": "bear",
           "regime_mult": 0.0,
           "regime_info": {
             "market_ok": false,
-            "ma20": 4.70695,
-            "ma60": 4.816983,
+            "ma20": 4.70025,
+            "ma60": 4.812333,
             "ma_up": false,
-            "vol20": 0.012688
+            "vol20": 0.012619
           },
           "vol_target": 0.08,
-          "vol_ann": 0.1022,
-          "vol_scale": 0.783,
+          "vol_ann": 0.1122,
+          "vol_scale": 0.7128,
           "vol_src": "portfolio"
         },
         "notes": [
@@ -221,32 +201,27 @@
       "cash": 98481.9,
       "total_value": 98481.9,
       "return_pct": -1.52,
-      "n_port_rets": 21,
+      "n_port_rets": 22,
       "live": {
         "anchor_nav": 100000.0,
         "start_date": "2026-07-21",
         "nav": 98481.9,
         "return_pct": -1.518,
-        "n_nav": 22,
-        "n_rets": 21,
-        "sharpe": -1.618,
+        "n_nav": 23,
+        "n_rets": 22,
+        "sharpe": -1.583,
         "n_trades": 2,
         "n_holdings": 0,
         "holdings": "空仓",
-        "asof": "2026-08-19",
+        "asof": "2026-08-20",
         "from_warmup": false
       },
-      "executed": {
-        "side": "卖出",
-        "name": "标普500ETF",
-        "pnl": -1.9666048237476788,
-        "reason": "趋势空仓"
-      }
+      "executed": null
     }
   },
-  "action_summary": "🔴 卖出 标普500ETF (趋势空仓) 盈亏-2.0%",
+  "action_summary": "⚪ 空仓观望",
   "decision_reasons": [
-    "沪深300跌破MA20 → 清仓"
+    "大盘趋势向下 → 保持空仓"
   ],
   "holdings": [],
   "nav_history": [
@@ -337,6 +312,10 @@
     {
       "date": "2026-08-19",
       "nav": 98125.01
+    },
+    {
+      "date": "2026-08-20",
+      "nav": 98125.01
     }
   ],
   "port_rets": [
@@ -360,6 +339,7 @@
     0.02345302424082485,
     -0.01026070946976032,
     -0.020734166194944725,
-    -0.016279384045090883
+    -0.016279384045090883,
+    0.0
   ]
 }

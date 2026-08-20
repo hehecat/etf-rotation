@@ -1,41 +1,41 @@
 {
-  "n": 19,
+  "n": 20,
   "path": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/daily_scorecard.jsonl",
   "first_date": "2026-07-21",
-  "last_date": "2026-08-19",
-  "readable_n": 17,
+  "last_date": "2026-08-20",
+  "readable_n": 18,
   "lag_n": 1,
   "thin_n": 2,
   "trend_on_n": 8,
-  "trend_off_n": 11,
-  "prod_empty_n": 11,
+  "trend_off_n": 12,
+  "prod_empty_n": 12,
   "prod_open_n": 8,
   "xs_readable": {
-    "n": 17,
+    "n": 18,
     "min": -0.203,
     "max": 3.9273,
     "median": 1.6636,
-    "last": 1.2604,
-    "pos": 16,
+    "last": 1.2812,
+    "pos": 17,
     "neg": 1
   },
   "live_readable": {
-    "n": 17,
+    "n": 18,
     "min": -1.518,
     "max": 2.362,
     "median": 0.0,
     "last": -1.518,
     "pos": 6,
-    "neg": 3
+    "neg": 4
   },
   "last_row": {
-    "date": "2026-08-19",
+    "date": "2026-08-20",
     "level": "READY",
     "readable_yield": true,
     "live_return_pct": -1.518,
-    "live_excess_pct": 1.2604,
+    "live_excess_pct": 1.2812,
     "data_lag": false,
     "next_action": "read_yield",
-    "action": "🔴 卖出 标普500ETF (趋势空仓) 盈亏-2.0%"
+    "action": "⚪ 空仓观望"
   }
 }
