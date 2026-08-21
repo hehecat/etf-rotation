@@ -1,5 +1,5 @@
 {
-  "stamp": "20260820_080611",
+  "stamp": "20260821_080640",
   "steps_requested": [
     "pull",
     "signal",
@@ -48,8 +48,8 @@
   "shadow": "c01_q10_vt08_soft_oh38_xgn",
   "dry_run": false,
   "trading_day": true,
-  "trading_day_note": "source=bench_calendar date=2026-08-20 bench_n=120 closed=False makeup=False asof=2026-08-20 lag=False",
-  "data_asof": "2026-08-20",
+  "trading_day_note": "source=bench_calendar date=2026-08-21 bench_n=120 closed=False makeup=False asof=2026-08-21 lag=False",
+  "data_asof": "2026-08-21",
   "data_lag": false,
   "ok": true,
   "alert_error_n": 0,
@@ -60,7 +60,7 @@
     {
       "step": "pull",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
         "pull",
         "--no-follow",
@@ -68,12 +68,12 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 1.31
+      "seconds": 1.41
     },
     {
       "step": "signal",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/run_signal.py",
         "--strategy",
         "c01",
@@ -88,12 +88,12 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 15.67
+      "seconds": 20.01
     },
     {
       "step": "monitor",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/shadow_monitor.py",
         "--shadows",
         "c01_q10_vt08_soft_oh38,c01_q10_vt08_soft_oh38_xgn,c01_q10_vt09_oh35,c01_q10_vt11",
@@ -107,12 +107,12 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.05
+      "seconds": 0.06
     },
     {
       "step": "summary",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/shadow_summary.py",
         "--names",
         "c01_q10_vt08_soft_oh38,c01_q10_vt08_soft_oh38_xgn,c01_q10_vt09_oh35,c01_q10_vt11",
@@ -123,12 +123,12 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.04
+      "seconds": 0.05
     },
     {
       "step": "compare",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/shadow_compare.py",
         "--json-out",
         "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/shadow_compare.json",
@@ -142,7 +142,7 @@
     {
       "step": "live",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/shadow_live.py",
         "--json-out",
         "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/shadow_live.json",
@@ -154,12 +154,12 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 1.27
+      "seconds": 1.37
     },
     {
       "step": "status",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/research_status.py",
         "--json-out",
         "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/research_status.json",
@@ -168,79 +168,79 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.05
+      "seconds": 0.06
     },
     {
       "step": "today",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
         "today"
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.07
+      "seconds": 0.08
     },
     {
       "step": "asof",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
         "asof"
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.07
+      "seconds": 0.08
     },
     {
       "step": "yield",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
         "yield"
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.07
+      "seconds": 0.08
     },
     {
       "step": "brief",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
         "brief"
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.07
+      "seconds": 0.08
     },
     {
       "step": "data",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
         "data"
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.07
+      "seconds": 0.09
     },
     {
       "step": "next",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
         "next",
         "--no-refresh"
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.06
+      "seconds": 0.07
     },
     {
       "step": "go",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
         "go",
         "--no-wait",
@@ -248,47 +248,47 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.6
+      "seconds": 0.74
     },
     {
       "step": "ready",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
         "ready"
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.07
+      "seconds": 0.09
     },
     {
       "step": "digest",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
         "digest",
         "--no-refresh"
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.07
+      "seconds": 0.09
     },
     {
       "step": "progress",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
         "progress",
         "--no-refresh"
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.06
+      "seconds": 0.07
     },
     {
       "step": "pulse",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
         "pulse",
         "--no-refresh",
@@ -296,13 +296,13 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.06
+      "seconds": 0.08
     },
     {
       "step": "ledger",
       "ok": true,
       "exit": 0,
-      "date": "2026-08-20",
+      "date": "2026-08-21",
       "readable_yield": true,
       "level": "READY",
       "seconds": 0
@@ -310,7 +310,7 @@
     {
       "step": "email",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/send_email.py",
         "--append-shadow",
         "--append-alerts",
@@ -333,52 +333,52 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 4.36
+      "seconds": 3.4
     },
     {
       "step": "pages",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/build_pages.py",
         "--out",
         "output/site"
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.07
+      "seconds": 0.08
     }
   ],
   "latest_txt": "/home/runner/work/etf-rotation/etf-rotation/output/latest.txt",
   "latest_json": "/home/runner/work/etf-rotation/etf-rotation/output/latest.json",
-  "log": "/home/runner/work/etf-rotation/etf-rotation/output/logs/pipeline_20260820_080611.log",
+  "log": "/home/runner/work/etf-rotation/etf-rotation/output/logs/pipeline_20260821_080640.log",
   "pages_out": "output/site",
   "yield": {
     "name": "c01_q10_vt08_soft_oh38_xgn",
     "live_return_pct": -1.518,
-    "live_excess_pct": 1.2812,
-    "bench_return_pct": -2.7992,
-    "days_live": 22,
+    "live_excess_pct": 0.7172,
+    "bench_return_pct": -2.2352,
+    "days_live": 23,
     "thin_live": false,
     "live_start": "2026-07-21",
     "holdings": "空仓",
-    "market_asof": "2026-08-20",
+    "market_asof": "2026-08-21",
     "data_lag": false
   },
   "brief": {
-    "stamp": "2026-08-20T08:06:32",
-    "market_asof": "2026-08-20",
+    "stamp": "2026-08-21T08:07:06",
+    "market_asof": "2026-08-21",
     "data_lag": false,
     "action": "⚪ 空仓观望",
     "market_ok": false,
     "live_return_pct": -1.518,
-    "live_excess_pct": 1.2812,
-    "days_live": 22,
+    "live_excess_pct": 0.7172,
+    "days_live": 23,
     "thin_live": false,
     "path_txt": "/home/runner/work/etf-rotation/etf-rotation/output/brief.txt",
     "path_json": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/brief.json"
   },
   "data_status": {
-    "market_asof": "2026-08-20",
+    "market_asof": "2026-08-21",
     "data_lag": false,
     "latest_stale": false,
     "decision": "ok",
@@ -388,7 +388,7 @@
   },
   "next": {
     "decision": "ok",
-    "market_asof": "2026-08-20",
+    "market_asof": "2026-08-21",
     "data_lag": false,
     "latest_stale": false,
     "recommend": "./etf",
@@ -397,27 +397,27 @@
     "path_json": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/next.json"
   },
   "pull": {
-    "stamp": "2026-08-20T08:06:14",
+    "stamp": "2026-08-21T08:06:43",
     "before": {
-      "data_asof": "2026-08-20",
+      "data_asof": "2026-08-21",
       "data_lag": false
     },
     "after": {
-      "data_asof": "2026-08-20",
+      "data_asof": "2026-08-21",
       "data_lag": false
     },
     "advanced": false,
     "cleared_lag": false,
     "ok_n": 1,
     "fail_n": 0,
-    "bench_last": "2026-08-20",
+    "bench_last": "2026-08-21",
     "path_txt": "/home/runner/work/etf-rotation/etf-rotation/output/pull.txt",
     "path_json": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/pull.json"
   },
   "go": {
-    "stamp": "2026-08-20T08:06:32",
+    "stamp": "2026-08-21T08:07:06",
     "decision": "ok",
-    "market_asof": "2026-08-20",
+    "market_asof": "2026-08-21",
     "data_lag": false,
     "did_wait": false,
     "wait_code": 0,
@@ -428,36 +428,36 @@
   "ready": {
     "level": "READY",
     "ready": true,
-    "market_asof": "2026-08-20",
+    "market_asof": "2026-08-21",
     "data_lag": false,
-    "days_live": 22,
+    "days_live": 23,
     "thin_live": false,
     "live_return_pct": -1.518,
-    "live_excess_pct": 1.2812,
+    "live_excess_pct": 0.7172,
     "note": "可用 live%/xs% 做真实有效收益结论",
     "path_txt": "/home/runner/work/etf-rotation/etf-rotation/output/ready.txt",
     "path_json": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/ready.json"
   },
   "digest": {
     "level": "READY",
-    "market_asof": "2026-08-20",
+    "market_asof": "2026-08-21",
     "data_lag": false,
     "decision": "ok",
     "live_return_pct": -1.518,
-    "live_excess_pct": 1.2812,
-    "days_live": 22,
+    "live_excess_pct": 0.7172,
+    "days_live": 23,
     "recommend": "./etf yield",
     "path_txt": "/home/runner/work/etf-rotation/etf-rotation/output/digest.txt",
     "path_json": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/digest.json"
   },
   "progress": {
-    "date": "2026-08-20",
+    "date": "2026-08-21",
     "level": "READY",
-    "market_asof": "2026-08-20",
-    "days_live": 22,
+    "market_asof": "2026-08-21",
+    "days_live": 23,
     "days_to_ready": 0,
     "live_return_pct": -1.518,
-    "live_excess_pct": 1.2812,
+    "live_excess_pct": 0.7172,
     "data_lag": false,
     "source": "pulse",
     "path_txt": "/home/runner/work/etf-rotation/etf-rotation/output/progress.txt",
@@ -465,8 +465,8 @@
   },
   "pulse": {
     "level": "READY",
-    "market_asof": "2026-08-20",
-    "days_live": 22,
+    "market_asof": "2026-08-21",
+    "days_live": 23,
     "days_to_ready": 0,
     "eta_note": "样本已够, 若无 DATA_LAG 则应 READY",
     "decision": "ok",
@@ -476,7 +476,7 @@
     "exit_code": 0,
     "readable_yield": true,
     "live_return_pct": -1.518,
-    "live_excess_pct": 1.2812,
+    "live_excess_pct": 0.7172,
     "path_txt": "/home/runner/work/etf-rotation/etf-rotation/output/pulse.txt",
     "path_json": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/pulse.json"
   },

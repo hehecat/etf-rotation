@@ -1,7 +1,7 @@
 ======== PULSE 脉搏 ========
 level: READY
-asof: 2026-08-20 lag=False
-live=-1.518 xs=1.2812 Lrets=22 thin=False
+asof: 2026-08-21 lag=False
+live=-1.518 xs=0.7172 Lrets=23 thin=False
 dtr=0 eta=样本已够, 若无 DATA_LAG 则应 READY
 decision: ok
 next_action: read_yield
