@@ -1,8 +1,8 @@
 {
-  "stamp": "2026-08-21T08:07:06",
+  "stamp": "2026-08-24T08:12:07",
   "decision": "ok",
   "data_lag": false,
-  "market_asof": "2026-08-21",
+  "market_asof": "2026-08-24",
   "wait_code": 0,
   "did_wait": false,
   "recommend": "./etf",
