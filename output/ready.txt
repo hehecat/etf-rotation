@@ -1,7 +1,7 @@
 ======== READY 有效收益可判性 ========
 level: READY
-asof: 2026-08-24 lag=False
-live=-1.518 xs=1.8244 Lrets=24 thin=False
+asof: 2026-08-25 lag=False
+live=-1.518 xs=2.0542 Lrets=25 thin=False
 decision: ok
 days_to_ready: 0
 eta: 样本已够, 若无 DATA_LAG 则应 READY
