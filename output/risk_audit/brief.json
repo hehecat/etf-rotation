@@ -1,24 +1,24 @@
 {
-  "stamp": "2026-08-26T08:09:28",
-  "market_asof": "2026-08-26",
+  "stamp": "2026-08-27T18:23:09",
+  "market_asof": "2026-08-27",
   "data_lag": false,
   "action": "⚪ 空仓观望",
   "market_ok": false,
-  "latest_time": "2026-08-26 08:09",
+  "latest_time": "2026-08-27 18:22",
   "signal_live": {
     "name": "c01_q10_vt08_soft_oh38_xgn",
     "live_return_pct": -1.518,
-    "bench_return_pct": -2.8201,
-    "live_excess_pct": 1.3021,
-    "days_live": 26,
+    "bench_return_pct": -2.0054,
+    "live_excess_pct": 0.4874,
+    "days_live": 27,
     "thin_live": false,
     "live_start": "2026-07-21",
     "holdings": "空仓",
     "total_value": 98481.9,
-    "market_asof": "2026-08-26",
+    "market_asof": "2026-08-27",
     "data_lag": false
   },
   "days_to_ready": 0,
   "eta_note": "样本已够, 若无 DATA_LAG 则应 READY",
-  "text": "======== BRIEF 速览 ========\n时间: 2026-08-26T08:09:28\n行情截至: 2026-08-26\n动作: ⚪ 空仓观望  市场: 关\nlive=-1.518 xs=1.3021 Lrets=26 thin=False\ndtr=0 eta=样本已够, 若无 DATA_LAG 则应 READY\n========\n"
+  "text": "======== BRIEF 速览 ========\n时间: 2026-08-27T18:23:09\n行情截至: 2026-08-27\n动作: ⚪ 空仓观望  市场: 关\nlive=-1.518 xs=0.4874 Lrets=27 thin=False\ndtr=0 eta=样本已够, 若无 DATA_LAG 则应 READY\n========\n"
 }
