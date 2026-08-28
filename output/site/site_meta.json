@@ -1,5 +1,5 @@
 {
-  "built_at": "2026-08-27T18:23:09",
+  "built_at": "2026-08-28T19:33:38",
   "has_latest": true,
   "has_monitor": true,
   "has_summary": true,
@@ -28,9 +28,9 @@
   "has_raw": true,
   "has_live": true,
   "has_compare": true,
-  "market_asof": "2026-08-27",
+  "market_asof": "2026-08-28",
   "data_lag": false,
-  "pipeline_asof": "2026-08-26",
+  "pipeline_asof": "2026-08-27",
   "pipeline_lag": false,
   "alert_error_n": 0,
   "alert_warn_n": 0,
