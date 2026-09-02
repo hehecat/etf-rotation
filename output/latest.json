@@ -1,6 +1,6 @@
 {
-  "time": "2026-09-01 12:41",
-  "market_asof": "2026-09-01",
+  "time": "2026-09-02 12:14",
+  "market_asof": "2026-09-02",
   "config": "C01_效15d",
   "frozen": true,
   "action": "⚪ 空仓观望",
@@ -8,26 +8,26 @@
     "大盘趋势向下 → 保持空仓"
   ],
   "market_ok": false,
-  "breadth": 0.5769230769230769,
+  "breadth": 0.2692307692307692,
   "holding": null,
   "total_value": 98125.01,
   "return_pct": -1.87,
   "days_to_rebalance": 0,
   "top3": [
     {
+      "code": "SH515020",
+      "name": "银行ETF",
+      "score": 1.766
+    },
+    {
       "code": "SH510880",
       "name": "红利ETF",
-      "score": 2.52
+      "score": 1.691
     },
     {
-      "code": "SH515220",
-      "name": "煤炭ETF",
-      "score": 2.298
-    },
-    {
-      "code": "SH513500",
-      "name": "标普500ETF",
-      "score": 1.178
+      "code": "SH512890",
+      "name": "红利低波ETF",
+      "score": 1.624
     }
   ],
   "shadow": {
@@ -36,9 +36,9 @@
     "market_ok": false,
     "picks": [
       {
-        "code": "SH510880",
-        "name": "红利ETF",
-        "score": 2.52
+        "code": "SH515020",
+        "name": "银行ETF",
+        "score": 1.766
       }
     ],
     "action": "空仓(趋势关) 暴露0%",
@@ -58,20 +58,20 @@
           "start_date": "2026-07-21",
           "nav": 98481.9,
           "return_pct": -1.518,
-          "n_nav": 31,
-          "n_rets": 30,
-          "sharpe": -1.362,
+          "n_nav": 32,
+          "n_rets": 31,
+          "sharpe": -1.34,
           "n_trades": 2,
           "n_holdings": 0,
           "holdings": "空仓",
-          "asof": "2026-09-01 12:41",
+          "asof": "2026-09-02 12:14",
           "from_warmup": false
         },
         "live_return_pct": -1.518,
         "executed": null,
-        "live_excess_pct": 0.6337,
-        "bench_return_pct": -2.1517,
-        "days_live": 30,
+        "live_excess_pct": 1.9706,
+        "bench_return_pct": -3.4886,
+        "days_live": 31,
         "thin_live": false
       },
       {
@@ -89,20 +89,20 @@
           "start_date": "2026-07-21",
           "nav": 98481.9,
           "return_pct": -1.518,
-          "n_nav": 31,
-          "n_rets": 30,
-          "sharpe": -1.362,
+          "n_nav": 32,
+          "n_rets": 31,
+          "sharpe": -1.34,
           "n_trades": 2,
           "n_holdings": 0,
           "holdings": "空仓",
-          "asof": "2026-09-01 12:41",
+          "asof": "2026-09-02 12:14",
           "from_warmup": false
         },
         "live_return_pct": -1.518,
         "executed": null,
-        "live_excess_pct": 0.6337,
-        "bench_return_pct": -2.1517,
-        "days_live": 30,
+        "live_excess_pct": 1.9706,
+        "bench_return_pct": -3.4886,
+        "days_live": 31,
         "thin_live": false
       },
       {
@@ -120,20 +120,20 @@
           "start_date": "2026-07-21",
           "nav": 98311.44,
           "return_pct": -1.689,
-          "n_nav": 31,
-          "n_rets": 30,
-          "sharpe": -1.359,
+          "n_nav": 32,
+          "n_rets": 31,
+          "sharpe": -1.338,
           "n_trades": 2,
           "n_holdings": 0,
           "holdings": "空仓",
-          "asof": "2026-09-01 12:41",
+          "asof": "2026-09-02 12:14",
           "from_warmup": false
         },
         "live_return_pct": -1.689,
         "executed": null,
-        "live_excess_pct": 0.4627,
-        "bench_return_pct": -2.1517,
-        "days_live": 30,
+        "live_excess_pct": 1.7996,
+        "bench_return_pct": -3.4886,
+        "days_live": 31,
         "thin_live": false
       },
       {
@@ -151,20 +151,20 @@
           "start_date": "2026-07-21",
           "nav": 98311.44,
           "return_pct": -1.689,
-          "n_nav": 31,
-          "n_rets": 30,
-          "sharpe": -1.359,
+          "n_nav": 32,
+          "n_rets": 31,
+          "sharpe": -1.338,
           "n_trades": 2,
           "n_holdings": 0,
           "holdings": "空仓",
-          "asof": "2026-09-01 12:41",
+          "asof": "2026-09-02 12:14",
           "from_warmup": false
         },
         "live_return_pct": -1.689,
         "executed": null,
-        "live_excess_pct": 0.4627,
-        "bench_return_pct": -2.1517,
-        "days_live": 30,
+        "live_excess_pct": 1.7996,
+        "bench_return_pct": -3.4886,
+        "days_live": 31,
         "thin_live": false
       }
     ],
@@ -187,10 +187,10 @@
           "regime_mult": 0.0,
           "regime_info": {
             "market_ok": false,
-            "ma20": 4.70365,
-            "ma60": 4.782033,
+            "ma20": 4.69895,
+            "ma60": 4.7786,
             "ma_up": false,
-            "vol20": 0.009403
+            "vol20": 0.009368
           },
           "vol_target": 0.08,
           "vol_ann": 0.1122,
@@ -212,19 +212,19 @@
       "cash": 98481.9,
       "total_value": 98481.9,
       "return_pct": -1.52,
-      "n_port_rets": 30,
+      "n_port_rets": 31,
       "live": {
         "anchor_nav": 100000.0,
         "start_date": "2026-07-21",
         "nav": 98481.9,
         "return_pct": -1.518,
-        "n_nav": 31,
-        "n_rets": 30,
-        "sharpe": -1.362,
+        "n_nav": 32,
+        "n_rets": 31,
+        "sharpe": -1.34,
         "n_trades": 2,
         "n_holdings": 0,
         "holdings": "空仓",
-        "asof": "2026-09-01",
+        "asof": "2026-09-02",
         "from_warmup": false
       },
       "executed": null
@@ -239,7 +239,7 @@
     {
       "name": "调仓窗口",
       "ok": true,
-      "detail": "距上次17日 / 需≥15日"
+      "detail": "距上次18日 / 需≥15日"
     },
     {
       "name": "空仓可买",
@@ -249,7 +249,7 @@
     {
       "name": "有合格标的",
       "ok": true,
-      "detail": "红利ETF 得分+2.52"
+      "detail": "银行ETF 得分+1.77"
     },
     {
       "name": "目标暴露",
@@ -260,14 +260,14 @@
   "signal_live": {
     "name": "c01_q10_vt08_soft_oh38_xgn",
     "live_return_pct": -1.518,
-    "bench_return_pct": -2.1517,
-    "live_excess_pct": 0.6337,
-    "days_live": 30,
+    "bench_return_pct": -3.4886,
+    "live_excess_pct": 1.9706,
+    "days_live": 31,
     "thin_live": false,
     "live_start": "2026-07-21",
     "holdings": "空仓",
     "total_value": 98481.9,
-    "market_asof": "2026-09-01",
+    "market_asof": "2026-09-02",
     "data_lag": false
   }
 }
