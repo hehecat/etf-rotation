@@ -1,10 +1,10 @@
 ======== LEDGER 日更账本 ========
-样本日: 29  (2026-07-21 → 2026-09-02)
-可读收益日: 27  THIN: 2  DATA_LAG: 1
-趋势开/关: 8/21  生产空仓/有仓: 21/8
-可读 xs%: n=27 中位=1.525  min=-0.203 max=3.9273  +日26/-日1  last=1.9706
-可读 live%: n=27 中位=0.0  min=-1.518 max=2.362  last=-1.518
-最新: 2026-09-02 level=READY readable=True live=-1.518 xs=1.9706 action=⚪ 空仓观望 next=read_yield
+样本日: 30  (2026-07-21 → 2026-09-03)
+可读收益日: 28  THIN: 2  DATA_LAG: 1
+趋势开/关: 8/22  生产空仓/有仓: 22/8
+可读 xs%: n=28 中位=1.6294  min=-0.203 max=3.9273  +日27/-日1  last=1.9497
+可读 live%: n=28 中位=0.0  min=-1.518 max=2.362  last=-1.518
+最新: 2026-09-03 level=READY readable=True live=-1.518 xs=1.9497 action=⚪ 空仓观望 next=read_yield
 口径: 只认 live%+xs%; lag/THIN 日不参与改进判断
 改进门槛: 可读日≥60 且 dual-end 门控仍过, 才讨论结构变更
 ========

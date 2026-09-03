@@ -1,5 +1,5 @@
 {
-  "stamp": "20260901_124151",
+  "stamp": "20260902_121445",
   "steps_requested": [
     "pull",
     "signal",
@@ -48,8 +48,8 @@
   "shadow": "c01_q10_vt08_soft_oh38_xgn",
   "dry_run": false,
   "trading_day": true,
-  "trading_day_note": "source=bench_calendar date=2026-09-01 bench_n=120 closed=False makeup=False asof=2026-09-01 lag=False",
-  "data_asof": "2026-09-01",
+  "trading_day_note": "source=bench_calendar date=2026-09-02 bench_n=120 closed=False makeup=False asof=2026-09-02 lag=False",
+  "data_asof": "2026-09-02",
   "data_lag": false,
   "ok": true,
   "alert_error_n": 0,
@@ -68,7 +68,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 1.6
+      "seconds": 1.4
     },
     {
       "step": "signal",
@@ -88,7 +88,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 19.89
+      "seconds": 19.59
     },
     {
       "step": "monitor",
@@ -154,7 +154,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 1.6
+      "seconds": 1.4
     },
     {
       "step": "status",
@@ -190,7 +190,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.08
+      "seconds": 0.09
     },
     {
       "step": "yield",
@@ -201,7 +201,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.08
+      "seconds": 0.09
     },
     {
       "step": "brief",
@@ -235,7 +235,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.07
+      "seconds": 0.08
     },
     {
       "step": "go",
@@ -248,7 +248,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.73
+      "seconds": 0.74
     },
     {
       "step": "ready",
@@ -259,7 +259,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.08
+      "seconds": 0.09
     },
     {
       "step": "digest",
@@ -296,13 +296,13 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.07
+      "seconds": 0.08
     },
     {
       "step": "ledger",
       "ok": true,
       "exit": 0,
-      "date": "2026-09-01",
+      "date": "2026-09-02",
       "readable_yield": true,
       "level": "READY",
       "seconds": 0
@@ -333,7 +333,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 4.59
+      "seconds": 3.2
     },
     {
       "step": "pages",
@@ -350,35 +350,35 @@
   ],
   "latest_txt": "/home/runner/work/etf-rotation/etf-rotation/output/latest.txt",
   "latest_json": "/home/runner/work/etf-rotation/etf-rotation/output/latest.json",
-  "log": "/home/runner/work/etf-rotation/etf-rotation/output/logs/pipeline_20260901_124151.log",
+  "log": "/home/runner/work/etf-rotation/etf-rotation/output/logs/pipeline_20260902_121445.log",
   "pages_out": "output/site",
   "yield": {
     "name": "c01_q10_vt08_soft_oh38_xgn",
     "live_return_pct": -1.518,
-    "live_excess_pct": 0.6337,
-    "bench_return_pct": -2.1517,
-    "days_live": 30,
+    "live_excess_pct": 1.9706,
+    "bench_return_pct": -3.4886,
+    "days_live": 31,
     "thin_live": false,
     "live_start": "2026-07-21",
     "holdings": "空仓",
-    "market_asof": "2026-09-01",
+    "market_asof": "2026-09-02",
     "data_lag": false
   },
   "brief": {
-    "stamp": "2026-09-01T12:42:18",
-    "market_asof": "2026-09-01",
+    "stamp": "2026-09-02T12:15:11",
+    "market_asof": "2026-09-02",
     "data_lag": false,
     "action": "⚪ 空仓观望",
     "market_ok": false,
     "live_return_pct": -1.518,
-    "live_excess_pct": 0.6337,
-    "days_live": 30,
+    "live_excess_pct": 1.9706,
+    "days_live": 31,
     "thin_live": false,
     "path_txt": "/home/runner/work/etf-rotation/etf-rotation/output/brief.txt",
     "path_json": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/brief.json"
   },
   "data_status": {
-    "market_asof": "2026-09-01",
+    "market_asof": "2026-09-02",
     "data_lag": false,
     "latest_stale": false,
     "decision": "ok",
@@ -388,7 +388,7 @@
   },
   "next": {
     "decision": "ok",
-    "market_asof": "2026-09-01",
+    "market_asof": "2026-09-02",
     "data_lag": false,
     "latest_stale": false,
     "recommend": "./etf",
@@ -397,27 +397,27 @@
     "path_json": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/next.json"
   },
   "pull": {
-    "stamp": "2026-09-01T12:41:55",
+    "stamp": "2026-09-02T12:14:48",
     "before": {
-      "data_asof": "2026-09-01",
+      "data_asof": "2026-09-02",
       "data_lag": false
     },
     "after": {
-      "data_asof": "2026-09-01",
+      "data_asof": "2026-09-02",
       "data_lag": false
     },
     "advanced": false,
     "cleared_lag": false,
     "ok_n": 1,
     "fail_n": 0,
-    "bench_last": "2026-09-01",
+    "bench_last": "2026-09-02",
     "path_txt": "/home/runner/work/etf-rotation/etf-rotation/output/pull.txt",
     "path_json": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/pull.json"
   },
   "go": {
-    "stamp": "2026-09-01T12:42:18",
+    "stamp": "2026-09-02T12:15:11",
     "decision": "ok",
-    "market_asof": "2026-09-01",
+    "market_asof": "2026-09-02",
     "data_lag": false,
     "did_wait": false,
     "wait_code": 0,
@@ -428,36 +428,36 @@
   "ready": {
     "level": "READY",
     "ready": true,
-    "market_asof": "2026-09-01",
+    "market_asof": "2026-09-02",
     "data_lag": false,
-    "days_live": 30,
+    "days_live": 31,
     "thin_live": false,
     "live_return_pct": -1.518,
-    "live_excess_pct": 0.6337,
+    "live_excess_pct": 1.9706,
     "note": "可用 live%/xs% 做真实有效收益结论",
     "path_txt": "/home/runner/work/etf-rotation/etf-rotation/output/ready.txt",
     "path_json": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/ready.json"
   },
   "digest": {
     "level": "READY",
-    "market_asof": "2026-09-01",
+    "market_asof": "2026-09-02",
     "data_lag": false,
     "decision": "ok",
     "live_return_pct": -1.518,
-    "live_excess_pct": 0.6337,
-    "days_live": 30,
+    "live_excess_pct": 1.9706,
+    "days_live": 31,
     "recommend": "./etf yield",
     "path_txt": "/home/runner/work/etf-rotation/etf-rotation/output/digest.txt",
     "path_json": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/digest.json"
   },
   "progress": {
-    "date": "2026-09-01",
+    "date": "2026-09-02",
     "level": "READY",
-    "market_asof": "2026-09-01",
-    "days_live": 30,
+    "market_asof": "2026-09-02",
+    "days_live": 31,
     "days_to_ready": 0,
     "live_return_pct": -1.518,
-    "live_excess_pct": 0.6337,
+    "live_excess_pct": 1.9706,
     "data_lag": false,
     "source": "pulse",
     "path_txt": "/home/runner/work/etf-rotation/etf-rotation/output/progress.txt",
@@ -465,8 +465,8 @@
   },
   "pulse": {
     "level": "READY",
-    "market_asof": "2026-09-01",
-    "days_live": 30,
+    "market_asof": "2026-09-02",
+    "days_live": 31,
     "days_to_ready": 0,
     "eta_note": "样本已够, 若无 DATA_LAG 则应 READY",
     "decision": "ok",
@@ -476,7 +476,7 @@
     "exit_code": 0,
     "readable_yield": true,
     "live_return_pct": -1.518,
-    "live_excess_pct": 0.6337,
+    "live_excess_pct": 1.9706,
     "path_txt": "/home/runner/work/etf-rotation/etf-rotation/output/pulse.txt",
     "path_json": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/pulse.json"
   },
