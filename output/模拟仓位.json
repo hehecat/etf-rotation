@@ -30,20 +30,20 @@
   "return_pct": -1.87,
   "last_rebalance": "2026-08-07",
   "config": "C01_效15d",
-  "last_update": "2026-09-04 12:13",
+  "last_update": "2026-09-07 13:38",
   "note": "重置: 云端首跑无基准误买稀土, 已回滚空仓",
   "days_to_rebalance": 0,
   "market_ok": false,
-  "breadth": 0.269,
+  "breadth": 0.231,
   "shadow": {
     "config": "C01_Q10_VT08_SOFT_OH38_EXTRA_GOLD_NQ",
     "research": true,
     "market_ok": false,
     "picks": [
       {
-        "code": "SH512890",
-        "name": "红利低波ETF",
-        "score": 1.905
+        "code": "SH515020",
+        "name": "银行ETF",
+        "score": 1.167
       }
     ],
     "action": "空仓(趋势关) 暴露0%",
@@ -63,13 +63,13 @@
           "start_date": "2026-07-21",
           "nav": 98481.9,
           "return_pct": -1.518,
-          "n_nav": 34,
-          "n_rets": 33,
-          "sharpe": -1.3,
+          "n_nav": 35,
+          "n_rets": 34,
+          "sharpe": -1.281,
           "n_trades": 2,
           "n_holdings": 0,
           "holdings": "空仓",
-          "asof": "2026-09-04",
+          "asof": "2026-09-07",
           "from_warmup": false
         },
         "live_return_pct": -1.518,
@@ -90,13 +90,13 @@
           "start_date": "2026-07-21",
           "nav": 98481.9,
           "return_pct": -1.518,
-          "n_nav": 34,
-          "n_rets": 33,
-          "sharpe": -1.3,
+          "n_nav": 35,
+          "n_rets": 34,
+          "sharpe": -1.281,
           "n_trades": 2,
           "n_holdings": 0,
           "holdings": "空仓",
-          "asof": "2026-09-04",
+          "asof": "2026-09-07",
           "from_warmup": false
         },
         "live_return_pct": -1.518,
@@ -117,13 +117,13 @@
           "start_date": "2026-07-21",
           "nav": 98311.44,
           "return_pct": -1.689,
-          "n_nav": 34,
-          "n_rets": 33,
-          "sharpe": -1.298,
+          "n_nav": 35,
+          "n_rets": 34,
+          "sharpe": -1.279,
           "n_trades": 2,
           "n_holdings": 0,
           "holdings": "空仓",
-          "asof": "2026-09-04",
+          "asof": "2026-09-07",
           "from_warmup": false
         },
         "live_return_pct": -1.689,
@@ -144,13 +144,13 @@
           "start_date": "2026-07-21",
           "nav": 98311.44,
           "return_pct": -1.689,
-          "n_nav": 34,
-          "n_rets": 33,
-          "sharpe": -1.298,
+          "n_nav": 35,
+          "n_rets": 34,
+          "sharpe": -1.279,
           "n_trades": 2,
           "n_holdings": 0,
           "holdings": "空仓",
-          "asof": "2026-09-04",
+          "asof": "2026-09-07",
           "from_warmup": false
         },
         "live_return_pct": -1.689,
@@ -176,10 +176,10 @@
           "regime_mult": 0.0,
           "regime_info": {
             "market_ok": false,
-            "ma20": 4.6878,
-            "ma60": 4.773633,
+            "ma20": 4.68155,
+            "ma60": 4.770567,
             "ma_up": false,
-            "vol20": 0.009083
+            "vol20": 0.009136
           },
           "vol_target": 0.08,
           "vol_ann": 0.1122,
@@ -201,19 +201,19 @@
       "cash": 98481.9,
       "total_value": 98481.9,
       "return_pct": -1.52,
-      "n_port_rets": 33,
+      "n_port_rets": 34,
       "live": {
         "anchor_nav": 100000.0,
         "start_date": "2026-07-21",
         "nav": 98481.9,
         "return_pct": -1.518,
-        "n_nav": 34,
-        "n_rets": 33,
-        "sharpe": -1.3,
+        "n_nav": 35,
+        "n_rets": 34,
+        "sharpe": -1.281,
         "n_trades": 2,
         "n_holdings": 0,
         "holdings": "空仓",
-        "asof": "2026-09-04",
+        "asof": "2026-09-07",
         "from_warmup": false
       },
       "executed": null
@@ -360,6 +360,10 @@
     {
       "date": "2026-09-04",
       "nav": 98125.01
+    },
+    {
+      "date": "2026-09-07",
+      "nav": 98125.01
     }
   ],
   "port_rets": [
@@ -384,6 +388,7 @@
     -0.01026070946976032,
     -0.020734166194944725,
     -0.016279384045090883,
+    0.0,
     0.0,
     0.0,
     0.0,
