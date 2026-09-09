@@ -1,30 +1,30 @@
 ======== 影子只读监控 ========
-基准 SH510300: 4.624 MA20=4.676(-1.1%) 20日=-2.2% 趋势=关
+基准 SH510300: 4.637 MA20=4.671(-0.7%) 20日=-2.3% 趋势=关
 生产 STATE: /home/runner/work/etf-rotation/etf-rotation/output/模拟仓位.json (本脚本只读)
 --------
-c01_q10_vt08_soft_oh38  暴露=  0.0%  regime=bear×0.0  vol_src=portfolio scale=0.7295  rets=35
+c01_q10_vt08_soft_oh38  暴露=  0.0%  regime=bear×0.0  vol_src=portfolio scale=0.7364  rets=36
   账户=98481.9 收益=-1.52 持仓0: 空仓
-  live=-1.518% xs=+1.678% bench=-3.196% anchor=100000.0 from=2026-07-21 Lrets=34
+  live=-1.518% xs=+1.887% bench=-3.405% anchor=100000.0 from=2026-07-21 Lrets=35
   注: vol_target 用组合已实现波动
   注: 趋势关 → 目标暴露 0
 --------
-c01_q10_vt08_soft_oh38_xgn  暴露=  0.0%  regime=bear×0.0  vol_src=portfolio scale=0.7295  rets=35
+c01_q10_vt08_soft_oh38_xgn  暴露=  0.0%  regime=bear×0.0  vol_src=portfolio scale=0.7364  rets=36
   账户=98481.9 收益=-1.52 持仓0: 空仓
-  live=-1.518% xs=+1.678% bench=-3.196% anchor=100000.0 from=2026-07-21 Lrets=34
+  live=-1.518% xs=+1.887% bench=-3.405% anchor=100000.0 from=2026-07-21 Lrets=35
   注: vol_target 用组合已实现波动
   注: 趋势关 → 目标暴露 0
 --------
-c01_q10_vt09_oh35  暴露=  0.0%  regime=None×1.0  vol_src=portfolio scale=0.7385  rets=35
+c01_q10_vt09_oh35  暴露=  0.0%  regime=None×1.0  vol_src=portfolio scale=0.7454  rets=36
   账户=98311.44 收益=-1.69 持仓0: 空仓
-  live=-1.689% xs=+1.507% bench=-3.196% anchor=100000.0 from=2026-07-21 Lrets=34
+  live=-1.689% xs=+1.716% bench=-3.405% anchor=100000.0 from=2026-07-21 Lrets=35
   注: vol_target 用组合已实现波动
   注: 趋势关 → 目标暴露 0
 --------
-c01_q10_vt11  暴露=  0.0%  regime=None×1.0  vol_src=portfolio scale=0.9026  rets=35
+c01_q10_vt11  暴露=  0.0%  regime=None×1.0  vol_src=portfolio scale=0.9111  rets=36
   账户=98311.44 收益=-1.69 持仓0: 空仓
-  live=-1.689% xs=+1.507% bench=-3.196% anchor=100000.0 from=2026-07-21 Lrets=34
+  live=-1.689% xs=+1.716% bench=-3.405% anchor=100000.0 from=2026-07-21 Lrets=35
   注: vol_target 用组合已实现波动
   注: 趋势关 → 目标暴露 0
 --------
 告警汇总: error=0 warn=0
-行情截至: 2026-09-08
+行情截至: 2026-09-09
