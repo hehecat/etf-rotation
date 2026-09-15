@@ -1,7 +1,7 @@
 ======== 研究状态面板 ========
-时间: 2026-09-14T14:21:35
-交易日: True source=bench_calendar date=2026-09-14  行情截至=2026-09-14
-生产 state: True  latest: True  信号时间: 2026-09-14 14:21
+时间: 2026-09-15T12:50:37
+交易日: True source=bench_calendar date=2026-09-15  行情截至=2026-09-15
+生产 state: True  latest: True  信号时间: 2026-09-15 12:50
 -------- 可判性首屏 --------
   level=READY  → ./etf pulse | ./etf digest
   days_to_ready=0  → ./etf pulse | ./etf progress
@@ -9,54 +9,54 @@
   推荐: ./etf yield
 -------- 有效收益 (SIGNAL) --------
   策略: c01_q10_vt08_soft_oh38_xgn
-  live=-1.518%  xs=+3.391%  bench=-4.909%
-  from=2026-07-21  Lrets=39  持仓=空仓
-  行情截至: 2026-09-14
+  live=-1.518%  xs=+3.997%  bench=-5.515%
+  from=2026-07-21  Lrets=40  持仓=空仓
+  行情截至: 2026-09-15
 -------- 行情取证 (asof) --------
-  行情截至=2026-09-11  lag=False  动作=⚪ 空仓观望
-  live=-1.518 xs=2.8271 Lrets=38 thin=False
+  行情截至=2026-09-14  lag=False  动作=⚪ 空仓观望
+  live=-1.518 xs=3.3911 Lrets=39 thin=False
   · 全文 → ./etf asof
 -------- 有效收益产物 (yield) --------
-  live=-1.518 xs=2.8271 Lrets=38 thin=False asof=2026-09-11
+  live=-1.518 xs=3.3911 Lrets=39 thin=False asof=2026-09-14
   · 全文 → ./etf yield
 -------- 三合一 (brief) --------
-  asof=2026-09-11 lag=False 动作=⚪ 空仓观望
-  live=-1.518 xs=2.8271 Lrets=38
+  asof=2026-09-14 lag=False 动作=⚪ 空仓观望
+  live=-1.518 xs=3.3911 Lrets=39
   · 全文 → ./etf brief
 -------- 行情状态 (data) --------
-  asof=2026-09-11 lag=False stale=False decision=ok
+  asof=2026-09-14 lag=False stale=False decision=ok
   · 全文 → ./etf data
 -------- 下一步 (next) --------
-  decision=ok asof=2026-09-11 lag=False
+  decision=ok asof=2026-09-14 lag=False
   推荐: ./etf
   · 全文 → ./etf next
 -------- 行情强刷 (pull) --------
-  before=2026-09-14→after=2026-09-14 advanced=False lag=False
+  before=2026-09-15→after=2026-09-15 advanced=False lag=False
   · 全文 → ./etf pull --bench-only
 -------- 一键闭环 (go) --------
-  decision=ok asof=2026-09-11 lag=False did_wait=False
+  decision=ok asof=2026-09-14 lag=False did_wait=False
   · 全文 → ./etf go --no-wait
 -------- 可判性 (ready) --------
-  level=READY asof=2026-09-11 Lrets=38 thin=False days_to_ready=0
+  level=READY asof=2026-09-14 Lrets=39 thin=False days_to_ready=0
   说明: 可用 live%/xs% 做真实有效收益结论
   · 全文 → ./etf ready
 -------- 摘要 (digest) --------
-  level=READY decision=ok live=-1.518 xs=2.8271
+  level=READY decision=ok live=-1.518 xs=3.3911
   推荐: ./etf yield
   · 全文 → ./etf digest
 -------- 收盘闭环 (eod) --------
   · 未生成 → ./etf eod --timeout 1800
 -------- 可判轨迹 (progress) --------
-  latest: 2026-09-11 level=READY Lrets=38 dtr=0 live=-1.518 xs=2.8271 src=pull_noadv
+  latest: 2026-09-14 level=READY Lrets=39 dtr=0 live=-1.518 xs=3.3911 src=pull_noadv
   ETA: 样本已够 (若无 DATA_LAG → READY)
-  Δ: Lrets 0→38 (+38)  level NOT_READY→READY
-  2026-09-11 level=READY asof=2026-09-11 Lrets=38 dtr=0 live=-1.518 xs=2.8271 lag=False src=ready
-  2026-09-11 level=READY asof=2026-09-11 Lrets=38 dtr=0 live=-1.518 xs=2.8271 lag=False src=digest
-  2026-09-11 level=READY asof=2026-09-11 Lrets=38 dtr=0 live=-1.518 xs=2.8271 lag=False src=pulse
-  2026-09-11 level=READY asof=2026-09-11 Lrets=38 dtr=0 live=-1.518 xs=2.8271 lag=False src=pull_noadv
+  Δ: Lrets 0→39 (+39)  level NOT_READY→READY
+  2026-09-14 level=READY asof=2026-09-14 Lrets=39 dtr=0 live=-1.518 xs=3.3911 lag=False src=ready
+  2026-09-14 level=READY asof=2026-09-14 Lrets=39 dtr=0 live=-1.518 xs=3.3911 lag=False src=digest
+  2026-09-14 level=READY asof=2026-09-14 Lrets=39 dtr=0 live=-1.518 xs=3.3911 lag=False src=pulse
+  2026-09-14 level=READY asof=2026-09-14 Lrets=39 dtr=0 live=-1.518 xs=3.3911 lag=False src=pull_noadv
   · 全文 → ./etf pulse | ./etf progress | ./etf progress --json
 -------- 脉搏 (pulse) --------
-  level=READY dtr=0 live=-1.518 xs=2.8271 asof=2026-09-11
+  level=READY dtr=0 live=-1.518 xs=3.3911 asof=2026-09-14
   next_action=read_yield readable=True → ./etf do
   ETA: 样本已够, 若无 DATA_LAG 则应 READY
   推荐: ./etf yield
@@ -68,53 +68,53 @@
   c01_q10_vt09_oh35: frozen=False research=True vt=0.09 top_n=1
   c01_q10_vt11: frozen=False research=True vt=0.11 top_n=1
 -------- 影子 --------
-  c01_q10_vt08_soft_oh38: rets=39 资产=98481.9 live=-1.52% xs=+3.39% 持仓=空仓 warmup=False Lrets=39
-  c01_q10_vt08_soft_oh38_xgn: rets=39 资产=98481.9 live=-1.52% xs=+3.39% 持仓=空仓 warmup=False Lrets=39
-  c01_q10_vt09_oh35: rets=39 资产=98311.44 live=-1.69% xs=+3.22% 持仓=空仓 warmup=False Lrets=39
-  c01_q10_vt11: rets=39 资产=98311.44 live=-1.69% xs=+3.22% 持仓=空仓 warmup=False Lrets=39
+  c01_q10_vt08_soft_oh38: rets=40 资产=98481.9 live=-1.52% xs=+4.00% 持仓=空仓 warmup=False Lrets=40
+  c01_q10_vt08_soft_oh38_xgn: rets=40 资产=98481.9 live=-1.52% xs=+4.00% 持仓=空仓 warmup=False Lrets=40
+  c01_q10_vt09_oh35: rets=40 资产=98311.44 live=-1.69% xs=+3.83% 持仓=空仓 warmup=False Lrets=40
+  c01_q10_vt11: rets=40 资产=98311.44 live=-1.69% xs=+3.83% 持仓=空仓 warmup=False Lrets=40
 -------- 监控告警 --------
   error=0 warn=0 ok=True
 -------- pipeline 上次 --------
-  stamp=20260911_121841 ok=True alerts=0/0 td=True asof=2026-09-11 lag=False
+  stamp=20260914_142111 ok=True alerts=0/0 td=True asof=2026-09-14 lag=False
 -------- healthcheck 上次 --------
   stamp=None ok=None secs=None
 -------- weekly 上次 --------
   stamp=None ok=None alert_fail=None
 -------- site --------
-  built=2026-09-11T12:19:10 alerts=0/0 today=True live=True compare=True
+  built=2026-09-14T14:21:41 alerts=0/0 today=True live=True compare=True
 -------- 主线对照 --------
   ======== 主线影子对照 ========
   信号默认: c01_q10_vt08_soft_oh38_xgn
-  c01_q10_vt08_soft_oh38           —      —   -1.52   +2.83      98482    ? T=SELL 标普500ETF L@2026-07-21
-  c01_q10_vt08_soft_oh38_xgn       —      —   -1.52   +2.83      98482    ? SIGNAL T=SELL 标普500ETF L@2026-07-21
-  c01_q10_vt09_oh35                —      —   -1.69   +2.66      98311    ? T=SELL 标普500ETF L@2026-07-21
-  c01_q10_vt11                     —      —   -1.69   +2.66      98311    ? T=SELL 标普500ETF L@2026-07-21
+  c01_q10_vt08_soft_oh38           —      —   -1.52   +3.39      98482    ? T=SELL 标普500ETF L@2026-07-21
+  c01_q10_vt08_soft_oh38_xgn       —      —   -1.52   +3.39      98482    ? SIGNAL T=SELL 标普500ETF L@2026-07-21
+  c01_q10_vt09_oh35                —      —   -1.69   +3.22      98311    ? T=SELL 标普500ETF L@2026-07-21
+  c01_q10_vt11                     —      —   -1.69   +3.22      98311    ? T=SELL 标普500ETF L@2026-07-21
   ========
 -------- 主线 LIVE --------
   策略: c01_q10_vt08_soft_oh38_xgn
-  live=-1.518%  xs=+3.391%  bench=-4.909%
-  from=2026-07-21  Lrets=39  持仓=空仓
+  live=-1.518%  xs=+3.997%  bench=-5.515%
+  from=2026-07-21  Lrets=40  持仓=空仓
 -------- 影子摘要 --------
   影子仓位 · /home/runner/work/etf-rotation/etf-rotation/output/shadow_states
-  c01_q10_vt08_soft_oh38               资产=   98481.9  live=  -1.52%  xs=  +2.83%  全样本=  -1.52  持仓0: 空仓  rets=39
-  c01_q10_vt08_soft_oh38_xgn           资产=   98481.9  live=  -1.52%  xs=  +2.83%  全样本=  -1.52  持仓0: 空仓  rets=39
-  c01_q10_vt09_oh35                    资产=  98311.44  live=  -1.69%  xs=  +2.66%  全样本=  -1.69  持仓0: 空仓  rets=39
-  c01_q10_vt11                         资产=  98311.44  live=  -1.69%  xs=  +2.66%  全样本=  -1.69  持仓0: 空仓  rets=39
+  c01_q10_vt08_soft_oh38               资产=   98481.9  live=  -1.52%  xs=  +3.39%  全样本=  -1.52  持仓0: 空仓  rets=40
+  c01_q10_vt08_soft_oh38_xgn           资产=   98481.9  live=  -1.52%  xs=  +3.39%  全样本=  -1.52  持仓0: 空仓  rets=40
+  c01_q10_vt09_oh35                    资产=  98311.44  live=  -1.69%  xs=  +3.22%  全样本=  -1.69  持仓0: 空仓  rets=40
+  c01_q10_vt11                         资产=  98311.44  live=  -1.69%  xs=  +3.22%  全样本=  -1.69  持仓0: 空仓  rets=40
 -------- 今日速览 --------
-  时间: 2026-09-11T12:19:05
+  时间: 2026-09-14T14:21:35
   信号默认影子: c01_q10_vt08_soft_oh38_xgn
   ----------------------------
   生产动作: ⚪ 空仓观望
-  市场: 关  宽度=0.15384615384615385  配置=C01_效15d  信号时间: 2026-09-11 12:18  行情截至: 2026-09-11
+  市场: 关  宽度=0.15384615384615385  配置=C01_效15d  信号时间: 2026-09-14 14:21  行情截至: 2026-09-14
   原因:
   · 大盘趋势向下 → 保持空仓
   研究影子动作: 空仓(趋势关) 暴露0%
   研究目标暴露: 0.0%
   -------- 有效收益 (SIGNAL) --------
   策略: c01_q10_vt08_soft_oh38_xgn
-  live=-1.518%  xs=+2.827%  bench=-4.345%
-  from=2026-07-21  Lrets=38  持仓=空仓
-  行情截至: 2026-09-11
+  live=-1.518%  xs=+3.391%  bench=-4.909%
+  from=2026-07-21  Lrets=39  持仓=空仓
+  行情截至: 2026-09-14
   -------- 监控告警 --------
   error=0 warn=0 ok=True
 -------- 下一步 --------
