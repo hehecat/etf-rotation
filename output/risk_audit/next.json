@@ -1,13 +1,13 @@
 {
-  "stamp": "2026-09-15T12:50:44",
-  "decision": "ok",
+  "stamp": "2026-09-25T12:54:26",
+  "decision": "refresh",
   "market_asof": "2026-09-15",
-  "data_lag": false,
-  "latest_stale": false,
+  "data_lag": true,
+  "latest_stale": true,
   "action": "⚪ 空仓观望",
-  "why": "数据齐: 裸 ./etf=pulse 看可判后读 yield",
-  "recommend": "./etf",
+  "why": "latest 过旧, 需刷信号; 然后 ./etf",
+  "recommend": "./etf refresh",
   "days_to_ready": 0,
   "eta_note": "样本已够, 若无 DATA_LAG 则应 READY",
-  "ready_level": "READY"
+  "ready_level": "WAIT_DATA"
 }

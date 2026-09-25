@@ -1,5 +1,5 @@
 {
-  "stamp": "20260915_125007",
+  "stamp": "20260925_125420",
   "steps_requested": [
     "pull",
     "signal",
@@ -24,7 +24,6 @@
   ],
   "steps_run": [
     "pull",
-    "signal",
     "monitor",
     "compare",
     "live",
@@ -41,22 +40,37 @@
     "digest",
     "progress",
     "pulse",
-    "email",
     "pages"
   ],
   "strategy": "c01",
   "shadow": "c01_q10_vt08_soft_oh38_xgn",
   "dry_run": false,
-  "trading_day": true,
-  "trading_day_note": "source=bench_calendar date=2026-09-15 bench_n=120 closed=False makeup=False asof=2026-09-15 lag=False",
+  "trading_day": false,
+  "trading_day_note": "source=cn_holidays_beyond_bench date=2026-09-25 bench_n=120 closed=True makeup=False asof=2026-09-24 lag=True",
   "data_asof": "2026-09-15",
-  "data_lag": false,
+  "data_lag": true,
   "ok": true,
   "alert_error_n": 0,
   "alert_warn_n": 0,
   "alerts": [],
   "monitor_fail_on_alert": true,
   "results": [
+    {
+      "step": "signal",
+      "ok": true,
+      "skipped": true,
+      "reason": "non_trading_day",
+      "exit": 0,
+      "seconds": 0
+    },
+    {
+      "step": "email",
+      "ok": true,
+      "skipped": true,
+      "reason": "non_trading_day",
+      "exit": 0,
+      "seconds": 0
+    },
     {
       "step": "pull",
       "cmd": [
@@ -68,27 +82,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 1.86
-    },
-    {
-      "step": "signal",
-      "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
-        "/home/runner/work/etf-rotation/etf-rotation/scripts/run_signal.py",
-        "--strategy",
-        "c01",
-        "--shadow",
-        "c01_q10_vt08_soft_oh38_xgn",
-        "--pool",
-        "pool",
-        "--bars",
-        "120",
-        "--extra-shadows",
-        "c01_q10_vt08_soft_oh38,c01_q10_vt08_soft_oh38_xgn,c01_q10_vt09_oh35,c01_q10_vt11"
-      ],
-      "exit": 0,
-      "ok": true,
-      "seconds": 23.11
+      "seconds": 1.29
     },
     {
       "step": "monitor",
@@ -107,7 +101,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.06
+      "seconds": 0.08
     },
     {
       "step": "summary",
@@ -123,7 +117,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.05
+      "seconds": 0.04
     },
     {
       "step": "compare",
@@ -154,7 +148,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 1.67
+      "seconds": 1.27
     },
     {
       "step": "status",
@@ -168,7 +162,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.06
+      "seconds": 0.05
     },
     {
       "step": "today",
@@ -179,7 +173,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.09
+      "seconds": 0.07
     },
     {
       "step": "asof",
@@ -190,7 +184,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.09
+      "seconds": 0.07
     },
     {
       "step": "yield",
@@ -201,7 +195,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.09
+      "seconds": 0.07
     },
     {
       "step": "brief",
@@ -212,7 +206,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.09
+      "seconds": 0.07
     },
     {
       "step": "data",
@@ -223,7 +217,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.09
+      "seconds": 0.07
     },
     {
       "step": "next",
@@ -235,7 +229,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.08
+      "seconds": 0.06
     },
     {
       "step": "go",
@@ -246,9 +240,11 @@
         "--no-wait",
         "--no-pull"
       ],
-      "exit": 0,
+      "exit": 4,
       "ok": true,
-      "seconds": 0.77
+      "seconds": 0.48,
+      "decision_exit": 4,
+      "note": "go decision code ignored for pipeline ok"
     },
     {
       "step": "ready",
@@ -257,9 +253,11 @@
         "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
         "ready"
       ],
-      "exit": 0,
+      "exit": 3,
       "ok": true,
-      "seconds": 0.09
+      "seconds": 0.07,
+      "decision_exit": 3,
+      "note": "ready level code ignored for pipeline ok"
     },
     {
       "step": "digest",
@@ -269,9 +267,11 @@
         "digest",
         "--no-refresh"
       ],
-      "exit": 0,
+      "exit": 3,
       "ok": true,
-      "seconds": 0.1
+      "seconds": 0.08,
+      "decision_exit": 3,
+      "note": "digest level code ignored for pipeline ok"
     },
     {
       "step": "progress",
@@ -283,7 +283,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.08
+      "seconds": 0.06
     },
     {
       "step": "pulse",
@@ -294,46 +294,20 @@
         "--no-refresh",
         "--quiet"
       ],
-      "exit": 0,
+      "exit": 3,
       "ok": true,
-      "seconds": 0.08
+      "seconds": 0.06,
+      "decision_exit": 3,
+      "note": "pulse level code ignored for pipeline ok"
     },
     {
       "step": "ledger",
       "ok": true,
       "exit": 0,
       "date": "2026-09-15",
-      "readable_yield": true,
-      "level": "READY",
+      "readable_yield": false,
+      "level": "WAIT_DATA",
       "seconds": 0
-    },
-    {
-      "step": "email",
-      "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
-        "/home/runner/work/etf-rotation/etf-rotation/scripts/send_email.py",
-        "--append-shadow",
-        "--append-alerts",
-        "--append-status",
-        "--append-compare",
-        "--append-live",
-        "--append-today",
-        "--append-asof",
-        "--append-yield",
-        "--append-brief",
-        "--append-data",
-        "--append-next",
-        "--append-go",
-        "--append-ready",
-        "--append-digest",
-        "--append-progress",
-        "--append-pulse",
-        "--shadow-names",
-        "c01_q10_vt08_soft_oh38,c01_q10_vt08_soft_oh38_xgn,c01_q10_vt09_oh35,c01_q10_vt11"
-      ],
-      "exit": 0,
-      "ok": true,
-      "seconds": 4.75
     },
     {
       "step": "pages",
@@ -345,33 +319,33 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.09
+      "seconds": 0.07
     }
   ],
   "latest_txt": "/home/runner/work/etf-rotation/etf-rotation/output/latest.txt",
   "latest_json": "/home/runner/work/etf-rotation/etf-rotation/output/latest.json",
-  "log": "/home/runner/work/etf-rotation/etf-rotation/output/logs/pipeline_20260915_125007.log",
+  "log": "/home/runner/work/etf-rotation/etf-rotation/output/logs/pipeline_20260925_125420.log",
   "pages_out": "output/site",
   "yield": {
     "name": "c01_q10_vt08_soft_oh38_xgn",
     "live_return_pct": -1.518,
-    "live_excess_pct": 3.9969,
-    "bench_return_pct": -5.5149,
+    "live_excess_pct": 4.1641,
+    "bench_return_pct": -5.6821,
     "days_live": 40,
     "thin_live": false,
     "live_start": "2026-07-21",
     "holdings": "空仓",
     "market_asof": "2026-09-15",
-    "data_lag": false
+    "data_lag": true
   },
   "brief": {
-    "stamp": "2026-09-15T12:50:38",
+    "stamp": "2026-09-25T12:54:25",
     "market_asof": "2026-09-15",
-    "data_lag": false,
+    "data_lag": true,
     "action": "⚪ 空仓观望",
     "market_ok": false,
     "live_return_pct": -1.518,
-    "live_excess_pct": 3.9969,
+    "live_excess_pct": 4.1641,
     "days_live": 40,
     "thin_live": false,
     "path_txt": "/home/runner/work/etf-rotation/etf-rotation/output/brief.txt",
@@ -379,111 +353,111 @@
   },
   "data_status": {
     "market_asof": "2026-09-15",
-    "data_lag": false,
-    "latest_stale": false,
-    "decision": "ok",
+    "data_lag": true,
+    "latest_stale": true,
+    "decision": "refresh",
     "action": "⚪ 空仓观望",
     "path_txt": "/home/runner/work/etf-rotation/etf-rotation/output/data_status.txt",
     "path_json": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/data_status.json"
   },
   "next": {
-    "decision": "ok",
+    "decision": "refresh",
     "market_asof": "2026-09-15",
-    "data_lag": false,
-    "latest_stale": false,
-    "recommend": "./etf",
-    "why": "数据齐: 裸 ./etf=pulse 看可判后读 yield",
+    "data_lag": true,
+    "latest_stale": true,
+    "recommend": "./etf refresh",
+    "why": "latest 过旧, 需刷信号; 然后 ./etf",
     "path_txt": "/home/runner/work/etf-rotation/etf-rotation/output/next.txt",
     "path_json": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/next.json"
   },
   "pull": {
-    "stamp": "2026-09-15T12:50:12",
+    "stamp": "2026-09-25T12:54:23",
     "before": {
-      "data_asof": "2026-09-15",
-      "data_lag": false
+      "data_asof": "2026-09-24",
+      "data_lag": true
     },
     "after": {
-      "data_asof": "2026-09-15",
-      "data_lag": false
+      "data_asof": "2026-09-24",
+      "data_lag": true
     },
     "advanced": false,
     "cleared_lag": false,
     "ok_n": 1,
     "fail_n": 0,
-    "bench_last": "2026-09-15",
+    "bench_last": "2026-09-24",
     "path_txt": "/home/runner/work/etf-rotation/etf-rotation/output/pull.txt",
     "path_json": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/pull.json"
   },
   "go": {
-    "stamp": "2026-09-15T12:50:38",
-    "decision": "ok",
+    "stamp": "2026-09-25T12:54:25",
+    "decision": "refresh",
     "market_asof": "2026-09-15",
-    "data_lag": false,
+    "data_lag": true,
     "did_wait": false,
     "wait_code": 0,
-    "recommend": "./etf",
+    "recommend": "./etf refresh",
     "path_txt": "/home/runner/work/etf-rotation/etf-rotation/output/go.txt",
     "path_json": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/go.json"
   },
   "ready": {
-    "level": "READY",
-    "ready": true,
+    "level": "WAIT_DATA",
+    "ready": false,
     "market_asof": "2026-09-15",
-    "data_lag": false,
+    "data_lag": true,
     "days_live": 40,
     "thin_live": false,
     "live_return_pct": -1.518,
-    "live_excess_pct": 3.9969,
-    "note": "可用 live%/xs% 做真实有效收益结论",
+    "live_excess_pct": 4.1641,
+    "note": "行情滞后; 收益字段可能仅锚日 → ./etf wait-asof",
     "path_txt": "/home/runner/work/etf-rotation/etf-rotation/output/ready.txt",
     "path_json": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/ready.json"
   },
   "digest": {
-    "level": "READY",
+    "level": "WAIT_DATA",
     "market_asof": "2026-09-15",
-    "data_lag": false,
-    "decision": "ok",
+    "data_lag": true,
+    "decision": "refresh",
     "live_return_pct": -1.518,
-    "live_excess_pct": 3.9969,
+    "live_excess_pct": 4.1641,
     "days_live": 40,
-    "recommend": "./etf yield",
+    "recommend": "./etf wait --timeout 600",
     "path_txt": "/home/runner/work/etf-rotation/etf-rotation/output/digest.txt",
     "path_json": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/digest.json"
   },
   "progress": {
     "date": "2026-09-15",
-    "level": "READY",
+    "level": "WAIT_DATA",
     "market_asof": "2026-09-15",
     "days_live": 40,
     "days_to_ready": 0,
     "live_return_pct": -1.518,
-    "live_excess_pct": 3.9969,
-    "data_lag": false,
+    "live_excess_pct": 4.1641,
+    "data_lag": true,
     "source": "pulse",
     "path_txt": "/home/runner/work/etf-rotation/etf-rotation/output/progress.txt",
     "path_jsonl": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/progress.jsonl"
   },
   "pulse": {
-    "level": "READY",
+    "level": "WAIT_DATA",
     "market_asof": "2026-09-15",
     "days_live": 40,
     "days_to_ready": 0,
     "eta_note": "样本已够, 若无 DATA_LAG 则应 READY",
-    "decision": "ok",
-    "next_action": "read_yield",
-    "why": "可判: 以 live%+xs% 为真实有效收益",
-    "recommend": "./etf yield",
-    "exit_code": 0,
-    "readable_yield": true,
+    "decision": "refresh",
+    "next_action": "refresh",
+    "why": "latest 过旧, 先刷信号",
+    "recommend": "./etf refresh",
+    "exit_code": 3,
+    "readable_yield": false,
     "live_return_pct": -1.518,
-    "live_excess_pct": 3.9969,
+    "live_excess_pct": 4.1641,
     "path_txt": "/home/runner/work/etf-rotation/etf-rotation/output/pulse.txt",
     "path_json": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/pulse.json"
   },
-  "ready_level": "READY",
+  "ready_level": "WAIT_DATA",
   "days_to_ready": 0,
   "eta_note": "样本已够, 若无 DATA_LAG 则应 READY",
-  "next_action": "read_yield",
-  "readable_yield": true,
-  "pulse_exit": 0
+  "next_action": "refresh",
+  "readable_yield": false,
+  "pulse_exit": 3
 }

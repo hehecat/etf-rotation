@@ -1,12 +1,12 @@
 ======== PULSE 脉搏 ========
-level: READY
-asof: 2026-09-15 lag=False
-live=-1.518 xs=3.9969 Lrets=40 thin=False
+level: WAIT_DATA
+asof: 2026-09-15 lag=True
+live=-1.518 xs=4.1641 Lrets=40 thin=False
 dtr=0 eta=样本已够, 若无 DATA_LAG 则应 READY
-decision: ok
-next_action: read_yield
-why: 可判: 以 live%+xs% 为真实有效收益
-推荐: ./etf yield
-exit_code: 0
-readable_yield: True
+decision: refresh
+next_action: refresh
+why: latest 过旧, 先刷信号
+推荐: ./etf refresh
+exit_code: 3
+readable_yield: False
 ========

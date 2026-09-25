@@ -1,15 +1,15 @@
 {
-  "stamp": "2026-09-15T12:50:37",
+  "stamp": "2026-09-25T12:54:24",
   "trading_day": {
-    "date": "2026-09-15",
-    "is_trading_day": true,
-    "source": "bench_calendar",
+    "date": "2026-09-25",
+    "is_trading_day": false,
+    "source": "cn_holidays_beyond_bench",
     "bench_n": 120,
-    "bench_first": "2026-03-25",
-    "bench_last": "2026-09-15",
-    "data_asof": "2026-09-15",
-    "data_lag": false,
-    "in_closed_table": false,
+    "bench_first": "2026-04-03",
+    "bench_last": "2026-09-24",
+    "data_asof": "2026-09-24",
+    "data_lag": true,
+    "in_closed_table": true,
     "in_makeup_table": false
   },
   "prod_state_exists": true,
@@ -19,15 +19,15 @@
   "signal_live": {
     "name": "c01_q10_vt08_soft_oh38_xgn",
     "live_return_pct": -1.518,
-    "bench_return_pct": -5.5149,
-    "live_excess_pct": 3.9969,
+    "bench_return_pct": -5.6821,
+    "live_excess_pct": 4.1641,
     "days_live": 40,
     "thin_live": false,
     "live_start": "2026-07-21",
     "holdings": "空仓",
     "total_value": 98481.9,
     "market_asof": "2026-09-15",
-    "data_lag": false
+    "data_lag": true
   },
   "configs": [
     {
@@ -80,8 +80,8 @@
       "live_return_pct": -1.518,
       "live_start": "2026-07-21",
       "live_anchor": 100000.0,
-      "bench_return_pct": -5.5149,
-      "live_excess_pct": 3.9969,
+      "bench_return_pct": -5.6821,
+      "live_excess_pct": 4.1641,
       "days_live": 40,
       "thin_live": false
     },
@@ -98,8 +98,8 @@
       "live_return_pct": -1.518,
       "live_start": "2026-07-21",
       "live_anchor": 100000.0,
-      "bench_return_pct": -5.5149,
-      "live_excess_pct": 3.9969,
+      "bench_return_pct": -5.6821,
+      "live_excess_pct": 4.1641,
       "days_live": 40,
       "thin_live": false
     },
@@ -116,8 +116,8 @@
       "live_return_pct": -1.689,
       "live_start": "2026-07-21",
       "live_anchor": 100000.0,
-      "bench_return_pct": -5.5149,
-      "live_excess_pct": 3.8259,
+      "bench_return_pct": -5.6821,
+      "live_excess_pct": 3.9931,
       "days_live": 40,
       "thin_live": false
     },
@@ -134,8 +134,8 @@
       "live_return_pct": -1.689,
       "live_start": "2026-07-21",
       "live_anchor": 100000.0,
-      "bench_return_pct": -5.5149,
-      "live_excess_pct": 3.8259,
+      "bench_return_pct": -5.6821,
+      "live_excess_pct": 3.9931,
       "days_live": 40,
       "thin_live": false
     }
@@ -146,12 +146,12 @@
     "ok": true
   },
   "pipeline_last": {
-    "stamp": "20260914_142111",
+    "stamp": "20260915_125007",
     "ok": true,
     "alert_error_n": 0,
     "alert_warn_n": 0,
     "trading_day": true,
-    "data_asof": "2026-09-14",
+    "data_asof": "2026-09-15",
     "data_lag": false
   },
   "healthcheck_last": {
@@ -165,7 +165,7 @@
     "alert_fail": null
   },
   "site": {
-    "built_at": "2026-09-14T14:21:41",
+    "built_at": "2026-09-15T12:50:43",
     "has_latest": true,
     "has_monitor": true,
     "has_summary": true,
@@ -194,9 +194,9 @@
     "has_raw": true,
     "has_live": true,
     "has_compare": true,
-    "market_asof": "2026-09-14",
+    "market_asof": "2026-09-15",
     "data_lag": false,
-    "pipeline_asof": "2026-09-11",
+    "pipeline_asof": "2026-09-14",
     "pipeline_lag": false,
     "alert_error_n": 0,
     "alert_warn_n": 0,

@@ -3,23 +3,23 @@
   "source": "pipeline",
   "date": "2026-09-15",
   "market_asof": "2026-09-15",
-  "data_lag": false,
-  "latest_stale": false,
+  "data_lag": true,
+  "latest_stale": true,
   "trading_day": {
-    "date": "2026-09-15",
-    "is_trading_day": true,
-    "data_asof": "2026-09-15",
-    "data_lag": false
+    "date": "2026-09-25",
+    "is_trading_day": false,
+    "data_asof": "2026-09-24",
+    "data_lag": true
   },
-  "level": "READY",
-  "decision": "ok",
-  "next_action": "read_yield",
-  "readable_yield": true,
+  "level": "WAIT_DATA",
+  "decision": "refresh",
+  "next_action": "refresh",
+  "readable_yield": false,
   "days_live": 40,
   "days_to_ready": 0,
   "thin_live": false,
   "live_return_pct": -1.518,
-  "live_excess_pct": 3.9969,
+  "live_excess_pct": 4.1641,
   "eta_note": "样本已够, 若无 DATA_LAG 则应 READY",
   "prod": {
     "config": "C01_效15d",
@@ -33,7 +33,7 @@
   "signal_live": {
     "name": "c01_q10_vt08_soft_oh38_xgn",
     "live_return_pct": -1.518,
-    "live_excess_pct": 3.9969,
+    "live_excess_pct": 4.1641,
     "days_live": 40,
     "thin_live": false,
     "holdings": "空仓",
@@ -43,7 +43,7 @@
     {
       "name": "c01_q10_vt08_soft_oh38",
       "live_return_pct": -1.518,
-      "live_excess_pct": 3.9969,
+      "live_excess_pct": 4.1641,
       "days_live": 40,
       "thin_live": false,
       "holdings": "空仓",
@@ -53,7 +53,7 @@
     {
       "name": "c01_q10_vt08_soft_oh38_xgn",
       "live_return_pct": -1.518,
-      "live_excess_pct": 3.9969,
+      "live_excess_pct": 4.1641,
       "days_live": 40,
       "thin_live": false,
       "holdings": "空仓",
@@ -63,7 +63,7 @@
     {
       "name": "c01_q10_vt09_oh35",
       "live_return_pct": -1.689,
-      "live_excess_pct": 3.8259,
+      "live_excess_pct": 3.9931,
       "days_live": 40,
       "thin_live": false,
       "holdings": "空仓",
@@ -73,7 +73,7 @@
     {
       "name": "c01_q10_vt11",
       "live_return_pct": -1.689,
-      "live_excess_pct": 3.8259,
+      "live_excess_pct": 3.9931,
       "days_live": 40,
       "thin_live": false,
       "holdings": "空仓",
@@ -86,6 +86,6 @@
     "warn_n": 0
   },
   "pipeline_ok": true,
-  "pipeline_stamp": "20260914_142111",
-  "stamp": "2026-09-15T12:50:38"
+  "pipeline_stamp": "20260915_125007",
+  "stamp": "2026-09-25T12:54:26"
 }

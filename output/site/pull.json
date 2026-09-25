@@ -1,21 +1,21 @@
 {
-  "stamp": "2026-09-15T12:50:12",
+  "stamp": "2026-09-25T12:54:23",
   "pool": "pool",
   "bars": 120,
   "bench": "SH510300",
   "bench_only": true,
   "before": {
-    "data_asof": "2026-09-15",
-    "data_lag": false
+    "data_asof": "2026-09-24",
+    "data_lag": true
   },
   "after": {
-    "data_asof": "2026-09-15",
-    "data_lag": false
+    "data_asof": "2026-09-24",
+    "data_lag": true
   },
   "advanced": false,
   "cleared_lag": false,
   "ok_n": 1,
   "fail_n": 0,
   "fail": [],
-  "bench_last": "2026-09-15"
+  "bench_last": "2026-09-24"
 }

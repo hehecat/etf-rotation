@@ -69,8 +69,8 @@
         },
         "live_return_pct": -1.518,
         "executed": null,
-        "live_excess_pct": 3.9969,
-        "bench_return_pct": -5.5149,
+        "live_excess_pct": 4.1641,
+        "bench_return_pct": -5.6821,
         "days_live": 40,
         "thin_live": false
       },
@@ -100,8 +100,8 @@
         },
         "live_return_pct": -1.518,
         "executed": null,
-        "live_excess_pct": 3.9969,
-        "bench_return_pct": -5.5149,
+        "live_excess_pct": 4.1641,
+        "bench_return_pct": -5.6821,
         "days_live": 40,
         "thin_live": false
       },
@@ -131,8 +131,8 @@
         },
         "live_return_pct": -1.689,
         "executed": null,
-        "live_excess_pct": 3.8259,
-        "bench_return_pct": -5.5149,
+        "live_excess_pct": 3.9931,
+        "bench_return_pct": -5.6821,
         "days_live": 40,
         "thin_live": false
       },
@@ -162,8 +162,8 @@
         },
         "live_return_pct": -1.689,
         "executed": null,
-        "live_excess_pct": 3.8259,
-        "bench_return_pct": -5.5149,
+        "live_excess_pct": 3.9931,
+        "bench_return_pct": -5.6821,
         "days_live": 40,
         "thin_live": false
       }
@@ -260,14 +260,14 @@
   "signal_live": {
     "name": "c01_q10_vt08_soft_oh38_xgn",
     "live_return_pct": -1.518,
-    "bench_return_pct": -5.5149,
-    "live_excess_pct": 3.9969,
+    "bench_return_pct": -5.6821,
+    "live_excess_pct": 4.1641,
     "days_live": 40,
     "thin_live": false,
     "live_start": "2026-07-21",
     "holdings": "空仓",
     "total_value": 98481.9,
     "market_asof": "2026-09-15",
-    "data_lag": false
+    "data_lag": true
   }
 }

@@ -225,7 +225,7 @@ footer{
     <div class="brand-row">
       <div class="brand-meta">
         <h1>ETF 轮动 · 日更面板</h1>
-        <div class="muted">生成于 2026-09-15 12:50:43 · 生产账户冻结 · 研究影子观察中</div>
+        <div class="muted">生成于 2026-09-25 12:54:26 · 生产账户冻结 · 研究影子观察中</div>
       </div>
       <span class="chip">只读 · 非投资建议</span>
     </div>
@@ -234,9 +234,9 @@ footer{
 </header>
 <main>
 
-<div class="card hero">
+<div class='card banner warn'><b>⚠ 行情滞后 行情未更新</b> · 行情截至 2026-09-24 · wall/交易日 2026-09-25 (nav/live 以 asof 为准) · <code>./etf asof</code></div><div class="card hero">
   <div class="hero-main">
-    <div class="pillrow"><span class="badge off">趋势关</span> <span class="badge info">生产冻结</span> <span class="badge ok">交易日</span> <span class="badge ok">流水线正常</span> <span class="badge ok">监控正常</span> <span class="badge ok">行情正常</span> <span class="badge ok">可当真收益看</span> <span class="badge ok">无告警</span></div>
+    <div class="pillrow"><span class="badge off">趋势关</span> <span class="badge info">生产冻结</span> <span class="badge off">非交易日</span> <span class="badge ok">流水线正常</span> <span class="badge ok">监控正常</span> <span class="badge warn">信号过旧→刷新</span> <span class="badge warn">等行情更新</span> <span class="badge ok">无告警</span></div>
     <div class="action" style="margin-top:.5rem">⚪ 空仓观望</div>
     <div class="muted" style="margin-top:.3rem">C01_效15d · 2026-09-15 12:50</div>
   </div>
@@ -252,14 +252,14 @@ footer{
   </div>
 </div>
 <div class="grid insight">
-<div class='card insight' id='insight-digest'><div class='k'><b>一句话结论</b><span class='badge ok'>可当真收益看</span></div><div class='v'>实盘段 -1.52% · 相对大盘 +4.00% · 已统计40天 · 样本已够, 若无 行情未更新 则应 可当真看收益</div><div class='v muted' style='margin-top:.35rem'>建议 <code>./etf yield</code></div><div class='links'><a href='#insight-digest'>摘要</a><a href='#insight-progress'>能不能当真</a><a href='#insight-progress'>进度</a><a href='raw.html#eod'>收盘原文</a></div></div><div class='card insight' id='insight-progress'><div class='k'><b>统计进度</b><span class='badge ok'>可当真收益看</span></div><div class='v'>已统计40天 · 样本已够 · 样本已够</div><div class='v muted' style='margin-top:.35rem'>行情截至 2026-09-15</div><div class='links'><a href='#insight-progress'>进度</a><a href='#insight-progress'>能不能当真</a></div></div><div class='card insight' id='insight-pulse'><div class='k'><b>现在怎么办</b><span class='badge ok'>可当真收益看</span></div><div class='v'>下一步: 可以看真实收益了 · 样本已够</div><div class='v muted' style='margin-top:.35rem'>现在可以把数字当真收益看 · 样本已够, 若无 行情未更新 则应 可当真看收益</div><div class='links'><a href='#insight-pulse'>详情</a><code>./etf do</code></div></div>
+<div class='card insight' id='insight-digest'><div class='k'><b>一句话结论</b><span class='badge warn'>等行情更新</span></div><div class='v'>实盘段 -1.52% · 相对大盘 +4.16% · 已统计40天 · 行情还没更新完 · 样本已够, 若无 行情未更新 则应 可当真看收益</div><div class='v muted' style='margin-top:.35rem'>建议 <code>./etf wait --timeout 600</code></div><div class='links'><a href='#insight-digest'>摘要</a><a href='#insight-progress'>能不能当真</a><a href='#insight-progress'>进度</a><a href='raw.html#eod'>收盘原文</a></div></div><div class='card insight' id='insight-progress'><div class='k'><b>统计进度</b><span class='badge warn'>等行情更新</span></div><div class='v'>已统计40天 · 样本已够；但行情还没到齐 · 样本已够</div><div class='v muted' style='margin-top:.35rem'>行情截至 2026-09-15</div><div class='links'><a href='#insight-progress'>进度</a><a href='#insight-progress'>能不能当真</a></div></div><div class='card insight' id='insight-pulse'><div class='k'><b>现在怎么办</b><span class='badge warn'>等行情更新</span></div><div class='v'>下一步: 先刷新信号 · 样本已够；但行情还没到齐</div><div class='v muted' style='margin-top:.35rem'>现在不要当真收益看 · 样本已够, 若无 行情未更新 则应 可当真看收益</div><div class='links'><a href='#insight-pulse'>详情</a><code>./etf do</code></div></div>
 </div>
 <div class="card insight" style="margin:.35rem 0 .75rem"><div class="k"><b>怎么看这个面板</b></div><div class="v">每天先看总览结论。需要对比影子再进研究明细；查日志才看原文备查。</div></div>
 <div class="grid kpis" style="margin-top:.75rem">
   <div class="card kpi"><div class="label">持仓</div><div class="value">空仓</div><div class="sub">生产模拟账户</div></div>
   <div class="card kpi"><div class="label">总资产</div><div class="value">98,125.01</div><div class="sub">累计收益 -1.87%</div></div>
-  <div class="card kpi"><div class="label">研究影子·实盘段</div><div class="value">-1.52%</div><div class="sub">C01_Q10_VT08_SOFT_OH38_EXTRA_GOLD_NQ · 已统计40天</div></div>
-  <div class="card kpi"><div class="label">相对大盘</div><div class="value green">+4.00%</div><div class="sub">大盘同期 -5.51%</div></div>
+  <div class="card kpi"><div class="label">研究影子·实盘段</div><div class="value">-1.52%</div><div class="sub">C01_Q10_VT08_SOFT_OH38_EXTRA_GOLD_NQ · 已统计40天 · 行情未更新</div></div>
+  <div class="card kpi"><div class="label">相对大盘</div><div class="value green">+4.16%</div><div class="sub">大盘同期 -5.68%</div></div>
 </div>
 <div style="margin:.35rem 0 .95rem"><div class="bar"><i style="width:9.6%"></i></div></div>
 
@@ -272,7 +272,7 @@ footer{
   <div class="card stack">
     <h2>研究影子</h2>
     <div><b>空仓(趋势关) 暴露0%</b></div>
-    <div class="muted">账户 98,481.90 · 实盘段 -1.52% · 相对大盘 +4.00% · 全样本 -1.52% · 收益样本 40</div>
+    <div class="muted">账户 98,481.90 · 实盘段 -1.52% · 相对大盘 +4.16% · 全样本 -1.52% · 收益样本 40</div>
     <div class="bar"><i style="width:0.0%"></i></div>
     <div class="muted">状态文件: c01_q10_vt08_soft_oh38_xgn.json</div>
   </div>
@@ -297,7 +297,7 @@ footer{
   </div>
   <div class="card">
     <h2>近几日动作</h2>
-    <ul class='tl'><li><div class='when'>2026-09-15</div><div class='what'><span class="badge off">趋势关</span>⚪ 空仓观望<div class=why>大盘趋势向下 → 保持空仓</div><div class='why'>实盘段 -1.52% · 相对大盘 +4.00%</div></div></li><li><div class='when'>2026-09-14</div><div class='what'><span class="badge off">趋势关</span>⚪ 空仓观望<div class=why>大盘趋势向下 → 保持空仓</div><div class='why'>实盘段 -1.52% · 相对大盘 +3.39%</div></div></li><li><div class='when'>2026-09-11</div><div class='what'><span class="badge off">趋势关</span>⚪ 空仓观望<div class=why>大盘趋势向下 → 保持空仓</div><div class='why'>实盘段 -1.52% · 相对大盘 +2.83%</div></div></li><li><div class='when'>2026-09-10</div><div class='what'><span class="badge off">趋势关</span>⚪ 空仓观望<div class=why>大盘趋势向下 → 保持空仓</div><div class='why'>实盘段 -1.52% · 相对大盘 +2.03%</div></div></li><li><div class='when'>2026-09-09</div><div class='what'><span class="badge off">趋势关</span>⚪ 空仓观望<div class=why>大盘趋势向下 → 保持空仓</div><div class='why'>实盘段 -1.52% · 相对大盘 +1.62%</div></div></li><li><div class='when'>2026-09-08</div><div class='what'><span class="badge off">趋势关</span>⚪ 空仓观望<div class=why>大盘趋势向下 → 保持空仓</div><div class='why'>实盘段 -1.52% · 相对大盘 +1.89%</div></div></li><li><div class='when'>2026-09-07</div><div class='what'><span class="badge off">趋势关</span>⚪ 空仓观望<div class=why>大盘趋势向下 → 保持空仓</div><div class='why'>实盘段 -1.52% · 相对大盘 +1.68%</div></div></li><li><div class='when'>2026-09-04</div><div class='what'><span class="badge off">趋势关</span>⚪ 空仓观望<div class=why>大盘趋势向下 → 保持空仓</div><div class='why'>实盘段 -1.52% · 相对大盘 +2.05%</div></div></li><li><div class='when'>2026-09-03</div><div class='what'><span class="badge off">趋势关</span>⚪ 空仓观望<div class=why>大盘趋势向下 → 保持空仓</div><div class='why'>实盘段 -1.52% · 相对大盘 +1.95%</div></div></li><li><div class='when'>2026-09-02</div><div class='what'><span class="badge off">趋势关</span>⚪ 空仓观望<div class=why>大盘趋势向下 → 保持空仓</div><div class='why'>实盘段 -1.52% · 相对大盘 +1.97%</div></div></li><li><div class='when'>2026-09-01</div><div class='what'><span class="badge off">趋势关</span>⚪ 空仓观望<div class=why>大盘趋势向下 → 保持空仓</div><div class='why'>实盘段 -1.52% · 相对大盘 +0.63%</div></div></li><li><div class='when'>2026-08-31</div><div class='what'><span class="badge off">趋势关</span>⚪ 空仓观望<div class=why>大盘趋势向下 → 保持空仓</div><div class='why'>实盘段 -1.52% · 相对大盘 +0.61%</div></div></li><li><div class='when'>2026-08-28</div><div class='what'><span class="badge off">趋势关</span>⚪ 空仓观望<div class=why>大盘趋势向下 → 保持空仓</div><div class='why'>实盘段 -1.52% · 相对大盘 +0.74%</div></div></li><li><div class='when'>2026-08-27</div><div class='what'><span class="badge off">趋势关</span>⚪ 空仓观望<div class=why>大盘趋势向下 → 保持空仓</div><div class='why'>实盘段 -1.52% · 相对大盘 +0.49%</div></div></li></ul>
+    <ul class='tl'><li><div class='when'>2026-09-15</div><div class='what'><span class="badge off">趋势关</span>⚪ 空仓观望<div class=why>大盘趋势向下 → 保持空仓</div><div class='why'>实盘段 -1.52% · 相对大盘 +4.16%</div></div></li><li><div class='when'>2026-09-14</div><div class='what'><span class="badge off">趋势关</span>⚪ 空仓观望<div class=why>大盘趋势向下 → 保持空仓</div><div class='why'>实盘段 -1.52% · 相对大盘 +3.39%</div></div></li><li><div class='when'>2026-09-11</div><div class='what'><span class="badge off">趋势关</span>⚪ 空仓观望<div class=why>大盘趋势向下 → 保持空仓</div><div class='why'>实盘段 -1.52% · 相对大盘 +2.83%</div></div></li><li><div class='when'>2026-09-10</div><div class='what'><span class="badge off">趋势关</span>⚪ 空仓观望<div class=why>大盘趋势向下 → 保持空仓</div><div class='why'>实盘段 -1.52% · 相对大盘 +2.03%</div></div></li><li><div class='when'>2026-09-09</div><div class='what'><span class="badge off">趋势关</span>⚪ 空仓观望<div class=why>大盘趋势向下 → 保持空仓</div><div class='why'>实盘段 -1.52% · 相对大盘 +1.62%</div></div></li><li><div class='when'>2026-09-08</div><div class='what'><span class="badge off">趋势关</span>⚪ 空仓观望<div class=why>大盘趋势向下 → 保持空仓</div><div class='why'>实盘段 -1.52% · 相对大盘 +1.89%</div></div></li><li><div class='when'>2026-09-07</div><div class='what'><span class="badge off">趋势关</span>⚪ 空仓观望<div class=why>大盘趋势向下 → 保持空仓</div><div class='why'>实盘段 -1.52% · 相对大盘 +1.68%</div></div></li><li><div class='when'>2026-09-04</div><div class='what'><span class="badge off">趋势关</span>⚪ 空仓观望<div class=why>大盘趋势向下 → 保持空仓</div><div class='why'>实盘段 -1.52% · 相对大盘 +2.05%</div></div></li><li><div class='when'>2026-09-03</div><div class='what'><span class="badge off">趋势关</span>⚪ 空仓观望<div class=why>大盘趋势向下 → 保持空仓</div><div class='why'>实盘段 -1.52% · 相对大盘 +1.95%</div></div></li><li><div class='when'>2026-09-02</div><div class='what'><span class="badge off">趋势关</span>⚪ 空仓观望<div class=why>大盘趋势向下 → 保持空仓</div><div class='why'>实盘段 -1.52% · 相对大盘 +1.97%</div></div></li><li><div class='when'>2026-09-01</div><div class='what'><span class="badge off">趋势关</span>⚪ 空仓观望<div class=why>大盘趋势向下 → 保持空仓</div><div class='why'>实盘段 -1.52% · 相对大盘 +0.63%</div></div></li><li><div class='when'>2026-08-31</div><div class='what'><span class="badge off">趋势关</span>⚪ 空仓观望<div class=why>大盘趋势向下 → 保持空仓</div><div class='why'>实盘段 -1.52% · 相对大盘 +0.61%</div></div></li><li><div class='when'>2026-08-28</div><div class='what'><span class="badge off">趋势关</span>⚪ 空仓观望<div class=why>大盘趋势向下 → 保持空仓</div><div class='why'>实盘段 -1.52% · 相对大盘 +0.74%</div></div></li><li><div class='when'>2026-08-27</div><div class='what'><span class="badge off">趋势关</span>⚪ 空仓观望<div class=why>大盘趋势向下 → 保持空仓</div><div class='why'>实盘段 -1.52% · 相对大盘 +0.49%</div></div></li></ul>
   </div>
 </div>
 
@@ -367,7 +367,7 @@ footer{
   </div>
   <div class="bar"><i style="width:0.0%"></i></div>
 </div></div>
-  <p class="muted">基准 SH510300: 4.523 MA20=4.632(-2.4%) 20日=-5.5% 趋势=关</p>
+  <p class="muted">基准 SH510300: 4.515 MA20=4.603(-1.9%) 20日=-3.8% 趋势=关</p>
 </div>
 
 <details>
@@ -448,9 +448,9 @@ footer{
 ================================================================
 -------- 有效收益 (SIGNAL live) --------
   策略: c01_q10_vt08_soft_oh38_xgn
-  live=-1.518%  xs=+3.997%  bench=-5.515%
+  live=-1.518%  xs=+4.164%  bench=-5.682%
   from=2026-07-21  Lrets=40  持仓=空仓
-  行情截至: 2026-09-15
+  行情截至: 2026-09-15  DATA_LAG
   口径: live%=暖机末→今 · xs%=live−基准 · 非全样本
 ----------------------------------------
 </pre>

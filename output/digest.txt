@@ -1,8 +1,8 @@
 ======== DIGEST ========
-可判性: READY
-asof: 2026-09-15 lag=False
-live=-1.518 xs=3.9969 Lrets=40 thin=False
-decision: ok
+可判性: WAIT_DATA
+asof: 2026-09-15 lag=True
+live=-1.518 xs=4.1641 Lrets=40 thin=False
+decision: refresh
 eta: 样本已够, 若无 DATA_LAG 则应 READY
-推荐: ./etf yield
+推荐: ./etf wait --timeout 600
 ========

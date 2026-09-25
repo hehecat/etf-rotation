@@ -1,58 +1,58 @@
 {
-  "stamp": "2026-09-15T12:50:44",
+  "stamp": "2026-09-25T12:54:26",
   "trading_day": {
-    "date": "2026-09-15",
-    "is_trading_day": true,
-    "source": "bench_calendar",
-    "data_asof": "2026-09-15",
-    "data_lag": false
+    "date": "2026-09-25",
+    "is_trading_day": false,
+    "source": "cn_holidays_beyond_bench",
+    "data_asof": "2026-09-24",
+    "data_lag": true
   },
   "market_asof": "2026-09-15",
-  "data_lag": false,
+  "data_lag": true,
   "latest_time": "2026-09-15 12:50",
-  "latest_stale": false,
+  "latest_stale": true,
   "action": "⚪ 空仓观望",
   "market_ok": false,
   "signal_live": {
     "name": "c01_q10_vt08_soft_oh38_xgn",
     "live_return_pct": -1.518,
-    "bench_return_pct": -5.5149,
-    "live_excess_pct": 3.9969,
+    "bench_return_pct": -5.6821,
+    "live_excess_pct": 4.1641,
     "days_live": 40,
     "thin_live": false,
     "live_start": "2026-07-21",
     "holdings": "空仓",
     "total_value": 98481.9,
     "market_asof": "2026-09-15",
-    "data_lag": false
+    "data_lag": true
   },
   "pipeline_yield": {
     "name": "c01_q10_vt08_soft_oh38_xgn",
     "live_return_pct": -1.518,
-    "live_excess_pct": 3.9969,
-    "bench_return_pct": -5.5149,
+    "live_excess_pct": 4.1641,
+    "bench_return_pct": -5.6821,
     "days_live": 40,
     "thin_live": false,
     "live_start": "2026-07-21",
     "holdings": "空仓",
     "market_asof": "2026-09-15",
-    "data_lag": false
+    "data_lag": true
   },
   "pipeline_brief": {
-    "stamp": "2026-09-15T12:50:38",
+    "stamp": "2026-09-25T12:54:25",
     "market_asof": "2026-09-15",
-    "data_lag": false,
+    "data_lag": true,
     "action": "⚪ 空仓观望",
     "market_ok": false,
     "live_return_pct": -1.518,
-    "live_excess_pct": 3.9969,
+    "live_excess_pct": 4.1641,
     "days_live": 40,
     "thin_live": false,
     "path_txt": "/home/runner/work/etf-rotation/etf-rotation/output/brief.txt",
     "path_json": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/brief.json"
   },
-  "decision": "ok",
+  "decision": "refresh",
   "days_to_ready": 0,
   "eta_note": "样本已够, 若无 DATA_LAG 则应 READY",
-  "ready_level": "READY"
+  "ready_level": "WAIT_DATA"
 }

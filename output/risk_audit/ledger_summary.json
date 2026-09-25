@@ -3,39 +3,39 @@
   "path": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/daily_scorecard.jsonl",
   "first_date": "2026-07-21",
   "last_date": "2026-09-15",
-  "readable_n": 36,
-  "lag_n": 1,
+  "readable_n": 35,
+  "lag_n": 2,
   "thin_n": 2,
   "trend_on_n": 8,
   "trend_off_n": 30,
   "prod_empty_n": 30,
   "prod_open_n": 8,
   "xs_readable": {
-    "n": 36,
+    "n": 35,
     "min": -0.203,
-    "max": 3.9969,
-    "median": 1.8244,
-    "last": 3.9969,
-    "pos": 35,
+    "max": 3.9273,
+    "median": 1.6782,
+    "last": 3.3911,
+    "pos": 34,
     "neg": 1
   },
   "live_readable": {
-    "n": 36,
+    "n": 35,
     "min": -1.518,
     "max": 2.362,
     "median": -1.518,
     "last": -1.518,
     "pos": 6,
-    "neg": 22
+    "neg": 21
   },
   "last_row": {
     "date": "2026-09-15",
-    "level": "READY",
-    "readable_yield": true,
+    "level": "WAIT_DATA",
+    "readable_yield": false,
     "live_return_pct": -1.518,
-    "live_excess_pct": 3.9969,
-    "data_lag": false,
-    "next_action": "read_yield",
+    "live_excess_pct": 4.1641,
+    "data_lag": true,
+    "next_action": "refresh",
     "action": "⚪ 空仓观望"
   }
 }

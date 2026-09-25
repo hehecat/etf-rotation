@@ -1,19 +1,21 @@
 {
-  "stamp": "2026-09-15T12:50:38",
-  "level": "READY",
-  "note": "可用 live%/xs% 做真实有效收益结论",
+  "stamp": "2026-09-25T12:54:25",
+  "level": "WAIT_DATA",
+  "note": "行情滞后; 收益字段可能仅锚日 → ./etf wait-asof",
   "market_asof": "2026-09-15",
-  "data_lag": false,
+  "data_lag": true,
   "days_live": 40,
   "thin_live": false,
   "live_return_pct": -1.518,
-  "live_excess_pct": 3.9969,
+  "live_excess_pct": 4.1641,
   "action": "⚪ 空仓观望",
   "market_ok": false,
   "holdings": "空仓",
-  "decision": "ok",
-  "blockers": [],
+  "decision": "refresh",
+  "blockers": [
+    "DATA_LAG: 行情未到 wall 日, xs 勿解读"
+  ],
   "days_to_ready": 0,
   "eta_note": "样本已够, 若无 DATA_LAG 则应 READY",
-  "ready": true
+  "ready": false
 }
