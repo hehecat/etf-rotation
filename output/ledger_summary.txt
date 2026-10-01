@@ -4,7 +4,7 @@
 趋势开/关: 8/30  生产空仓/有仓: 30/8
 可读 xs%: n=35 中位=1.6782  min=-0.203 max=3.9273  +日34/-日1  last=3.3911
 可读 live%: n=35 中位=-1.518  min=-1.518 max=2.362  last=-1.518
-最新: 2026-09-15 level=WAIT_DATA readable=False live=-1.518 xs=4.1641 action=⚪ 空仓观望 next=refresh
+最新: 2026-09-15 level=WAIT_DATA readable=False live=-1.518 xs=5.8979 action=⚪ 空仓观望 next=refresh
 口径: 只认 live%+xs%; lag/THIN 日不参与改进判断
 改进门槛: 可读日≥60 且 dual-end 门控仍过, 才讨论结构变更
 ========

@@ -1,5 +1,5 @@
 {
-  "stamp": "2026-09-25T12:54:25",
+  "stamp": "2026-10-01T14:41:58",
   "decision": "refresh",
   "market_asof": "2026-09-15",
   "data_lag": true,
@@ -9,5 +9,5 @@
   "recommend": "./etf refresh",
   "days_to_ready": 0,
   "eta_note": "样本已够, 若无 DATA_LAG 则应 READY",
-  "ready_level": "READY"
+  "ready_level": "WAIT_DATA"
 }

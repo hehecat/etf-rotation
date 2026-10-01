@@ -33,7 +33,7 @@
     "level": "WAIT_DATA",
     "readable_yield": false,
     "live_return_pct": -1.518,
-    "live_excess_pct": 4.1641,
+    "live_excess_pct": 5.8979,
     "data_lag": true,
     "next_action": "refresh",
     "action": "⚪ 空仓观望"

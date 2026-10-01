@@ -1,5 +1,5 @@
 {
-  "stamp": "2026-09-25T12:54:25",
+  "stamp": "2026-10-01T14:41:59",
   "level": "WAIT_DATA",
   "note": "行情滞后; 收益字段可能仅锚日 → ./etf wait-asof",
   "market_asof": "2026-09-15",
@@ -7,7 +7,7 @@
   "days_live": 40,
   "thin_live": false,
   "live_return_pct": -1.518,
-  "live_excess_pct": 4.1641,
+  "live_excess_pct": 5.8979,
   "action": "⚪ 空仓观望",
   "market_ok": false,
   "holdings": "空仓",

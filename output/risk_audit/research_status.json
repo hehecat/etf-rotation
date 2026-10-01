@@ -1,13 +1,13 @@
 {
-  "stamp": "2026-09-25T12:54:24",
+  "stamp": "2026-10-01T14:41:57",
   "trading_day": {
-    "date": "2026-09-25",
+    "date": "2026-10-01",
     "is_trading_day": false,
     "source": "cn_holidays_beyond_bench",
     "bench_n": 120,
-    "bench_first": "2026-04-03",
-    "bench_last": "2026-09-24",
-    "data_asof": "2026-09-24",
+    "bench_first": "2026-04-09",
+    "bench_last": "2026-09-30",
+    "data_asof": "2026-09-30",
     "data_lag": true,
     "in_closed_table": true,
     "in_makeup_table": false
@@ -19,8 +19,8 @@
   "signal_live": {
     "name": "c01_q10_vt08_soft_oh38_xgn",
     "live_return_pct": -1.518,
-    "bench_return_pct": -5.6821,
-    "live_excess_pct": 4.1641,
+    "bench_return_pct": -7.4159,
+    "live_excess_pct": 5.8979,
     "days_live": 40,
     "thin_live": false,
     "live_start": "2026-07-21",
@@ -80,8 +80,8 @@
       "live_return_pct": -1.518,
       "live_start": "2026-07-21",
       "live_anchor": 100000.0,
-      "bench_return_pct": -5.6821,
-      "live_excess_pct": 4.1641,
+      "bench_return_pct": -7.4159,
+      "live_excess_pct": 5.8979,
       "days_live": 40,
       "thin_live": false
     },
@@ -98,8 +98,8 @@
       "live_return_pct": -1.518,
       "live_start": "2026-07-21",
       "live_anchor": 100000.0,
-      "bench_return_pct": -5.6821,
-      "live_excess_pct": 4.1641,
+      "bench_return_pct": -7.4159,
+      "live_excess_pct": 5.8979,
       "days_live": 40,
       "thin_live": false
     },
@@ -116,8 +116,8 @@
       "live_return_pct": -1.689,
       "live_start": "2026-07-21",
       "live_anchor": 100000.0,
-      "bench_return_pct": -5.6821,
-      "live_excess_pct": 3.9931,
+      "bench_return_pct": -7.4159,
+      "live_excess_pct": 5.7269,
       "days_live": 40,
       "thin_live": false
     },
@@ -134,8 +134,8 @@
       "live_return_pct": -1.689,
       "live_start": "2026-07-21",
       "live_anchor": 100000.0,
-      "bench_return_pct": -5.6821,
-      "live_excess_pct": 3.9931,
+      "bench_return_pct": -7.4159,
+      "live_excess_pct": 5.7269,
       "days_live": 40,
       "thin_live": false
     }
@@ -146,13 +146,13 @@
     "ok": true
   },
   "pipeline_last": {
-    "stamp": "20260915_125007",
+    "stamp": "20260925_125420",
     "ok": true,
     "alert_error_n": 0,
     "alert_warn_n": 0,
-    "trading_day": true,
+    "trading_day": false,
     "data_asof": "2026-09-15",
-    "data_lag": false
+    "data_lag": true
   },
   "healthcheck_last": {
     "stamp": null,
@@ -165,7 +165,7 @@
     "alert_fail": null
   },
   "site": {
-    "built_at": "2026-09-15T12:50:43",
+    "built_at": "2026-09-25T12:54:26",
     "has_latest": true,
     "has_monitor": true,
     "has_summary": true,
@@ -185,9 +185,9 @@
     "has_progress": true,
     "days_to_ready": 0,
     "eta_note": "样本已够, 若无 DATA_LAG 则应 READY",
-    "ready_level": "READY",
-    "next_action": "read_yield",
-    "readable_yield": true,
+    "ready_level": "WAIT_DATA",
+    "next_action": "refresh",
+    "readable_yield": false,
     "has_wait_asof": true,
     "has_dashboard": true,
     "has_research": true,
@@ -195,8 +195,8 @@
     "has_live": true,
     "has_compare": true,
     "market_asof": "2026-09-15",
-    "data_lag": false,
-    "pipeline_asof": "2026-09-14",
+    "data_lag": true,
+    "pipeline_asof": "2026-09-15",
     "pipeline_lag": false,
     "alert_error_n": 0,
     "alert_warn_n": 0,

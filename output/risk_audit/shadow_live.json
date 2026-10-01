@@ -35,9 +35,9 @@
     "days_live": 40,
     "thin_live": false,
     "bench": "SH510300",
-    "bench_return_pct": -5.6821,
-    "bench_end": "2026-09-24",
-    "live_excess_pct": 4.1641
+    "bench_return_pct": -7.4159,
+    "bench_end": "2026-09-30",
+    "live_excess_pct": 5.8979
   },
   {
     "name": "c01_q10_vt08_soft_oh38_xgn",
@@ -75,9 +75,9 @@
     "days_live": 40,
     "thin_live": false,
     "bench": "SH510300",
-    "bench_return_pct": -5.6821,
-    "bench_end": "2026-09-24",
-    "live_excess_pct": 4.1641
+    "bench_return_pct": -7.4159,
+    "bench_end": "2026-09-30",
+    "live_excess_pct": 5.8979
   },
   {
     "name": "c01_q10_vt09_oh35",
@@ -115,9 +115,9 @@
     "days_live": 40,
     "thin_live": false,
     "bench": "SH510300",
-    "bench_return_pct": -5.6821,
-    "bench_end": "2026-09-24",
-    "live_excess_pct": 3.9931
+    "bench_return_pct": -7.4159,
+    "bench_end": "2026-09-30",
+    "live_excess_pct": 5.7269
   },
   {
     "name": "c01_q10_vt11",
@@ -155,8 +155,8 @@
     "days_live": 40,
     "thin_live": false,
     "bench": "SH510300",
-    "bench_return_pct": -5.6821,
-    "bench_end": "2026-09-24",
-    "live_excess_pct": 3.9931
+    "bench_return_pct": -7.4159,
+    "bench_end": "2026-09-30",
+    "live_excess_pct": 5.7269
   }
 ]

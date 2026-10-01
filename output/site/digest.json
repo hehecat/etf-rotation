@@ -1,5 +1,5 @@
 {
-  "stamp": "2026-09-25T12:54:25",
+  "stamp": "2026-10-01T14:41:59",
   "level": "WAIT_DATA",
   "market_asof": "2026-09-15",
   "data_lag": true,
@@ -7,11 +7,11 @@
   "action": "⚪ 空仓观望",
   "market_ok": false,
   "live_return_pct": -1.518,
-  "live_excess_pct": 4.1641,
+  "live_excess_pct": 5.8979,
   "days_live": 40,
   "thin_live": false,
   "days_to_ready": 0,
   "eta_note": "样本已够, 若无 DATA_LAG 则应 READY",
   "recommend": "./etf wait --timeout 600",
-  "text": "======== DIGEST ========\n可判性: WAIT_DATA\nasof: 2026-09-15 lag=True\nlive=-1.518 xs=4.1641 Lrets=40 thin=False\ndecision: refresh\neta: 样本已够, 若无 DATA_LAG 则应 READY\n推荐: ./etf wait --timeout 600\n========\n"
+  "text": "======== DIGEST ========\n可判性: WAIT_DATA\nasof: 2026-09-15 lag=True\nlive=-1.518 xs=5.8979 Lrets=40 thin=False\ndecision: refresh\neta: 样本已够, 若无 DATA_LAG 则应 READY\n推荐: ./etf wait --timeout 600\n========\n"
 }

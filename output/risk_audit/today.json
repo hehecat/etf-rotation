@@ -1,13 +1,13 @@
 {
-  "stamp": "2026-09-25T12:54:24",
+  "stamp": "2026-10-01T14:41:58",
   "signal_shadow": "c01_q10_vt08_soft_oh38_xgn",
   "latest_action": "⚪ 空仓观望",
   "market_ok": false,
   "signal_live": {
     "name": "c01_q10_vt08_soft_oh38_xgn",
     "live_return_pct": -1.518,
-    "bench_return_pct": -5.6821,
-    "live_excess_pct": 4.1641,
+    "bench_return_pct": -7.4159,
+    "live_excess_pct": 5.8979,
     "days_live": 40,
     "thin_live": false,
     "live_start": "2026-07-21",
@@ -18,6 +18,6 @@
   },
   "days_to_ready": 0,
   "eta_note": "样本已够, 若无 DATA_LAG 则应 READY",
-  "ready_level": "READY",
-  "text": "======== ETF 今日速览 ========\n时间: 2026-09-25T12:54:24\n信号默认影子: c01_q10_vt08_soft_oh38_xgn\n----------------------------\n生产动作: ⚪ 空仓观望\n市场: 关  宽度=0.09615384615384616  配置=C01_效15d  信号时间: 2026-09-15 12:50  行情截至: 2026-09-15\n⚠ 行情滞后: wall/交易日 2026-09-25 > 行情截至 2026-09-15 (nav/live 以行情日为准)\n原因:\n  · 大盘趋势向下 → 保持空仓\n研究影子动作: 空仓(趋势关) 暴露0%\n研究目标暴露: 0.0%\n-------- 有效收益 (SIGNAL) --------\n  策略: c01_q10_vt08_soft_oh38_xgn\n  live=-1.518%  xs=+4.164%  bench=-5.682%\n  from=2026-07-21  Lrets=40  持仓=空仓\n  行情截至: 2026-09-15  DATA_LAG\n-------- 监控告警 --------\n  error=0 warn=0 ok=True\n-------- 下一步 --------\n  ./etf asof     # 优先: DATA_LAG 取证, 等行情\n  # 勿反复 refresh 空转; 行情更新后再判 xs\n  ./etf yield    # 有效收益 live%/xs%\n  ./etf brief    # 三合一速览\n  ./etf data     # 行情状态/决策\n  ./etf next     # 唯一推荐下一步\n  ./etf preview\n  ./etf live\n  ./etf check --checks data_asof,asof\n距可判: 0 交易日  READY\nETA: 样本已够, 若无 DATA_LAG 则应 READY\n轨迹: ./etf progress\n口径: 有效收益=live%+xs%; DATA_LAG 等行情; 生产 c01 冻结\n========"
+  "ready_level": "WAIT_DATA",
+  "text": "======== ETF 今日速览 ========\n时间: 2026-10-01T14:41:58\n信号默认影子: c01_q10_vt08_soft_oh38_xgn\n----------------------------\n生产动作: ⚪ 空仓观望\n市场: 关  宽度=0.09615384615384616  配置=C01_效15d  信号时间: 2026-09-15 12:50  行情截至: 2026-09-15\n⚠ 行情滞后: wall/交易日 2026-10-01 > 行情截至 2026-09-15 (nav/live 以行情日为准)\n原因:\n  · 大盘趋势向下 → 保持空仓\n研究影子动作: 空仓(趋势关) 暴露0%\n研究目标暴露: 0.0%\n-------- 有效收益 (SIGNAL) --------\n  策略: c01_q10_vt08_soft_oh38_xgn\n  live=-1.518%  xs=+5.898%  bench=-7.416%\n  from=2026-07-21  Lrets=40  持仓=空仓\n  行情截至: 2026-09-15  DATA_LAG\n-------- 监控告警 --------\n  error=0 warn=0 ok=True\n-------- 下一步 --------\n  ./etf asof     # 优先: DATA_LAG 取证, 等行情\n  # 勿反复 refresh 空转; 行情更新后再判 xs\n  ./etf yield    # 有效收益 live%/xs%\n  ./etf brief    # 三合一速览\n  ./etf data     # 行情状态/决策\n  ./etf next     # 唯一推荐下一步\n  ./etf preview\n  ./etf live\n  ./etf check --checks data_asof,asof\n距可判: 0 交易日  WAIT_DATA\nETA: 样本已够, 若无 DATA_LAG 则应 READY\n轨迹: ./etf progress\n口径: 有效收益=live%+xs%; DATA_LAG 等行情; 生产 c01 冻结\n========"
 }

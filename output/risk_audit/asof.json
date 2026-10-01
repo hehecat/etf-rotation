@@ -1,13 +1,13 @@
 {
-  "stamp": "2026-09-25T12:54:25",
+  "stamp": "2026-10-01T14:41:58",
   "trading_day": {
-    "date": "2026-09-25",
+    "date": "2026-10-01",
     "is_trading_day": false,
     "source": "cn_holidays_beyond_bench",
     "bench_n": 120,
-    "bench_first": "2026-04-03",
-    "bench_last": "2026-09-24",
-    "data_asof": "2026-09-24",
+    "bench_first": "2026-04-09",
+    "bench_last": "2026-09-30",
+    "data_asof": "2026-09-30",
     "data_lag": true,
     "in_closed_table": true,
     "in_makeup_table": false
@@ -20,8 +20,8 @@
   "signal_live": {
     "name": "c01_q10_vt08_soft_oh38_xgn",
     "live_return_pct": -1.518,
-    "bench_return_pct": -5.6821,
-    "live_excess_pct": 4.1641,
+    "bench_return_pct": -7.4159,
+    "live_excess_pct": 5.8979,
     "days_live": 40,
     "thin_live": false,
     "live_start": "2026-07-21",
@@ -31,18 +31,18 @@
     "data_lag": true
   },
   "pipeline_last": {
-    "stamp": "20260915_125007",
+    "stamp": "20260925_125420",
     "ok": true,
     "data_asof": "2026-09-15",
-    "data_lag": false
+    "data_lag": true
   },
   "site_meta": {
     "market_asof": "2026-09-15",
-    "data_lag": false,
-    "built_at": "2026-09-15T12:50:43"
+    "data_lag": true,
+    "built_at": "2026-09-25T12:54:26"
   },
   "days_to_ready": 0,
   "eta_note": "样本已够, 若无 DATA_LAG 则应 READY",
-  "ready_level": "READY",
-  "text": "======== 行情/收益取证 ========\n时间: 2026-09-25T12:54:25\n交易日: False date=2026-09-25 source=cn_holidays_beyond_bench\n行情截至: 2026-09-15  DATA_LAG\n信号时间: 2026-09-15 12:50  动作: ⚪ 空仓观望  市场: 关\nSIGNAL: c01_q10_vt08_soft_oh38_xgn\n  live=-1.518 xs=4.1641 Lrets=40 thin=False 持仓=空仓\npipeline_last: stamp=20260915_125007 ok=True asof=2026-09-15 lag=False\nsite_meta: asof=2026-09-15 lag=False\ndtr=0 eta=样本已够, 若无 DATA_LAG 则应 READY level=READY\n========\n"
+  "ready_level": "WAIT_DATA",
+  "text": "======== 行情/收益取证 ========\n时间: 2026-10-01T14:41:58\n交易日: False date=2026-10-01 source=cn_holidays_beyond_bench\n行情截至: 2026-09-15  DATA_LAG\n信号时间: 2026-09-15 12:50  动作: ⚪ 空仓观望  市场: 关\nSIGNAL: c01_q10_vt08_soft_oh38_xgn\n  live=-1.518 xs=5.8979 Lrets=40 thin=False 持仓=空仓\npipeline_last: stamp=20260925_125420 ok=True asof=2026-09-15 lag=True\nsite_meta: asof=2026-09-15 lag=True\ndtr=0 eta=样本已够, 若无 DATA_LAG 则应 READY level=WAIT_DATA\n========\n"
 }

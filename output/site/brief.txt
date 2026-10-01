@@ -1,7 +1,7 @@
 ======== BRIEF 速览 ========
-时间: 2026-09-25T12:54:25
+时间: 2026-10-01T14:41:59
 行情截至: 2026-09-15  DATA_LAG
 动作: ⚪ 空仓观望  市场: 关
-live=-1.518 xs=4.1641 Lrets=40 thin=False
+live=-1.518 xs=5.8979 Lrets=40 thin=False
 dtr=0 eta=样本已够, 若无 DATA_LAG 则应 READY
 ========

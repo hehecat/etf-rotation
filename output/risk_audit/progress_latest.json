@@ -1,5 +1,5 @@
 {
-  "stamp": "2026-09-25T12:54:27",
+  "stamp": "2026-10-01T14:42:01",
   "date": "2026-09-15",
   "level": "WAIT_DATA",
   "market_asof": "2026-09-15",
@@ -8,7 +8,7 @@
   "days_to_ready": 0,
   "thin_live": false,
   "live_return_pct": -1.518,
-  "live_excess_pct": 4.1641,
+  "live_excess_pct": 5.8979,
   "decision": "refresh",
   "action": "⚪ 空仓观望",
   "source": "pull_noadv"

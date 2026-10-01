@@ -1,5 +1,5 @@
 {
-  "stamp": "2026-09-25T12:54:26",
+  "stamp": "2026-10-01T14:41:59",
   "level": "WAIT_DATA",
   "market_asof": "2026-09-15",
   "data_lag": true,
@@ -7,7 +7,7 @@
   "next_action": "refresh",
   "why": "latest 过旧, 先刷信号",
   "live_return_pct": -1.518,
-  "live_excess_pct": 4.1641,
+  "live_excess_pct": 5.8979,
   "days_live": 40,
   "thin_live": false,
   "days_to_ready": 0,
@@ -16,7 +16,7 @@
   "exit_code": 3,
   "readable_yield": false,
   "progress_latest": {
-    "stamp": "2026-09-25T12:54:25",
+    "stamp": "2026-10-01T14:41:59",
     "date": "2026-09-15",
     "level": "WAIT_DATA",
     "market_asof": "2026-09-15",
@@ -25,10 +25,10 @@
     "days_to_ready": 0,
     "thin_live": false,
     "live_return_pct": -1.518,
-    "live_excess_pct": 4.1641,
+    "live_excess_pct": 5.8979,
     "decision": "refresh",
     "action": "⚪ 空仓观望",
     "source": "digest"
   },
-  "text": "======== PULSE 脉搏 ========\nlevel: WAIT_DATA\nasof: 2026-09-15 lag=True\nlive=-1.518 xs=4.1641 Lrets=40 thin=False\ndtr=0 eta=样本已够, 若无 DATA_LAG 则应 READY\ndecision: refresh\nnext_action: refresh\nwhy: latest 过旧, 先刷信号\n推荐: ./etf refresh\nexit_code: 3\nreadable_yield: False\n========\n"
+  "text": "======== PULSE 脉搏 ========\nlevel: WAIT_DATA\nasof: 2026-09-15 lag=True\nlive=-1.518 xs=5.8979 Lrets=40 thin=False\ndtr=0 eta=样本已够, 若无 DATA_LAG 则应 READY\ndecision: refresh\nnext_action: refresh\nwhy: latest 过旧, 先刷信号\n推荐: ./etf refresh\nexit_code: 3\nreadable_yield: False\n========\n"
 }
