@@ -4,25 +4,25 @@
 --------
 c01_q10_vt08_soft_oh38  暴露=  0.0%  regime=bear×0.0  vol_src=portfolio scale=1.0  rets=40
   账户=98481.9 收益=-1.52 持仓0: 空仓
-  live=-1.518% xs=+4.164% bench=-5.682% anchor=100000.0 from=2026-07-21 Lrets=40
+  live=-1.518% xs=+5.898% bench=-7.416% anchor=100000.0 from=2026-07-21 Lrets=40
   注: vol_target 用组合已实现波动
   注: 趋势关 → 目标暴露 0
 --------
 c01_q10_vt08_soft_oh38_xgn  暴露=  0.0%  regime=bear×0.0  vol_src=portfolio scale=1.0  rets=40
   账户=98481.9 收益=-1.52 持仓0: 空仓
-  live=-1.518% xs=+4.164% bench=-5.682% anchor=100000.0 from=2026-07-21 Lrets=40
+  live=-1.518% xs=+5.898% bench=-7.416% anchor=100000.0 from=2026-07-21 Lrets=40
   注: vol_target 用组合已实现波动
   注: 趋势关 → 目标暴露 0
 --------
 c01_q10_vt09_oh35  暴露=  0.0%  regime=None×1.0  vol_src=portfolio scale=1.0  rets=40
   账户=98311.44 收益=-1.69 持仓0: 空仓
-  live=-1.689% xs=+3.993% bench=-5.682% anchor=100000.0 from=2026-07-21 Lrets=40
+  live=-1.689% xs=+5.727% bench=-7.416% anchor=100000.0 from=2026-07-21 Lrets=40
   注: vol_target 用组合已实现波动
   注: 趋势关 → 目标暴露 0
 --------
 c01_q10_vt11  暴露=  0.0%  regime=None×1.0  vol_src=portfolio scale=1.0  rets=40
   账户=98311.44 收益=-1.69 持仓0: 空仓
-  live=-1.689% xs=+3.993% bench=-5.682% anchor=100000.0 from=2026-07-21 Lrets=40
+  live=-1.689% xs=+5.727% bench=-7.416% anchor=100000.0 from=2026-07-21 Lrets=40
   注: vol_target 用组合已实现波动
   注: 趋势关 → 目标暴露 0
 --------
