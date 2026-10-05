@@ -1,5 +1,5 @@
 {
-  "stamp": "20261002_140229",
+  "stamp": "20261005_161846",
   "steps_requested": [
     "pull",
     "signal",
@@ -46,7 +46,7 @@
   "shadow": "c01_q10_vt08_soft_oh38_xgn",
   "dry_run": false,
   "trading_day": false,
-  "trading_day_note": "source=cn_holidays_beyond_bench date=2026-10-02 bench_n=120 closed=True makeup=False asof=2026-09-30 lag=True",
+  "trading_day_note": "source=cn_holidays_beyond_bench date=2026-10-05 bench_n=120 closed=True makeup=False asof=2026-09-30 lag=True",
   "data_asof": "2026-09-15",
   "data_lag": true,
   "ok": true,
@@ -82,7 +82,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 1.61
+      "seconds": 1.49
     },
     {
       "step": "monitor",
@@ -101,7 +101,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.09
+      "seconds": 0.15
     },
     {
       "step": "summary",
@@ -117,7 +117,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.05
+      "seconds": 0.04
     },
     {
       "step": "compare",
@@ -131,7 +131,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.04
+      "seconds": 0.03
     },
     {
       "step": "live",
@@ -148,7 +148,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 1.54
+      "seconds": 1.64
     },
     {
       "step": "status",
@@ -162,7 +162,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.06
+      "seconds": 0.05
     },
     {
       "step": "today",
@@ -173,7 +173,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.09
+      "seconds": 0.07
     },
     {
       "step": "asof",
@@ -184,7 +184,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.09
+      "seconds": 0.07
     },
     {
       "step": "yield",
@@ -195,7 +195,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.09
+      "seconds": 0.07
     },
     {
       "step": "brief",
@@ -206,7 +206,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.09
+      "seconds": 0.07
     },
     {
       "step": "data",
@@ -217,7 +217,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.09
+      "seconds": 0.07
     },
     {
       "step": "next",
@@ -229,7 +229,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.07
+      "seconds": 0.06
     },
     {
       "step": "go",
@@ -242,7 +242,7 @@
       ],
       "exit": 4,
       "ok": true,
-      "seconds": 0.57,
+      "seconds": 0.47,
       "decision_exit": 4,
       "note": "go decision code ignored for pipeline ok"
     },
@@ -255,7 +255,7 @@
       ],
       "exit": 3,
       "ok": true,
-      "seconds": 0.09,
+      "seconds": 0.07,
       "decision_exit": 3,
       "note": "ready level code ignored for pipeline ok"
     },
@@ -269,7 +269,7 @@
       ],
       "exit": 3,
       "ok": true,
-      "seconds": 0.09,
+      "seconds": 0.07,
       "decision_exit": 3,
       "note": "digest level code ignored for pipeline ok"
     },
@@ -283,7 +283,7 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.08
+      "seconds": 0.06
     },
     {
       "step": "pulse",
@@ -296,7 +296,7 @@
       ],
       "exit": 3,
       "ok": true,
-      "seconds": 0.08,
+      "seconds": 0.06,
       "decision_exit": 3,
       "note": "pulse level code ignored for pipeline ok"
     },
@@ -319,12 +319,12 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.09
+      "seconds": 0.07
     }
   ],
   "latest_txt": "/home/runner/work/etf-rotation/etf-rotation/output/latest.txt",
   "latest_json": "/home/runner/work/etf-rotation/etf-rotation/output/latest.json",
-  "log": "/home/runner/work/etf-rotation/etf-rotation/output/logs/pipeline_20261002_140229.log",
+  "log": "/home/runner/work/etf-rotation/etf-rotation/output/logs/pipeline_20261005_161846.log",
   "pages_out": "output/site",
   "yield": {
     "name": "c01_q10_vt08_soft_oh38_xgn",
@@ -339,7 +339,7 @@
     "data_lag": true
   },
   "brief": {
-    "stamp": "2026-10-02T14:02:37",
+    "stamp": "2026-10-05T16:18:52",
     "market_asof": "2026-09-15",
     "data_lag": true,
     "action": "⚪ 空仓观望",
@@ -371,7 +371,7 @@
     "path_json": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/next.json"
   },
   "pull": {
-    "stamp": "2026-10-02T14:02:34",
+    "stamp": "2026-10-05T16:18:50",
     "before": {
       "data_asof": "2026-09-30",
       "data_lag": true
@@ -389,7 +389,7 @@
     "path_json": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/pull.json"
   },
   "go": {
-    "stamp": "2026-10-02T14:02:37",
+    "stamp": "2026-10-05T16:18:53",
     "decision": "refresh",
     "market_asof": "2026-09-15",
     "data_lag": true,

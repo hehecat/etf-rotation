@@ -1,5 +1,5 @@
 {
-  "stamp": "2026-10-02T14:02:37",
+  "stamp": "2026-10-05T16:18:53",
   "level": "WAIT_DATA",
   "note": "行情滞后; 收益字段可能仅锚日 → ./etf wait-asof",
   "market_asof": "2026-09-15",

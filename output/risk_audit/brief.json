@@ -1,5 +1,5 @@
 {
-  "stamp": "2026-10-02T14:02:38",
+  "stamp": "2026-10-05T16:18:53",
   "market_asof": "2026-09-15",
   "data_lag": true,
   "action": "⚪ 空仓观望",
@@ -20,5 +20,5 @@
   },
   "days_to_ready": 0,
   "eta_note": "样本已够, 若无 DATA_LAG 则应 READY",
-  "text": "======== BRIEF 速览 ========\n时间: 2026-10-02T14:02:38\n行情截至: 2026-09-15  DATA_LAG\n动作: ⚪ 空仓观望  市场: 关\nlive=-1.518 xs=5.8979 Lrets=40 thin=False\ndtr=0 eta=样本已够, 若无 DATA_LAG 则应 READY\n========\n"
+  "text": "======== BRIEF 速览 ========\n时间: 2026-10-05T16:18:53\n行情截至: 2026-09-15  DATA_LAG\n动作: ⚪ 空仓观望  市场: 关\nlive=-1.518 xs=5.8979 Lrets=40 thin=False\ndtr=0 eta=样本已够, 若无 DATA_LAG 则应 READY\n========\n"
 }
