@@ -1,7 +1,7 @@
 {
-  "stamp": "2026-10-05T16:18:53",
+  "stamp": "2026-10-06T14:24:38",
   "trading_day": {
-    "date": "2026-10-05",
+    "date": "2026-10-06",
     "is_trading_day": false,
     "source": "cn_holidays_beyond_bench",
     "data_asof": "2026-09-30",
@@ -39,7 +39,7 @@
     "data_lag": true
   },
   "pipeline_brief": {
-    "stamp": "2026-10-05T16:18:52",
+    "stamp": "2026-10-06T14:24:38",
     "market_asof": "2026-09-15",
     "data_lag": true,
     "action": "⚪ 空仓观望",

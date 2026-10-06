@@ -6,7 +6,7 @@
   "data_lag": true,
   "latest_stale": true,
   "trading_day": {
-    "date": "2026-10-05",
+    "date": "2026-10-06",
     "is_trading_day": false,
     "data_asof": "2026-09-30",
     "data_lag": true
@@ -86,6 +86,6 @@
     "warn_n": 0
   },
   "pipeline_ok": true,
-  "pipeline_stamp": "20261002_140229",
-  "stamp": "2026-10-05T16:18:53"
+  "pipeline_stamp": "20261005_161846",
+  "stamp": "2026-10-06T14:24:38"
 }
