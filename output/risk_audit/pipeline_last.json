@@ -1,5 +1,5 @@
 {
-  "stamp": "20261006_142431",
+  "stamp": "20261007_144051",
   "steps_requested": [
     "pull",
     "signal",
@@ -46,7 +46,7 @@
   "shadow": "c01_q10_vt08_soft_oh38_xgn",
   "dry_run": false,
   "trading_day": false,
-  "trading_day_note": "source=cn_holidays_beyond_bench date=2026-10-06 bench_n=120 closed=True makeup=False asof=2026-09-30 lag=True",
+  "trading_day_note": "source=cn_holidays_beyond_bench date=2026-10-07 bench_n=120 closed=True makeup=False asof=2026-09-30 lag=True",
   "data_asof": "2026-09-15",
   "data_lag": true,
   "ok": true,
@@ -74,7 +74,7 @@
     {
       "step": "pull",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.17/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
         "pull",
         "--no-follow",
@@ -82,12 +82,12 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 1.41
+      "seconds": 1.52
     },
     {
       "step": "monitor",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.17/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/shadow_monitor.py",
         "--shadows",
         "c01_q10_vt08_soft_oh38,c01_q10_vt08_soft_oh38_xgn,c01_q10_vt09_oh35,c01_q10_vt11",
@@ -101,12 +101,12 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.28
+      "seconds": 0.17
     },
     {
       "step": "summary",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.17/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/shadow_summary.py",
         "--names",
         "c01_q10_vt08_soft_oh38,c01_q10_vt08_soft_oh38_xgn,c01_q10_vt09_oh35,c01_q10_vt11",
@@ -117,12 +117,12 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.06
+      "seconds": 0.05
     },
     {
       "step": "compare",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.17/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/shadow_compare.py",
         "--json-out",
         "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/shadow_compare.json",
@@ -131,12 +131,12 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.12
+      "seconds": 0.03
     },
     {
       "step": "live",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.17/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/shadow_live.py",
         "--json-out",
         "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/shadow_live.json",
@@ -148,12 +148,12 @@
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 1.66
+      "seconds": 1.6
     },
     {
       "step": "status",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.17/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/research_status.py",
         "--json-out",
         "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/research_status.json",
@@ -167,74 +167,74 @@
     {
       "step": "today",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.17/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
         "today"
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.12
+      "seconds": 0.08
     },
     {
       "step": "asof",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.17/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
         "asof"
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.12
+      "seconds": 0.08
     },
     {
       "step": "yield",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.17/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
         "yield"
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.12
+      "seconds": 0.08
     },
     {
       "step": "brief",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.17/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
         "brief"
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.12
+      "seconds": 0.08
     },
     {
       "step": "data",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.17/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
         "data"
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.12
+      "seconds": 0.08
     },
     {
       "step": "next",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.17/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
         "next",
         "--no-refresh"
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.11
+      "seconds": 0.07
     },
     {
       "step": "go",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.17/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
         "go",
         "--no-wait",
@@ -242,41 +242,41 @@
       ],
       "exit": 4,
       "ok": true,
-      "seconds": 0.7,
+      "seconds": 0.56,
       "decision_exit": 4,
       "note": "go decision code ignored for pipeline ok"
     },
     {
       "step": "ready",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.17/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
         "ready"
       ],
       "exit": 3,
       "ok": true,
-      "seconds": 0.08,
+      "seconds": 0.17,
       "decision_exit": 3,
       "note": "ready level code ignored for pipeline ok"
     },
     {
       "step": "digest",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.17/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
         "digest",
         "--no-refresh"
       ],
       "exit": 3,
       "ok": true,
-      "seconds": 0.08,
+      "seconds": 0.12,
       "decision_exit": 3,
       "note": "digest level code ignored for pipeline ok"
     },
     {
       "step": "progress",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.17/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
         "progress",
         "--no-refresh"
@@ -288,7 +288,7 @@
     {
       "step": "pulse",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.17/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/etf.py",
         "pulse",
         "--no-refresh",
@@ -296,7 +296,7 @@
       ],
       "exit": 3,
       "ok": true,
-      "seconds": 0.07,
+      "seconds": 0.12,
       "decision_exit": 3,
       "note": "pulse level code ignored for pipeline ok"
     },
@@ -312,19 +312,19 @@
     {
       "step": "pages",
       "cmd": [
-        "/opt/hostedtoolcache/Python/3.11.17/x64/bin/python3",
+        "/opt/hostedtoolcache/Python/3.11.16/x64/bin/python3",
         "/home/runner/work/etf-rotation/etf-rotation/scripts/build_pages.py",
         "--out",
         "output/site"
       ],
       "exit": 0,
       "ok": true,
-      "seconds": 0.1
+      "seconds": 0.22
     }
   ],
   "latest_txt": "/home/runner/work/etf-rotation/etf-rotation/output/latest.txt",
   "latest_json": "/home/runner/work/etf-rotation/etf-rotation/output/latest.json",
-  "log": "/home/runner/work/etf-rotation/etf-rotation/output/logs/pipeline_20261006_142431.log",
+  "log": "/home/runner/work/etf-rotation/etf-rotation/output/logs/pipeline_20261007_144051.log",
   "pages_out": "output/site",
   "yield": {
     "name": "c01_q10_vt08_soft_oh38_xgn",
@@ -339,7 +339,7 @@
     "data_lag": true
   },
   "brief": {
-    "stamp": "2026-10-06T14:24:38",
+    "stamp": "2026-10-07T14:40:58",
     "market_asof": "2026-09-15",
     "data_lag": true,
     "action": "⚪ 空仓观望",
@@ -371,7 +371,7 @@
     "path_json": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/next.json"
   },
   "pull": {
-    "stamp": "2026-10-06T14:24:34",
+    "stamp": "2026-10-07T14:40:55",
     "before": {
       "data_asof": "2026-09-30",
       "data_lag": true
@@ -389,7 +389,7 @@
     "path_json": "/home/runner/work/etf-rotation/etf-rotation/output/risk_audit/pull.json"
   },
   "go": {
-    "stamp": "2026-10-06T14:24:38",
+    "stamp": "2026-10-07T14:40:58",
     "decision": "refresh",
     "market_asof": "2026-09-15",
     "data_lag": true,

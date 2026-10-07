@@ -1,8 +1,8 @@
 ======== 研究状态面板 ========
-时间: 2026-10-06T14:24:36
-交易日: False source=cn_holidays_beyond_bench date=2026-10-06  行情截至=2026-09-30  DATA_LAG
+时间: 2026-10-07T14:40:57
+交易日: False source=cn_holidays_beyond_bench date=2026-10-07  行情截至=2026-09-30  DATA_LAG
 生产 state: True  latest: True  信号时间: 2026-09-15 12:50
-⚠ 行情滞后: wall/交易日 2026-10-06 > 行情截至 2026-09-30 (nav/live 以行情日为准, 等数据更新后再判 xs)
+⚠ 行情滞后: wall/交易日 2026-10-07 > 行情截至 2026-09-30 (nav/live 以行情日为准, 等数据更新后再判 xs)
 -------- 可判性首屏 --------
   level=WAIT_DATA  → ./etf pulse | ./etf digest
   days_to_ready=0  → ./etf pulse | ./etf progress
@@ -76,13 +76,13 @@
 -------- 监控告警 --------
   error=0 warn=0 ok=True
 -------- pipeline 上次 --------
-  stamp=20261005_161846 ok=True alerts=0/0 td=False asof=2026-09-15 lag=True
+  stamp=20261006_142431 ok=True alerts=0/0 td=False asof=2026-09-15 lag=True
 -------- healthcheck 上次 --------
   stamp=None ok=None secs=None
 -------- weekly 上次 --------
   stamp=None ok=None alert_fail=None
 -------- site --------
-  built=2026-10-05T16:18:53 alerts=0/0 today=True live=True compare=True
+  built=2026-10-06T14:24:38 alerts=0/0 today=True live=True compare=True
 -------- 主线对照 --------
   ======== 主线影子对照 ========
   信号默认: c01_q10_vt08_soft_oh38_xgn
@@ -102,12 +102,12 @@
   c01_q10_vt09_oh35                    资产=  98311.44  live=  -1.69%  xs=  +5.73%  全样本=  -1.69  持仓0: 空仓  rets=40
   c01_q10_vt11                         资产=  98311.44  live=  -1.69%  xs=  +5.73%  全样本=  -1.69  持仓0: 空仓  rets=40
 -------- 今日速览 --------
-  时间: 2026-10-05T16:18:52
+  时间: 2026-10-06T14:24:36
   信号默认影子: c01_q10_vt08_soft_oh38_xgn
   ----------------------------
   生产动作: ⚪ 空仓观望
   市场: 关  宽度=0.09615384615384616  配置=C01_效15d  信号时间: 2026-09-15 12:50  行情截至: 2026-09-15
-  ⚠ 行情滞后: wall/交易日 2026-10-05 > 行情截至 2026-09-15 (nav/live 以行情日为准)
+  ⚠ 行情滞后: wall/交易日 2026-10-06 > 行情截至 2026-09-15 (nav/live 以行情日为准)
   原因:
   · 大盘趋势向下 → 保持空仓
   研究影子动作: 空仓(趋势关) 暴露0%

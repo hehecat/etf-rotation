@@ -1,7 +1,7 @@
 {
-  "stamp": "2026-10-06T14:24:36",
+  "stamp": "2026-10-07T14:40:57",
   "trading_day": {
-    "date": "2026-10-06",
+    "date": "2026-10-07",
     "is_trading_day": false,
     "source": "cn_holidays_beyond_bench",
     "bench_n": 120,
@@ -146,7 +146,7 @@
     "ok": true
   },
   "pipeline_last": {
-    "stamp": "20261005_161846",
+    "stamp": "20261006_142431",
     "ok": true,
     "alert_error_n": 0,
     "alert_warn_n": 0,
@@ -165,7 +165,7 @@
     "alert_fail": null
   },
   "site": {
-    "built_at": "2026-10-05T16:18:53",
+    "built_at": "2026-10-06T14:24:38",
     "has_latest": true,
     "has_monitor": true,
     "has_summary": true,

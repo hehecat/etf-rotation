@@ -1,7 +1,7 @@
 {
-  "stamp": "2026-10-06T14:24:36",
+  "stamp": "2026-10-07T14:40:57",
   "trading_day": {
-    "date": "2026-10-06",
+    "date": "2026-10-07",
     "is_trading_day": false,
     "source": "cn_holidays_beyond_bench",
     "bench_n": 120,
@@ -31,7 +31,7 @@
     "data_lag": true
   },
   "pipeline_last": {
-    "stamp": "20261005_161846",
+    "stamp": "20261006_142431",
     "ok": true,
     "data_asof": "2026-09-15",
     "data_lag": true
@@ -39,10 +39,10 @@
   "site_meta": {
     "market_asof": "2026-09-15",
     "data_lag": true,
-    "built_at": "2026-10-05T16:18:53"
+    "built_at": "2026-10-06T14:24:38"
   },
   "days_to_ready": 0,
   "eta_note": "样本已够, 若无 DATA_LAG 则应 READY",
   "ready_level": "WAIT_DATA",
-  "text": "======== 行情/收益取证 ========\n时间: 2026-10-06T14:24:36\n交易日: False date=2026-10-06 source=cn_holidays_beyond_bench\n行情截至: 2026-09-15  DATA_LAG\n信号时间: 2026-09-15 12:50  动作: ⚪ 空仓观望  市场: 关\nSIGNAL: c01_q10_vt08_soft_oh38_xgn\n  live=-1.518 xs=5.8979 Lrets=40 thin=False 持仓=空仓\npipeline_last: stamp=20261005_161846 ok=True asof=2026-09-15 lag=True\nsite_meta: asof=2026-09-15 lag=True\ndtr=0 eta=样本已够, 若无 DATA_LAG 则应 READY level=WAIT_DATA\n========\n"
+  "text": "======== 行情/收益取证 ========\n时间: 2026-10-07T14:40:57\n交易日: False date=2026-10-07 source=cn_holidays_beyond_bench\n行情截至: 2026-09-15  DATA_LAG\n信号时间: 2026-09-15 12:50  动作: ⚪ 空仓观望  市场: 关\nSIGNAL: c01_q10_vt08_soft_oh38_xgn\n  live=-1.518 xs=5.8979 Lrets=40 thin=False 持仓=空仓\npipeline_last: stamp=20261006_142431 ok=True asof=2026-09-15 lag=True\nsite_meta: asof=2026-09-15 lag=True\ndtr=0 eta=样本已够, 若无 DATA_LAG 则应 READY level=WAIT_DATA\n========\n"
 }
